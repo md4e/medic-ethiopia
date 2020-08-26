@@ -1,4 +1,5 @@
 <?php
+include_once "../includes/common.config.php";
 
 ?>
 <!DOCTYPE html>
@@ -7,28 +8,11 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Register</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        body {
-            min-height: 100vh;
-        }
-
-        .flex-fill {
-            flex: 1 1 auto;
-            width: 50%;
-            border-radius: 15px;
-            background-color: #87ceeb66;
-        }
-
-        input {
-            border: none;
-        }
-        .col-form-label{
-            text-align: right;
-        }
-    </style>
+    <title>History Sheet</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 </head>
 
 <body>
@@ -39,13 +23,14 @@
     <main class="container-fluid flex-fill">
         <div class="container-fluid">
             <div class="row" style="text-align:center">
-                <div class="col-md-12">
-                    <img src="../images/zh_logo2.png" style="width:300px;text-align:center">
+            <div class="col-md-12">
+                    <p class="h1" style="padding-bottom: 20px;">ZEWDITU MEMORIAL HOSPITAL</p>
+                    <p class="h4" style="padding-bottom: 20px;">Addis Ababa Kirkos Subcity, Wereda: 7 <br> Telephone: +251-0115518085 P.O.Box 316</p>
                 </div>
                 <div class="col-md-12" style="padding-bottom: 20px;">
                     <p class="h1">HISTORY SHEET(FORM)</p>
                 </div>
-                <a href="../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true">Back to Dashboard</a>
+                <a href="../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true"><p class="h4">Return to Dashboard</p></a>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -96,8 +81,8 @@
                 </div>
 
                 <div class="form-group row">
-                    <div class="offset-4 col-8">
-                        <button name="submit" type="submit" class="btn btn-lg btn-primary">Save</button>
+                    <div class="col-12">
+                        <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Save Results</button>
                     </div>
                 </div>
                 </form>
@@ -105,7 +90,7 @@
         </div>
         </div>
         <footer>
-            Copyright © 2020 <br>Powered by <a target="blank" href="https://www.medic-ethiopia.com">medic-ethiopia</a>
+            <?php footer();?>
         </footer>
     </main>
 

@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-include_once "./locale/en.php"
+include_once "./locale/en.php";
+include_once "./includes/common.config.php";
 
 ?>
 
@@ -11,26 +12,9 @@ include_once "./locale/en.php"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>medic-ethiopia</title>
-    <style>
-        body {
-            min-height: 100vh;
-            /* transform: scale(1.5,1.5);
-            transform-origin: 0 0 ; */
-            background-color: #87ceeb66;
-        }
-
-        .flex-fill {
-            flex: 1 1 auto;
-            width: 25%;
-        }
-        .col-form-label{
-            text-align: right;
-        }
-
-    </style>
 </head>
 
 
@@ -39,23 +23,24 @@ include_once "./locale/en.php"
 
 
     </header>
-    <main class="container-fluid flex-fill">
+    <main class="container-fluid flex-fill index-page">
 
         <div class="container-fluid">
             <div class="row" style="text-align:center">
-                <p class="h1 text-primary">medic-ethiopia</p>
-                <p class="h5 text-muted">Digital Healthcare System</p>
-                <!-- <img src="./images/zh_logo2.png" style="width:150px;height:150px"> -->
+                <div class="col-12 col-xs-12 ">
+                    <p class="h1 text-primary">medic-ethiopia</p>
+                    <p class="h5 text-muted">Digital Healthcare System</p>
+                </div>
             </div>
             <div class="row">
-                <div class="col-12 col-xs-12 ">
+                <div class="col-12 col-xs-12 box" >
                     <form class="form-horizontal" action="./dispatcher.php" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label for="hospitalName">
                                 Choose hospital
                             </label>
-                            <select class="form-control" name="hospitalName" >
+                            <select class="form-control" name="hospitalName">
                                 <?php
                                 foreach ($hospital as $key => $value) {
                                     echo '<option value = "' . $key . '">' . $value . '</option>';
@@ -75,23 +60,19 @@ include_once "./locale/en.php"
                             </label>
                             <input type="password" name="employeePassword" class="form-control" id="employeePassword" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group offest-6">
                             <button name="submit" type="submit" value="submit" class="btn btn-primary">
-
                                 Login
                             </button>
                         </div>
+                        <p class="h6 text-muted" style="text-align: center;">Only Authorized person can use this application. If you are not authorized exit immediately.</p>
                     </form>
                 </div>
             </div>
         </div>
     </main>
     <footer>
-        <div class="container-fluid">
-            <div class="row" style="text-align:center">
-                Copyright © 2020 <br>Powered by <a target="blank" href="https://www.medic-ethiopia.com">medic-ethiopia</a>
-            </div>
-        </div>
+        <?php footer(); ?>
     </footer>
 </body>
 

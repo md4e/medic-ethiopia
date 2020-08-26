@@ -7,31 +7,12 @@ include_once "./includes/common.config.php"
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Register</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <style>
-        body {
-            min-height: 100vh;
-            background-color: #87ceeb66;
-        }
 
-        .flex-fill {
-            flex: 1 1 auto;
-            width: 100%;
-            border-radius: 15px;
-
-        }
-
-        input {
-            border: none;
-        }
-
-        .wordwrap {
-            font-size: 30px;
-            text-align: center;
-            padding:20px;
-        }
     </style>
 </head>
 
@@ -59,25 +40,25 @@ include_once "./includes/common.config.php"
                 </div>
 
 
-                <div class="col-12" style="padding-bottom: 20px; border-top:black solid 1px;">
+                <div class="col-6 col-12" style="padding-bottom: 20px; border-top:black solid 1px;">
                     <p class="h1">Dashboard<p>
 
                             <div class="row">
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/register.php" class="btn btn-primary btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
                                             Patient Registeration
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/vital-sign-form.php" class="btn btn-primary btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            Vital Sign Form
+                                            Vital Sign
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/order-form.php" class="btn btn-primary btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
                                             Order Sheet
@@ -86,96 +67,96 @@ include_once "./includes/common.config.php"
                                 </div>
 
 
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/progress-notes-and-treatment-form.php" class="btn btn-primary btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            Progress Notes and Treatment Form
+                                            Progress Notes & Treatment
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/discharge-summary-form.php" class="btn btn-primary btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            Discharge Summary Form
+                                            Discharge Summary
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/history-sheet-form.php" class="btn btn-primary btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
                                             History Sheet
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/respiratory-rate-oxygen-saturation-and-oxygen-therapy-form.php" class="btn btn-info btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            Respiratory rate <br> Oxygen Saturation & Oxygen Therapy
+                                            Respiratory Rate, <br> Oxygen Saturation,<br> & Oxygen Therapy
                                         </div>
                                     </a>
                                 </div>
 
-                                <div class="col-12" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <p class="h1">Laboratory forms<p>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/laboratory/lab-serology-and-coagulation-test-request-form.php" class="btn btn-danger btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            LAB - Serology And Coagulation
+                                            LAB - Serology & <br>Coagulation
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/laboratory/lab-blood-request-form.php" class="btn btn-danger btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            LAB - Blood Request Form
+                                            LAB - Blood Request
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/laboratory/lab-blood-crossmatch-request-form.php" class="btn btn-danger btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
                                             LAB - Blood Crossmatch
                                         </div>
                                     </a> </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/laboratory/lab-hematology-form.php" class="btn btn-danger btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            LAB - Hematology request
+                                            LAB - Hematology Request
                                         </div>
                                     </a>
                                 </div>
 
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/laboratory/lab-chemistry-form.php" class="btn btn-success btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            LAB - Chemistry request form
+                                            LAB - Chemistry Request
                                         </div>
                                     </a>
                                 </div>
 
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/laboratory/lab-urine-analysis-examination-request-form.php" class="btn btn-warning btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
-                                            LAB - Urine Analysis Examination
+                                            LAB - Urine Analysis <br>Examination
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/laboratory/lab-stool-examination-request-form.php" class="btn btn-lg btn-block" style="background-color:#800020;color:white" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
                                             LAB - Stool Examination
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-4" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./forms/laboratory/lab-x-ray-request-form.php" class="btn btn-dark btn-lg btn-block" role="button" aria-disabled="true">
                                         <div class="col-md-12 wordwrap" style="min-height: 100px; padding-bottom: 20px;">
                                             LAB - X-Ray
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-12" style="padding-bottom: 20px;">
+                                <div class="col-6 col-12" style="padding-bottom: 20px;">
                                     <a href="./includes/reference.php"><p class="h1">Reference pages<p></a>
                                 </div>
                             </div>
@@ -183,7 +164,7 @@ include_once "./includes/common.config.php"
             </div>
         </div>
         <footer>
-            Copyright © 2020 <br>Powered by <a target="blank" href="https://www.medic-ethiopia.com">medic-ethiopia</a>
+            <?php footer();?>
         </footer>
     </main>
 

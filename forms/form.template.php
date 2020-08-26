@@ -1,6 +1,5 @@
 <?php
 include_once "../includes/common.config.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +7,7 @@ include_once "../includes/common.config.php";
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Progess Notes and Treatment</title>
+    <title>Register</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -17,8 +16,6 @@ include_once "../includes/common.config.php";
 
 <body>
     <header>
-
-
     </header>
     <main class="container-fluid flex-fill">
         <div class="container-fluid">
@@ -28,7 +25,7 @@ include_once "../includes/common.config.php";
                     <p class="h4" style="padding-bottom: 20px;">Addis Ababa Kirkos Subcity, Wereda: 7 <br> Telephone: +251-0115518085 P.O.Box 316</p>
                 </div>
                 <div class="col-md-12" style="padding-bottom: 20px;">
-                    <p class="h1">Progress Notes & Treatment</p>
+                    <p class="h1">Order Form</p>
                 </div>
                 <a href="../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true"><p class="h4">Return to Dashboard</p></a>
             </div>
@@ -73,16 +70,9 @@ include_once "../includes/common.config.php";
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="date-of-order-sheet-remark" class="col-4 col-form-label">Progess Notes and Treatment</label>
+                        <label for="date-of-order-sheet-remark" class="col-4 col-form-label">Treatment and Observation</label>
                         <div class="col-8">
                             <textarea id="remark" name="remark" cols="40" rows="5" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="date-of-order-sheet-charge" class="col-4 col-form-label">Charge</label>
-                        <div class="col-8">
-                            <textarea id="date-of-order-sheet-charge" name="date-of-order-sheet-charge" cols="40" rows="5" class="form-control"></textarea>
-
                         </div>
                     </div>
                 </div>
@@ -97,7 +87,7 @@ include_once "../includes/common.config.php";
         </div>
         </div>
         <footer>
-            <?php footer();?>
+            <?php footer()?>
         </footer>
     </main>
 
