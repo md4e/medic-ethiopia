@@ -1,4 +1,5 @@
 <?php
+include_once '../includes/defines.php';
 
 function footer(){
 echo '<div class="container-fluid">
