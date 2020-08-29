@@ -18,50 +18,28 @@ include_once "../../includes/common.config.php";
 
 <body>
     <header>
-
-
+        <?php headerInfo("Lab: Serology & Coagulation Test Form") ?>
     </header>
     <main class="container-fluid flex-fill">
         <div class="container-fluid">
-            <div class="row" style="text-align:center">
-                <div class="col-md-12">
-                    <p class="h1" style="padding-bottom: 20px;">ZEWDITU MEMORIAL HOSPITAL</p>
-                    <p class="h4" style="padding-bottom: 20px;">Addis Ababa Kirkos Subcity, Wereda: 7 <br> Telephone: +251-0115518085 P.O.Box 316</p>
-                </div>
-                <div class="col-md-12" style="padding-bottom: 20px;">
-                    <p class="h1">Lab: Serology & Coagulation Test</p>
-                </div>
-                <a href="../../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true"><p class="h4">Return to Dashboard</p></a>
-            </div>
             <div class="row">
                 <div class="col-md-12">
-                    <form>
-                        <div class="form-group row">
-                            <form>
-                                <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
-                                <div class="col-4">
-                                    <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
-                                </div>
-                                <div class="col-4">
-                                    <button name="submit" type="submit" class="btn btn-md btn-secondary">Search Patient</button>
-                                </div>
-                        </div>
-                    </form>
+                    <a href="../../dispatcher.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Return to Dashboard</a>
+                </div>
+                <div class="col-md-12" style="text-align:center;">
+                    <div class="col-md-12">
+                        <p class="h1">Lab: Serology & Coagulation Test Form</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 all-form-style-blood-lab">
                     <div class="form-group row">
-                        <div class="col-12" style="border:1px solid black;">
-                            <p text="mute"> This will be available from Database search using the above form by Entering the Patient ID.
-                                Patient ID is Auto-generated upon registeration.</p>
-                            <ul style="list-style-type:none;">
-                                <li><strong>Name</strong>: Patient001 </li>
-                                <li><strong>Age</strong>: 100 </li>
-                                <li><strong>Sex</strong>: F/M </li>
-                                <li><strong>Date of Admission: </strong> dd/mm/yy hh:mm:ss </li>
-                                <li><strong>Ward(Bed): </strong>W-0 B-0</li>
-                                <li><strong>Department</strong>: DeptA</li>
-                            </ul>
+                        <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
+                        <div class="col-4">
+                            <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label for="serology-coagulation-sheet-date" class="col-4 col-form-label">Date</label>
                         <div class="col-4">
@@ -106,7 +84,8 @@ include_once "../../includes/common.config.php";
 
                                     <?php
                                     foreach ($serologyTestArray as $key => $value) {
-                                        echo '<tr><td class="list-td"><a href="#" title="'.$value['fullname'].'">' . $value['name'] . '</a></td>';
+                                        //echo '<tr><td class="list-td"><a href="#" title="' . $value['fullname'] . '">' . $value['name'] . '</a></td>';
+                                        echo '<tr><td class="list-td">' . $value['name'] . '</td>';
                                         echo '<td class="list-td"><input id="serology-test-' . $key . '" name="serology-test-' . $key . '" type="number" min="' . $value['range'][1] . '" step="' . $value['range'][0] . '" max=' . $value['range'][2] . ' class="form-control" required="required"></td>';
                                         // echo '<td class="list-td"><select id="chem-units" name="chem-units" class="custom-select" required="required">';
                                         // foreach ($chemistryLabTestUnitsArray as $key2 => $value2) {
@@ -146,7 +125,8 @@ include_once "../../includes/common.config.php";
 
                                     <?php
                                     foreach ($coagulationTestArray as $key => $value) {
-                                        echo '<tr><td class="list-td"><a href="#">' . $value['name'] . '</a></td>';
+                                        //echo '<tr><td class="list-td"><a href="#">' . $value['name'] . '</a></td>';
+                                        echo '<tr><td class="list-td">' . $value['name'] . '</td>';
                                         echo '<td class="list-td"><input id="coagulation-test-' . $key . '" name="coagulation-test-' . $key . '" type="number" min="' . $value['range'][1] . '" step="' . $value['range'][0] . '" max=' . $value['range'][2] . ' class="form-control" required="required"></td>';
                                         // echo '<td class="list-td"><select id="chem-units" name="chem-units" class="custom-select" required="required">';
                                         // foreach ($chemistryLabTestUnitsArray as $key2 => $value2) {
@@ -165,7 +145,7 @@ include_once "../../includes/common.config.php";
                                         if ($value['name'] !== "INR") {
                                             $second = " SEC";
                                         }
-                                        echo '<td class="list-td">' . $value['range'][1] . ' - ' . $value['range'][2] . $second.'</td>
+                                        echo '<td class="list-td">' . $value['range'][1] . ' - ' . $value['range'][2] . $second . '</td>
                                             </tr>';
                                     }
                                     ?>
@@ -174,11 +154,14 @@ include_once "../../includes/common.config.php";
                             </table>
                         </div>
                     </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-12">
-                        <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Save Results</button>
+                    <div class="col-md-12  all-form-style-blood-lab">
+                        <div class="form-group row">
+                            <div class="offset-4 col-8">
+                                <div class="col-12" style="text-align: right;">
+                                    <button name="submit" type="submit" class="btn btn-lg btn-danger" style="padding:1em;">Save Serology & Coagulations Results</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 </form>
@@ -186,7 +169,7 @@ include_once "../../includes/common.config.php";
         </div>
         </div>
         <footer>
-            <?php footer();?>
+            <?php footer(); ?>
         </footer>
     </main>
 

@@ -18,49 +18,22 @@ include_once "../includes/common.config.php";
 
 <body>
     <header>
-
-
+        <?php headerInfo("History Sheet Form") ?>
     </header>
     <main class="container-fluid flex-fill">
         <div class="container-fluid">
-            <div class="row" style="text-align:center">
-            <div class="col-md-12">
-                    <p class="h1" style="padding-bottom: 20px;">ZEWDITU MEMORIAL HOSPITAL</p>
-                    <p class="h4" style="padding-bottom: 20px;">Addis Ababa Kirkos Subcity, Wereda: 7 <br> Telephone: +251-0115518085 P.O.Box 316</p>
-                </div>
-                <div class="col-md-12" style="padding-bottom: 20px;">
-                    <p class="h1">HISTORY SHEET(FORM)</p>
-                </div>
-                <a href="../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true"><p class="h4">Return to Dashboard</p></a>
-            </div>
             <div class="row">
                 <div class="col-md-12">
-                    <form>
-                        <div class="form-group row">
-                            <form>
-                                <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
-                                <div class="col-4">
-                                    <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
-                                </div>
-                                <div class="col-4">
-                                    <button name="submit" type="submit" class="btn btn-md btn-secondary">Search Patient</button>
-                                </div>
-                        </div>
-                    </form>
-                    <div class="form-group row">
-                        <div class="col-12" style="border:1px solid black;">
-                            <p text="mute"> This will be available from Database search using the above form by Entering the Patient ID.
-                                Patient ID is Auto-generated upon registeration.</p>
-                            <ul style="list-style-type:none;">
-                                <li><strong>Name</strong>: Patient001 </li>
-                                <li><strong>Age</strong>: 100 </li>
-                                <li><strong>Sex</strong>: F/M </li>
-                                <li><strong>Date of Admission: </strong> dd/mm/yy hh:mm:ss </li>
-                                <li><strong>Ward(Bed): </strong>W-0 B-0</li>
-                                <li><strong>Department</strong>: DeptA</li>
-                            </ul>
-                        </div>
+                    <a href="../dispatcher.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Return to Dashboard</a>
+                </div>
+                <div class="col-md-12" style="text-align:center;">
+                    <div class="col-md-12">
+                        <p class="h1">History Sheet Form</p>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 all-form-style">
                     <div class="form-group row">
                         <label for="date-of-order-sheet-date" class="col-4 col-form-label">Date</label>
                         <div class="col-4">
@@ -79,11 +52,15 @@ include_once "../includes/common.config.php";
                             <textarea id="remark" name="remark" cols="40" rows="25" class="form-control"></textarea>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group row">
-                    <div class="col-12">
-                        <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Save Results</button>
+                    <div class="col-md-12 all-form-style">
+                        <div class="form-group row">
+                            <div class="offset-4 col-8">
+                                <div class="col-12" style="text-align: right;">
+                                    <button name="submit" type="submit" class="btn btn-lg btn-primary" style="padding:1em;">Save Discharge Summary</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 </form>
@@ -91,7 +68,7 @@ include_once "../includes/common.config.php";
         </div>
         </div>
         <footer>
-            <?php footer();?>
+            <?php footer(); ?>
         </footer>
     </main>
 

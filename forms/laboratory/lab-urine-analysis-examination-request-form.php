@@ -18,72 +18,55 @@ include_once "../../includes/common.config.php";
 
 <body>
     <header>
-
-
+        <?php headerInfo("Lab: Urine Analysis Examination Request Form") ?>
     </header>
     <main class="container-fluid flex-fill">
         <div class="container-fluid">
-            <div class="row" style="text-align:center">
-                <div class="col-md-12">
-                    <p class="h1" style="padding-bottom: 20px;">ZEWDITU MEMORIAL HOSPITAL</p>
-                    <p class="h4" style="padding-bottom: 20px;">Addis Ababa Kirkos Subcity, Wereda: 7 <br> Telephone: +251-0115518085 P.O.Box 316</p>
-                </div>
-                <div class="col-md-12" style="padding-bottom: 20px;">
-                    <p class="h1">Lab: Urine Analysis Examination Request Form</p>
-                </div>
-                <a href="../../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true"><p class="h4">Return to Dashboard</p></a>
-            </div>
             <div class="row">
                 <div class="col-md-12">
-                    <form>
-                        <div class="form-group row">
-                            <form>
-                                <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
-                                <div class="col-4">
-                                    <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
-                                </div>
-                                <div class="col-4">
-                                    <button name="submit" type="submit" class="btn btn-md btn-secondary">Search Patient</button>
-                                </div>
-                        </div>
-                    </form>
+                    <a href="../../dispatcher.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Return to Dashboard</a>
+                </div>
+                <div class="col-md-12" style="text-align:center;">
+                    <div class="col-md-12">
+                        <p class="h1">Lab: Urine Analysis Examination Request Form</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 all-form-style-lab-yellow">
                     <div class="form-group row">
-                        <div class="col-12" style="border:1px solid black;">
-                            <p text="mute"> This will be available from Database search using the above form by Entering the Patient ID.
-                                Patient ID is Auto-generated upon registeration.</p>
-                            <ul style="list-style-type:none;">
-                                <li><strong>Name</strong>: Patient001 </li>
-                                <li><strong>Age</strong>: 100 </li>
-                                <li><strong>Sex</strong>: F/M </li>
-                                <li><strong>Date of Admission: </strong> dd/mm/yy hh:mm:ss </li>
-                                <li><strong>Ward(Bed): </strong>W-0 B-0</li>
-                                <li><strong>Department</strong>: DeptA</li>
-                            </ul>
+                        <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
+                        <div class="col-4">
+                            <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label for="urine-analysis-examination-request-date" class="col-4 col-form-label">Date</label>
-                        <div class="col-4">
+                        <div class="col-3">
                             <input id="urine-analysis-examination-request-date" name="urine-analysis-examination-request-date" type="date" class="form-control" required="required">
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="urine-analysis-examination-request-time" class="col-4 col-form-label">Time</label>
-                        <div class="col-4">
+                        <label for="urine-analysis-examination-request-time" class="col-2 col-form-label">Time</label>
+                        <div class="col-3">
                             <input id="urine-analysis-examination-request-time" name="urine-analysis-examination-request-time" type="time" value="00:00" class="form-control" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="urine-analysis-examination-request-specimen" class="col-4 col-form-label">Type of Specimen</label>
-                        <div class="col-8">
+                        <div class="col-3">
                             <input id="urine-analysis-examination-request-specimen" name="urine-analysis-examination-request-specimen" type="text" class="form-control" required="required">
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="urine-analysis-examination-request-specimen" class="col-4 col-form-label">Equipment ID</label>
-                        <div class="col-4">
-                            <input id="urine-analysis-examination-id" name="urine-analysis-examination-id" type="number" class="form-control" required="required">
+
+                        <label for="urine-analysis-examination-request-specimen" class="col-2 col-form-label">Equipment ID</label>
+                        <div class="col-3">
+                            <?php
+                           echo '<select id="urine-analysis-examination-equipment" name="urine-analysis-examination-equipment" class="custom-select" required="required">';
+                                echo '<option value="unknown">Choose Equipment</option>';
+                            for ($i=10000;$i<50000; $i+=1000) {
+                                echo '<option value="' . $i . '">ZMRH-EQP-' . $i . '</option>';
+                            }
+                            echo '<option value="10000000">Not listed</option>';
+                            echo '</select>';
+                            ?>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -91,7 +74,7 @@ include_once "../../includes/common.config.php";
                         <div class="col-3">
                             <input id="urine-analysis-examination-request-specimen-collection" name="urine-analysis-examination-request-specimen-collection" type="text" class="form-control" required="required">
                         </div>
-                        <label for="urine-analysis-examination-request-result-release" class="col-3 col-form-label">Time of result release</label>
+                        <label for="urine-analysis-examination-request-result-release" class="col-2 col-form-label">Time of result release</label>
                         <div class="col-2">
                             <input id="urine-analysis-examination-request-specimen-collection-time" name="urine-analysis-examination-request-specimen-collection-time" type="time" value="00:00" class="form-control" required="required">
                         </div>
@@ -111,7 +94,7 @@ include_once "../../includes/common.config.php";
                                 <tbody>
 
                                     <tr>
-                                        <td class="list-td"><a href="#"> Color</a></td>
+                                        <td class="list-td">Color</td>
                                         <td class="list-td" colspan="2">
                                             <textarea id="remark" name="remark" cols="40" rows="3" class="form-control"></textarea>
                                         </td>
@@ -120,7 +103,7 @@ include_once "../../includes/common.config.php";
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="list-td"><a href="#">Appearance</a> </td>
+                                        <td class="list-td">Appearance</td>
                                         <td class="list-td" colspan="2">
                                             <textarea id="remark" name="remark" cols="40" rows="3" class="form-control"></textarea>
                                         </td>
@@ -131,7 +114,8 @@ include_once "../../includes/common.config.php";
                                     <?php
 
                                     foreach ($urineAnalysisTestArray as $key => $value) {
-                                        echo '<tr><td class="list-td"><a href="#" title="' . $value['fullname'] . '">' . $value['name'] . '</a></td>';
+                                        //echo '<tr><td class="list-td"><a href="#" title="' . $value['fullname'] . '">' . $value['name'] . '</a></td>';
+                                        echo '<tr><td class="list-td">' . $value['name'] . '</td>';
                                         echo '<td class="list-td"><input id="serology-test-' . $key . '" name="serology-test-' . $key . '" type="number" min="' . $value['range'][1] . '" step="' . $value['range'][0] . '" max="' . $value['range'][2] . '"" class="form-control" required="required"></td>';
                                         echo '<td class="list-td">';
                                         if ($value['name'] == "pH") {
@@ -174,7 +158,8 @@ include_once "../../includes/common.config.php";
 
                                     <?php
                                     foreach ($urineAnalysisTestMicroscopyArray as $key => $value) {
-                                        echo '<tr><td class="list-td"><a href="#">' . $value . '</a></td>';
+                                        //echo '<tr><td class="list-td"><a href="#">' . $value . '</a></td>';
+                                        echo '<tr><td class="list-td">' . $value . '</td>';
                                         echo '<td class="list-td"><input id="coagulation-test-' . $key . '" name="coagulation-test-' . $key . '" type="number" class="form-control" required="required"></td>';
                                         echo '</tr>';
                                     }
@@ -186,9 +171,13 @@ include_once "../../includes/common.config.php";
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <div class="col-12">
-                        <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Save Results</button>
+                <div class="col-md-12 all-form-style-lab-yellow">
+                    <div class="form-group row">
+                        <div class="offset-4 col-8">
+                            <div class="col-12" style="text-align: right;">
+                                <button name="submit" type="submit" class="btn btn-lg btn-warning" style="padding:1em;">Save Urine Analysis Examination Data</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 </form>
@@ -196,7 +185,7 @@ include_once "../../includes/common.config.php";
         </div>
         </div>
         <footer>
-            <?php footer();?>
+            <?php footer(); ?>
         </footer>
     </main>
 

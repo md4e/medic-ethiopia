@@ -17,86 +17,64 @@ include_once "../../includes/common.config.php";
 
 <body>
     <header>
-
-
+        <?php headerInfo("Lab: Blood Request Form") ?>
     </header>
     <main class="container-fluid flex-fill">
         <div class="container-fluid">
-            <div class="row" style="text-align:center">
-                <div class="col-md-12">
-                    <p class="h1" style="padding-bottom: 20px;">ZEWDITU MEMORIAL HOSPITAL</p>
-                    <p class="h4" style="padding-bottom: 20px;">Addis Ababa Kirkos Subcity, Wereda: 7 <br> Telephone: +251-0115518085 P.O.Box 316</p>
-                </div>
-                <div class="col-md-12" style="padding-bottom: 20px;">
-                    <p class="h1">Lab: Blood Request Form</p>
-                </div>
-                <a href="../../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true"><p class="h4">Return to Dashboard</p></a>
-            </div>
             <div class="row">
                 <div class="col-md-12">
-                    <form>
-                        <div class="form-group row">
-                            <form>
-                                <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
-                                <div class="col-4">
-                                    <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
-                                </div>
-                                <div class="col-4">
-                                    <button name="submit" type="submit" class="btn btn-md btn-secondary">Search Patient</button>
-                                </div>
-                        </div>
-                    </form>
-                    <div class="form-group row">
-                        <div class="col-12" style="border:1px solid black;">
-                            <p text="mute"> This will be available from Database search using the above form by Entering the Patient ID.
-                                Patient ID is Auto-generated upon registeration.</p>
-                            <ul style="list-style-type:none;">
-                                <li><strong>Name</strong>: Patient001 </li>
-                                <li><strong>Age</strong>: 100 </li>
-                                <li><strong>Sex</strong>: F/M </li>
-                                <li><strong>Date of Admission: </strong> dd/mm/yy hh:mm:ss </li>
-                                <li><strong>Ward(Bed): </strong>W-0 B-0</li>
-                                <li><strong>Department</strong>: DeptA</li>
-                            </ul>
-                        </div>
+                    <a href="../../dispatcher.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Return to Dashboard</a>
+                </div>
+                <div class="col-md-12" style="text-align:center;">
+                    <div class="col-md-12">
+                        <p class="h1">Lab: Blood Request Form</p>
                     </div>
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 all-form-style-blood-lab">
                     <div class="form-group row">
-                        <label for="serology-coagulation-sheet-date" class="col-4 col-form-label">Date</label>
-                        <div class="col-4">
-                            <input id="serology-coagulation-sheet-date" name="serology-coagulation-sheet-date" type="date" class="form-control" required="required">
+                        <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="serology-coagulation-sheet-time" class="col-4 col-form-label">Time</label>
-                        <div class="col-4">
-                            <input id="serology-coagulation-sheet-time" name="serology-coagulation-sheet-time" type="time" value="00:00" class="form-control" required="required">
+                        <label for="blood-request-form-date" class="col-4 col-form-label">Date</label>
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <input id="blood-request-form-date" name="blood-request-form-date" type="date" class="form-control" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="serology-coagulation-sheet-specimen" class="col-4 col-form-label">Type of Specimen</label>
-                        <div class="col-8">
-                            <input id="serology-coagulation-sheet-specimen" name="serology-coagulation-sheet-specimen" type="text" class="form-control" required="required">
+                        <label for="blood-request-form-time" class="col-4 col-form-label">Time</label>
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <input id="blood-request-form-time" name="blood-request-form-time" type="time" value="00:00" class="form-control" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="serology-coagulation-sheet-specimen-collection" class="col-4 col-form-label">Type of Specimen Collection</label>
-                        <div class="col-3">
-                            <input id="serology-coagulation-sheet-specimen-collection" name="serology-coagulation-sheet-specimen-collection" type="text" class="form-control" required="required">
+                        <label for="blood-request-form" class="col-4 col-form-label">Type of Specimen</label>
+                        <div class="col-md-8 col-sm-12 col-xs-12 ">
+                            <input id="blood-request-form" name="blood-request-form" type="text" class="form-control" required="required">
                         </div>
-                        <label for="serology-coagulation-sheet-result-release" class="col-3 col-form-label">Time of result release</label>
-                        <div class="col-2">
-                            <input id="serology-coagulation-sheet-specimen-collection-time" name="serology-coagulation-sheet-specimen-collection-time" type="time" value="00:00" class="form-control" required="required">
+                    </div>
+                    <div class="form-group row">
+                        <label for="blood-request-form-collection" class="col-4 col-form-label">Type of Specimen Collection</label>
+                        <div class="col-md-3 col-sm-12 col-xs-12 ">
+                            <input id="blood-request-form-collection" name="blood-request-form-collection" type="text" class="form-control" required="required">
+                        </div>
+                        <label for="blood-request-form-result-release" class="col-md-3 col-sm-12 col-xs-12 col-form-label"">Time of result release</label>
+                        <div class="col-md-2 col-sm-12 col-xs-12 ">
+                            <input id="blood-request-form-collection-time" name="blood-request-form-collection-time" type="time" value="00:00" class="form-control" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
                         <?php foreach ($bloodRequestFormCrcAndFfpArray as $key0 => $value0) {
-                            echo'
-                            <div class="col-12">
+                            echo '
+                            <div class="col-md-12 col-sm-12 col-xs-12 ">
                                 <table class="table col-12 list-td">
                                     <thead>
                                         <tr>
-                                            <th scope="col" colspan="4" style="border:1px solid black;text-align:center; background-color:black; color:white">'.$value0.'</th>
+                                            <th scope="col" colspan="4" style="border:1px solid black;text-align:center; background-color:black; color:white">' . $value0 . '</th>
                                         </tr>
                                         <tr>
                                             <th scope="col" style="border:1px solid black;;font-weight:bold">Blood Type</th>
@@ -107,55 +85,60 @@ include_once "../../includes/common.config.php";
                                     </thead>
                                     <tbody>';
 
-                                        foreach ($bloodRequestFormArray as $key => $value) {
-                                            echo '<tr><td class="list-td"><a href="#" >' . $value . '</a></td>';
-                                            echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0. '-' . $key .'-0" name="blood-request-test-start-' . $key0 . '-' . $key. '-0" type="number" class="form-control" required="required"></td>';
-                                            echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0. '-' . $key .'-1" name="blood-request-test-start-' . $key0 . '-' . $key. '-1" type="number" class="form-control" required="required"></td>';
-                                            echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0. '-' . $key .'-2" name="blood-request-test-start-' . $key0 . '-' . $key. '-2" type="text" class="form-control" required="required"></td>';
-                                            //echo '<td class="list-td"><textarea id="blood-request-test-' . $value0 . '-' . $key . '" placeholder="Write remark" name="blood-request-test-' . $value0 . '-' . $key . '" cols="10" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea></td>';
-                                            echo '</tr>';
-                                        }
-                                    echo '</tbody>
+                            foreach ($bloodRequestFormArray as $key => $value) {
+                                //echo '<tr><td class="list-td"><a href="#" >' . $value . '</a></td>';
+                                echo '<tr><td class="list-td">' . $value . '</td>';
+                                echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key . '-0" name="blood-request-test-start-' . $key0 . '-' . $key . '-0" type="number" class="form-control" required="required"></td>';
+                                echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key . '-1" name="blood-request-test-start-' . $key0 . '-' . $key . '-1" type="number" class="form-control" required="required"></td>';
+                                echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key . '-2" name="blood-request-test-start-' . $key0 . '-' . $key . '-2" type="text" class="form-control" required="required"></td>';
+                                //echo '<td class="list-td"><textarea id="blood-request-test-' . $value0 . '-' . $key . '" placeholder="Write remark" name="blood-request-test-' . $value0 . '-' . $key . '" cols="10" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea></td>';
+                                echo '</tr>';
+                            }
+                            echo '</tbody>
                                 </table>
                             </div>';
                         }
 
                         ?>
-                        <div class="col-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12 ">
                             <table class="table col-12 list-td">
                                 <thead>
-                                <tr>
-                                    <th scope="col" colspan="4" style="border:1px solid black;text-align:center; background-color:black; color:white">Other Blood Components</th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col" style="border:1px solid black;;font-weight:bold">Blood Type</th>
-                                            <th scope="col" style="border:1px solid black;;font-weight:bold">Number of Units Requested</th>
-                                            <th scope="col" style="border:1px solid black;;font-weight:bold">Number of Units Supplied</th>
-                                            <th scope="col" style="border:1px solid black;;font-weight:bold">Remark</th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col" colspan="4" style="border:1px solid black;text-align:center; background-color:black; color:white">Other Blood Components</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" style="border:1px solid black;;font-weight:bold">Blood Type</th>
+                                        <th scope="col" style="border:1px solid black;;font-weight:bold">Number of Units Requested</th>
+                                        <th scope="col" style="border:1px solid black;;font-weight:bold">Number of Units Supplied</th>
+                                        <th scope="col" style="border:1px solid black;;font-weight:bold">Remark</th>
+                                    </tr>
                                 <tbody>
 
                                     <?php
 
-                                       foreach ($bloodRequestFormOtherBloodComponentsArray as $key => $value) {
-                                           echo '<tr><td class="list-td"><a href="#" >' . $value . '</a></td>';
-                                           echo '<td class="list-td"><input id="blood-request-other-test-' . $key.'-0" name="blood-request-other-test-' . $key. '-0" type="number" class="form-control" required="required"></td>';
-                                           echo '<td class="list-td"><input id="blood-request-other-test-' . $key.'-1" name="blood-request-other-test-' . $key. '-1" type="number" class="form-control" required="required"></td>';
-                                           echo '<td class="list-td"><input id="blood-request-other-test-' . $key.'-2" name="blood-request-other-test-' . $key. '-2" type="text" class="form-control" required="required"></td>';
-                                           //echo '<td class="list-td"><textarea id="blood-request-test-' . $value0 . '-' . $key . '" placeholder="Write remark" name="blood-request-test-' . $value0 . '-' . $key . '" cols="10" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea></td>';
-                                           echo '</tr>';
-                                       }
+                                    foreach ($bloodRequestFormOtherBloodComponentsArray as $key => $value) {
+                                        //echo '<tr><td class="list-td"><a href="#" >' . $value . '</a></td>';
+                                        echo '<tr><td class="list-td">' . $value . '</td>';
+                                        echo '<td class="list-td"><input id="blood-request-other-test-' . $key . '-0" name="blood-request-other-test-' . $key . '-0" type="number" class="form-control" required="required"></td>';
+                                        echo '<td class="list-td"><input id="blood-request-other-test-' . $key . '-1" name="blood-request-other-test-' . $key . '-1" type="number" class="form-control" required="required"></td>';
+                                        echo '<td class="list-td"><input id="blood-request-other-test-' . $key . '-2" name="blood-request-other-test-' . $key . '-2" type="text" class="form-control" required="required"></td>';
+                                        //echo '<td class="list-td"><textarea id="blood-request-test-' . $value0 . '-' . $key . '" placeholder="Write remark" name="blood-request-test-' . $value0 . '-' . $key . '" cols="10" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea></td>';
+                                        echo '</tr>';
+                                    }
                                     ?>
 
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-12">
-                        <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Save Results</button>
+                    <div class="col-md-12  all-form-style-blood-lab">
+                        <div class="form-group row">
+                            <div class="offset-4 col-md-8 col-sm-12 col-xs-12 ">
+                                <div class="col-12" style="text-align: right;">
+                                    <button name="submit" type="submit" class="btn btn-lg btn-danger" style="padding:1em;">Save Blood Request Results</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 </form>
@@ -163,7 +146,7 @@ include_once "../../includes/common.config.php";
         </div>
         </div>
         <footer>
-            <?php footer();?>
+            <?php footer(); ?>
         </footer>
     </main>
 
