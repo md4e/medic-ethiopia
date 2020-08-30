@@ -9,6 +9,8 @@ include_once "./common.config.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/flag.ico">
+    <link rel="shortcut icon" href="./images/flag.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <title>Reference</title>

@@ -8,12 +8,20 @@ include_once "../includes/common.config.php";
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="shortcut icon" href="../images/flag.ico">
   <meta charset="utf-8">
   <title>Register</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="../css/font-awesome.min.css">
+
+
+
+
+
+
+
   <script src="../js/jquery-3.5.1.min.js"></script>
 
   <script>
