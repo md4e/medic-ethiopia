@@ -148,14 +148,14 @@ $urineAnalysisTestArray = [
 $urineAnalysisTestMicroscopyArray = [
     1 => "WBC",
     2 => "RBC",
-    3 => "Epith. Cell",
+    3 => "Epithelial Cell",
     4 => "Cast",
     5 => "Mucus trade",
     6 => "Bacteria",
     7 => "Crystals",
     8 => "Parasite",
     9 => "Other",
-    10 => "HCG (pregnancy)",
+    10 => "HCG (Pregnancy)",
 ];
 
 $oxygenDeviceAirArray = [

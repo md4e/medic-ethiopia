@@ -19,52 +19,60 @@ include_once "../includes/common.config.php";
   <script>
     $(document).ready(function() {
 
+      ///auto genreate card number
       $('.auto-generate-card').on("click", function() {
-        // var usersid =  $(this).data("id");
-        // var username = $(this).data("username");
+        $('#card-number').val(Math.floor(Math.random() * 10000000) + 1000);
+      });
 
-        $('#card-number').val(Math.floor(Math.random()* 10000000)+1);
-      })
+      //// show Addis Ababa susbcities only
+      $('#region').on('change', function() {
+        if (this.value != 1) {
+          $('.div-subcity').hide();
+        } else {
+          $('.div-subcity').show();
+        }
+      });
+
+      $('#patient-allergies-type').on('change', function() {
+        //alert(this.attr("title"));
+      });
+
 
     });
   </script>
   <style>
     .no-arrow {
-  -moz-appearance: textfield;
-}
-.no-arrow::-webkit-inner-spin-button {
-  display: none;
-}
-.no-arrow::-webkit-outer-spin-button,
-.no-arrow::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+      -moz-appearance: textfield;
+    }
+
+    .no-arrow::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    .no-arrow::-webkit-outer-spin-button,
+    .no-arrow::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   </style>
 </head>
 
 <body>
   <header>
-
-
+    <?php headerInfo("Patient Admission") ?>
   </header>
   <main class="container-fluid flex-fill">
     <div class="container-fluid">
-      <div class="row" style="text-align:center">
-        <div class="col-md-12">
-          <p class="h1" style="padding-bottom: 20px;">ZEWDITU MEMORIAL HOSPITAL</p>
-          <p class="h4" style="padding-bottom: 20px;">Addis Ababa Kirkos Subcity, Wereda: 7 <br> Telephone: +251-0115518085 P.O.Box 316</p>
-        </div>
-        <div class="col-md-12" style="padding-bottom: 20px;">
-          <p class="h1">Patient Admission</p>
-        </div>
-        <a href="../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true">
-          <p class="h4">
-            <p class="h4">Return to Dashboard</p>
-          </p>
-        </a>
-      </div>
+
       <div class="row">
+        <div class="col-md-12">
+          <a href="../dispatcher.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Return to Dashboard</a>
+        </div>
+        <div class="col-md-12" style="text-align:center;">
+          <div class="col-md-12">
+            <p class="h1">Patient Admission</p>
+          </div>
+        </div>
         <div class="col-md-12">
           <form>
             <div class="col-md-12 register-patient-bio">
@@ -73,7 +81,7 @@ include_once "../includes/common.config.php";
                 <div class="col-4">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <div class="input-group-text">C-</div>
+                      <div class="input-group-text">ZMRH-</div>
                     </div>
                     <input id="card-number" name="card-number" placeholder="Write card number" type="number" min="0" step="1" class="form-control" required="required">
                     <a type="text" class="auto-generate-card btn btn-primary">Auto Generate</a>
@@ -104,7 +112,7 @@ include_once "../includes/common.config.php";
               <div class="form-group row">
                 <label for="region" class="col-4 col-form-label">Region</label>
                 <div class="col-6">
-                  <select id="subcity" name="region" class="custom-select" required="required">
+                  <select id="region" name="region" class="custom-select" required="required">
                     <option value="unknown">Choose Region</option>
                     <?php
                     foreach ($regions as $key => $value) {
@@ -112,6 +120,10 @@ include_once "../includes/common.config.php";
                     }
                     ?>
                   </select>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <input name="patient-allergies" id="patient-homeless_0" type="checkbox" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="0">
+                  <label for="patient-homeless_0" class="custom-control-label" title="homeless">Distitude</label>
                 </div>
               </div>
               <div class="form-group row">
@@ -123,26 +135,26 @@ include_once "../includes/common.config.php";
                 <div class="col-2">
                   <input id="kebele" name="kebele" placeholder="Write keble" type="number" class="form-control" required="required">
                 </div>
-                <label for="phone" class="col-1 col-form-label">Phone (+251-0)</label>
+                <label for="phone" class="col-1 col-form-label">Phone</label>
                 <div class="col-2">
-                  <input id="phone" name="phone" placeholder="Write phone number" type="number" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required="required">
+                  <input id="phone" name="phone" placeholder="Write phone number" type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required="required">
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row div-subcity">
                 <label for="subcity" class="col-4 col-form-label">Subcity</label>
                 <div class="col-4">
                   <select id="subcity" name="subcity" class="custom-select" required="required">
                     <option value="unknown">Choose subcity</option>
-                    <option value="unknown">Arada Sub City</option>
-                    <option value="unknown">Akaki Kaliti Sub City</option>
-                    <option value="unknown">Addis Ketema Sub City</option>
-                    <option value="unknown">Bole Sub City</option>
-                    <option value="unknown">Gullele Sub City</option>
-                    <option value="unknown">Kirkos Sub City</option>
-                    <option value="unknown">Kolfe Keranio Sub City</option>
-                    <option value="unknown">Lideta Sub City</option>
-                    <option value="unknown">Nefas Silk Sub City</option>
-                    <option value="unknown">Yeka Sub City</option>
+                    <option value="0">Arada Sub City</option>
+                    <option value="1">Akaki Kaliti Sub City</option>
+                    <option value="2">Addis Ketema Sub City</option>
+                    <option value="3">Bole Sub City</option>
+                    <option value="4">Gullele Sub City</option>
+                    <option value="5">Kirkos Sub City</option>
+                    <option value="6">Kolfe Keranio Sub City</option>
+                    <option value="7">Lideta Sub City</option>
+                    <option value="8">Nefas Silk Sub City</option>
+                    <option value="9">Yeka Sub City</option>
                   </select>
                 </div>
               </div>
@@ -189,7 +201,7 @@ include_once "../includes/common.config.php";
                 <div class="col-3">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <div class="input-group-text">B-</div>
+                      <div class="input-group-text">BD-</div>
                     </div>
                     <input id="bed-number" name="bed-number" placeholder="Write bed number" type="text" class="form-control" required="required">
                   </div>
@@ -198,7 +210,7 @@ include_once "../includes/common.config.php";
                 <div class="col-3">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <div class="input-group-text">Room-</div>
+                      <div class="input-group-text">RM-</div>
                     </div>
                     <input id="examination-room-" name="examination-room-" placeholder="Write Examination Room Number" type="text" class="form-control" required="required">
                   </div>
@@ -209,7 +221,7 @@ include_once "../includes/common.config.php";
               <div class="form-group row">
                 <label for="refering-hospital-name" class="col-4 col-form-label">Refered from</label>
                 <div class="col-8">
-                  <select class="form-control" name="refering-hospital-name">
+                  <select id="refering-hospital-name" name="refering-hospital-name" class="custom-select" required="required">
                     <?php
                     foreach ($hospital as $key => $value) {
                       echo '<option value = "' . $key . '">' . $value . '</option>';
@@ -227,14 +239,15 @@ include_once "../includes/common.config.php";
                 <label class="col-4 col-form-label">Patient have Allergies<sup>*</sup></label>
                 <div class="col-4">
                   <div class="custom-control custom-checkbox custom-control-inline">
-                    <input name="patient-allergies" id="patient-allergies_0" type="checkbox" checked="checked" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="1">
+                    <input name="patient-allergies" id="patient-allergies_0" type="checkbox" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="0">
                     <label for="patient-allergies_0" class="custom-control-label">No</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline">
                     <input name="patient-allergies" id="patient-allergies_1" type="checkbox" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="0">
                     <label for="patient-allergies_1" class="custom-control-label">Yes</label>
                   </div>
-                  <select class="form-control" name="refering-hospital-name">
+                  <select id="patient-allergies-type" name="patient-allergies-type" class="custom-select" required="required">
+
                     <option value="unknown">Choose Allergy</option>
                     <?php
                     foreach ($allegies as $key => $value) {
@@ -270,7 +283,7 @@ include_once "../includes/common.config.php";
             </div> -->
               <div class="form-group row">
                 <div class="col-4 col-sm-12 col-xs-12">
-                <div class="form-group row">
+                  <div class="form-group row">
                     <label for="name-of-his-her-doctor" class="col-4 col-form-label">Name of his/her doctor</label>
                     <div class="col-4">
                       <select id="name-of-his-her-doctor" name="name-of-his-her-doctor" aria-describedby="name-of-his-her-doctorHelpBlock" required="required" class="custom-select">
@@ -300,8 +313,18 @@ include_once "../includes/common.config.php";
                       <!-- <span id="admitting-doctorHelpBlock" class="form-text text-muted">Choose Admitting Doctor</span> -->
                     </div>
                   </div>
+                  <div class="form-group row">
+                    <label for="director-signature-for-admission" class="col-4 col-form-label">Director Signature for Admission</label>
+                    <div class="col-2">
+                      <select id="director-signature-for-admission" name="director-signature-for-admission" required="required" class="custom-select" aria-describedby="director-signature-for-admissionHelpBlock">
+                        <option value="unknow">Choose signature</option>
+                        <option value="yes-admitted">Yes, I confirm Admission</option>
+                      </select>
+                      <!-- <span id="director-signature-for-admissionHelpBlock" class="form-text text-muted">Medical Director confirm for Admission of patient</span> -->
+                    </div>
+                  </div>
                 </div>
-                <div class="col-4 col-sm-12 col-xs-12">
+                <div class="col-4 col-sm-12 col-xs-12" style="display:none;">
                   <div class="form-group row">
                     <label for="date-of-discharge" class="col-4 col-form-label">Date of Discharge</label>
                     <div class="col-2">
@@ -321,16 +344,7 @@ include_once "../includes/common.config.php";
                   </div>
 
                   <div class="form-group row">
-                    <label for="director-signature-for-admission" class="col-4 col-form-label">Director Signature for Admission</label>
-                    <div class="col-2">
-                      <select id="director-signature-for-admission" name="director-signature-for-admission" required="required" class="custom-select" aria-describedby="director-signature-for-admissionHelpBlock">
-                        <option value="unknow">Choose signature</option>
-                        <option value="yes-admitted">Yes, I confirm Admission</option>
-                      </select>
-                      <!-- <span id="director-signature-for-admissionHelpBlock" class="form-text text-muted">Medical Director confirm for Admission of patient</span> -->
-                    </div>
-
-                    <label for="director-signature-for-dicharge" class="col-2 col-form-label">Director Signature for Dicharge</label>
+                    <label for="director-signature-for-dicharge" class="col-4 col-form-label">Director Signature for Dicharge</label>
                     <div class="col-2">
                       <select id="director-signature-for-dicharge" name="director-signature-for-dicharge" class="custom-select" aria-describedby="director-signature-for-dichargeHelpBlock">
                         <option value="unknow">Choose signature</option>

@@ -17,59 +17,39 @@ include_once "../../includes/common.config.php";
 
 <body>
     <header>
-
-
+        <?php headerInfo("Stool Examination Form") ?>
     </header>
     <main class="container-fluid flex-fill">
         <div class="container-fluid">
-            <div class="row" style="text-align:center">
-            <div class="col-md-12">
-                    <p class="h1" style="padding-bottom: 20px;">ZEWDITU MEMORIAL HOSPITAL</p>
-                    <p class="h4" style="padding-bottom: 20px;">Addis Ababa Kirkos Subcity, Wereda: 7 <br> Telephone: +251-0115518085 P.O.Box 316</p>
-                </div>
-                <div class="col-md-12" style="padding-bottom: 20px;">
-                    <p class="h1">Stool Examination</p>
-                </div>
-                <a href="../../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true"><p class="h4">Return to Dashboard</p></a>
-            </div>
             <div class="row">
                 <div class="col-md-12">
+                    <a href="../../dispatcher.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Return to Dashboard</a>
+                </div>
+                <div class="col-md-12" style="text-align:center;">
+                    <div class="col-md-12">
+                        <p class="h1">Stool Examination Form</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 all-form-style-lab-brown">
                     <form>
                         <div class="form-group row">
-                            <form>
-                                <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
-                                <div class="col-4">
-                                    <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
-                                </div>
-                                <div class="col-4">
-                                    <button name="submit" type="submit" class="btn btn-md btn-secondary">Search Patient</button>
-                                </div>
-                            </form>
+                            <label for="patient-id" class="col-4 col-form-label">Patient ID</label>
+                            <div class="col-4">
+                                <input id="patient-id" name="patient-id" placeholder="Patient001" type="text" class="form-control" required="required">
+                            </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-12" style="border:1px solid black;">
-                                <p text="mute"> This will be available from Database search using the above form by Entering the Patient ID.
-                                    Patient ID is Auto-generated upon registeration.</p>
-                                <ul style="list-style-type:none;">
-                                    <li><strong>Name</strong>: Patient001 </li>
-                                    <li><strong>Age</strong>: 100 </li>
-                                    <li><strong>Sex</strong>: F/M </li>
-                                    <li><strong>Date of Admission: </strong> dd/mm/yy hh:mm:ss </li>
-                                    <li><strong>Ward(Bed): </strong>W-0 B-0</li>
-                                    <li><strong>Department</strong>: DeptA</li>
-                                </ul>
-                            </div>
-                        </div>
+
                         <div class="form-group row">
                             <label for="date-of-order-sheet-date" class="col-4 col-form-label">Date</label>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <input id="date-of-order-sheet-date" name="date-of-order-sheet-date" type="date" class="form-control" required="required">
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="date-of-order-sheet-time" class="col-4 col-form-label">Time</label>
-                            <div class="col-4">
+
+                            <label for="date-of-order-sheet-time" class="col-2 col-form-label">Time</label>
+                            <div class="col-3">
                                 <input id="date-of-order-sheet-time" name="date-of-order-sheet-time" type="time" value="00:00" class="form-control" required="required">
                             </div>
                         </div>
@@ -82,38 +62,53 @@ include_once "../../includes/common.config.php";
                         <div class="form-group row">
                             <label class="col-4 col-form-label">Color of Specimen</label>
                             <div class="col-8">
-                                <div class="custom-control custom-radio custom-control-inline stool-div-color" style="background-color: green;">
-                                    <input name="color-of-Specimen" id="color-of-Specimen_0" type="radio" class="custom-control-input" value="green" required="required">
-                                    <label for="color-of-Specimen_0" class="custom-control-label">Green</label>
+                                <div class="custom-control custom-checkbox custom-control-inline stool-div-color" style="background:#C5DF71">
+                                    <input name="color-of-Specimen" id="color-of-Specimen_0" type="checkbox" class="custom-control-input" value="green" required="required">
+                                    <label for="color-of-Specimen_0" class="custom-control-label">Greenish</label>
                                 </div>
-                                <div class="custom-control custom-radio custom-control-inline stool-div-color" style="background-color: brown;">
-                                    <input name="color-of-Specimen" id="color-of-Specimen_1" type="radio" class="custom-control-input" value="brown" required="required">
-                                    <label for="color-of-Specimen_1" class="custom-control-label">Brown</label>
+                                <div class="custom-control custom-checkbox custom-control-inline stool-div-color" style="background:brown">
+                                    <input  style="background-color: brown;" name="color-of-Specimen" id="color-of-Specimen_1" type="checkbox" class="custom-control-input" value="brown" required="required">
+                                    <label for="color-of-Specimen_1" class="custom-control-label">Brownish</label>
                                 </div>
-                                <div class="custom-control custom-radio custom-control-inline stool-div-color" style="background-color: yellow;">
-                                    <input name="color-of-Specimen" id="color-of-Specimen_2" type="radio" class="custom-control-input" value="yellow" required="required">
-                                    <label for="color-of-Specimen_2" class="custom-control-label">Yellow</label>
+                                <div class="custom-control custom-checkbox custom-control-inline stool-div-color" style="background:#FFF198">
+                                    <input name="color-of-Specimen" id="color-of-Specimen_2" type="checkbox" class="custom-control-input" value="yellow" required="required">
+                                    <label for="color-of-Specimen_2" class="custom-control-label">Yellowish</label>
                                 </div>
-                                <div class="custom-control custom-radio custom-control-inline stool-div-color" style="background-color: black;">
-                                    <input name="color-of-Specimen" id="color-of-Specimen_3" type="radio" class="custom-control-input" value="black" required="required">
-                                    <label for="color-of-Specimen_3" class="custom-control-label">Black</label>
+                                <div class="custom-control custom-checkbox custom-control-inline stool-div-color" style="color:white; background:#333">
+                                    <input name="color-of-Specimen" id="color-of-Specimen_3" type="checkbox" class="custom-control-input" value="black" required="required">
+                                    <label for="color-of-Specimen_3" class="custom-control-label">Blackish</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="stool-consistency" class="col-4 col-form-label">Consistency</label>
+                            <label class="col-4 col-form-label">Choose consistency</label>
                             <div class="col-8">
-                                <select id="stool-consistency" name="stool-consistency" class="custom-select" aria-describedby="stool-consistencyHelpBlock" required="required" multiple="multiple">
-                                    <option value="unknown">Choose consistency</option>
-                                    <option value="watery">Watery</option>
-                                    <option value="soft">Soft</option>
-                                    <option value="semi-formed">Semi-formed</option>
-                                    <option value="hard">Hard</option>
-                                    <option value="gaseous">Gaseous</option>
-                                    <option value="semi-liquid">Sem-liquid</option>
-                                </select>
-                                <span id="stool-consistencyHelpBlock" class="form-text text-muted">Choose stool consistency</span>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input name="stool-consistency" id="stool-consistency_0" type="checkbox" required="required" class="custom-control-input" value="watery" aria-describedby="stool-consistencyHelpBlock">
+                                    <label for="stool-consistency_0" class="custom-control-label">Watery</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input name="stool-consistency" id="stool-consistency_1" type="checkbox" required="required" class="custom-control-input" value="soft" aria-describedby="stool-consistencyHelpBlock">
+                                    <label for="stool-consistency_1" class="custom-control-label">Soft</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input name="stool-consistency" id="stool-consistency_2" type="checkbox" required="required" class="custom-control-input" value="semi-formed" aria-describedby="stool-consistencyHelpBlock">
+                                    <label for="stool-consistency_2" class="custom-control-label">Semi-formed</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input name="stool-consistency" id="stool-consistency_3" type="checkbox" required="required" class="custom-control-input" value="hard" aria-describedby="stool-consistencyHelpBlock">
+                                    <label for="stool-consistency_3" class="custom-control-label">Hard</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input name="stool-consistency" id="stool-consistency_4" type="checkbox" required="required" class="custom-control-input" value="gaseous" aria-describedby="stool-consistencyHelpBlock">
+                                    <label for="stool-consistency_4" class="custom-control-label">Gaseous</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input name="stool-consistency" id="stool-consistency_5" type="checkbox" required="required" class="custom-control-input" value="sem-liquid" aria-describedby="stool-consistencyHelpBlock">
+                                    <label for="stool-consistency_5" class="custom-control-label">Sem-liquid</label>
+                                </div>
+                                <!-- <span id="stool-consistencyHelpBlock" class="form-text text-muted">Choose stool consistency to the closest</span> -->
                             </div>
                         </div>
                         <div class="form-group row">
@@ -164,9 +159,14 @@ include_once "../../includes/common.config.php";
                                 <textarea id="stool-comment" name="stool-comment" cols="40" rows="5" class="form-control"></textarea>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Save Results</button>
+
+                        <div class="col-md-12 ">
+                            <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                    <div class="col-12" style="text-align: right;">
+                                        <button name="submit" type="submit" class="btn btn-lg btn-dark" style="padding:1em;background:#3B1D00;color:white;">Save Stool Result Data</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -175,7 +175,7 @@ include_once "../../includes/common.config.php";
         </div>
         </div>
         <footer>
-            <?php footer();?>
+            <?php footer(); ?>
         </footer>
     </main>
 
