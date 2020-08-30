@@ -23,11 +23,17 @@ include_once "./common.config.php";
     <main class="container-fluid flex-fill">
 
         <div class="container-fluid">
-            <div class="row" style="text-align:center">
-                <p class="h1 text-primary">medic-ethiopia</p>
-                <p class="h5 text-muted">Digital Healthcare System</p>
-                <a href="../dispatcher.php" class="btn btn-primary btn-sm" role="button" aria-disabled="true"><p class="h4">Return to Dashboard</p></a>
+            <div class="row">
 
+                <div class="col-md-12" style="text-align:center;">
+                    <div class="col-md-12">
+                        <p class="h1 text-primary">medic-ethiopia:ref</p>
+                        <p class="h5 text-muted">Digital Healthcare System</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <a href="../../dispatcher.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Return to Dashboard</a>
+                </div>
             </div>
             <div class="row">
                 <div class="col-12 col-xs-12 ">

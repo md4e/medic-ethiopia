@@ -161,9 +161,9 @@ include_once "./includes/common.config.php"
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-md-6 col-sm-12 col-xs-12" style="padding-bottom: 20px;">
+                                    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 20px;text-align:right">
                                         <a href="./includes/reference.php">
-                                            <p class="h1">Reference pages<p>
+                                            <p class="h5">Reference pages<p>
                                         </a>
                                     </div>
                                 </div>
