@@ -12,17 +12,13 @@ include_once "./includes/common.config.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="./images/flag.ico">
-<link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="shortcut icon" href="./images/flag.ico">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>medic-ethiopia</title>
 </head>
-
-
 <body>
     <header>
-
-
     </header>
     <main class="container-fluid flex-fill index-page">
 
@@ -34,8 +30,8 @@ include_once "./includes/common.config.php";
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-xs-12 box" >
-                    <form class="form-horizontal" action="./dispatcher.php" method="post" enctype="multipart/form-data">
+                <div class="col-12 col-xs-12 box">
+                    <form class="form-horizontal" action="./production/index.php" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label for="hospitalName">
