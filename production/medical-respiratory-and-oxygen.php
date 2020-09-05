@@ -61,7 +61,7 @@ include_once "./config.php";
                                 <li><a href="index4.php">Radiology Department</a></li>
                                 <li><a href="index5.php">Laboratory Forms</a></li>
                                 <li><a href="index6.php">Medical Forms</a></li>
-                <li><a href="index7.php">All Patients</a></li>
+                                <li><a href="index7.php">All Patients</a></li>
                                 <!-- <li><a href="index6.html"> Anesthesia and intensive care</a></li>
                                 <li><a href="index7.html"> Geriatrics</a></li>
                                 <li><a href="index8.html"> Heart and physiology</a></li>
@@ -111,7 +111,7 @@ include_once "./config.php";
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <a href="index5.php" class="title_link btn btn-primary" type="button">
+                        <a href="index6.php" class="title_link btn btn-primary" type="button">
                             <p class="h6">⏎ Return to Medical Forms</p>
                         </a>
                         <p class="h3 text-primary"> <i class="fa fa-book"></i> Respiratory Rate Oxygen Saturation & Oxygen Therapy</p>
