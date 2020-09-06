@@ -6,20 +6,9 @@ include_once "./config.php";
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../images/flag.ico">
-    <title>index</title>
-
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <?php
+    headerLinks("Respiratory & Oxygen Request");
+    ?>
 </head>
 
 <body class="nav-md">
@@ -28,7 +17,8 @@ include_once "./config.php";
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.php" class="site_title"><!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
+                        <a href="index.php" class="site_title">
+                            <!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
                                 Hospital</span></a>
                         <!-- <i class="fa fa-building-o"></i> -->
                     </div>
@@ -143,26 +133,12 @@ include_once "./config.php";
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left">
-                                    <div class="item form-group">
-                                        <label for="card-number" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-                                        <div class="col-md-6 col-sm-6">
-
-                                            <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="card-number" name="card-number" placeholder="Enter Patient by Card No." type="text" class="form-control" required="required">
-                                                <input type="submit" value="Patient Search" class="btn btn-success">
-                                                <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
-                                                    patient is registered in
-                                                    New platform filled below will be filled by data result of the
-                                                    search request</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </form>
+<?php
+patient_search()
+?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="x_title">
-                                    <p class="h4 text-warning"> Clinical review required if saturation is outside target range</p>
+                                        <p class="h4 text-warning"> Clinical review required if saturation is outside target range</p>
 
                                         <div class="clearfix"></div>
                                     </div>
@@ -235,7 +211,7 @@ include_once "./config.php";
                                     </div>
 
                                     <div class="x_title">
-                                    <p class="h4 text-info">Pain Assessment with management</p>
+                                        <p class="h4 text-info">Pain Assessment with management</p>
 
                                         <div class="clearfix"></div>
                                     </div>
@@ -266,7 +242,7 @@ include_once "./config.php";
                                     </div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6">
-                                            <a href="index5.php" type="button" class="btn btn-lg btn-danger">Cancel</a>
+                                            <a href="index6.php" type="button" class="btn btn-lg btn-danger">Cancel</a>
                                             <button type="submit" class="btn btn-lg btn-primary">Save</button>
                                         </div>
                                     </div>

@@ -11,3 +11,44 @@
 #slash{
 	display: none;
 }
+
+.all-form-style {
+    background: turquoise;
+    padding: 2em;
+}
+
+.all-form-style-blood-lab {
+    background: #ffccbb;
+    padding: 2em;
+    color: black;
+}
+
+.all-form-style-lab-green {
+    background: lightseagreen;
+    padding: 2em;
+    color: black;
+}
+
+.all-form-style-lab-yellow {
+    background: lightgoldenrodyellow;
+    padding: 2em;
+    color: black;
+}
+
+.all-form-style-lab-brown {
+    background: #8b4513c2;
+    padding: 2em;
+}
+
+.all-form-style-lab-x-ray {
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(1, 1, 15, 0.45702030812324934) 100%, rgba(0, 212, 255, 1) 100%);
+    padding: 2em;
+    color: white;
+}
+
+.all-form-style-oxygen {
+    background: rgb(190, 189, 201);
+    background: radial-gradient(circle, rgba(190, 189, 201, 1) 0%, rgba(22, 170, 185, 0.45702030812324934) 100%, rgba(0, 212, 255, 1) 100%);
+    padding: 2em;
+}

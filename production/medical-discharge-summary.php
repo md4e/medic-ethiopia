@@ -6,121 +6,16 @@ include_once "./config.php";
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../images/flag.ico">
-    <title>index</title>
-
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-wysiwyg -->
-    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
-    <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    <!-- starrr -->
-    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <?php
+    headerLinks("Discharge Summary");
+    ?>
 </head>
 
 <body class="nav-md">
     <div class="container body">
-        <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.php" class="site_title">
-                            <!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
-                                Hospital</span></a>
-                        <!-- <i class="fa fa-building-o"></i> -->
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <!-- menu profile quick info -->
-                    <div class="profile clearfix">
-                        <div class="profile_pic">
-                            <!-- <img src="images/img.jpg" alt="..." class="img-circle profile_img"> -->
-                        </div>
-                        <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>Dr. Name Lastname</h2>
-                        </div>
-                    </div>
-                    <!-- /menu profile quick info -->
-
-                    <br />
-
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <div class="menu_section">
-                            <!-- <h3>Departments</h3> -->
-                            <ul class="nav side-menu">
-                                <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> -->
-                                <li><a href="index.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                                <li><a href="index2.php">Emergency Department </a></li>
-                                <li><a href="index3.php">Out Patient Department (OPD)</a></li>
-                                <li><a href="index4.php">Radiology Department</a></li>
-                                <li><a href="index5.php">Laboratory Forms</a></li>
-                                <li><a href="index6.php">Medical Forms</a></li>
-                                <li><a href="index7.php">All Patients</a></li>
-                                <!-- <li><a href="index6.html"> Anesthesia and intensive care</a></li>
-                                <li><a href="index7.html"> Geriatrics</a></li>
-                                <li><a href="index8.html"> Heart and physiology</a></li>
-                                <li><a href="index9.html"> Internal medicine and infection</a></li>
-                                <li><a href="index10.html"> Surgery and urology</a></li>
-                                <li><a href="index11.html"> Gynecology and childbirth</a></li>
-                                <li><a href="index12.html"> Medical specialist care</a></li>
-                                <li><a href="index13.html"> Neurology</a></li>
-                                <li><a href="index14.html"> Orthopedics</a></li>
-                                <li><a href="index15.html"> Radiology</a></li>
-                                <li><a href="index16.html"> Rehabilitation medicine</a></li> -->
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                    <ul class=" navbar-right">
-                        <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-user-md"></i>Dr. Name Lastname
-                            </a>
-                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:;"> Profile</a>
-                                <a class="dropdown-item" href="javascript:;">Help</a>
-                                <a class="dropdown-item" href="../index.php"><i class="fa fa-sign-out pull-right"></i> Log
-                                    Out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!-- /top navigation -->
+        <?php
+        main_container_top_navigation();
+        ?>
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -159,23 +54,9 @@ include_once "./config.php";
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left">
-                                    <div class="item form-group">
-                                        <label for="card-number" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-                                        <div class="col-md-6 col-sm-6">
-
-                                            <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="card-number" name="card-number" placeholder="Enter Patient by Card No." type="text" class="form-control" required="required">
-                                                <input type="submit" value="Patient Search" class="btn btn-success">
-                                                <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
-                                                    patient is registered in
-                                                    New platform filled below will be filled by data result of the
-                                                    search request</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </form>
+<?php
+patient_search()
+?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="item form-group">
                                         <label for="discharge-summary-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Date</label>
@@ -274,7 +155,7 @@ include_once "./config.php";
                                     <div class="ln_solid"></div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6">
-                                            <a href="index5.php" type="button" class="btn btn-lg btn-danger">Cancel</a>
+                                            <a href="index6.php" type="button" class="btn btn-lg btn-danger">Cancel</a>
                                             <button type="submit" class="btn btn-lg btn-primary">Save</button>
                                         </div>
                                     </div>
@@ -298,41 +179,9 @@ include_once "./config.php";
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap-wysiwyg -->
-    <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
-    <!-- jQuery Tags Input -->
-    <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-    <!-- Switchery -->
-    <script src="../vendors/switchery/dist/switchery.min.js"></script>
-    <!-- Select2 -->
-    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
-    <!-- Parsley -->
-    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
-    <!-- Autosize -->
-    <script src="../vendors/autosize/dist/autosize.min.js"></script>
-    <!-- jQuery autocomplete -->
-    <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
-    <!-- starrr -->
-    <script src="../vendors/starrr/dist/starrr.js"></script>
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <?php
+    include_js();
+    ?>
 </body>
 
 </html>

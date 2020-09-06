@@ -1,112 +1,22 @@
-<?php?>
+<?php
+include_once "./lab-chemistry-test-list.php";
+include_once "./config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../images/flag.ico">
-    <title>index </title>
-
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-wysiwyg -->
-    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
-    <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    <!-- starrr -->
-    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <?php
+    headerLinks("OPD Admission");
+    ?>
 </head>
+
 
 <body class="nav-md">
     <div class="container body">
-        <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.php" class="site_title"><!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
-                                Hospital</span></a>
-                        <!-- <i class="fa fa-building-o"></i> -->
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <!-- menu profile quick info -->
-                    <div class="profile clearfix">
-                        <div class="profile_pic">
-                            <!-- <img src="images/img.jpg" alt="..." class="img-circle profile_img"> -->
-                        </div>
-                        <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>Dr. Name Lastname</h2>
-                        </div>
-                    </div>
-                    <!-- /menu profile quick info -->
-
-                    <br />
-
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <div class="menu_section">
-                            <!-- <h3>Departments</h3> -->
-                            <ul class="nav side-menu">
-                                <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> -->
-                                <li><a href="index.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                                <li><a href="index2.php">Emergency Department </a></li>
-                                <li><a href="index3.php">Out Patient Department (OPD)</a></li>
-                                <li><a href="index4.php">Radiology Department</a></li>
-                                <li><a href="index5.php">Laboratory Forms</a></li>
-                                <li><a href="index6.php">Medical Forms</a></li>
-                <li><a href="index7.php">All Patients</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                    <ul class=" navbar-right">
-                        <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
-                                id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-user-md"></i>Dr. Name Lastname
-                            </a>
-                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:;"> Profile</a>
-                                <a class="dropdown-item" href="javascript:;">Help</a>
-                                <a class="dropdown-item" href="../index.php"><i class="fa fa-sign-out pull-right"></i> Log
-                                    Out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!-- /top navigation -->
+        <?php
+        main_container_top_navigation();
+        ?>
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -145,35 +55,16 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left">
-                                    <div class="item form-group">
-                                        <label for="card-number"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-                                        <div class="col-md-6 col-sm-6">
-
-                                            <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="card-number" name="card-number"
-                                                    placeholder="Enter Patient by Card No." type="text"
-                                                    class="form-control" required="required">
-                                                <input type="submit" value="Patient Search" class="btn btn-success">
-                                                <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
-                                                    patient is registered in
-                                                    New platform filled below will be filled by data result of the
-                                                    search request</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </form>
-                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
-                                    action="patient-queue.php">
+<?php
+patient_search()
+?>
+                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="item form-group">
                                         <label for="fullname" class="col-form-label col-md-3 col-sm-3 label-align">Name
                                             and Surname</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="fullname" name="fu
-                                                      llname" placeholder="Write patient full name" type="text"
-                                                class="form-control" required="required">
+                                                      llname" placeholder="Write patient full name" type="text" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -188,16 +79,13 @@
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="age"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Age</label>
+                                        <label for="age" class="col-form-label col-md-3 col-sm-3 label-align">Age</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="age" name="age" placeholder="Write age" type="number" min="0"
-                                                class="form-control" required="required">
+                                            <input id="age" name="age" placeholder="Write age" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="region"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Region</label>
+                                        <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">Region</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select id="region" name="region" class="custom-select" required="required">
                                                 <option value="unknown">Choose Region</option>
@@ -217,44 +105,32 @@
                                             </select>
                                         </div>
                                         <div class="custom-control custom-checkbox custom-control-inline">
-                                            <input name="patient-allergies" id="patient-homeless_0" type="checkbox"
-                                                aria-describedby="patient-allergiesHelpBlock"
-                                                class="custom-control-input" value="0" required="required">
-                                            <label for="patient-homeless_0" class="custom-control-label"
-                                                title="homeless">Distitude</label>
+                                            <input name="patient-allergies" id="patient-homeless_0" type="checkbox" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="0" required="required">
+                                            <label for="patient-homeless_0" class="custom-control-label" title="homeless">Distitude</label>
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="wereda"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Wedera</label>
+                                        <label for="wereda" class="col-form-label col-md-3 col-sm-3 label-align">Wedera</label>
                                         <div class="col-md-3 col-sm-3">
-                                            <input id="wereda" name="wereda" placeholder="Write wereda" type="number"
-                                                class="form-control" required="required">
+                                            <input id="wereda" name="wereda" placeholder="Write wereda" type="number" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="kebele"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Kebele</label>
+                                        <label for="kebele" class="col-form-label col-md-3 col-sm-3 label-align">Kebele</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="kebele" name="kebele" placeholder="Write keble" type="number"
-                                                class="form-control" required="required">
+                                            <input id="kebele" name="kebele" placeholder="Write keble" type="number" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="phone"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Phone</label>
+                                        <label for="phone" class="col-form-label col-md-3 col-sm-3 label-align">Phone</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="phone" name="phone" placeholder="Write phone number" type="tel"
-                                                class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                                                required="required">
+                                            <input id="phone" name="phone" placeholder="Write phone number" type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group div-subcity">
-                                        <label for="subcity"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Subcity</label>
+                                        <label for="subcity" class="col-form-label col-md-3 col-sm-3 label-align">Subcity</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select id="subcity" name="subcity" class="custom-select"
-                                                required="required">
+                                            <select id="subcity" name="subcity" class="custom-select" required="required">
                                                 <option value="unknown">Choose subcity</option>
                                                 <option value="0">Arada Sub City</option>
                                                 <option value="1">Akaki Kaliti Sub City</option>
@@ -271,11 +147,9 @@
                                     </div>
 
                                     <div class="item form-group">
-                                        <label for="religion"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Religion</label>
+                                        <label for="religion" class="col-form-label col-md-3 col-sm-3 label-align">Religion</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select id="religion" name="religion" class="custom-select"
-                                                required="required">
+                                            <select id="religion" name="religion" class="custom-select" required="required">
                                                 <option value="unknown">Choose religion</option>
                                                 <option value="bahai">Bahá'í faith</option>
                                                 <option value="catholic">Catholic</option>
@@ -289,11 +163,9 @@
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="department-name"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Department</label>
+                                        <label for="department-name" class="col-form-label col-md-3 col-sm-3 label-align">Department</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select id="ward" name="department" class="custom-select"
-                                                required="required">
+                                            <select id="ward" name="department" class="custom-select" required="required">
                                                 <option value="unknown">Choose department</option>
                                                 <option value="emergency-care">Emergency care</option>
                                                 <option value="anesthesia-and-intensive-care">Anesthesia and intensive
@@ -322,48 +194,40 @@
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">BD-</div>
                                                 </div>
-                                                <input id="bed-number" name="bed-number" placeholder="Write bed number"
-                                                    type="text" class="form-control" required="required">
+                                                <input id="bed-number" name="bed-number" placeholder="Write bed number" type="text" class="form-control" required="required">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="examination-room-number"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Examination
+                                        <label for="examination-room-number" class="col-form-label col-md-3 col-sm-3 label-align">Examination
                                             Room No.</label>
                                         <div class="col-md-3 col-sm-3">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">RM-</div>
                                                 </div>
-                                                <input id="examination-room-" name="examination-room-"
-                                                    placeholder="Write Examination Room Number" type="text"
-                                                    class="form-control" required="required">
+                                                <input id="examination-room-" name="examination-room-" placeholder="Write Examination Room Number" type="text" class="form-control" required="required">
                                             </div>
                                         </div>
                                     </div>
 
 
                                     <div class="item form-group">
-                                        <label for="refering-hospital-name"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Refered
+                                        <label for="refering-hospital-name" class="col-form-label col-md-3 col-sm-3 label-align">Refered
                                             from</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select id="refering-hospital-name" name="refering-hospital-name"
-                                                class="custom-select" required="required">
+                                            <select id="refering-hospital-name" name="refering-hospital-name" class="custom-select" required="required">
                                                 <?php
-                                                        foreach ($hospital as $key => $value) {
-                                                          echo '<option value = "' . $key . '">' . $value . '</option>';
-                                                        }
-                                                        ?>
+                                                foreach ($hospital as $key => $value) {
+                                                    echo '<option value = "' . $key . '">' . $value . '</option>';
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <div class="offset-3 col-md-6 col-sm-6">
-                                            <input id="refering-hospital-name-other" name="refering-hospital-name-other"
-                                                placeholder="Write referring hospital if not in list" type="text"
-                                                class="form-control">
+                                            <input id="refering-hospital-name-other" name="refering-hospital-name-other" placeholder="Write referring hospital if not in list" type="text" class="form-control">
                                         </div>
                                     </div>
 
@@ -373,35 +237,25 @@
                                             Allergies<sup>*</sup></label>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input name="patient-allergies" id="patient-allergies_0" type="checkbox"
-                                                    aria-describedby="patient-allergiesHelpBlock"
-                                                    class="custom-control-input" value="0">
+                                                <input name="patient-allergies" id="patient-allergies_0" type="checkbox" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="0">
                                                 <label for="patient-allergies_0" class="custom-control-label">No</label>
                                             </div>
                                             <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input name="patient-allergies" id="patient-allergies_1" type="checkbox"
-                                                    aria-describedby="patient-allergiesHelpBlock"
-                                                    class="custom-control-input" value="0">
-                                                <label for="patient-allergies_1"
-                                                    class="custom-control-label">Yes</label>
+                                                <input name="patient-allergies" id="patient-allergies_1" type="checkbox" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="0">
+                                                <label for="patient-allergies_1" class="custom-control-label">Yes</label>
                                             </div>
-                                            <select id="patient-allergies-type" name="patient-allergies-type"
-                                                class="custom-select" required="required">
+                                            <select id="patient-allergies-type" name="patient-allergies-type" class="custom-select" required="required">
 
                                                 <option value="unknown">Choose Allergy</option>
                                                 <?php
-                                                        foreach ($allegies as $key => $value) {
-                                                          echo '<option value = "' . $key . '" title="' . $value . '">' . $key . '</option>';
-                                                        }
-                                                        ?>
+                                                foreach ($allegies as $key => $value) {
+                                                    echo '<option value = "' . $key . '" title="' . $value . '">' . $key . '</option>';
+                                                }
+                                                ?>
                                             </select>
                                             <span id="patient-allergiesHelpBlock" class="form-text text-muted">Check if
                                                 patient have allergies if yes write in field below</span>
-                                            <textarea id="patient-allergies-if-yes"
-                                                placeholder="Write here if Patient have allergies"
-                                                name="patient-allergies-if-yes" cols="40" rows="3" class="form-control"
-                                                aria-describedby="patient-allergies-if-yesBlock"
-                                                required="required"></textarea>
+                                            <textarea id="patient-allergies-if-yes" placeholder="Write here if Patient have allergies" name="patient-allergies-if-yes" cols="40" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
@@ -431,44 +285,12 @@
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap-wysiwyg -->
-    <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
-    <!-- jQuery Tags Input -->
-    <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-    <!-- Switchery -->
-    <script src="../vendors/switchery/dist/switchery.min.js"></script>
-    <!-- Select2 -->
-    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
-    <!-- Parsley -->
-    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
-    <!-- Autosize -->
-    <script src="../vendors/autosize/dist/autosize.min.js"></script>
-    <!-- jQuery autocomplete -->
-    <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
-    <!-- starrr -->
-    <script src="../vendors/starrr/dist/starrr.js"></script>
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <?php
+    include_js();
+    ?>
 
     <script>
-        $('.auto-generate-card').on("click", function () {
+        $('.auto-generate-card').on("click", function() {
             $('#card-number').val(Math.floor(Math.random() * 10000000) + 1000);
         });
     </script>
