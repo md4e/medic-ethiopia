@@ -6,35 +6,9 @@ include_once "./config.php";
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../images/flag.ico">
-    <title>index</title>
-
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-wysiwyg -->
-    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
-    <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    <!-- starrr -->
-    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <?php
+    headerLinks("Hematology Request");
+    ?>
 </head>
 
 <body class="nav-md">
@@ -43,7 +17,8 @@ include_once "./config.php";
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.php" class="site_title"><!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
+                        <a href="index.php" class="site_title">
+                            <!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
                                 Hospital</span></a>
                         <!-- <i class="fa fa-building-o"></i> -->
                     </div>
@@ -76,7 +51,7 @@ include_once "./config.php";
                                 <li><a href="index4.php">Radiology Department</a></li>
                                 <li><a href="index5.php">Laboratory Forms</a></li>
                                 <li><a href="index6.php">Medical Forms</a></li>
-                <li><a href="index7.php">All Patients</a></li>
+                                <li><a href="index7.php">All Patients</a></li>
                                 <!-- <li><a href="index6.html"> Anesthesia and intensive care</a></li>
                                 <li><a href="index7.html"> Geriatrics</a></li>
                                 <li><a href="index8.html"> Heart and physiology</a></li>
@@ -176,123 +151,123 @@ include_once "./config.php";
                                     </div>
                                 </form>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
-                                        <div class="form-group row">
-                                            <label for="hematology-request-form-date" class="col-form-label col-md-3 col-sm-3 label-align">Date</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input id="hematology-request-form-date" name="hematology-request-form-date" type="date" class="form-control" required="required">
-                                            </div>
+                                    <div class="form-group row">
+                                        <label for="hematology-request-form-date" class="col-form-label col-md-3 col-sm-3 label-align">Date</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="hematology-request-form-date" name="hematology-request-form-date" type="date" class="form-control" required="required">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="hematology-request-form-time" class="col-form-label col-md-3 col-sm-3 label-align">Time</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input id="hematology-request-form-time" name="hematology-request-form-time" type="time" value="00:00" class="form-control" required="required">
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="hematology-request-form-time" class="col-form-label col-md-3 col-sm-3 label-align">Time</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="hematology-request-form-time" name="hematology-request-form-time" type="time" value="00:00" class="form-control" required="required">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="hematology-request-form-sample" class="col-form-label col-md-3 col-sm-3 label-align">Type of Sample</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input id="hematology-request-form-sample" name="hematology-request-form-sample" type="text" class="form-control" required="required">
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="hematology-request-form-sample" class="col-form-label col-md-3 col-sm-3 label-align">Type of Sample</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="hematology-request-form-sample" name="hematology-request-form-sample" type="text" class="form-control" required="required">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="hematology-request-form-sample-equipment" class="col-form-label col-md-3 col-sm-3 label-align">Equipment ID</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <?php
-                                                echo '<select id="hematology-request-form-sample-equipment" name="hematology-request-form-sample-equipment" class="custom-select" required="required">';
-                                                echo '<option value="unknown">Choose Equipment</option>';
-                                                for ($i = 10000; $i < 50000; $i += 1000) {
-                                                    echo '<option value="' . $i . '">ZMRH-EQP-' . $i . '</option>';
-                                                }
-                                                echo '<option value="10000000">Not listed</option>';
-                                                echo '</select>';
-                                                ?>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="hematology-request-form-sample-equipment" class="col-form-label col-md-3 col-sm-3 label-align">Equipment ID</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <?php
+                                            echo '<select id="hematology-request-form-sample-equipment" name="hematology-request-form-sample-equipment" class="custom-select" required="required">';
+                                            echo '<option value="unknown">Choose Equipment</option>';
+                                            for ($i = 10000; $i < 50000; $i += 1000) {
+                                                echo '<option value="' . $i . '">ZMRH-EQP-' . $i . '</option>';
+                                            }
+                                            echo '<option value="10000000">Not listed</option>';
+                                            echo '</select>';
+                                            ?>
 
-                                            </div>
                                         </div>
-                                        <div class="item form-group">
+                                    </div>
+                                    <div class="item form-group">
                                         <div class="card-box table-responsive">
                                             <p class="text-muted font-13 m-b-30">
                                             </p>
                                             <table id="datatable" class="table table-striped table-bordered" style="width:50%">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col" >TYPE OF TEST</th>
-                                                            <th scope="col" colspan="3" >RESULT (verdict and Reference Range (minimum - maximum) </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">TYPE OF TEST</th>
+                                                        <th scope="col" colspan="3">RESULT (verdict and Reference Range (minimum - maximum) </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
 
-                                                        <?php
-                                                        foreach ($hematologyTestArray as $key => $value) {
-                                                            echo '<tr><td class="list-td"><a href="#">' . $value['name'] . '</a></td>';
-                                                            echo '<td class="list-td"><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="number" min="' . $value['range']['Female'][1] . '" step="' . $value['range']['Female'][0] . '" max=' . $value['range']['Male'][2] . ' class="form-control" required="required"></td>';
-                                                            echo '<td class="list-td">';
-                                                            echo '<select id="hematology-request-form-chem-units" name="hematology-request-form-chem-units" class="custom-select" required="required">';
-                                                            foreach ($hematologyLabTestUnitsArray as $key2 => $value2) {
-                                                                echo '<option value="chem-unit-' . $key2 . '">' . $value2 . '</option>';
-                                                            }
-                                                            echo '</select>';
-                                                            echo '</td>';
-                                                            // echo '<td class="list-td">
-                                                            //     <select id="chem-verdict" name="chem-verdict" class="custom-select" required="required">';
-                                                            // foreach ($verdict as $key3 => $value3) {
-                                                            //     echo '<option value="verdict-unit-' . $key3 . '" style="' . $value3[1] . '">' . $value3[0] . '</option>';
-                                                            // }
-                                                            // echo '</select>';
-                                                            // echo '</td>';
-
-                                                            echo '<td>';
-
-                                                            echo  "Female = " . '(' . $value['range']['Female'][1] . ' - ' . $value['range']['Female'][2] . ') ';
-                                                            echo  "Male   = " . '(' . $value['range']['Male'][1] . ' - ' . $value['range']['Male'][2] . ')';
-                                                            echo '</td>';
-                                                            echo '</tr>';
+                                                    <?php
+                                                    foreach ($hematologyTestArray as $key => $value) {
+                                                        echo '<tr><td class="list-td"><a href="#">' . $value['name'] . '</a></td>';
+                                                        echo '<td class="list-td"><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="number" min="' . $value['range']['Female'][1] . '" step="' . $value['range']['Female'][0] . '" max=' . $value['range']['Male'][2] . ' class="form-control" required="required"></td>';
+                                                        echo '<td class="list-td">';
+                                                        echo '<select id="hematology-request-form-chem-units" name="hematology-request-form-chem-units" class="custom-select" required="required">';
+                                                        foreach ($hematologyLabTestUnitsArray as $key2 => $value2) {
+                                                            echo '<option value="chem-unit-' . $key2 . '">' . $value2 . '</option>';
                                                         }
+                                                        echo '</select>';
+                                                        echo '</td>';
+                                                        // echo '<td class="list-td">
+                                                        //     <select id="chem-verdict" name="chem-verdict" class="custom-select" required="required">';
+                                                        // foreach ($verdict as $key3 => $value3) {
+                                                        //     echo '<option value="verdict-unit-' . $key3 . '" style="' . $value3[1] . '">' . $value3[0] . '</option>';
+                                                        // }
+                                                        // echo '</select>';
+                                                        // echo '</td>';
+
+                                                        echo '<td>';
+
+                                                        echo  "Female = " . '(' . $value['range']['Female'][1] . ' - ' . $value['range']['Female'][2] . ') ';
+                                                        echo  "Male   = " . '(' . $value['range']['Male'][1] . ' - ' . $value['range']['Male'][2] . ')';
+                                                        echo '</td>';
+                                                        echo '</tr>';
+                                                    }
 
 
 
-                                                        foreach ($hematologyTestOtherSpecialArray as $sokey => $sovalue) {
-                                                            echo '<tr><td class="list-td"><a href="#">' . $sovalue . '</a></td>';
-                                                            echo '<td class="list-td" colspan="2" ><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
-                                                            echo '<td class="list-td" ><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
-                                                            echo '</tr>';
+                                                    foreach ($hematologyTestOtherSpecialArray as $sokey => $sovalue) {
+                                                        echo '<tr><td class="list-td"><a href="#">' . $sovalue . '</a></td>';
+                                                        echo '<td class="list-td" colspan="2" ><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
+                                                        echo '<td class="list-td" ><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
+                                                        echo '</tr>';
+                                                    }
+
+                                                    foreach ($hematologyTestSpecialArray as $skey => $svalue) {
+                                                        echo '<tr><td class="list-td"><a href="#">' . $skey . '</a></td>';
+                                                        echo '<td class="list-td" colspan="2"><select id="hematology-request-form-chem-units" name="hematology-request-form-chem-units" class="custom-select" required="required">';
+                                                        foreach ($svalue as $key3 => $value3) {
+                                                            echo '<option value="hematology-request-form-chem-unit-' . $key3 . '">' . $value3 . '</option>';
                                                         }
+                                                        echo '</select>';
+                                                        echo '</td>';
+                                                        echo '<td class="list-td" ><input id="hematology-request-form-chem-test-' . $key . '" name="hematology-request-form-chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
+                                                        echo '</tr>';
+                                                    }
+                                                    ?>
 
-                                                        foreach ($hematologyTestSpecialArray as $skey => $svalue) {
-                                                            echo '<tr><td class="list-td"><a href="#">' . $skey . '</a></td>';
-                                                            echo '<td class="list-td" colspan="2"><select id="hematology-request-form-chem-units" name="hematology-request-form-chem-units" class="custom-select" required="required">';
-                                                            foreach ($svalue as $key3 => $value3) {
-                                                                echo '<option value="hematology-request-form-chem-unit-' . $key3 . '">' . $value3 . '</option>';
-                                                            }
-                                                            echo '</select>';
-                                                            echo '</td>';
-                                                            echo '<td class="list-td" ><input id="hematology-request-form-chem-test-' . $key . '" name="hematology-request-form-chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
-                                                            echo '</tr>';
-                                                        }
-                                                        ?>
-
-                                                    </tbody>
-                                                </table>
-                                                <div class="ln_solid"></div>
-                                           <div class="item form-group">
+                                                </tbody>
+                                            </table>
+                                            <div class="ln_solid"></div>
+                                            <div class="item form-group">
                                                 <div class="col-md-6 col-sm-6">
-                                                <button type="submit" class="btn btn-lg btn-danger">Save Hematology Request Data</button>
+                                                    <button type="submit" class="btn btn-lg btn-danger">Save Hematology Request Data</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                                <div class="form-group row">
-                                                    <div class="col-12">
-                                                        <p class="h5">Reference:
-                                                                <a target="blank" title="open in new tab" rel="noopener noreferrer" href="https://www.healthlinkbc.ca/health-topics/zd1440">
-                                                                    Units of Measurement
-                                                                </a>|
-                                                                <a target="blank" title="open in new tab" rel="noopener noreferrer" href="../../doc/Clinical_Laboratory_Reference_Values_ref.pdf">
-                                                                    Clinical Laboratory Reference Values
-                                                                </a>
-                                                                <p>
-                                                    </div>
+                                            <div class="form-group row">
+                                                <div class="col-12">
+                                                    <p class="h5">Reference:
+                                                        <a target="blank" title="open in new tab" rel="noopener noreferrer" href="https://www.healthlinkbc.ca/health-topics/zd1440">
+                                                            Units of Measurement
+                                                        </a>|
+                                                        <a target="blank" title="open in new tab" rel="noopener noreferrer" href="../../doc/Clinical_Laboratory_Reference_Values_ref.pdf">
+                                                            Clinical Laboratory Reference Values
+                                                        </a>
+                                                        <p>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
