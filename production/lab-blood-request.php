@@ -183,12 +183,12 @@ include_once "./config.php";
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="blood-request-form-time" class="col-form-label col-md-3 col-sm-3 label-align">Time</label>
+                                        <label for="blood-request-form-time" class="col-form-label col-md-3 col-sm-3 label-align">Time of Collection</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="blood-request-form-time" name="blood-request-form-time" type="time" value="00:00" class="form-control" required="required">
                                         </div>
                                     </div>
-                                    <div class="item form-group">
+                                    <!-- <div class="item form-group">
                                         <label for="blood-request-form" class="col-form-label col-md-3 col-sm-3 label-align">Type of Specimen</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="blood-request-form" name="blood-request-form" type="text" class="form-control" required="required">
@@ -199,7 +199,7 @@ include_once "./config.php";
                                         <div class="col-md-3 col-sm-12 col-xs-12 ">
                                             <input id="blood-request-form-collection" name="blood-request-form-collection" type="text" class="form-control" required="required">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="item form-group">
                                         <label for="blood-request-form-result-release" class="col-form-label col-md-3 col-sm-3 label-align"">Time of result release</label>
                                         <div class=" col-md-6 col-sm-6">

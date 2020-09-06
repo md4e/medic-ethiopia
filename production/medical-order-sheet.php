@@ -43,7 +43,8 @@ include_once "./config.php";
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.php" class="site_title"><!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
+                        <a href="index.php" class="site_title">
+                            <!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
                                 Hospital</span></a>
                         <!-- <i class="fa fa-building-o"></i> -->
                     </div>
@@ -76,7 +77,7 @@ include_once "./config.php";
                                 <li><a href="index4.php">Radiology Department</a></li>
                                 <li><a href="index5.php">Laboratory Forms</a></li>
                                 <li><a href="index6.php">Medical Forms</a></li>
-                <li><a href="index7.php">All Patients</a></li>
+                                <li><a href="index7.php">All Patients</a></li>
                                 <!-- <li><a href="index6.html"> Anesthesia and intensive care</a></li>
                                 <li><a href="index7.html"> Geriatrics</a></li>
                                 <li><a href="index8.html"> Heart and physiology</a></li>
@@ -203,7 +204,7 @@ include_once "./config.php";
                                     <div class="item form-group">
                                         <label for="problem-list" class="col-form-label col-md-3 col-sm-3 label-align">Problem List</label>
                                         <div class="col-md-6 col-sm-6">
-                                          <a type="text" id="add-problem" class="btn btn-warning" style="color:white" value=""><i class="fa fa-plus-circle"></i>Add problem </a>
+                                            <a type="text" id="add-problem" class="btn btn-warning" style="color:white" value=""><i class="fa fa-plus-circle"></i>Add problem </a>
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -273,10 +274,33 @@ include_once "./config.php";
                                         <div class="col-md-6 col-sm-6">
                                             <select id="order-sheet-avail-medication" name="order-sheet-avail-medication" class="custom-select" required="required" aria-describedby="order-sheet-avail-medicationHelpBlock">
                                                 <option value="unknown">Choose Medication</option>
+                                                <?php
+
+                                                foreach ($medication as $key => $value) {
+                                                    echo '<option value="' . $key . '">' . $value . '</option>';
+                                                }
+                                                ?>
+
+
                                                 <option value="0">Medication 0</option>
                                                 <option value="1">Medication 1</option>
                                             </select>
                                             <span id="order-sheet-avail-medicationHelpBlock" class="form-text text-muted">Choose available medications in the hospital's pharmacy</span>
+                                            <select id="order-sheet-nursing-care" name="order-sheet-nursing-care" class="custom-select" required="required">
+                                                <option value="unknown">Dosage</option>
+                                                <option value="po">PO: Orally (per oral)</option>
+                                                <option value="bid">BID: Twice a day</option>
+                                                <option value="tid">TID: Three times a day</option>
+                                                <option value="qid">QID: Four times a day</option>
+                                                <option value="qhs">QHS: Before bed</option>
+                                                <option value="q4h">Q4H: Every 4 hours</option>
+                                                <option value="q6h">Q6H: Every 6 hours</option>
+                                                <option value="q8h">Q8H: Every 8 hours</option>
+                                                <option value="prn">PRN: As needed</option>
+                                                <option value="ac">A.C or q.a.c Before meal</option>
+                                                <option value="pc">P.C. After meal</option>
+                                            </select>
+
                                         </div>
                                     </div>
 
@@ -348,12 +372,12 @@ include_once "./config.php";
         var i = 1;
         $("#add-problem").click(function() {
             var currentdate = new Date();
-            var datetime = "[" + currentdate.getDate() + "-"
-                + (currentdate.getMonth()+1)  + "-"
-                + currentdate.getFullYear() + " "
-                + currentdate.getHours() + ":"
-                + currentdate.getMinutes("00") + ":"
-                + currentdate.getSeconds() + "] ";
+            var datetime = "[" + currentdate.getDate() + "-" +
+                (currentdate.getMonth() + 1) + "-" +
+                currentdate.getFullYear() + " " +
+                currentdate.getHours() + ":" +
+                currentdate.getMinutes("00") + ":" +
+                currentdate.getSeconds() + "] ";
             $("<div />", {
                     "class": "wrapper",
                     id: "product" + i
@@ -361,16 +385,16 @@ include_once "./config.php";
                 .append($("<p />", {
                     type: "text",
                     id: "name" + i,
-                    class:"h4"
+                    class: "h4"
                 }))
-                .append("P" + i + ": <small/>Problem "+i+"</small/>")
+                .append("P" + i + ": <small/>Problem " + i + "</small/>")
                 .append($("<textarea />", {
                     type: "text",
                     id: "property" + i,
-                    cols:"40",
-                    rows:"5",
-                    class:"form-control",
-                    text:datetime + "\n"
+                    cols: "40",
+                    rows: "5",
+                    class: "form-control",
+                    text: datetime + "\n"
                 }))
                 .appendTo("#problem-container");
             i++;

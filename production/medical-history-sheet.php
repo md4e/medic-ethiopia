@@ -174,9 +174,39 @@
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-order-sheet-remark" class="col-form-label col-md-3 col-sm-3 label-align"></label>
+                                        <label for="date-of-order-sheet-chief-compliant" class="col-form-label col-md-3 col-sm-3 label-align">Chief Compliant</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <textarea id="remark" name="remark" cols="40" rows="25" class="form-control"></textarea>
+                                            <textarea id="chief-compliant" name="chief-compliant" cols="40" rows="5" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="date-of-order-sheet-physical-examination" class="col-form-label col-md-3 col-sm-3 label-align">Physical Examination</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea id="physical-examination" name="physical-examination" cols="40" rows="5" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="date-of-order-sheet-assessment" class="col-form-label col-md-3 col-sm-3 label-align">Assessment</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea id="assessment" name="assessment" cols="40" rows="5" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="date-of-order-sheet-investigation-sent" class="col-form-label col-md-3 col-sm-3 label-align">Investigation Sent</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea id="investigation-sent" name="investigation-sent" cols="40" rows="5" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="date-of-order-sheet-plan" class="col-form-label col-md-3 col-sm-3 label-align">Plan</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea id="plan" name="plan" cols="40" rows="5" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="date-of-order-sheet-remark" class="col-form-label col-md-3 col-sm-3 label-align">Other Remarks</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea id="remark" name="remark" cols="40" rows="5" class="form-control"></textarea>
                                         </div>
                                     </div>
 

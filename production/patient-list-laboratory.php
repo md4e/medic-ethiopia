@@ -10,7 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="../images/flag.ico">
-
+  <link rel="shortcut icon" href="../images/flag.ico">
   <title>index </title>
 
 
@@ -111,10 +111,10 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <!-- <a href="index.php" class="title_link btn btn-primary" type="button">
-              <p class="h6">⏎ Return to Main</p>
-            </a> -->
-            <p class="h3 text-primary"><i class="fa fa-list"></i> All Patient List</p>
+            <a href="index5.php" class="title_link btn btn-primary" type="button">
+              <p class="h6">⏎ Return to Laboratory Forms</p>
+            </a>
+            <p class="h3 text-primary"><i class="fa fa-list"></i> Patient List & Queue</p>
           </div>
         </div>
 
@@ -152,37 +152,31 @@
                         <thead>
                           <tr>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
                             <th>Age</th>
                             <th>NEWS Rank</th>
-                            <th>Admitted Date</th>
-                            <th>Dicharge date</th>
-                            <th>Payment Compelete</th>
-                            <th>Status</th>
-                            <th>Department</th>
+                            <th>Laboratory</th>
+                            <th>Queue Number</th>
+                            <th>Payment Status</th>
                           </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $department = [0=>"OPD",1=>"Emergency",2=>"Radiology",3=>"@Chemistry Lab", 4=>"@Stool Examination"];
-                            for ($i=0; $i < 500; $i++) {
+                            $requestingLab = [0=>"Stoll Examination",1=>"Serology & Coagulation",2=>"Radiology (x-ray)",3=>"@Chemistry Lab", 4=>"@Blood Crossmatch"];
+                            $payment = [0=>["Complete", "btn-success"], 1=>["Processing","btn-warning"], 2=>["Free Pass","btn-info"]];
+                            for ($i=0; $i < 50; $i++) {
                                 $index = rand(0,4);
-
+                                $index2 = rand(0,2);
                             echo '
                           <tr>
-                            <td><a href="./patient-list-detail.php?Id='.$i.'" class="btn btn-info">Name FatherName</a></td>
-                            <td>Accountant</td>
-                            <td>Addis Ababa</td>
-                            <td>61</td>
+                            <td><a href="" class="btn btn-info">Name Lastname</a></td>
+                            <td>'.($index*20 + $index2).'</td>
                             <td>4</td>
-                            <td>2011/04/25</td>
-                            <td>2011/04/25</td>
-                            <td>Yes</td>
-                            <td><button class="btn-warning">waiting 30min</button></td>
-                            <td>'.$department[$index].'</td>
+                            <td>'.$requestingLab[$index].'</td>
+                            <td>'.(($i*$index)+10).'  <button class="btn-danger"> <i class="fa fa-bell"></i> waiting '.($index*10).'min</button></td>
+                            <td><button class="'.$payment[$index2][1].'">'.$payment[$index2][0].'</button></td>
                           </tr>';
-                        }
+                                                       }
+
                           ?>
                         </tbody>
                       </table>

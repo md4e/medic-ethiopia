@@ -177,7 +177,6 @@ include_once "./config.php";
                                     </div>
                                 </form>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
-
                                     <div class="item form-group">
                                         <label for="discharge-summary-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Date</label>
                                         <div class="col-md-6 col-sm-6">
@@ -213,6 +212,36 @@ include_once "./config.php";
                                         <div class="col-md-6 col-sm-6">
                                             <textarea id="remark" name="remark" cols="40" rows="5" class="form-control" required="required"></textarea>
                                         </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="discharge-summary-sheet-appointment-date" class="col-form-label col-md-3 col-sm-3 label-align">Appointment Date</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="discharge-summary-sheet-appointment-date" name="discharge-summary-sheet-appointment-date" type="date" class="form-control" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="discharge-summary-sheet-appointment-time" class="col-form-label col-md-3 col-sm-3 label-align">Appointment Time</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="discharge-summary-sheet-appointment-time" name="discharge-summary-sheet-appointment-time" type="time" value="00:00" class="form-control" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="discharge-summary-sheet-nursing-care" class="col-form-label col-md-3 col-sm-3 label-align">Appointed To</label>
+                                        <div class="col-md-4 col-sm-4">
+                                            <select id="discharge-summary-sheet-nursing-care" name="discharge-summary-sheet-nursing-care" class="custom-select" required="required">
+                                                <option value="unknown">Choose Appointed to</option>
+                                                <option value="dm-clinic">DM Clinc</option>
+                                                <option value="art-clinic">ART Clinic</option>
+                                                <option value="anc-clinic">ANC Clinic</option>
+                                                <option value="neurology-clinic">Neurology Clinic</option>
+                                                <option value="cardiac-clinic">Cardiac Clinic</option>
+                                                <option value="renal-clinic">Renal Clinic</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                        <!-- <div class="col-md-4 col-sm-4">
+                                            <input id="discharge-summary-sheet-nursing-care-other" name="discharge-summary-sheet-nursing-care-other" placeholder="Write here if Nusing Care is Other" type="text" class="form-control" required="required">
+                                        </div> -->
                                     </div>
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align">Condition on Discharge</label>

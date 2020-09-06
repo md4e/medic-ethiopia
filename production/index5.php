@@ -112,6 +112,19 @@
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
+              <a href="patient-list-laboratory.php" class="laboratory-form">
+                <div class="row" style="display: inline-block;">
+                  <p class="h4 text-primary"><i class="fa fa-list"></i> Patient List and Queue</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="x_panel">
+            <div class="x_title">
               <a href="lab-serology-coagulations.php" class="laboratory-form">
                 <div class="row" style="display: inline-block;">
                   <p class="h4 text-danger"><i class="fa fa-flask"></i> LAB - Serology & Coagulation</p>

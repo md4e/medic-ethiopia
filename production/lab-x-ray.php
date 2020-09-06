@@ -45,7 +45,8 @@ include_once "./config.php";
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.php" class="site_title"><!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
+                        <a href="index.php" class="site_title">
+                            <!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
                                 Hospital</span></a>
                         <!-- <i class="fa fa-building-o"></i> -->
                     </div>
@@ -78,7 +79,7 @@ include_once "./config.php";
                                 <li><a href="index4.php">Radiology Department</a></li>
                                 <li><a href="index5.php">Laboratory Forms</a></li>
                                 <li><a href="index6.php">Medical Forms</a></li>
-                <li><a href="index7.php">All Patients</a></li>
+                                <li><a href="index7.php">All Patients</a></li>
                                 <!-- <li><a href="index6.html"> Anesthesia and intensive care</a></li>
                                 <li><a href="index7.html"> Geriatrics</a></li>
                                 <li><a href="index8.html"> Heart and physiology</a></li>
@@ -201,24 +202,20 @@ include_once "./config.php";
                                                 <input name="bed-or-ambulatory-patient" id="bed-or-ambulatory-patient_1" type="radio" class="custom-control-input" value="ambulatory-patient" required="required">
                                                 <label for="bed-or-ambulatory-patient_1" class="custom-control-label">Ambulatory Patient</label>
                                             </div>
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input name="bed-or-ambulatory-patient" id="bed-or-ambulatory-patient_2" type="checkbox" class="custom-control-input" value="ambulatory-patient" required="required">
+                                                <label for="bed-or-ambulatory-patient_2" class="custom-control-label">Porter Need ?</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="xray-request-remark" class="col-form-label col-md-3 col-sm-3 label-align">Examination Request 1.</label>
+                                    <div class="item form-group">
+                                        <label for="problem-list" class="col-form-label col-md-3 col-sm-3 label-align">Examination Request</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <textarea id="remark" name="remark" cols="40" rows="5" class="form-control"></textarea>
+                                            <a type="text" id="add-problem" class="btn btn-warning" style="color:white" value=""><i class="fa fa-plus-circle"></i>Add Request</a>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="xray-request-remark" class="col-form-label col-md-3 col-sm-3 label-align">Examination Request 2.</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <textarea id="remark" name="remark" cols="40" rows="5" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="xray-request-remark" class="col-form-label col-md-3 col-sm-3 label-align">Examination Request 3.</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <textarea id="remark" name="remark" cols="40" rows="5" class="form-control"></textarea>
+                                    <div class="item form-group">
+                                        <div class="offset-3 col-md-6 col-sm-6" id="problem-container">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -269,6 +266,42 @@ include_once "./config.php";
     ?>
     <!-- Dropzone.js -->
     <script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
+    <script>
+        var i = 1;
+        $("#add-problem").click(function() {
+            var currentdate = new Date();
+            var datetime = "[" + currentdate.getDate() + "-" +
+                (currentdate.getMonth() + 1) + "-" +
+                currentdate.getFullYear() + " " +
+                currentdate.getHours() + ":" +
+                currentdate.getMinutes("00") + ":" +
+                currentdate.getSeconds() + "] ";
+            $("<div />", {
+                    "class": "wrapper",
+                    id: "product" + i
+                })
+                .append($("<p />", {
+                    type: "text",
+                    id: "name" + i,
+                    class: "h4"
+                }))
+                .append("Examination " + i)
+                .append($("<textarea />", {
+                    type: "text",
+                    id: "property" + i,
+                    cols: "40",
+                    rows: "5",
+                    class: "form-control",
+                    text: datetime + "\n"
+                }))
+                .appendTo("#problem-container");
+            i++;
+        });
+
+        $("input").live("click", function() {
+            $("span").text("Clicked ID: " + this.id);
+        });
+    </script>
 </body>
 
 </html>
