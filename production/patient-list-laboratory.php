@@ -161,7 +161,7 @@
                         </thead>
                         <tbody>
                             <?php
-                            $requestingLab = [0=>"Stoll Examination",1=>"Serology & Coagulation",2=>"Radiology (x-ray)",3=>"@Chemistry Lab", 4=>"@Blood Crossmatch"];
+                            $requestingLab = [0=>"Stool Examination",1=>"Serology & Coagulation",2=>"Radiology (x-ray)",3=>"@Chemistry Lab", 4=>"@Blood Crossmatch"];
                             $payment = [0=>["Complete", "btn-success"], 1=>["Processing","btn-warning"], 2=>["Free Pass","btn-info"]];
                             for ($i=0; $i < 50; $i++) {
                                 $index = rand(0,4);
