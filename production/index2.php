@@ -26,7 +26,8 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.php" class="site_title"><!-- <i class="fa fa-building-o"></i> --> <span>Zewditu Hospital</span></a>
+            <a href="index.php" class="site_title">
+              <!-- <i class="fa fa-building-o"></i> --> <span>Zewditu Hospital</span></a>
             <!-- <i class="fa fa-building-o"></i> -->
           </div>
 
@@ -135,9 +136,12 @@
   <!-- /footer content -->
   </div>
   </div>
-
-
-
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.min.js"></script>
 </body>
 
 </html>
