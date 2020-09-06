@@ -148,7 +148,7 @@
                       <p class="text-muted font-13 m-b-30">
 
                       </p>
-                      <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                      <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                           <tr>
                             <th>Name</th>
@@ -233,7 +233,7 @@
   <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
   <script src="../vendors/jszip/dist/jszip.min.js"></script>
   <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-  <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+  <!-- <script src="../vendors/pdfmake/build/vfs_fonts.js"></script> -->
 
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
