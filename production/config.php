@@ -124,44 +124,7 @@ function include_js()
         <!-- Parsley -->
         <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
         <!-- Custom Theme Scripts -->
-        <script src="../build/js/custom.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script src="jquery.sessionTimeout.js"></script>
-        <link rel="stylesheet" href="jquery-ui.min.css">
-<script src="jquery-ui.min.js"></script>
-$.sessionTimeout({
-    warnAfter: 3000,
-    redirAfter: 30000
-  });
-
-        ';
-        echo "$.sessionTimeout({
-
-            // custom warning message
-            message: 'Your session is about to expire.',
-
-            // keep alive url
-            keepAliveUrl: '/keep-alive',
-
-            // request type
-            keepAliveAjaxRequestType: 'POST',
-
-            // redirect url
-            redirUrl: '/timed-out',
-
-            // logout url
-            logoutUrl: '/log-out',
-
-            // 15 minutes
-            warnAfter: 900000,
-
-            // 20 minutes
-            redirAfter: 1200000,
-
-            // appends time stamp to keep alive url to prevent caching
-            appendTime: true
-
-          });";
+        <script src="../build/js/custom.min.js"></script>';
     /*
                 <!-- FastClick -->
         <script src="../vendors/fastclick/lib/fastclick.js"></script>
