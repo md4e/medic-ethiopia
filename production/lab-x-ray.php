@@ -22,26 +22,13 @@ include_once "./config.php";
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <a href="index5.php" class="title_link btn btn-primary" type="button">
+                        <a href="index4.php" class="title_link btn btn-primary" type="button">
                             <p class="h6">⏎ Return to Laboratory Forms</p>
                         </a>
-                        <p class="h3 text-dark"><i class="fa fa-camera"></i> LAB:X-Ray</p>
+                        <p class="h3 text-dark"><i class="fa fa-camera"></i> LAB:X-RAY</p>
                     </div>
-
                     <div class="title_center">
-
                     </div>
-
-                    <!-- <div class="title_right">
-                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="clearfix"></div>
                 <div class="row">
@@ -97,7 +84,7 @@ include_once "./config.php";
                                             </div>
                                             <div class="custom-control custom-checkbox custom-control-inline">
                                                 <input name="bed-or-ambulatory-patient" id="bed-or-ambulatory-patient_2" type="checkbox" class="custom-control-input" value="ambulatory-patient" required="required">
-                                                <label for="bed-or-ambulatory-patient_2" class="custom-control-label">Porter Need ?</label>
+                                                <label for="bed-or-ambulatory-patient_2" class="custom-control-label">Is Porter Needed?</label>
                                             </div>
                                         </div>
                                     </div>

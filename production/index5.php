@@ -19,123 +19,37 @@ include_once "./config.php";
     <!-- page content -->
     <div class="right_col" role="main">
       <!-- top tiles -->
-      <div class="row">
+      <?php
+      $route = [
+        ["class"=>'<p class="h4 text-primary"><i class="fa fa-list"></i>' ,"link"=>"patient-list-laboratory.php","name"=>" Patient List and Queue"],
+        ["class"=>'<p class="h4 text-danger"><i class="fa fa-flask"></i>' ,"link"=>"lab-serology-coagulations.php","name"=>" LAB - Serology & Coagulation"],
+        ["class"=>'<p class="h4 text-danger"><i class="fa fa-flask"></i>' ,"link"=>"lab-blood-request.php","name"=>" LAB - Blood Request"],
+        ["class"=>'<p class="h4 text-danger"><i class="fa fa-flask"></i>' ,"link"=>"lab-blood-crossmatch.php","name"=>" LAB - Blood Crossmatch"],
+        ["class"=>'<p class="h4 text-danger"><i class="fa fa-flask"></i>' ,"link"=>"lab-hematology-request.php","name"=>" LAB - Hematology Request"],
+        ["class"=>'<p class="h4 text-danger"><i class="fa fa-flask"></i>' ,"link"=>"lab-chemistry-request.php","name"=>" LAB - Chemistry Request"],
+        ["class"=>'<p class="h4 text-warning"><i class="fa fa-flask"></i>',"link"=>"lab-urine-analysis-examination.php","name"=>" LAB - Urine Analysis Examination"],
+        ["class"=>'<p class="h4 text-dark"><i class="fa fa-flask"></i>'   ,"link"=>"lab-stool-examination.php","name"=>" LAB - Stool Examination"]
+      ];
+      foreach ($route as $key => $value) {
+        $valueObj = (object)$value;
+        echo '
+        <div class="row">
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
-              <a href="patient-list-laboratory.php" class="laboratory-form">
+              <a href="'.$valueObj->link.'" class="laboratory-form">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-primary"><i class="fa fa-list"></i> Patient List and Queue</p>
+                  '.$valueObj->class.$valueObj->name.'Patient List and Queue</p>
                 </div>
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="lab-serology-coagulations.php" class="laboratory-form">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-danger"><i class="fa fa-flask"></i> LAB - Serology & Coagulation</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="lab-blood-request.php" class="laboratory-form">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-danger"><i class="fa fa-flask"></i> LAB - Blood Request</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="lab-blood-crossmatch.php" class="laboratory-form">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-danger"><i class="fa fa-flask"></i> LAB - Blood Crossmatch</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="lab-hematology-request.php" class="laboratory-form">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-danger"><i class="fa fa-flask"></i> LAB - Hematology Request</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="lab-chemistry-request.php" class="laboratory-form">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-success"><i class="fa fa-flask"></i> LAB - Chemistry Request</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="lab-urine-analysis-examination.php" class="laboratory-form">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-warning"><i class="fa fa-flask"></i> LAB - Urine Analysis Examination</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="lab-stool-examination.php" class="laboratory-form">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-dark"><i class="fa fa-flask"></i> LAB - Stool Examination</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="lab-x-ray.php" class="laboratory-form">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-primary"><i class="fa fa-camera"></i> LAB - X-Ray</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+        ';
+      }
+      ?>
+
     </div>
   </div>
   </div>

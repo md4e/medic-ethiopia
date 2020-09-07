@@ -83,7 +83,7 @@ function main_container_top_navigation()
                         <li style="background-color:#2565AE;font-weight:bold"><a href="index3.php" style="font-weight:bold;"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
                         <li style="background-color:yellow;font-weight:bold"><a href="index4.php" style="font-weight:bold;;color:black"><i class="fa fa-exclamation-triangle"></i>RADIOLOGY</a></li>
                         <li style="background-color:;font-weight:bold"><a href="index5.php" style="font-weight:bold;"><i class="fa fa-flask text-light"></i>LABORATORY</a></li>
-                        <li style="background-color:;font-weight:bold"><a href="index6.php" style="font-weight:bold;"><i class="fa fa-book text-primary"></i>M-FORMS</a></li>
+                        <li style="background-color:;font-weight:bold"><a href="index6.php" style="font-weight:bold;"><i class="fa fa-book text-primary"></i>FORMS</a></li>
                         <li style="background-color:;font-weight:bold"><a href="index7.php" style="font-weight:bold;"><i class="fa fa-users text-info"></i>ALL PATIENTS</a></li>
                     </ul>
                 </div>

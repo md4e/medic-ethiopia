@@ -5,67 +5,67 @@ include_once "./config.php";
 <html lang="en">
 
 <head>
-    <?php
-    headerLinks("Radiology Dept");
-    ?>
+  <?php
+  headerLinks("Radiology Dept");
+  ?>
 </head>
 
 <body class="nav-md">
-    <div class="container body">
-        <?php
-        main_container_top_navigation();
-        ?>
+  <div class="container body">
+    <?php
+    main_container_top_navigation();
+    ?>
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-            <!-- top tiles -->
-            <!-- <div class="row">
-            <div class="col-md-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <a href="medical-admission-emergency.php" class="patient">
-                    <div class="row" style="display: inline-block;">
-                      <p class="h4 text-primary"><i class="fa fa-pencil"></i> Emergency Patient Admission Form</p>
-                    </div>
-                  </a>
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <!-- top tiles -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="x_panel">
+            <div class="x_title">
+              <a href="patient-list-radiology.php" class="patient">
+                <div class="row" style="display: inline-block;">
+                  <p class="h3 text-dark"><i class="fa fa-list"></i> Radiology Patient List</p>
                 </div>
-              </div>
+              </a>
             </div>
-          </div> -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <a href="patient-list-radiology.php" class="patient">
-                                <div class="row" style="display: inline-block;">
-                                    <p class="h3 text-dark"><i class="fa fa-sun-o"></i> Radiology Patient List</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="x_panel">
+            <div class="x_title">
+              <a href="lab-x-ray.php" class="laboratory-form">
+                <div class="row" style="display: inline-block;">
+                  <p class="h4 text-dark"><i class="fa fa-camera"></i> LAB - X-Ray Form</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-    <!-- /page content -->
+  </div>
+  </div>
+  <!-- /page content -->
 
-    <!-- footer content -->
-    <footer>
-        <div class="pull-right">
-            Copyright © 2020 Powered by <a href="http://medic-ethiopia.com" target="blank">Medic-Ethiopia</a>
-        </div>
-        <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
+  <!-- footer content -->
+  <footer>
+    <div class="pull-right">
+      Copyright © 2020 Powered by <a href="http://medic-ethiopia.com" target="blank">Medic-Ethiopia</a>
     </div>
-    </div>
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <div class="clearfix"></div>
+  </footer>
+  <!-- /footer content -->
+  </div>
+  </div>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.min.js"></script>
 </body>
 
 </html>
