@@ -76,12 +76,12 @@ function main_container_top_navigation()
                     <ul class="nav side-menu">
                         <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> -->
                         <li><a href="index1.php"><i class="fa fa-dashboard"></i>DASHBOARD</a></li>
-                        <li style="background-color:red;font-weight:bold"><a href="index2.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-plus h2"></i>EMERGENCY</a></li>
-                        <li style="background-color:#2565AE;font-weight:bold"><a href="index3.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
-                        <li style="background-color:yellow;font-weight:bold"><a href="index4.php" style="font-weight:bold;font-size:1.5em;color:black"><i class="fa fa-exclamation-triangle"></i>RADIOLOGY</a></li>
-                        <li style="background-color:;font-weight:bold"><a href="index5.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-flask text-light"></i>LABORATORY</a></li>
-                        <li style="background-color:;font-weight:bold"><a href="index6.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-book text-primary"></i>M-FORMS</a></li>
-                        <li style="background-color:;font-weight:bold"><a href="index7.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-users text-info"></i>ALL PATIENTS</a></li>
+                        <li style="background-color:red;font-weight:bold"><a href="index2.php" style="font-weight:bold;"><i class="fa fa-plus h2"></i>EMERGENCY</a></li>
+                        <li style="background-color:#2565AE;font-weight:bold"><a href="index3.php" style="font-weight:bold;"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
+                        <li style="background-color:yellow;font-weight:bold"><a href="index4.php" style="font-weight:bold;;color:black"><i class="fa fa-exclamation-triangle"></i>RADIOLOGY</a></li>
+                        <li style="background-color:;font-weight:bold"><a href="index5.php" style="font-weight:bold;"><i class="fa fa-flask text-light"></i>LABORATORY</a></li>
+                        <li style="background-color:;font-weight:bold"><a href="index6.php" style="font-weight:bold;"><i class="fa fa-book text-primary"></i>M-FORMS</a></li>
+                        <li style="background-color:;font-weight:bold"><a href="index7.php" style="font-weight:bold;"><i class="fa fa-users text-info"></i>ALL PATIENTS</a></li>
                     </ul>
                 </div>
             </div>
