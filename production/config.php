@@ -50,7 +50,7 @@ function main_container_top_navigation()
     <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-                <a href="index.php" class="site_title">
+                <a href="index1.php" class="site_title">
                     <!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
                         Hospital</span></a>
                 <!-- <i class="fa fa-building-o"></i> -->
