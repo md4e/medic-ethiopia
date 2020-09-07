@@ -52,11 +52,35 @@
     background: radial-gradient(circle, rgba(190, 189, 201, 1) 0%, rgba(22, 170, 185, 0.45702030812324934) 100%, rgba(0, 212, 255, 1) 100%);
     padding: 2em;
 }
+.index-page {
+    width: 50%;
+}
+@media(min-width:700px) {
 
-body {
+    .index-page {
+        width: 25%;
+    }
 
+}
 
-    font-size: 1.1em;
+@media(min-width:500px) {
 
+    .index-page {
+        width: 50%;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .index-page {
+        width: 25%;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .index-page {
+        width: 25%;
+    }
 
 }

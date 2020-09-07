@@ -1,40 +1,44 @@
 <?php
-function headerLinks($title = null)
+function headerLinks($title = null,$dir=null)
 {
+    if($dir == null)
+    {
+        $dir="..";
+    }
     echo '
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../images/flag.ico">
+    <link rel="shortcut icon" href="'. $dir .'/images/flag.ico">
     <title>' . $title . '</title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="'. $dir .'/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="'. $dir .'/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">';
+    <link href="'. $dir .'/build/css/custom.min.css" rel="stylesheet">';
 
     // echo '    <!-- Bootstrap -->
-    //     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    //     <link href="'. $dir .'/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     //     <!-- Font Awesome -->
-    //     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    //     <link href="'. $dir .'/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     //     <!-- NProgress -->
-    //     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    //     <link href="'. $dir .'/vendors/nprogress/nprogress.css" rel="stylesheet">
     //     <!-- iCheck -->
-    //     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    //     <link href="'. $dir .'/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     //     <!-- bootstrap-wysiwyg -->
-    //     <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    //     <link href="'. $dir .'/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
     //     <!-- Select2 -->
-    //     <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    //     <link href="'. $dir .'/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
     //     <!-- Switchery -->
-    //     <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    //     <link href="'. $dir .'/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     //     <!-- starrr -->
-    //     <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
+    //     <link href="'. $dir .'/vendors/starrr/dist/starrr.css" rel="stylesheet">
     //     <!-- bootstrap-daterangepicker -->
-    //     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">';
+    //     <link href="'. $dir .'/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">';
 }
 function main_container_top_navigation()
 {
@@ -71,13 +75,13 @@ function main_container_top_navigation()
                     <!-- <h3>Departments</h3> -->
                     <ul class="nav side-menu">
                         <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> -->
-                        <li><a href="index.php"><i class="fa fa-dashboard"></i>DASHBOARD</a></li>
-                        <li><a href="index2.php"><i class="fa fa-warning text-warning"></i>Emergency Department </a></li>
-                        <li><a href="index3.php"><i class="fa fa-paper-plane text-success"></i>OPD <small>(Out Patient Dept.)</small></a></li>
-                        <li><a href="index4.php"><i class="fa fa-sun-o text-danger"></i>Radiology Department</a></li>
-                        <li><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory Forms</a></li>
-                        <li><a href="index6.php"><i class="fa fa-book text-primary"></i>Medical Forms</a></li>
-                        <li><a href="index7.php"><i class="fa fa-users text-info"></i>All Patients</a></li>
+                        <li><a href="index1.php"><i class="fa fa-dashboard"></i>DASHBOARD</a></li>
+                        <li style="background-color:red;font-weight:bold"><a href="index2.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-plus h2"></i>EMERGENCY</a></li>
+                        <li style="background-color:#2565AE;font-weight:bold"><a href="index3.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
+                        <li style="background-color:yellow;font-weight:bold"><a href="index4.php" style="font-weight:bold;font-size:1.5em;color:black"><i class="fa fa-exclamation-triangle"></i>RADIOLOGY</a></li>
+                        <li style="background-color:;font-weight:bold"><a href="index5.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-flask text-light"></i>LABORATORY</a></li>
+                        <li style="background-color:;font-weight:bold"><a href="index6.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-book text-primary"></i>M-FORMS</a></li>
+                        <li style="background-color:;font-weight:bold"><a href="index7.php" style="font-weight:bold;font-size:1.5em"><i class="fa fa-users text-info"></i>ALL PATIENTS</a></li>
                     </ul>
                 </div>
             </div>
@@ -101,8 +105,7 @@ function main_container_top_navigation()
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="javascript:;"> Profile</a>
                         <a class="dropdown-item" href="javascript:;">Help</a>
-                        <a class="dropdown-item" href="../index.php"><i class="fa fa-sign-out pull-right"></i> Log
-                            Out</a>
+                        <a class="dropdown-item" href="../login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                 </li>
             </ul>
@@ -121,7 +124,44 @@ function include_js()
         <!-- Parsley -->
         <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
         <!-- Custom Theme Scripts -->
-        <script src="../build/js/custom.min.js"></script>';
+        <script src="../build/js/custom.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="jquery.sessionTimeout.js"></script>
+        <link rel="stylesheet" href="jquery-ui.min.css">
+<script src="jquery-ui.min.js"></script>
+$.sessionTimeout({
+    warnAfter: 3000,
+    redirAfter: 30000
+  });
+
+        ';
+        echo "$.sessionTimeout({
+
+            // custom warning message
+            message: 'Your session is about to expire.',
+
+            // keep alive url
+            keepAliveUrl: '/keep-alive',
+
+            // request type
+            keepAliveAjaxRequestType: 'POST',
+
+            // redirect url
+            redirUrl: '/timed-out',
+
+            // logout url
+            logoutUrl: '/log-out',
+
+            // 15 minutes
+            warnAfter: 900000,
+
+            // 20 minutes
+            redirAfter: 1200000,
+
+            // appends time stamp to keep alive url to prevent caching
+            appendTime: true
+
+          });";
     /*
                 <!-- FastClick -->
         <script src="../vendors/fastclick/lib/fastclick.js"></script>
@@ -176,6 +216,7 @@ function patient_search()
     </div>
 </form>';
 }
+//////////////////////////// DEFINES ///////////////////////////
 
 $medication = [
 
@@ -269,3 +310,100 @@ $medication = [
     87 => "CV.601 Medicines Used in Vascular Shock Adrenaline(Epinephrine) Injection, 0.1%, 1:1000 1mg/ml",
     88 => "CV.602 Medicines Used in Vascular Shock Dopamine Hydrochloride Injection, 40mg/ml"
 ];
+
+
+$hospital =
+[
+   0 => "Choose your hospital",
+   1036 => "Addis Ababa - Zeweditu Hospital",
+1000 => "Addis Ababa - Addis Ababa Fistula Hospital",
+1001 => "Addis Ababa - ALERT",
+1002 => "Addis Ababa - Bethel Teaching General Hospital",
+1003 => "Addis Ababa - Amin General Hospital",
+1004 => "Addis Ababa - Addis General Hospital [2]",
+1005 => "Addis Ababa - Addis Hiwot Plc",
+1006 => "Addis Ababa - Anania Mothers and Children Specialized Medical Center",
+1007 => "Addis Ababa - Armed Forces General Hospital",
+1008 => "Addis Ababa - Bella Defense Referral Hospital",
+1009 => "Addis Ababa - Besegah Mother and Child Health Hospitals",
+1010 => "Addis Ababa - Brass Mother and Child Health Hospital",
+1011 => "Addis Ababa - Dagmawi Minilik Hospital",
+1012 => "Addis Ababa - DBalch Hospital",
+1013 => "Addis Ababa - Dinberua Hospital",
+1014 => "Addis Ababa - Ethio Tebib Hospital",
+1015 => "Addis Ababa - Federal Police Referral Hospital",
+1016 => "Addis Ababa - Girum General Hospital",
+1017 => "Addis Ababa - Hawassa Alatyon Hospital",
+1018 => "Addis Ababa - Hayat Hospital",
+1019 => "Addis Ababa - ICMC General Hospital CMC",
+1020 => "Addis Ababa - Kadisco General Hospital [3]",
+1021 => "Addis Ababa - Landmark General Hospital",
+1022 => "Addis Ababa - MyungSung Christian Medical Centre/Korean Hospital/MCM General Hospital",
+1023 => "Addis Ababa - Nordic Medical Center",
+1024 => "Addis Ababa - Novocare American Clinic [4]",
+1025 => "Addis Ababa - Ras Desta Damitew Hospital",
+1026 => "Addis Ababa - Saint Gabriel General Hospital[5]",
+1027 => "Addis Ababa - Shedeho Higher Clinic Dr Belaynew Mogess",
+1028 => "Addis Ababa - St. Paulos Hospital",
+1029 => "Addis Ababa - St. Yared General Hospital",
+1030 => "Addis Ababa - Tibebu Hospital",
+1031 => "Addis Ababa - Tikur Anbesa Specialized Hospital(TASH)",
+1032 => "Addis Ababa - Tirunesh Beijing General Hospital",
+1033 => "Addis Ababa - Tzna General Hospital",
+1034 => "Addis Ababa - Yearrer hospital",
+1035 => "Addis Ababa - Zenbaba General Hospital",
+1037 => "Adama - Sr. Aklesia Memorial Hospital",
+1038 => "Adama - Adama General Hospital & Medical College",
+1039 => "Adama - Haile Mariam Hospital & Medical College",
+1040 => "Bahir Dar - Bahir Dar Mini-fistula Hospital",
+1041 => "Bahir Dar - Felge Hiwot Hospital",
+1042 => "Bahir Dar - Gamby Teaching Hospital Clinic",
+1043 => "Bahir Dar - Universal Clinic",
+1044 => "Bahir Dar - Adinas Clinic",
+1045 => "Desse - Boru Meda Hospital",
+1046 => "Desse - Dessie Hospital",
+1047 => "Desse - selam hospital",
+1048 => "Desse - ethio hospital",
+1049 => "Desse - bate hospital",
+1050 => "Desse - Tossa Hospital",
+1051 => "Gondar - University of Gondar Hospital",
+1052 => "Gondar - Ibex Hospital",
+1053 => "Gondar - Harar",
+1054 => "Gondar - Harar General Hospital",
+1055 => "Gondar - Hiwot fana specialized University hospital",
+1056 => "Hawassa - Adare Hospital",
+1057 => "Hawassa - Alatiyon Hospital",
+1058 => "Hawassa - Asher Primary Hospital",
+1059 => "Hawassa - Awassa Referral Hospital",
+1060 => "Hawassa - Bete Abrham Primary Hospital",
+1061 => "Hawassa - Kibru Primary Hospital",
+1062 => "Hawassa - Yanet Internal Medicine Specialized Center",
+1063 => "Somali Region - Jig-jiga University Referral Hospital",
+1064 => "Somali Region - Karamara Hospital",
+1065 => "Somali Region - Dagahbour General Hospital",
+1066 => "Somali Region - Gode General Hospital",
+1067 => "Somali Region - Qabri Dahare General Hospital",
+1068 => "Somali Region - Warder General Hospital",
+1069 => "Somali Region - Filtu General Hospital",
+1070 => "Somali Region - Hargelle General Hospital",
+1071 => "Somali Region - Sitti General Hospital",
+1072 => "Tigray - Adigrat Hospital",
+1073 => "Tigray - Ayder Referral Hospital",
+1074 => "Tigray - Lemelem Karl Hospital",
+1075 => "Tigray - Mekelle Hospital",
+1076 => "Tigray - St. Mary Hospital",
+1077 => "Tigray - Quiha Hospital",
+1078 => "Tigray - Sihul Hospital",
+1079 => "Tigray - Abiadi Hospital",
+1080 => "Tigray - Wukro Hospital",
+1081 => "Tigray - korem Hospital",
+1082 => "Tigray - Mearig Hospital/dansha",
+1083 => "Tigray - Humera Hospital",
+1084 => "Tigray - Alamata Hospital",
+1085 => "Tigray - Adwa Hospital",
+1086 => "Tigray - Aksum University Referral Hospital",
+1087 => "Wolayta - Dubbo Catholic Hospital",
+1088 => "Wolayta - Soddo Christhian Hospital",
+1089 => "Wolayta - Soddo General Hospital",
+1090 => "Wolayta - Soddo University Hospital",
+9999 => "Other"];
