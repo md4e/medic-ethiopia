@@ -1,4 +1,7 @@
-<?php?>
+<?php
+include_once "./lab-chemistry-test-list.php";
+include_once "./config.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
