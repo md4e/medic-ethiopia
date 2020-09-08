@@ -84,11 +84,24 @@ $bloodRequestFormArray = [
     7 => "AB Rh-",
     8 => "O Rh-",
 ];
+$bloodRhFactorArray = [
+    0 => "Rh Factor",
+    1 => "Rh+",
+    2 => "Rh-",
+];
+
+$bloodGroupArray = [
+    0 => "Blood group",
+    1 => "A",
+    2 => "B",
+    3 => "AB",
+    4 => "O",
+];
 
 $bloodRequestFormCrcAndFfpArray = [
      0=>"0",
-     1=>"CRC",
-     2=>"FFP"
+     1=>"CRC (<strong>C</strong>yclic <strong>R</strong>edundancy <strong>C</strong>heck)",
+     2=>"FFP (<strong>F</strong>resh <strong>F</strong>rozen <strong>P</strong>lasma)"
  ];
 $bloodRequestFormOtherBloodComponentsArray = [
     "Platelets",

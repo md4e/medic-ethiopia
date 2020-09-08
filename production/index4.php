@@ -38,7 +38,7 @@ include_once "./config.php";
             <div class="x_title">
               <a href="lab-x-ray.php" class="laboratory-form">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-dark"><i class="fa fa-camera"></i> LAB - X-Ray Form</p>
+                  <p class="h4 text-dark"><i class="fa fa-camera"></i>X-Ray Form</p>
                 </div>
               </a>
             </div>

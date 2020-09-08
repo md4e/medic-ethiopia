@@ -63,8 +63,12 @@ include_once "./config.php";
                                     <div class="item form-group">
                                         <label for="date-of-vital-sign-record-bp" class="col-form-label col-md-3 col-sm-3 label-align">Blood Pressure (B/P)</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="bp-systolic" name="bp-systolic" placeholder="Systolic" type="number" min="0" class="form-control" required="required">
-                                            <input id="bp-diastolic" name="bp-diastolic" placeholder="Diastolic" type="number" min="0" class="form-control" required="required">
+                                            <div class="col-md-6 col-sm-6">
+                                                <input id="bp-systolic" name="bp-systolic" placeholder="Systolic" type="number" min="0" class="form-control" required="required">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input id="bp-diastolic" name="bp-diastolic" placeholder="Diastolic" type="number" min="0" class="form-control" required="required">
+                                            </div>
                                         </div>
                                         <div class="col-md-2 col-sm-2">
                                             <div class="col-6 bp-alert-message-systolic">
@@ -105,7 +109,12 @@ include_once "./config.php";
                                             <input id="rbs" name="rbs" placeholder="Random Blood Sugar" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
-
+                                    <div class="item form-group">
+                                        <label for="date-of-vital-sign-rbs" class="col-form-label col-md-3 col-sm-3 label-align">FBS (Fasting Blood Sugar)</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="rbs" name="rbs" placeholder="Fasting Blood Sugar" type="number" min="0" class="form-control">
+                                        </div>
+                                    </div>
                                     <div class="item form-group">
                                         <label for="date-of-vital-sign-record-remark" class="col-form-label col-md-3 col-sm-3 label-align">Remark</label>
                                         <div class="col-md-6 col-sm-6" style="border:1px dotted;">

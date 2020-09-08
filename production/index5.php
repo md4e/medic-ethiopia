@@ -39,7 +39,7 @@ include_once "./config.php";
             <div class="x_title">
               <a href="'.$valueObj->link.'" class="laboratory-form">
                 <div class="row" style="display: inline-block;">
-                  '.$valueObj->class.$valueObj->name.'Patient List and Queue</p>
+                  '.$valueObj->class.$valueObj->name.'</p>
                 </div>
               </a>
             </div>

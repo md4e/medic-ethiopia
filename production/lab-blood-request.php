@@ -28,26 +28,13 @@ include_once "./config.php";
                         </a>
                         <p class="h3 text-danger"><i class="fa fa-flask"></i> LAB:Blood Request</p>
                     </div>
-
                     <div class="title_center">
-
                     </div>
-
-                    <!-- <div class="title_right">
-                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="clearfix"></div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <div class="x_panel all-form-style-blood-lab">
+                        <div class="x_panel">
                             <div class="x_title">
                                 <h2>Enter Patient information and search with id</h2>
 
@@ -84,18 +71,6 @@ include_once "./config.php";
                                             <input id="blood-request-form-time" name="blood-request-form-time" type="time" value="00:00" class="form-control" required="required">
                                         </div>
                                     </div>
-                                    <!-- <div class="item form-group">
-                                        <label for="blood-request-form" class="col-form-label col-md-3 col-sm-3 label-align">Type of Specimen</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <input id="blood-request-form" name="blood-request-form" type="text" class="form-control" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label for="blood-request-form-collection" class="col-form-label col-md-3 col-sm-3 label-align">Type of Specimen Collection</label>
-                                        <div class="col-md-3 col-sm-12 col-xs-12 ">
-                                            <input id="blood-request-form-collection" name="blood-request-form-collection" type="text" class="form-control" required="required">
-                                        </div>
-                                    </div> -->
                                     <div class="item form-group">
                                         <label for="blood-request-form-result-release" class="col-form-label col-md-3 col-sm-3 label-align"">Time of result release</label>
                                         <div class=" col-md-6 col-sm-6">
@@ -104,37 +79,41 @@ include_once "./config.php";
                             </div>
                             <?php foreach ($bloodRequestFormCrcAndFfpArray as $key0 => $value0) {
                                 echo '
-                                        <div class="item form-group">
-                                        <div class="card-box table-responsive">
-                                        <p class="text-muted font-13 m-b-30">
-                                        </p>
-                                        <table id="datatable" class="table table-striped table-bordered" style="width:50%">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" colspan="4"><h3>' . $value0 . '</h3></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col" style="font-weight:bold">Blood Type</th>
-                                                    <th scope="col" style="font-weight:bold">Number of Units Requested</th>
-                                                    <th scope="col" style="font-weight:bold">Number of Units Supplied</th>
-                                                    <th scope="col" style="font-weight:bold">Remark</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>';
-
-                                foreach ($bloodRequestFormArray as $key => $value) {
-                                    //echo '<tr><td class="list-td"><a href="#" >' . $value . '</a></td>';
-                                    echo '<tr><td class="list-td">' . $value . '</td>';
-                                    echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key . '-0" name="blood-request-test-start-' . $key0 . '-' . $key . '-0" type="number" class="form-control" required="required"></td>';
-                                    echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key . '-1" name="blood-request-test-start-' . $key0 . '-' . $key . '-1" type="number" class="form-control" required="required"></td>';
-                                    echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key . '-2" name="blood-request-test-start-' . $key0 . '-' . $key . '-2" type="text" class="form-control" required="required"></td>';
-                                    //echo '<td class="list-td"><textarea id="blood-request-test-' . $value0 . '-' . $key . '" placeholder="Write remark" name="blood-request-test-' . $value0 . '-' . $key . '" cols="10" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea></td>';
-                                    echo '</tr>';
+                                <div class="item form-group">
+                                <div class="card-box table-responsive">
+                                <p class="text-muted font-13 m-b-30"></p>
+                                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="5"><h3>' . $value0 . '</h3></th>
+                                </tr>
+                                <tr>
+                                <th scope="col" style="font-weight:bold">Blood Group</th>
+                                <th scope="col" style="font-weight:bold">Rh factor</th>
+                                <th scope="col" style="font-weight:bold">Number of Units Requested</th>
+                                <th scope="col" style="font-weight:bold">Number of Units Supplied</th>
+                                <th scope="col" style="font-weight:bold">Remark</th>
+                                </tr>
+                                </thead><tbody>';
+                                echo '<tr>';
+                                echo '<td><select id="blood-request-test-blood-group" name="blood-request-test-blood-group" class="custom-select" required="required">';
+                                foreach ($bloodGroupArray as $key => $value) {
+                                    echo '<option value="'.$key.'">' . $value . '</option>';
                                 }
-                                echo '</tbody>
-                                        </table>
-                                    </div>
-                                    </div>';
+                                echo '</select></td>';
+                                echo '<td><select id="blood-request-test-rh-factor" name="blood-request-test-rh-factor" class="custom-select" required="required">';
+                                foreach ($bloodRhFactorArray as $key => $value) {
+                                    echo '<option value="'.$key.'">' . $value . '</option>';
+                                }
+                                echo '</select></td>';
+                                echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key .
+                                '-0" name="blood-request-test-start-' . $key0 . '-' . $key . '-0" type="number" class="form-control" required="required"></td>';
+                                echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key .
+                                '-1" name="blood-request-test-start-' . $key0 . '-' . $key . '-1" type="number" class="form-control" required="required"></td>';
+                                echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key .
+                                '-2" name="blood-request-test-start-' . $key0 . '-' . $key . '-2" type="text" class="form-control" required="required"></td>';
+                                echo '</tr>';
+                                echo '</tbody></table></div></div>';
                             }
                             ?>
 
@@ -142,7 +121,7 @@ include_once "./config.php";
                                 <div class="card-box table-responsive">
                                     <p class="text-muted font-13 m-b-30">
                                     </p>
-                                    <table id="datatable" class="table table-striped table-bordered" style="width:50%">
+                                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th scope="col" colspan="4">
