@@ -4,7 +4,7 @@ function show_patient_form()
 {
     $patient_search = isset($_GET['patient-search']) ? $_GET['patient-search'] : "";
     echo '
-    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./lab-request-sc.php">
+    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./lab-request.php">
     <div class="item form-group x_panel">
         <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
         <div class="col-md-6 col-sm-6">
@@ -66,7 +66,7 @@ function show_patient($card_no = null)
 
                                  </p>
                                </td>
-                              <td><a href="./lab-request-sc.php?patient-search=' . $search . '&card-no=' . $randomNr . '" class="btn btn-success">Proceed with Card No. ' . $randomNr . '</a></td>
+                              <td><a href="./lab-request.php?patient-search=' . $search . '&card-no=' . $randomNr . '" class="btn btn-success">Proceed with Card No. ' . $randomNr . '</a></td>
                               </tr>';
                 }
                 echo '

@@ -36,7 +36,7 @@ include_once "./config.php";
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
-              <a href="lab-request-sc.php" class="patient">
+              <a href="lab-request.php" class="patient">
                 <div class="row" style="display: inline-block;">
                   <p class="h4 text-danger"><i class="fa fa-share"></i> Laboratory Request</p>
                 </div>

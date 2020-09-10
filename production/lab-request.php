@@ -374,7 +374,7 @@ include_once "./config.php";
                             <label><i class="fa fa-flask"></i> Choose Laboratory Request Type</label>
                             <?php
                             $route = [
-                                ["class" => "request-sc", "pFaClass" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-request-sc.php", "name" => " LAB - Request Serology & Coagulation"],
+                                ["class" => "request-sc", "pFaClass" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-request.php", "name" => " LAB - Request Serology & Coagulation"],
                                 ["class" => "request-br", "pFaClass" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-blood-request.php?type=request", "name" => " LAB - Blood Request"],
                                 ["class" => "request-bx", "pFaClass" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-blood-crossmatch.php?type=request", "name" => " LAB - Blood Crossmatch"],
                                 ["class" => "request-hr", "pFaClass" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-hematology-request.php?type=request", "name" => " LAB - Hematology Request"],
