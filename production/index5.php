@@ -8,6 +8,11 @@ include_once "./config.php";
   <?php
   headerLinks("Laboratory Forms");
   ?>
+  <style>
+    a:hover{
+      color:red;
+    }
+  </style>
 </head>
 
 <body class="nav-md">
@@ -58,13 +63,13 @@ include_once "./config.php";
 
                   <?php
                   $route = [
-                    ["class" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-serology-coagulations.php", "name" => " LAB - Serology & Coagulation"],
-                    ["class" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-blood-request.php", "name" => " LAB - Blood Request"],
-                    ["class" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-blood-crossmatch.php", "name" => " LAB - Blood Crossmatch"],
-                    ["class" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-hematology-request.php", "name" => " LAB - Hematology Request"],
-                    ["class" => '<p class="h4 text-danger"><i class="fa fa-flask"></i>', "link" => "lab-chemistry-request.php", "name" => " LAB - Chemistry Request"],
-                    ["class" => '<p class="h4 text-warning"><i class="fa fa-flask"></i>', "link" => "lab-urine-analysis-examination.php", "name" => " LAB - Urine Analysis Examination"],
-                    ["class" => '<p class="h4 text-dark"><i class="fa fa-flask"></i>', "link" => "lab-stool-examination.php", "name" => " LAB - Stool Examination"]
+                    ["class" => '<p class="h4 text-dark"><i class="fa fa-flask"></i>', "link" => "lab-serology-coagulations.php", "name" => " LAB - Serology & Coagulation Result"],
+                    ["class" => '<p class="h4 text-dark"><i class="fa fa-flask"></i>', "link" => "lab-blood-request.php", "name" => " LAB - Blood Request Result"],
+                    ["class" => '<p class="h4 text-dark"><i class="fa fa-flask"></i>', "link" => "lab-blood-crossmatch.php", "name" => " LAB - Blood Crossmatch Result"],
+                    ["class" => '<p class="h4 text-dark"><i class="fa fa-flask"></i>', "link" => "lab-hematology-request.php", "name" => " LAB - Hematology Request Result"],
+                    ["class" => '<p class="h4 text-dark"><i class="fa fa-flask"></i>', "link" => "lab-chemistry-request.php", "name" => " LAB - Chemistry Request Result"],
+                    ["class" => '<p class="h4 text-dark"><i class="fa fa-flask"></i>', "link" => "lab-urine-analysis-examination.php", "name" => " LAB - Urine Analysis Examination Result"],
+                    ["class" => '<p class="h4 text-dark"><i class="fa fa-flask"></i>', "link" => "lab-stool-examination.php", "name" => " LAB - Stool Examination Result"]
                   ];
                   foreach ($route as $key => $value) {
                     $valueObj = (object)$value;
