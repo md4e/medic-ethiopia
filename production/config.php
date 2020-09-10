@@ -1,4 +1,86 @@
 <?php
+
+function show_patient_form()
+{
+    $patient_search = isset($_GET['patient-search']) ? $_GET['patient-search'] : "";
+    echo '
+    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./lab-request-sc.php">
+    <div class="item form-group x_panel">
+        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
+        <div class="col-md-6 col-sm-6">
+            <div class="input-group" method="post" action="paitent-search.php">
+                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required" value="' . $patient_search . '">
+                <input type="submit" value="Patient Search" class="btn btn-success">
+                <span id="lab-allergiesHelpBlock" class="form-text text-muted">
+                    Enter Card No., Phone No., Name, age, or ward for multiple search separated with comma <strong>, or ;</strong> </span>
+            </div>
+        </div>
+    </div>';
+    if ($patient_search !== "") {
+        show_patient();
+    }
+    echo '</form>';
+}
+
+function show_patient($card_no = null)
+{
+    echo '<div class="item form-group x_panel">';
+    if ($card_no != null) {
+        echo '<p>
+        <strong>Card No.:</strong> .<u> ' . $card_no . '</u><br>
+        <strong>Name:</strong> test1234,
+        <strong>Age:</strong> 20,
+        <strong>PhoneNr.:</strong> 0911234567<br>
+        <strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis mollitia natus ut nostrum architecto autem quam alias perspiciatis, maxime cum!<br>
+
+          </p>';
+    } else {
+        if (isset($_GET)) {
+            if (isset($_GET['patient-search'])) {
+                $search = $_GET['patient-search'];
+
+                echo '
+
+                      <div class="card-box table-responsive">
+                        <p class="text-muted font-13 m-b-30">
+                        Patients matching results
+                        </p>
+                        <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                          <thead>
+                            <tr>
+                              <th>Profile</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>';
+                for ($i = 0; $i < 1; $i++) {
+                    $randomNr = "ZMRH0000001";
+                    echo '<tr>
+                              <td>
+                               <p>
+                               <strong>Card No.:</strong> .<u> ' . $randomNr . '</u><br>
+                               <strong>Name:</strong> ' . $search . ',
+                               <strong>Age:</strong> 20,
+                               <strong>PhoneNr.:</strong> 0911234567<br>
+                               <strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis mollitia natus ut nostrum architecto autem quam alias perspiciatis, maxime cum!<br>
+
+                                 </p>
+                               </td>
+                              <td><a href="./lab-request-sc.php?patient-search=' . $search . '&card-no=' . $randomNr . '" class="btn btn-success">Proceed with Card No. ' . $randomNr . '</a></td>
+                              </tr>';
+                }
+                echo '
+                          </tbody>
+                        </table>
+                      </div>
+            ';
+            }
+        }
+    }
+    echo '</div>';
+}
+
+
 function headerLinks($title = null, $dir = null)
 {
     if ($dir == null) {
@@ -15,7 +97,7 @@ function headerLinks($title = null, $dir = null)
 
     if ($_SERVER['DOCUMENT_ROOT'] == "medic-ethiopia.com") {
         echo '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">';
-    }else{
+    } else {
         echo '<!-- Bootstrap -->
         <link href="' . $dir . '/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">';
     }
@@ -176,11 +258,11 @@ function patient_search()
     echo '
     <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left">
     <div class="item form-group">
-        <label for="card-number" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
+        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
         <div class="col-md-6 col-sm-6">
 
             <div class="input-group" method="post" action="paitent-search.php">
-                <input id="card-number" name="card-number" placeholder="Enter Patient by Card No." type="text" class="form-control" required="required">
+                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required">
                 <input type="submit" value="Patient Search" class="btn btn-success">
                 <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
                     patient is registered in

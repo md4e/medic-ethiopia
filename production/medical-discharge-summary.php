@@ -147,6 +147,39 @@ patient_search()
                                         </div>
                                     </div>
                                     <div class="item form-group">
+                                        <label for="date-of-discharge" class="col-form-label col-md-3 col-sm-3 label-align">Date of
+                                            Discharge</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="date-of-discharge" name="date-of-discharge" type="date" class="form-control" aria-describedby="date-of-dischargeHelpBlock">
+                                            <!-- <span id="date-of-dischargeHelpBlock" class="form-text text-muted">when was the patient discharged</span> -->
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="discharging-doctor" class="col-form-label col-md-3 col-sm-3 label-align">Discharging
+                                            Doctor</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <select id="discharging-doctor" name="discharging-doctor" class="custom-select" aria-describedby="discharging-doctorHelpBlock" required="required">
+                                                <option value="unknown">Choose doctor</option>
+                                                <option value="a">Dr. A</option>
+                                                <option value="b">Dr. B</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                            <!-- <span id="discharging-doctorHelpBlock" class="form-text text-muted">Choose the discharging Doctor</span> -->
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label for="director-signature-for-dicharge" class="col-form-label col-md-3 col-sm-3 label-align">Director Signature for
+                                            Dicharge</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <select id="director-signature-for-dicharge" name="director-signature-for-dicharge" class="custom-select" aria-describedby="director-signature-for-dichargeHelpBlock">
+                                                <option value="unknow">Choose signature</option>
+                                                <option value="yes-confirm-discharge">Yes, I confirm dischage
+                                                </option>
+                                            </select>
+                                            <!-- <span id="director-signature-for-dichargeHelpBlock" class="form-text text-muted">Medical Director confirm for Discharging of patient</span> -->
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
                                         <label for="discharge-summary-sheet-remark" class="col-form-label col-md-3 col-sm-3 label-align">Recommendation</label>
                                         <div class="col-md-6 col-sm-6">
                                             <textarea id="remark" name="remark" cols="40" rows="5" class="form-control"></textarea>

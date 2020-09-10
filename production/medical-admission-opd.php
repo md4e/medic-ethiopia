@@ -291,7 +291,7 @@ patient_search()
 
     <script>
         $('.auto-generate-card').on("click", function() {
-            $('#card-number').val(Math.floor(Math.random() * 10000000) + 1000);
+            $('#patient-search').val(Math.floor(Math.random() * 10000000) + 1000);
         });
     </script>
 

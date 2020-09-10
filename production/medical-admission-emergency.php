@@ -54,13 +54,13 @@ include_once "./config.php";
                                 <br />
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                                     <div class="item form-group">
-                                        <label for="card-number" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
+                                        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
                                         <div class="col-md-3 col-sm-3">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">ZMRH-</div>
                                                 </div>
-                                                <input id="card-number" name="card-number" placeholder="Write bed number" type="text" class="form-control" required="required">
+                                                <input id="patient-search" name="patient-search" placeholder="Write bed number" type="text" class="form-control" required="required">
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-sm-3">
@@ -327,43 +327,6 @@ include_once "./config.php";
                                             <!-- <span id="director-signature-for-admissionHelpBlock" class="form-text text-muted">Medical Director confirm for Admission of patient</span> -->
                                         </div>
                                     </div>
-
-
-                                    <div class="item form-group">
-                                        <label for="date-of-discharge" class="col-form-label col-md-3 col-sm-3 label-align">Date of
-                                            Discharge</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <input id="date-of-discharge" name="date-of-discharge" type="date" class="form-control" aria-describedby="date-of-dischargeHelpBlock">
-                                            <!-- <span id="date-of-dischargeHelpBlock" class="form-text text-muted">when was the patient discharged</span> -->
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label for="discharging-doctor" class="col-form-label col-md-3 col-sm-3 label-align">Discharging
-                                            Doctor</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <select id="discharging-doctor" name="discharging-doctor" class="custom-select" aria-describedby="discharging-doctorHelpBlock" required="required">
-                                                <option value="unknown">Choose doctor</option>
-                                                <option value="a">Dr. A</option>
-                                                <option value="b">Dr. B</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                            <!-- <span id="discharging-doctorHelpBlock" class="form-text text-muted">Choose the discharging Doctor</span> -->
-                                        </div>
-                                    </div>
-
-                                    <div class="item form-group">
-                                        <label for="director-signature-for-dicharge" class="col-form-label col-md-3 col-sm-3 label-align">Director Signature for
-                                            Dicharge</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <select id="director-signature-for-dicharge" name="director-signature-for-dicharge" class="custom-select" aria-describedby="director-signature-for-dichargeHelpBlock">
-                                                <option value="unknow">Choose signature</option>
-                                                <option value="yes-confirm-discharge">Yes, I confirm dischage
-                                                </option>
-                                            </select>
-                                            <!-- <span id="director-signature-for-dichargeHelpBlock" class="form-text text-muted">Medical Director confirm for Discharging of patient</span> -->
-                                        </div>
-                                    </div>
-
                                     <div class="ln_solid"></div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6 offset-md-3">
@@ -394,13 +357,10 @@ include_once "./config.php";
     <?php
     include_js();
     ?>
-
     <script>
         $('.auto-generate-card').on("click", function() {
-            $('#card-number').val(Math.floor(Math.random() * 10000000) + 1000);
+            $('#patient-search').val(Math.floor(Math.random() * 10000000) + 1000);
         });
     </script>
-
 </body>
-
 </html>

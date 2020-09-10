@@ -55,11 +55,11 @@ include_once "./config.php";
                                 <br />
                                 <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./core.php">
                                     <div class="item form-group">
-                                        <label for="card-number" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
+                                        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
                                         <div class="col-md-6 col-sm-6">
 
                                             <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="card-number" name="card-number" placeholder="Enter Patient by Card No." type="text" class="form-control" required="required">
+                                                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required">
                                                 <input type="submit" value="Patient Search" class="btn btn-success">
                                                 <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
                                                     patient is registered in

@@ -38,7 +38,7 @@ include_once "./config.php";
             <div class="x_title">
               <a href="patient-list-opd.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-dark"><i class="fa fa-list"></i> OPD - Patient List</p>
+                  <p class="h4 text-dark"><i class="fa fa-list"></i> OPD - Patients Appointment</p>
                 </div>
               </a>
             </div>
