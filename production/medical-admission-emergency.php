@@ -30,16 +30,6 @@ include_once "./config.php";
                     <div class="title_center">
                     </div>
 
-                    <!-- <div class="title_right">
-                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="clearfix"></div>
                 <div class="row">
@@ -49,6 +39,9 @@ include_once "./config.php";
                                 <h2>Enter Patient information and search with id</h2>
 
                                 <div class="clearfix"></div>
+                                <?php
+                                show_patient();
+                                ?>
                             </div>
                             <div class="x_content">
                                 <br />
@@ -363,4 +356,5 @@ include_once "./config.php";
         });
     </script>
 </body>
+
 </html>

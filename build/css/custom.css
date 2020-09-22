@@ -1066,6 +1066,7 @@
 
 .left_col {
   background: #2A3F54;
+  color : #545963;
 }
 
 .container {
@@ -1498,9 +1499,11 @@ body {
   color: #73879C;
   background: #2A3F54;
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
-  font-size: 13px;
+  /* font-size: 13px; */
+  font-size: .875rem;
   font-weight: 400;
   line-height: 1.471;
+  color: #545963;
 }
 
 .main_container .top_nav {
@@ -1724,6 +1727,7 @@ a:hover, a:focus {
 .nav.side-menu>li>a:hover, .nav>li>a:focus {
   text-decoration: none;
   background: transparent;
+  background: black;
 }
 
 .nav.child_menu {

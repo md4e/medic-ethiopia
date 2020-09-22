@@ -55,14 +55,14 @@ $serologyTestArray = [
     2  => ["name" => "HBs Ag", "fullname" => $a2, "unit" => "Mg/dl", "range" => [1, 70, 115]],
     3  => ["name" => "HCV", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
     4  => ["name" => "Serum HCG (Pregnancy)", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
-    5  => ["name" => "Widal (S'H')", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
-    6  => ["name" => "Widal (S'O')", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    5  => ["name" => "Widal (S\'H\')", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    6  => ["name" => "Widal (S\'O\')", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
     7  => ["name" => "Porteus OX-19", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
     8  => ["name" => "Rheumatoid Factor", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
     9  => ["name" => "ASO", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
     10 => ["name" => "RPR/VDRL", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
     11 => ["name" => "C-reactive Protien", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
-    12 => ["name" => "Combus's Test", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    12 => ["name" => "Combus\'s Test", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
     13 => ["name" => "Anti-nucleate anitbody", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
 ];
 
@@ -159,16 +159,16 @@ $urineAnalysisTestArray = [
 ];
 
 $urineAnalysisTestMicroscopyArray = [
-    1 => "WBC",
-    2 => "RBC",
-    3 => "Epithelial Cell",
-    4 => "Cast",
-    5 => "Mucus trade",
-    6 => "Bacteria",
-    7 => "Crystals",
-    8 => "Parasite",
-    9 => "Other",
-    10 => "HCG (Pregnancy)",
+    "WBC1"=> "WBC",
+    "RBC2"=> "RBC",
+    "EpithelialCell3"=> "Epithelial Cell",
+    "Cast4"=> "Cast",
+    "MucusTrade5"=> "Mucus trade",
+    "Bacteria6"=> "Bacteria",
+    "Crystals7"=> "Crystals",
+    "Parasite8"=> "Parasite",
+    "Other9"=> "Other",
+    "HCG1" => "HCG (Pregnancy)",
 ];
 
 $oxygenDeviceAirArray = [

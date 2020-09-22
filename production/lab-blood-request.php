@@ -42,21 +42,9 @@ include_once "./config.php";
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./core.php">
-                                    <div class="item form-group">
-                                        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required">
-                                                <input type="submit" value="Patient Search" class="btn btn-success">
-                                                <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
-                                                    patient is registered in
-                                                    New platform filled below will be filled by data result of the
-                                                    search request</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                <?php
+                                show_patient_form('./lab-blood-request.php');
+                                ?>
 
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="lab-blood-request-form.php">
                                     <div class="item form-group">
@@ -98,20 +86,20 @@ include_once "./config.php";
                                 echo '<tr>';
                                 echo '<td><select id="blood-request-test-blood-group" name="blood-request-test-blood-group" class="custom-select" required="required">';
                                 foreach ($bloodGroupArray as $key => $value) {
-                                    echo '<option value="'.$key.'">' . $value . '</option>';
+                                    echo '<option value="' . $key . '">' . $value . '</option>';
                                 }
                                 echo '</select></td>';
                                 echo '<td><select id="blood-request-test-rh-factor" name="blood-request-test-rh-factor" class="custom-select" required="required">';
                                 foreach ($bloodRhFactorArray as $key => $value) {
-                                    echo '<option value="'.$key.'">' . $value . '</option>';
+                                    echo '<option value="' . $key . '">' . $value . '</option>';
                                 }
                                 echo '</select></td>';
                                 echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key .
-                                '-0" name="blood-request-test-start-' . $key0 . '-' . $key . '-0" type="number" class="form-control" required="required"></td>';
+                                    '-0" name="blood-request-test-start-' . $key0 . '-' . $key . '-0" type="number" class="form-control" required="required"></td>';
                                 echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key .
-                                '-1" name="blood-request-test-start-' . $key0 . '-' . $key . '-1" type="number" class="form-control" required="required"></td>';
+                                    '-1" name="blood-request-test-start-' . $key0 . '-' . $key . '-1" type="number" class="form-control" required="required"></td>';
                                 echo '<td class="list-td"><input id="blood-request-test-' . $value0 . '-' . $key0 . '-' . $key .
-                                '-2" name="blood-request-test-start-' . $key0 . '-' . $key . '-2" type="text" class="form-control" required="required"></td>';
+                                    '-2" name="blood-request-test-start-' . $key0 . '-' . $key . '-2" type="text" class="form-control" required="required"></td>';
                                 echo '</tr>';
                                 echo '</tbody></table></div></div>';
                             }

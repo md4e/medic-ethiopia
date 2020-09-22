@@ -64,7 +64,7 @@ include_once "./config.php";
 
                                             </div>
                                             <?php
-                                            show_patient_form();
+                                            show_patient_form('./lab-request.php');
                                             ?>
                                         </div>
                                     </div>
@@ -77,12 +77,14 @@ include_once "./config.php";
                                             <div class="x_title">
                                                 <p class="h4 text-danger"><i class="fa fa-flask"></i> LAB:Request Serology & Coagulation <?php echo isset($_GET['card-no']) ? $_GET['card-no'] : ""; ?></p>
                                                 <ul class="nav navbar-right panel_toolbox">
-                                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                    <li><a href="./index1.php" class=""><button class="btn btn-md btn-danger"><i class="fa fa-close"></i>Close Patient Session</button></a>
+
+                                                    <!-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i><button class="btn btn-md btn-danger">CLOSE</button></a>
                                                     </li>
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                                     </li>
-                                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                    <li><a class="close-link"><i class="fa fa-close"></i></a> -->
                                                     </li>
                                                 </ul>
                                                 <div class="clearfix">
@@ -134,7 +136,6 @@ include_once "./config.php";
                                                         </div>
                                                     </div>
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>

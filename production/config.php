@@ -1,88 +1,142 @@
 <?php
+session_start();
 
-function show_patient_form()
+
+function session_handler()
 {
-    $patient_search = isset($_GET['patient-search']) ? $_GET['patient-search'] : "";
+    $_SESSION['pID'] = 100;
+
+    // if (isset($_GET['search_text']) && isset($_GET['card-no'])) {
+    //     if (!isset($_SESSION['pID'])) {
+    //         $_SESSION['pID'] = $_GET['card-no'];
+    //     }
+    // }
+    // if (isset($_GET['action']) && ($_GET['action'] == 'end-session')) {
+    //     // Removing session data
+    //     if (isset($_SESSION["pID"])) {
+    //         unset($_SESSION["pID"]);
+    //     }
+    // }
+}
+session_handler();
+function show_patient_form($action = null)
+{
+    if(isset($_GET['search-clean']) && !isset($_REQUEST['search_text'])){
+        unset($_SESSION['search_result']);
+    }
+    $search_text = isset($_REQUEST['search_text']) ? $_REQUEST['search_text'] : "";
     echo '
-    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./lab-request.php">
+    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" method="post" action="./search.php">
     <div class="item form-group x_panel">
-        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
+        <label for="search_text" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
         <div class="col-md-6 col-sm-6">
-            <div class="input-group" method="post" action="paitent-search.php">
-                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required" value="' . $patient_search . '">
+            <div class="form-group" method="post" action="paitent-search.php">
+                <input id="search_text" name="search_text" placeholder="Enter query" type="text" class="form-control" required="required" value="' . $search_text . '">
                 <input type="submit" value="Patient Search" class="btn btn-success">
                 <span id="lab-allergiesHelpBlock" class="form-text text-muted">
                     Enter Card No., Phone No., Name, age, or ward for multiple search separated with comma <strong>, or ;</strong> </span>
             </div>
         </div>
     </div>';
-    if ($patient_search !== "") {
-        show_patient();
+    if (isset($_SESSION['search_result']) && sizeof($_SESSION['search_result']) > 0 && $_SESSION['search_result'][0] != '') {
+        show_list_of_matching_patient();
+    } else if ($search_text != "") {
+        echo '<p class="h4 text-danger">No Patient mathing input <strong>' . $search_text . '</strong></p>';
+        unset($_SESSION['search_result']);
     }
+
+
     echo '</form>';
 }
 
-function show_patient($card_no = null)
+function show_list_of_matching_patient()
 {
-    echo '<div class="item form-group x_panel">';
-    if ($card_no != null) {
-        echo '<p>
-        <strong>Card No.:</strong> .<u> ' . $card_no . '</u><br>
-        <strong>Name:</strong> test1234,
-        <strong>Age:</strong> 20,
-        <strong>PhoneNr.:</strong> 0911234567<br>
-        <strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis mollitia natus ut nostrum architecto autem quam alias perspiciatis, maxime cum!<br>
+    echo '<div class="card-box table-responsive">
+    <p class="text-muted font-13 m-b-30">
+    Patients matching results
+    </p>
+    <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+        <tr>
+          <th>Profile</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>';
+    $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+    include_once($documentRootPath . "/includes/crypter.php");
+    $sessionSearchResultDecrypted = json_decode(Crypter::decrypt($_SESSION['search_result'][0]));
+    foreach ($sessionSearchResultDecrypted->result as $key => $value) {
+        # code...
+        $valueObj = (object) $value;
+        //var_dump($valueObj);
+        $_SESSION[$valueObj->patient_card_number] = base64_encode(serialize($valueObj));
+        echo '<tr>
+          <td>
+           <p>
+           <strong>Card No.:</strong> .<u> ' . $valueObj->patient_card_number . '</u><br>
+           <strong>Name:</strong> ' . $valueObj->patient_first_name . ',
+           <strong>Age:</strong> ' . $valueObj->patient_age . ',
+           <strong>PhoneNr.:</strong> ' . $valueObj->patient_phone . ',
+           <strong>Kebele:</strong> ' . $valueObj->patient_kebele . ',
+           <strong>Wereda:</strong> ' . $valueObj->patient_wereda . '
 
-          </p>';
-    } else {
-        if (isset($_GET)) {
-            if (isset($_GET['patient-search'])) {
-                $search = $_GET['patient-search'];
+           <br><strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. !<br>
 
-                echo '
-
-                      <div class="card-box table-responsive">
-                        <p class="text-muted font-13 m-b-30">
-                        Patients matching results
-                        </p>
-                        <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
-                          <thead>
-                            <tr>
-                              <th>Profile</th>
-                              <th>Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>';
-                for ($i = 0; $i < 1; $i++) {
-                    $randomNr = "ZMRH0000001";
-                    echo '<tr>
-                              <td>
-                               <p>
-                               <strong>Card No.:</strong> .<u> ' . $randomNr . '</u><br>
-                               <strong>Name:</strong> ' . $search . ',
-                               <strong>Age:</strong> 20,
-                               <strong>PhoneNr.:</strong> 0911234567<br>
-                               <strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis mollitia natus ut nostrum architecto autem quam alias perspiciatis, maxime cum!<br>
-
-                                 </p>
-                               </td>
-                              <td><a href="./lab-request.php?patient-search=' . $search . '&card-no=' . $randomNr . '" class="btn btn-success">Proceed with Card No. ' . $randomNr . '</a></td>
-                              </tr>';
-                }
-                echo '
-                          </tbody>
-                        </table>
-                      </div>
-            ';
-            }
-        }
+             </p>
+           </td>
+          <td><a href="./session.php?card-no=' . Crypter::urlencode_encrypt($valueObj->patient_card_number) . '" class="btn btn-primary">';
+        unset($_SESSION[$valueObj->patient_card_number]);
+        echo '<i class="fa fa-lock"></i> Open Journal ' . $valueObj->patient_card_number . '</a></td></tr>';
     }
-    echo '</div>';
+    echo '
+      </tbody>
+    </table>
+  </div>
+';
 }
+function show_patient()
+{
+    if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
+        //var_dump($_SESSION['patient_card_number']);
+        $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+        include_once($documentRootPath . "/includes/crypter.php");
+        $patientSession = (object)$_SESSION['patient_card_number'];
+        echo '<div class="item form-group x_panel">';
+        echo '<div class="row" style="width:100%;padding:5px;">';
+        echo '<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;padding:0;">';
+        echo '<p><a href="./session.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Close </a></p>';
+        echo '</div>';
 
+
+        echo '<div class="row">';
+        echo '<div class="col-md-12 col-sm-12 col-xs-12">';
+        echo '<p class="h5 text-primary"><i class="fa fa-user"></i> ' . $patientSession->patient_first_name . ', Age:' . $patientSession->patient_age . ', Dept: OPD</p>';
+        echo '<p>';
+
+
+        echo '
+        <strong>Card No.:</strong> .<u> <strong>' . $patientSession->patient_card_number . '</strong></u><br>
+        <strong>Name:</strong> ' . $patientSession->patient_first_name . ', <strong>Age:</strong>:' . $patientSession->patient_age . ', Dept: OPD,
+        <strong>PhoneNr.:</strong> ' . $patientSession->patient_phone . '<br>
+        <strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit.!
+          </p>';
+          echo '</p>';
+          echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
+          echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
+          echo '</div>';
+
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+}
 
 function headerLinks($title = null, $dir = null)
 {
+
+
     if ($dir == null) {
         $dir = "..";
     }
@@ -103,8 +157,10 @@ function headerLinks($title = null, $dir = null)
     }
     echo '<!-- Font Awesome -->
     <link href="' . $dir . '/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Custom Theme Style -->
-    <link href="' . $dir . '/build/css/custom.min.css" rel="stylesheet">';
+    <!-- Custom Theme Style
+    <link href="' . $dir . '/build/css/custom.min.css" rel="stylesheet"> -->
+    <link href="' . $dir . '/build/css/custom.css" rel="stylesheet">';
+
 
     // echo '    <!-- Bootstrap -->
     //     <link href="'. $dir .'/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -124,6 +180,12 @@ function headerLinks($title = null, $dir = null)
     //     <link href="'. $dir .'/vendors/starrr/dist/starrr.css" rel="stylesheet">
     //     <!-- bootstrap-daterangepicker -->
     //     <link href="'. $dir .'/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">';
+}
+function patient_window()
+{
+    // if (isset($_SESSION['pID'])) {
+    //     show_patient(isset($_SESSION['pID']) ? $_SESSION['pID'] : null);
+    // }
 }
 function main_container_top_navigation()
 {
@@ -160,13 +222,15 @@ function main_container_top_navigation()
                     <!-- <h3>Departments</h3> -->
                     <ul class="nav side-menu">
                         <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> -->
-                        <li><a href="index1.php"><i class="fa fa-dashboard"></i>DASHBOARD</a></li>
-                        <li style="background-color:red;font-weight:bold"><a href="index2.php" style="font-weight:bold;"><i class="fa fa-plus h2"></i>EMERGENCY</a></li>
-                        <li style="background-color:#2565AE;font-weight:bold"><a href="index3.php" style="font-weight:bold;"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
-                        <li style="background-color:yellow;font-weight:bold"><a href="index4.php" style="font-weight:bold;;color:black"><i class="fa fa-exclamation-triangle"></i>RADIOLOGY</a></li>
-                        <li style="background-color:;font-weight:bold"><a href="index5.php" style="font-weight:bold;"><i class="fa fa-flask text-light"></i>LABORATORY</a></li>
-                        <li style="background-color:;font-weight:bold"><a href="index6.php" style="font-weight:bold;"><i class="fa fa-book text-primary"></i>FORMS</a></li>
-                        <li style="background-color:;font-weight:bold"><a href="index7.php" style="font-weight:bold;"><i class="fa fa-users text-info"></i>ALL PATIENTS</a></li>
+                        <li><a href="index1.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+                        <li ><a href="index_search.php?search-clean=true"><i class="fa fa-search text-info"></i>Patient Search</a></li>
+                        <li ><a href="index2.php"><i class="fa fa-plus text-danger"></i>Emergency</a></li>
+                        <li ><a href="index3.php"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
+                        <li ><a href="index4.php"><i class="fa fa-exclamation-triangle text-warning"></i>Radiology</a></li>
+                        <li ><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory</a></li>
+                        <li ><a href="index6.php"><i class="fa fa-book text-primary"></i>All Forms</a></li>
+                        <li ><a href="index7.php"><i class="fa fa-users text-info"></i>All Patients</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -199,6 +263,15 @@ function main_container_top_navigation()
 </div>
 <!-- /top navigation -->
     ';
+    // <li><a href="index1.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+    // <li style="background-color:;font-weight:bold"><a href="index_search.php" style="font-weight:bold;"><i class="fa fa-search text-info"></i>Patient Search</a></li>
+    // <li style="background-color:red;font-weight:bold"><a href="index2.php" style="font-weight:bold;"><i class="fa fa-plus h2"></i>Emergency</a></li>
+    // <li style="background-color:#2565AE;font-weight:bold"><a href="index3.php" style="font-weight:bold;"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
+    // <li style="background-color:yellow;font-weight:bold"><a href="index4.php" style="font-weight:bold;;color:black"><i class="fa fa-exclamation-triangle"></i>Radiology</a></li>
+    // <li style="background-color:;font-weight:bold"><a href="index5.php" style="font-weight:bold;"><i class="fa fa-flask text-light"></i>Laboratory</a></li>
+    // <li style="background-color:;font-weight:bold"><a href="index6.php" style="font-weight:bold;"><i class="fa fa-book text-primary"></i>All Forms</a></li>
+    // <li style="background-color:;font-weight:bold"><a href="index7.php" style="font-weight:bold;"><i class="fa fa-users text-info"></i>All Patients</a></li>
+
 }
 function include_js()
 {
@@ -258,11 +331,11 @@ function patient_search()
     echo '
     <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left">
     <div class="item form-group">
-        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
+        <label for="search_text" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
         <div class="col-md-6 col-sm-6">
 
             <div class="input-group" method="post" action="paitent-search.php">
-                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required">
+                <input id="search_text" name="search_text" placeholder="Enter query" type="text" class="form-control" required="required">
                 <input type="submit" value="Patient Search" class="btn btn-success">
                 <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
                     patient is registered in

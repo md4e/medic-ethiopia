@@ -25,7 +25,7 @@ include_once "./config.php";
             <div class="x_title">
               <a href="patient-list-radiology.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h3 text-dark"><i class="fa fa-list"></i> Radiology Patient List</p>
+                  <p class="h4 text-dark"><i class="fa fa-list"></i> Radiology Patient List</p>
                 </div>
               </a>
             </div>
@@ -38,7 +38,7 @@ include_once "./config.php";
             <div class="x_title">
               <a href="lab-x-ray.php" class="laboratory-form">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-dark"><i class="fa fa-camera"></i>X-Ray Form</p>
+                  <p class="h4 text-dark"><i class="fa fa-camera"></i> x-Ray Form</p>
                 </div>
               </a>
             </div>

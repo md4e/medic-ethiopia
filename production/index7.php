@@ -58,14 +58,15 @@ include_once "./config.php";
                       <p class="text-muted font-13 m-b-30">
 
                       </p>
+
                       <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                           <tr>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
+                            <th>CardNo</th>
+                            <th>Phone</th>
                             <th>Age</th>
-                            <th>NEWS Rank</th>
+                            <th>Gender</th>
                             <th>Admitted Date</th>
                             <th>Dicharge date</th>
                             <th>Payment Compelete</th>
@@ -75,23 +76,26 @@ include_once "./config.php";
                         </thead>
                         <tbody>
                           <?php
+                          $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+                          include_once($documentRootPath . "/classes/medicPatientTable.php");
+                          $patients = new medicPatientTable('*');
+                          $result =  $patients->getResultSet();
+                          $result->data_seek(0);
                           $department = [0 => "OPD", 1 => "Emergency", 2 => "Radiology", 3 => "@Chemistry Lab", 4 => "@Stool Examination"];
-                          for ($i = 0; $i < 500; $i++) {
+                          while ($rows = $result->fetch_object()) {
                             $index = rand(0, 4);
-
-                            echo '
-                          <tr>
-                            <td><a href="./patient-list-detail.php?Id=' . $i . '" class="btn btn-info">Name FatherName</a></td>
-                            <td>Accountant</td>
-                            <td>Addis Ababa</td>
-                            <td>61</td>
-                            <td>4</td>
-                            <td>2011/04/25</td>
-                            <td>2011/04/25</td>
-                            <td>Yes</td>
-                            <td><button class="btn-warning">waiting 30min</button></td>
-                            <td>' . $department[$index] . '</td>
-                          </tr>';
+                            echo '<tr>';
+                            echo '<td>' . $rows->patient_first_name . '</td>';
+                            echo '<td><a href="./index_patient.php?card-no=' . $rows->patient_card_number . '" class="btn btn-info">' . $rows->patient_card_number . '</a></td>';
+                            echo '<td>' . $rows->patient_phone . '</td>';
+                            echo '<td>' . $rows->patient_age . '</td>';
+                            echo '<td>' . $rows->patient_gender . '</td>';
+                            echo '<td>2011/04/25</td>';
+                            echo '<td>2011/04/25</td>';
+                            echo '<td>Yes</td>';
+                            echo '<td><button class="btn-warning">waiting 30min</button></td>';
+                            echo '<td>' . $department[$index] . '</td>';
+                            echo '</tr>';
                           }
                           ?>
                         </tbody>
