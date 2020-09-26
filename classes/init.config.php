@@ -11,11 +11,11 @@ if ($_SERVER['SERVER_NAME'] == "medic-ethiopia" || $_SERVER['SERVER_NAME'] == "l
 } else {
     if ($_SERVER['SERVER_NAME'] == "medic-ethiopia.com") {
         $config = parse_ini_file('/home/a1e50s1696c1/db.ini');
-        define("DBHOST", $config["DBHOST"]);
-        define("DBUSER", $config["DBUSER"]);
-        define("DBPASSWORD", $config["DBPASSWORD"]);
-        define("DBNAME", $config["DBNAME"]);
-        define('DBPORT', $config['DBPORT']);
+        define("DBHOST", $config["DBHOST2"]);
+        define("DBUSER", $config["DBUSER2"]);
+        define("DBPASSWORD", $config["DBPASSWORD2"]);
+        define("DBNAME", $config["DBNAME2"]);
+        define('DBPORT', $config['DBPORT2']);
     }
 }
 /**
