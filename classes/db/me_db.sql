@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 26, 2020 at 11:00 PM
+-- Generation Time: Sep 26, 2020 at 11:09 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -39,20 +39,13 @@ CREATE TABLE IF NOT EXISTS `admission_table` (
   `examination_room` varchar(45) NOT NULL,
   `refered_from` varchar(45) NOT NULL,
   `allergies` varchar(45) NOT NULL,
-  `remarks` json NOT NULL,
+  `remarks` longtext NOT NULL,
   `admission_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_admission_table_patient_table1_idx` (`patient_card_number`),
   KEY `fk_admission_table_employee_table1_idx` (`employee_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `admission_table`
---
-
-INSERT INTO `admission_table` (`id`, `patient_card_number`, `employee_id`, `created_at`, `status`, `bed_number`, `examination_room`, `refered_from`, `allergies`, `remarks`, `admission_date`) VALUES
-(2, 'ZMRH0000000020', '000001', '2020-09-16 00:00:00', '', '', '', '', '', '[\"He is fine\"]', '2020-09-16 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -72,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `diagnos_vital_sign_table` (
   `oxygen_saturation` int(11) NOT NULL,
   `radom_blood_sugar` int(11) NOT NULL,
   `fasting_blood_sugar` int(11) DEFAULT NULL,
-  `remarks` json DEFAULT NULL,
+  `remarks` longtext,
   `created_at` varchar(45) NOT NULL,
   `status` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
@@ -157,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `lab_serology_coagulation_table` (
   `employee_id` varchar(45) NOT NULL,
   `request_date` datetime NOT NULL,
   `completed_date` datetime NOT NULL,
-  `results` json NOT NULL,
+  `results` longtext NOT NULL,
   `status` varchar(45) NOT NULL,
   `employee_table_id` int(11) NOT NULL,
   `patient_table_patient_id` int(11) NOT NULL,
