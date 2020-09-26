@@ -77,8 +77,8 @@ include_once "./config.php";
                         <tbody>
                           <?php
                           $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
-                          include_once($documentRootPath . "/classes/medicPatientTable.php");
-                          $patients = new medicPatientTable('*');
+                          include_once $documentRootPath . "/classes/MePatientTable.php";
+                          $patients = new MePatientTable('*');
                           $result =  $patients->getResultSet();
                           $result->data_seek(0);
                           $department = [0 => "OPD", 1 => "Emergency", 2 => "Radiology", 3 => "@Chemistry Lab", 4 => "@Stool Examination"];
