@@ -1,17 +1,16 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/init.config.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/medicPatientTable.php';
 
 /**
- * Class medicPatientTable
+ * Class MePatientTable
  * @extends MySqlRecord
- * @filesource medicPatientTable.php
+ * @filesource MePatientTable.php
 */
 
 // namespace hulutera;
 
-class medicPatientTable extends MySqlRecord
+class MePatientTable extends MySqlRecord
 {
     /**
      * A control attribute for the update operation.
@@ -44,8 +43,8 @@ class medicPatientTable extends MySqlRecord
      *  - Data type: varchar(45)
      *  - Null : NO
      *  - DB Index: UNI
-     *  - Default:
-     *  - Extra:
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientCardNumber
      */
     private $patientCardNumber;
@@ -57,9 +56,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientFirstName
      */
     private $patientFirstName;
@@ -71,9 +70,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientLastName
      */
     private $patientLastName;
@@ -85,9 +84,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : YES
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientEmail
      */
     private $patientEmail;
@@ -99,9 +98,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientPhone
      */
     private $patientPhone;
@@ -113,9 +112,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : YES
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientJobTitile
      */
     private $patientJobTitile;
@@ -127,9 +126,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : YES
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientSignature
      */
     private $patientSignature;
@@ -141,9 +140,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientRegisteredDate
      */
     private $patientRegisteredDate;
@@ -155,9 +154,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: int(11)
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var int $patientAge
      */
     private $patientAge;
@@ -169,9 +168,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientGender
      */
     private $patientGender;
@@ -183,9 +182,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientStatus
      */
     private $patientStatus;
@@ -197,9 +196,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: int(11)
      *  - Null : YES
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var int $patientWereda
      */
     private $patientWereda;
@@ -211,9 +210,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: int(11)
      *  - Null : YES
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var int $patientKebele
      */
     private $patientKebele;
@@ -225,9 +224,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientAddress
      */
     private $patientAddress;
@@ -239,9 +238,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index:
+     *  - DB Index: 
      *  - Default: closed
-     *  - Extra:
+     *  - Extra:  
      * @var string $patientSessionStatus
      */
     private $patientSessionStatus;
@@ -253,9 +252,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: datetime
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientSessionOpenAt
      */
     private $patientSessionOpenAt;
@@ -267,9 +266,9 @@ class medicPatientTable extends MySqlRecord
      * Field information:
      *  - Data type: datetime
      *  - Null : NO
-     *  - DB Index:
-     *  - Default:
-     *  - Extra:
+     *  - DB Index: 
+     *  - Default: 
+     *  - Extra:  
      * @var string $patientSessionClosedAt
      */
     private $patientSessionClosedAt;
@@ -769,13 +768,13 @@ class medicPatientTable extends MySqlRecord
     }
 
     /**
-     * The medicPatientTable constructor
+     * The MePatientTable constructor
      *
      * It creates and initializes an object in two way:
      *  - with null (not fetched) data if none $patientId is given.
      *  - with a fetched data row from the table patient_table having patient_id=$patientId
      * @param int $patientId. If omitted an empty (not fetched) instance is created.
-     * @return medicPatientTable Object
+     * @return MePatientTable Object
      */
     public function __construct($patientId = null)
     {
@@ -933,7 +932,7 @@ SQL;
             $sql = <<< SQL
             UPDATE
                 patient_table
-            SET
+            SET 
 				patient_card_number={$this->parseValue($this->patientCardNumber,'notNumber')},
 				patient_first_name={$this->parseValue($this->patientFirstName,'notNumber')},
 				patient_last_name={$this->parseValue($this->patientLastName,'notNumber')},

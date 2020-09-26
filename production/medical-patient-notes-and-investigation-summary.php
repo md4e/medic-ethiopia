@@ -1,5 +1,5 @@
 <?php
-include_once "./lab-chemistry-test-list.php";
+include_once "./lab-all-test-defines.php";
 include_once "./config.php"
 ?>
 <!DOCTYPE html>

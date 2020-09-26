@@ -1,8 +1,11 @@
 <?php
 ob_start();
-include_once "./lab-chemistry-test-list.php";
+include_once "./lab-all-test-defines.php";
 include_once "./config.php";
 include_once "./all_lab_request.php";
+// var_dump($_SESSION['search_result']);
+// var_dump($_SESSION['patient_card_number']);
+// var_dump($_GET);
 ?>
 
 <!DOCTYPE html>
@@ -81,8 +84,14 @@ include_once "./all_lab_request.php";
 
                                                     <?php
                                                     show_patient();
+                                                    if (isset($_GET['lab-request']) && $_GET['lab-request'] == 'complete') {
+                                                        echo '<p class="h4 text-success">Lab request completed, check queue here
+                                                        <a href="./patient-list-laboratory.php">Lab Queue</a>
+                                                        </p>';
+                                                    }
                                                     ?>
                                                 </div>
+
                                                 <div class="tab-pane fade" id="medication" role="tabpanel" aria-labelledby="medication-tab">
                                                     <?php
                                                     show_patient();
@@ -235,18 +244,44 @@ include_once "./all_lab_request.php";
         });
 
         function isClicked(id, name, requestType) {
-            var test = '#'+id;
-            if ($(test).val() == 'X') {
-                $(test).val('+');
-                $(test).css('background','inherit');
-                $('div').remove('.' + requestType+id);
-            } else if ($(test).val() == '+') {
-                $(test).val('X');
-                $(test).css('background','red');
+            var inputId = '#' + id;
+            ///remove Id
+            var dataId = inputId.replace(/\D/g, '');
+            /// get paragraph Id to write summary
+            var p_div = '.test-' + requestType;
+            if ($(inputId).val() == ('X ' + name)) {
+                $(inputId).val('+ ' + name);
+                $(inputId).css('background-color', '');
+                $(inputId).css('color', '');
                 var current = $('.test').text();
-                $('.' + requestType).append('<div class="'+requestType+id+'" style="font-weight:bold;color:green">' + name + '</div>');
+                var text = current.replace(dataId, "");
+                $(p_div).text(text);
+                $('div').remove('.' + requestType + id);
+            } else if ($(inputId).val() == ('+ ' + name)) {
+                $(inputId).val('X ' + name);
+                $(inputId).css('background-color', 'orange');
+                var current = $(p_div).text();
+                $(p_div).text(current + ',' + dataId + '\n');
+                $('.' + requestType).append('<div class="' + requestType + id + '" style="font-weight:bold;color:green">' + name + '</div>');
             }
         }
+
+        $(function() {
+            $('form').bind('submit', function(event) {
+                // using this page stop being refreshing
+                event.preventDefault();
+                var requester = $(this).attr('id'); // == 'lab-serology-form') ? 'lab-serology-form' : 'other';
+                $.ajax({
+                    type: 'POST',
+                    url: 'lab-queue.php',
+                    data: $('form').serialize(),
+                    success: function() {
+                        var result = $('.test-' + requester).text();
+                        window.location = './lab-queue.php?requester=' + requester + '&ids=' + result
+                    }
+                });
+            });
+        });
     </script>
 
 </body>

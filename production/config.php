@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+spl_autoload_register(function ($class_name) {
+    include '../classes/' . $class_name . '.php';
+});
 
 function session_handler()
 {
@@ -21,10 +23,8 @@ function session_handler()
 session_handler();
 function show_patient_form($action = null)
 {
-    if(isset($_GET['search-clean']) && !isset($_REQUEST['search_text'])){
-        unset($_SESSION['search_result']);
-    }
-    $search_text = isset($_REQUEST['search_text']) ? $_REQUEST['search_text'] : "";
+    show_patient();
+    $search_text = isset($_GET['search_text']) ? $_GET['search_text'] : null;
     echo '
     <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" method="post" action="./search.php">
     <div class="item form-group x_panel">
@@ -38,20 +38,21 @@ function show_patient_form($action = null)
             </div>
         </div>
     </div>';
-    if (isset($_SESSION['search_result']) && sizeof($_SESSION['search_result']) > 0 && $_SESSION['search_result'][0] != '') {
-        show_list_of_matching_patient();
-    } else if ($search_text != "") {
-        echo '<p class="h4 text-danger">No Patient mathing input <strong>' . $search_text . '</strong></p>';
-        unset($_SESSION['search_result']);
+
+    if (isset($search_text)) {
+        if (isset($_SESSION['search_result']) && sizeof($_SESSION['search_result']) == 1 && $_SESSION['search_result'][0] != '') {
+            show_list_of_matching_patient();
+        } else {
+            echo '<p class="h4 text-danger">No Patient mathing input <strong>' . $search_text . '</strong></p>';
+            unset($_SESSION['search_result']);
+        }
     }
-
-
     echo '</form>';
 }
 
 function show_list_of_matching_patient()
 {
-    echo '<div class="card-box table-responsive">
+    echo '<div class="card-box table-responsive" >
     <p class="text-muted font-13 m-b-30">
     Patients matching results
     </p>
@@ -67,10 +68,7 @@ function show_list_of_matching_patient()
     include_once($documentRootPath . "/includes/crypter.php");
     $sessionSearchResultDecrypted = json_decode(Crypter::decrypt($_SESSION['search_result'][0]));
     foreach ($sessionSearchResultDecrypted->result as $key => $value) {
-        # code...
         $valueObj = (object) $value;
-        //var_dump($valueObj);
-        $_SESSION[$valueObj->patient_card_number] = base64_encode(serialize($valueObj));
         echo '<tr>
           <td>
            <p>
@@ -80,13 +78,10 @@ function show_list_of_matching_patient()
            <strong>PhoneNr.:</strong> ' . $valueObj->patient_phone . ',
            <strong>Kebele:</strong> ' . $valueObj->patient_kebele . ',
            <strong>Wereda:</strong> ' . $valueObj->patient_wereda . '
-
            <br><strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. !<br>
-
              </p>
            </td>
           <td><a href="./session.php?card-no=' . Crypter::urlencode_encrypt($valueObj->patient_card_number) . '" class="btn btn-primary">';
-        unset($_SESSION[$valueObj->patient_card_number]);
         echo '<i class="fa fa-lock"></i> Open Journal ' . $valueObj->patient_card_number . '</a></td></tr>';
     }
     echo '
@@ -98,14 +93,13 @@ function show_list_of_matching_patient()
 function show_patient()
 {
     if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
-        //var_dump($_SESSION['patient_card_number']);
         $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
         include_once($documentRootPath . "/includes/crypter.php");
         $patientSession = (object)$_SESSION['patient_card_number'];
-        echo '<div class="item form-group x_panel">';
+        echo '<div class="item form-group x_panel" style="border-radius:5px;">';
         echo '<div class="row" style="width:100%;padding:5px;">';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;padding:0;">';
-        echo '<p><a href="./session.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Close </a></p>';
+        echo '<p><a href="./session.php?card-no-close=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Close </a></p>';
         echo '</div>';
 
 
@@ -121,10 +115,10 @@ function show_patient()
         <strong>PhoneNr.:</strong> ' . $patientSession->patient_phone . '<br>
         <strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit.!
           </p>';
-          echo '</p>';
-          echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
-          echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
-          echo '</div>';
+        echo '</p>';
+        echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
+        echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
+        echo '</div>';
 
         echo '</div>';
         echo '</div>';
@@ -135,7 +129,6 @@ function show_patient()
 
 function headerLinks($title = null, $dir = null)
 {
-
 
     if ($dir == null) {
         $dir = "..";
@@ -160,33 +153,8 @@ function headerLinks($title = null, $dir = null)
     <!-- Custom Theme Style
     <link href="' . $dir . '/build/css/custom.min.css" rel="stylesheet"> -->
     <link href="' . $dir . '/build/css/custom.css" rel="stylesheet">';
-
-
-    // echo '    <!-- Bootstrap -->
-    //     <link href="'. $dir .'/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    //     <!-- Font Awesome -->
-    //     <link href="'. $dir .'/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    //     <!-- NProgress -->
-    //     <link href="'. $dir .'/vendors/nprogress/nprogress.css" rel="stylesheet">
-    //     <!-- iCheck -->
-    //     <link href="'. $dir .'/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    //     <!-- bootstrap-wysiwyg -->
-    //     <link href="'. $dir .'/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
-    //     <!-- Select2 -->
-    //     <link href="'. $dir .'/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    //     <!-- Switchery -->
-    //     <link href="'. $dir .'/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    //     <!-- starrr -->
-    //     <link href="'. $dir .'/vendors/starrr/dist/starrr.css" rel="stylesheet">
-    //     <!-- bootstrap-daterangepicker -->
-    //     <link href="'. $dir .'/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">';
 }
-function patient_window()
-{
-    // if (isset($_SESSION['pID'])) {
-    //     show_patient(isset($_SESSION['pID']) ? $_SESSION['pID'] : null);
-    // }
-}
+
 function main_container_top_navigation()
 {
     echo '
@@ -263,15 +231,6 @@ function main_container_top_navigation()
 </div>
 <!-- /top navigation -->
     ';
-    // <li><a href="index1.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-    // <li style="background-color:;font-weight:bold"><a href="index_search.php" style="font-weight:bold;"><i class="fa fa-search text-info"></i>Patient Search</a></li>
-    // <li style="background-color:red;font-weight:bold"><a href="index2.php" style="font-weight:bold;"><i class="fa fa-plus h2"></i>Emergency</a></li>
-    // <li style="background-color:#2565AE;font-weight:bold"><a href="index3.php" style="font-weight:bold;"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
-    // <li style="background-color:yellow;font-weight:bold"><a href="index4.php" style="font-weight:bold;;color:black"><i class="fa fa-exclamation-triangle"></i>Radiology</a></li>
-    // <li style="background-color:;font-weight:bold"><a href="index5.php" style="font-weight:bold;"><i class="fa fa-flask text-light"></i>Laboratory</a></li>
-    // <li style="background-color:;font-weight:bold"><a href="index6.php" style="font-weight:bold;"><i class="fa fa-book text-primary"></i>All Forms</a></li>
-    // <li style="background-color:;font-weight:bold"><a href="index7.php" style="font-weight:bold;"><i class="fa fa-users text-info"></i>All Patients</a></li>
-
 }
 function include_js()
 {
@@ -292,38 +251,6 @@ function include_js()
         <!-- Custom Theme Scripts -->
         <script src="../build/js/custom.min.js"></script>';
     }
-    /*
-                <!-- FastClick -->
-        <script src="../vendors/fastclick/lib/fastclick.js"></script>
-        <!-- NProgress -->
-        <script src="../vendors/nprogress/nprogress.js"></script>
-        <!-- bootstrap-progressbar -->
-        <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-        <!-- iCheck -->
-        <script src="../vendors/iCheck/icheck.min.js"></script>
-        <!-- bootstrap-daterangepicker -->
-        <script src="../vendors/moment/min/moment.min.js"></script>
-        <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <!-- bootstrap-wysiwyg -->
-        <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-        <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-        <script src="../vendors/google-code-prettify/src/prettify.js"></script>
-        <!-- jQuery Tags Input -->
-        <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-        <!-- Switchery -->
-        <script src="../vendors/switchery/dist/switchery.min.js"></script>
-        <!-- Select2 -->
-        <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
-        <!-- Parsley -->
-        <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
-        <!-- Autosize -->
-        <script src="../vendors/autosize/dist/autosize.min.js"></script>
-        <!-- jQuery autocomplete -->
-        <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
-        <!-- starrr -->
-        <script src="../vendors/starrr/dist/starrr.js"></script>
-
-         */
 }
 
 function patient_search()
@@ -347,6 +274,8 @@ function patient_search()
 </form>';
 }
 //////////////////////////// DEFINES ///////////////////////////
+
+
 
 $medication = [
 

@@ -48,6 +48,25 @@ $a11 = "";
 $a12 = "";
 $a13 = "";
 
+$serologyAndCoagulationTestArray = [
+    0  => ["name" => "H-Pylori Ab", "fullname" => $a0, "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    1  => ["name" => "H-Pylori Stool Ag", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    2  => ["name" => "HBs Ag", "fullname" => $a2, "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    3  => ["name" => "HCV", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    4  => ["name" => "Serum HCG (Pregnancy)", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    5  => ["name" => "Widal (SH)", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    6  => ["name" => "Widal (SO)", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    7  => ["name" => "Porteus OX-19", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    8  => ["name" => "Rheumatoid Factor", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    9  => ["name" => "ASO", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    10 => ["name" => "RPR/VDRL", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    11 => ["name" => "C-reactive Protien", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    12 => ["name" => "Combus Test", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    13 => ["name" => "Anti-nucleate anitbody", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 70, 115]],
+    14 => ["name" => "PT  (Coagulation)", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 10, 12]],
+    15 => ["name" => "PTT (Coagulation)", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 25, 35]],
+    26 => ["name" => "INR (Coagulation)", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 0.8, 1.2]],
+];
 
 $serologyTestArray = [
     0  => ["name" => "H-Pylori Ab", "fullname" => $a0, "unit" => "Mg/dl", "range" => [1, 70, 115]],
@@ -144,6 +163,30 @@ $pH = [
     2 => ["Basic", "background-color:green;color:white"],
     3 => ["Acidic", "background-color:#CC0000;color:white"]
 ];
+$bloodTestType = ["CRC", "FFP"];
+$urineAnalysisWithMicroscopyTestArray = [
+    0  => ["name" => "Leucocyte","fullname" => $a0, "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    1  => ["name" => "Nitrite", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    2  => ["name" => "Urobilinogen", "fullname" => $a2, "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    3  => ["name" => "Protien","fullname" => "", "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    4  => ["name" => "pH", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    5  => ["name" => "Blood","fullname" => "", "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    6  => ["name" => "Specific gravity","fullname" => "", "unit" => "Mg/dl", "range" => [0.001, 1.005, 1.025]],
+    7  => ["name" => "Ketone", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    8  => ["name" => "Bilirubin", "fullname" => "", "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    9  => ["name" => "Glucose","fullname" => "", "unit" => "Mg/dl", "range" => [1, 0, 1000]],
+    10 => ["name" => "WBC1 (Microscopy)"],
+    11 => ["name" => "RBC2 (Microscopy)"],
+    12 => ["name" => "EpithelialCell3 (Microscopy)"],
+    13 => ["name" => "Cast4 (Microscopy)"],
+    14 => ["name" => "MucusTrade5 (Microscopy)"],
+    15 => ["name" => "Bacteria6 (Microscopy)"],
+    16 => ["name" => "Crystals7 (Microscopy)"],
+    17 => ["name" => "Parasite8 (Microscopy)"],
+    18 => ["name" => "Other9 (Microscopy)"],
+    19 => ["name" => "HCG1 (Pregnancy) (Microscopy)"],
+];
+
 
 $urineAnalysisTestArray = [
     0  => ["name" => "Leucocyte","fullname" => $a0, "unit" => "Mg/dl", "range" => [1, 0, 1000]],
@@ -180,3 +223,15 @@ $oxygenDeviceAirArray = [
     "CPAP" => "CPAP system",
     "OTH" => "Other device"
 ];
+
+
+
+$labTableToId = [
+    'lab-serology-form' => ['id'=>1,'name'=>'lab-serology-form','data'=>$serologyAndCoagulationTestArray],
+    'lab-blood-form' => ['id'=>2,'name'=>'lab-blood-form','data'=>$bloodTestType],
+    'lab-hematology-form' => ['id'=>3,'name'=>'lab-hematology-form','data'=>$hematologyTestArray],
+    'lab-chemistry-form' => ['id'=>4,'name'=>'lab-chemistry-form','data'=>$chemistryLabTestArray],
+    'lab-urine-analysis-form' => ['id'=>5,'name'=>'lab-urine-analysis-form','data'=>$urineAnalysisWithMicroscopyTestArray]
+ ];
+
+ $GLOBALS['labTableToId'] = $labTableToId;

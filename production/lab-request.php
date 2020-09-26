@@ -1,5 +1,5 @@
 <?php
-include_once "./lab-chemistry-test-list.php";
+include_once "./lab-all-test-defines.php";
 include_once "./config.php";
 ?>
 <!DOCTYPE html>
@@ -10,9 +10,7 @@ include_once "./config.php";
     headerLinks("Serology & Coagulation Request");
     ?>
     <style>
-        .x_panel {
-            /* border: black 1px solid; */
-        }
+
     </style>
 </head>
 

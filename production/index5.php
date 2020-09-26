@@ -37,7 +37,7 @@ include_once "./config.php";
           </div>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
@@ -49,7 +49,7 @@ include_once "./config.php";
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="col-md-6">

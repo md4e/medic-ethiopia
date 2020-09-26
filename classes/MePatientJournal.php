@@ -1,17 +1,16 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/init.config.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/medicPatientTable.php';
 
 /**
- * Class medicPatientJournal
+ * Class MePatientJournal
  * @extends MySqlRecord
- * @filesource medicPatientJournal.php
+ * @filesource MePatientJournal.php
 */
 
 // namespace hulutera;
 
-class medicPatientJournal extends MySqlRecord
+class MePatientJournal extends MySqlRecord
 {
     /**
      * A control attribute for the update operation.
@@ -289,13 +288,13 @@ class medicPatientJournal extends MySqlRecord
     }
 
     /**
-     * The medicPatientJournal constructor
+     * The MePatientJournal constructor
      *
      * It creates and initializes an object in two way:
      *  - with null (not fetched) data if none $id is given.
      *  - with a fetched data row from the table patient_journal having id=$id
      * @param int $id. If omitted an empty (not fetched) instance is created.
-     * @return medicPatientJournal Object
+     * @return MePatientJournal Object
      */
     public function __construct($id = null)
     {

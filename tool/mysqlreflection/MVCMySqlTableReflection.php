@@ -123,7 +123,7 @@ class MVCMySqlTableReflection extends mysqli
         }
 
         // Set the name for yhe generated Class
-        $className = "medic" . MVCMySqlFieldToAttributeReflection::underscoreToCamelCase($tableName, true);
+        $className = "Me" . MVCMySqlFieldToAttributeReflection::underscoreToCamelCase($tableName, true);
         $this->className = $className;
 
         // Initializes the builder for the current table

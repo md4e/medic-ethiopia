@@ -1,17 +1,16 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/init.config.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/medicPatientTable.php';
 
 /**
- * Class medicEmployeeTable
+ * Class MeEmployeeTable
  * @extends MySqlRecord
- * @filesource medicEmployeeTable.php
+ * @filesource MeEmployeeTable.php
 */
 
 // namespace hulutera;
 
-class medicEmployeeTable extends MySqlRecord
+class MeEmployeeTable extends MySqlRecord
 {
     /**
      * A control attribute for the update operation.
@@ -208,7 +207,7 @@ class medicEmployeeTable extends MySqlRecord
      * Class attribute for storing the SQL DDL of table employee_table
      * @var string base64 encoded string for DDL
      */
-    private $ddl = "Q1JFQVRFIFRBQkxFIGBlbXBsb3llZV90YWJsZWAgKAogIGBpZGAgaW50KDExKSBOT1QgTlVMTCBBVVRPX0lOQ1JFTUVOVCwKICBgZW1wbG95ZWVfaWRgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBmaXJzdF9uYW1lYCB2YXJjaGFyKDQ1KSBOT1QgTlVMTCwKICBgbGFzdF9uYW1lYCB2YXJjaGFyKDQ1KSBOT1QgTlVMTCwKICBgYWdlYCBpbnQoMTEpIERFRkFVTFQgTlVMTCwKICBgZ2VuZGVyYCB2YXJjaGFyKDQ1KSBERUZBVUxUIE5VTEwsCiAgYGVtYWlsYCB2YXJjaGFyKDQ1KSBERUZBVUxUIE5VTEwsCiAgYHBob25lYCB2YXJjaGFyKDQ1KSBOT1QgTlVMTCwKICBgam9iX3RpdGlsZWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHNpZ25hdHVyZWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHJlZ2lzdGVyZWRfZGF0ZWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHN0YXR1c2AgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHJvbGVgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIFBSSU1BUlkgS0VZIChgaWRgKSwKICBVTklRVUUgS0VZIGBpZHVzZXJzX1VOSVFVRWAgKGBpZGApLAogIFVOSVFVRSBLRVkgYGVtcGxveWVlX2lkX1VOSVFVRWAgKGBlbXBsb3llZV9pZGApCikgRU5HSU5FPUlubm9EQiBERUZBVUxUIENIQVJTRVQ9dXRmOA==";
+    private $ddl = "Q1JFQVRFIFRBQkxFIGBlbXBsb3llZV90YWJsZWAgKAogIGBpZGAgaW50KDExKSBOT1QgTlVMTCBBVVRPX0lOQ1JFTUVOVCwKICBgZW1wbG95ZWVfaWRgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBmaXJzdF9uYW1lYCB2YXJjaGFyKDQ1KSBOT1QgTlVMTCwKICBgbGFzdF9uYW1lYCB2YXJjaGFyKDQ1KSBOT1QgTlVMTCwKICBgYWdlYCBpbnQoMTEpIERFRkFVTFQgTlVMTCwKICBgZ2VuZGVyYCB2YXJjaGFyKDQ1KSBERUZBVUxUIE5VTEwsCiAgYGVtYWlsYCB2YXJjaGFyKDQ1KSBERUZBVUxUIE5VTEwsCiAgYHBob25lYCB2YXJjaGFyKDQ1KSBOT1QgTlVMTCwKICBgam9iX3RpdGlsZWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHNpZ25hdHVyZWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHJlZ2lzdGVyZWRfZGF0ZWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHN0YXR1c2AgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHJvbGVgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIFBSSU1BUlkgS0VZIChgaWRgKSwKICBVTklRVUUgS0VZIGBpZHVzZXJzX1VOSVFVRWAgKGBpZGApLAogIFVOSVFVRSBLRVkgYGVtcGxveWVlX2lkX1VOSVFVRWAgKGBlbXBsb3llZV9pZGApCikgRU5HSU5FPUlubm9EQiBBVVRPX0lOQ1JFTUVOVD0yIERFRkFVTFQgQ0hBUlNFVD11dGY4";
 
     /**
      * setId Sets the class attribute id with a given value
@@ -569,13 +568,13 @@ class medicEmployeeTable extends MySqlRecord
     }
 
     /**
-     * The medicEmployeeTable constructor
+     * The MeEmployeeTable constructor
      *
      * It creates and initializes an object in two way:
      *  - with null (not fetched) data if none $id is given.
      *  - with a fetched data row from the table employee_table having id=$id
      * @param int $id. If omitted an empty (not fetched) instance is created.
-     * @return medicEmployeeTable Object
+     * @return MeEmployeeTable Object
      */
     public function __construct($id = null)
     {

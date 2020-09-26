@@ -1,17 +1,16 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/init.config.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/medicPatientTable.php';
 
 /**
- * Class medicLabSerologyCoagulationTable
+ * Class MeLabSerologyCoagulationTable
  * @extends MySqlRecord
- * @filesource medicLabSerologyCoagulationTable.php
+ * @filesource MeLabSerologyCoagulationTable.php
 */
 
 // namespace hulutera;
 
-class medicLabSerologyCoagulationTable extends MySqlRecord
+class MeLabSerologyCoagulationTable extends MySqlRecord
 {
     /**
      * A control attribute for the update operation.
@@ -409,13 +408,13 @@ class medicLabSerologyCoagulationTable extends MySqlRecord
     }
 
     /**
-     * The medicLabSerologyCoagulationTable constructor
+     * The MeLabSerologyCoagulationTable constructor
      *
      * It creates and initializes an object in two way:
      *  - with null (not fetched) data if none $id is given.
      *  - with a fetched data row from the table lab_serology_coagulation_table having id=$id
      * @param int $id. If omitted an empty (not fetched) instance is created.
-     * @return medicLabSerologyCoagulationTable Object
+     * @return MeLabSerologyCoagulationTable Object
      */
     public function __construct($id = null)
     {

@@ -1,17 +1,16 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/init.config.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/medicPatientTable.php';
 
 /**
- * Class medicAdmissionTable
+ * Class MeAdmissionTable
  * @extends MySqlRecord
- * @filesource medicAdmissionTable.php
+ * @filesource MeAdmissionTable.php
 */
 
 // namespace hulutera;
 
-class medicAdmissionTable extends MySqlRecord
+class MeAdmissionTable extends MySqlRecord
 {
     /**
      * A control attribute for the update operation.
@@ -69,7 +68,7 @@ class medicAdmissionTable extends MySqlRecord
      *
      * Comment for field created_at: Not specified.<br>
      * Field information:
-     *  - Data type: varchar(45)
+     *  - Data type: datetime
      *  - Null : NO
      *  - DB Index: 
      *  - Default: 
@@ -180,7 +179,7 @@ class medicAdmissionTable extends MySqlRecord
      * Class attribute for storing the SQL DDL of table admission_table
      * @var string base64 encoded string for DDL
      */
-    private $ddl = "Q1JFQVRFIFRBQkxFIGBhZG1pc3Npb25fdGFibGVgICgKICBgaWRgIGludCgxMSkgTk9UIE5VTEwgQVVUT19JTkNSRU1FTlQsCiAgYHBhdGllbnRfY2FyZF9udW1iZXJgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBlbXBsb3llZV9pZGAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYGNyZWF0ZWRfYXRgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBzdGF0dXNgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBiZWRfbnVtYmVyYCB2YXJjaGFyKDQ1KSBOT1QgTlVMTCwKICBgZXhhbWluYXRpb25fcm9vbWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHJlZmVyZWRfZnJvbWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYGFsbGVyZ2llc2AgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHJlbWFya3NgIGpzb24gTk9UIE5VTEwsCiAgYGFkbWlzc2lvbl9kYXRlYCBkYXRldGltZSBOT1QgTlVMTCwKICBQUklNQVJZIEtFWSAoYGlkYCksCiAgVU5JUVVFIEtFWSBgaWRfVU5JUVVFYCAoYGlkYCksCiAgS0VZIGBma19hZG1pc3Npb25fdGFibGVfcGF0aWVudF90YWJsZTFfaWR4YCAoYHBhdGllbnRfY2FyZF9udW1iZXJgKSwKICBLRVkgYGZrX2FkbWlzc2lvbl90YWJsZV9lbXBsb3llZV90YWJsZTFfaWR4YCAoYGVtcGxveWVlX2lkYCksCiAgQ09OU1RSQUlOVCBgZmtfYWRtaXNzaW9uX3RhYmxlX2VtcGxveWVlX3RhYmxlMWAgRk9SRUlHTiBLRVkgKGBlbXBsb3llZV9pZGApIFJFRkVSRU5DRVMgYGVtcGxveWVlX3RhYmxlYCAoYGVtcGxveWVlX2lkYCkgT04gREVMRVRFIE5PIEFDVElPTiBPTiBVUERBVEUgTk8gQUNUSU9OLAogIENPTlNUUkFJTlQgYGZrX2FkbWlzc2lvbl90YWJsZV9wYXRpZW50X3RhYmxlMWAgRk9SRUlHTiBLRVkgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCkgUkVGRVJFTkNFUyBgcGF0aWVudF90YWJsZWAgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCkgT04gREVMRVRFIE5PIEFDVElPTiBPTiBVUERBVEUgTk8gQUNUSU9OCikgRU5HSU5FPUlubm9EQiBERUZBVUxUIENIQVJTRVQ9dXRmOA==";
+    private $ddl = "Q1JFQVRFIFRBQkxFIGBhZG1pc3Npb25fdGFibGVgICgKICBgaWRgIGludCgxMSkgTk9UIE5VTEwgQVVUT19JTkNSRU1FTlQsCiAgYHBhdGllbnRfY2FyZF9udW1iZXJgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBlbXBsb3llZV9pZGAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYGNyZWF0ZWRfYXRgIGRhdGV0aW1lIE5PVCBOVUxMLAogIGBzdGF0dXNgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBiZWRfbnVtYmVyYCB2YXJjaGFyKDQ1KSBOT1QgTlVMTCwKICBgZXhhbWluYXRpb25fcm9vbWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHJlZmVyZWRfZnJvbWAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYGFsbGVyZ2llc2AgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYHJlbWFya3NgIGpzb24gTk9UIE5VTEwsCiAgYGFkbWlzc2lvbl9kYXRlYCBkYXRldGltZSBOT1QgTlVMTCwKICBQUklNQVJZIEtFWSAoYGlkYCksCiAgVU5JUVVFIEtFWSBgaWRfVU5JUVVFYCAoYGlkYCksCiAgS0VZIGBma19hZG1pc3Npb25fdGFibGVfcGF0aWVudF90YWJsZTFfaWR4YCAoYHBhdGllbnRfY2FyZF9udW1iZXJgKSwKICBLRVkgYGZrX2FkbWlzc2lvbl90YWJsZV9lbXBsb3llZV90YWJsZTFfaWR4YCAoYGVtcGxveWVlX2lkYCksCiAgQ09OU1RSQUlOVCBgZmtfYWRtaXNzaW9uX3RhYmxlX2VtcGxveWVlX3RhYmxlMWAgRk9SRUlHTiBLRVkgKGBlbXBsb3llZV9pZGApIFJFRkVSRU5DRVMgYGVtcGxveWVlX3RhYmxlYCAoYGVtcGxveWVlX2lkYCkgT04gREVMRVRFIE5PIEFDVElPTiBPTiBVUERBVEUgTk8gQUNUSU9OLAogIENPTlNUUkFJTlQgYGZrX2FkbWlzc2lvbl90YWJsZV9wYXRpZW50X3RhYmxlMWAgRk9SRUlHTiBLRVkgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCkgUkVGRVJFTkNFUyBgcGF0aWVudF90YWJsZWAgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCkgT04gREVMRVRFIE5PIEFDVElPTiBPTiBVUERBVEUgTk8gQUNUSU9OCikgRU5HSU5FPUlubm9EQiBBVVRPX0lOQ1JFTUVOVD0zIERFRkFVTFQgQ0hBUlNFVD11dGY4";
 
     /**
      * setId Sets the class attribute id with a given value
@@ -224,7 +223,7 @@ class medicAdmissionTable extends MySqlRecord
     /**
      * setCreatedAt Sets the class attribute createdAt with a given value
      *
-     * The attribute createdAt maps the field created_at defined as varchar(45).<br>
+     * The attribute createdAt maps the field created_at defined as datetime.<br>
      * Comment for field created_at: Not specified.<br>
      * @param string $createdAt
      * @category Modifier
@@ -367,7 +366,7 @@ class medicAdmissionTable extends MySqlRecord
     /**
      * getCreatedAt gets the class attribute createdAt value
      *
-     * The attribute createdAt maps the field created_at defined as varchar(45).<br>
+     * The attribute createdAt maps the field created_at defined as datetime.<br>
      * Comment for field created_at: Not specified.
      * @return string $createdAt
      * @category Accessor of $createdAt
@@ -489,13 +488,13 @@ class medicAdmissionTable extends MySqlRecord
     }
 
     /**
-     * The medicAdmissionTable constructor
+     * The MeAdmissionTable constructor
      *
      * It creates and initializes an object in two way:
      *  - with null (not fetched) data if none $id is given.
      *  - with a fetched data row from the table admission_table having id=$id
      * @param int $id. If omitted an empty (not fetched) instance is created.
-     * @return medicAdmissionTable Object
+     * @return MeAdmissionTable Object
      */
     public function __construct($id = null)
     {
@@ -547,7 +546,7 @@ class medicAdmissionTable extends MySqlRecord
             @$this->id = (integer)$rowObject->id;
             @$this->patientCardNumber = $this->replaceAposBackSlash($rowObject->patient_card_number);
             @$this->employeeId = $this->replaceAposBackSlash($rowObject->employee_id);
-            @$this->createdAt = $this->replaceAposBackSlash($rowObject->created_at);
+            @$this->createdAt = empty($rowObject->created_at) ? null : date(FETCHED_DATETIME_FORMAT,strtotime($rowObject->created_at));
             @$this->status = $this->replaceAposBackSlash($rowObject->status);
             @$this->bedNumber = $this->replaceAposBackSlash($rowObject->bed_number);
             @$this->examinationRoom = $this->replaceAposBackSlash($rowObject->examination_room);
@@ -600,7 +599,7 @@ class medicAdmissionTable extends MySqlRecord
             VALUES(
 			{$this->parseValue($this->patientCardNumber,'notNumber')},
 			{$this->parseValue($this->employeeId,'notNumber')},
-			{$this->parseValue($this->createdAt,'notNumber')},
+			{$this->parseValue($this->createdAt,'datetime')},
 			{$this->parseValue($this->status,'notNumber')},
 			{$this->parseValue($this->bedNumber,'notNumber')},
 			{$this->parseValue($this->examinationRoom,'notNumber')},
@@ -642,7 +641,7 @@ SQL;
             SET 
 				patient_card_number={$this->parseValue($this->patientCardNumber,'notNumber')},
 				employee_id={$this->parseValue($this->employeeId,'notNumber')},
-				created_at={$this->parseValue($this->createdAt,'notNumber')},
+				created_at={$this->parseValue($this->createdAt,'datetime')},
 				status={$this->parseValue($this->status,'notNumber')},
 				bed_number={$this->parseValue($this->bedNumber,'notNumber')},
 				examination_room={$this->parseValue($this->examinationRoom,'notNumber')},

@@ -3,40 +3,26 @@
 function lab_request_serology()
 {
     echo '
-    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
+    <form id="lab-serology-form" data-parsley-validate class="form-horizontal form-label-left" action="./lab-queue.php">
     <div class="item form-group">
-        <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Serology</label>
+        <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Serology & Coagulation </label>
         <div class="col-md-8 col-sm-8">';
-    global $serologyTestArray;
-    foreach ($serologyTestArray as $key => $value) {
+    global $serologyAndCoagulationTestArray;
+    foreach ($serologyAndCoagulationTestArray as $key => $value) {
         echo '
         <div class="col-md-4">
-        <input name="lab-serology_" id="' . $key . '" type="button" style="font-weight:bold" value="+" onclick="isClicked(\'' . $key . '\',\'' . $value['name'] . '\',\'lab-serology\')">
-        <label for="lab-serology_' . $key . '" class="" title="homeless">' . $value['name'] . '</label>
+        <input name="lab-serology_" id="lab-serology-' . $key . '" type="button" style="font-weight:bold" value="+ ' . $value['name'] . '"
+        onclick="isClicked(\'lab-serology-' . $key . '\',\'' . $value['name'] . '\',\'lab-serology-form\')">
+
     </div>
         ';
     }
 
-    echo '</div></div>';
-
-    echo '<div class="item form-group">
-        <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Coagulation Test</label>
-        <div class="col-md-6 col-sm-6">';
-    global $coagulationTestArray;
-    foreach ($coagulationTestArray as $key => $value) {
-        echo '
-        <div class="custom-control custom-checkbox custom-control-inline col-md-2 m-1">
-        <input name="lab-coagulation" id="lab-coagulation-' . $key . '" type="checkbox" aria-describedby="lab-coagulationHelpBlock" class="custom-control-input" value="0" required="required">
-        <label for="lab-coagulation-' . $key . '" class="custom-control-label" title="homeless">' . $value['name'] . '</label>
-    </div>
-        ';
-    }
-    echo '</div>
-    </div>
+    echo '</div></div>
     <div class="item form-group">
     <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Request Summary</label>
-    <div class="col-md-8 col-sm-8 lab-serology">
-    <p class="test" style="display:none"></p>
+    <div class="col-md-8 col-sm-8 lab-serology-form">
+    <input type="text" class="test-lab-serology-form" style="display:none">
     </div>
     </div>
     <div class="ln_solid"></div>
@@ -50,16 +36,17 @@ function lab_request_serology()
 </form>
     ';
 }
+
 function lab_request_blood()
 {
-    include_once "./lab-chemistry-test-list.php";
+    include_once "./lab-all-test-defines.php";
 
     echo '<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
     <div class="item form-group">
         <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Blood request</label>
         <div class="col-md-6 col-sm-6">';
+    global $bloodTestType;
 
-    $bloodTestType = ["CRC", "FFP"];
     foreach ($bloodTestType as $key => $value) {
         echo '
         <div class="custom-control custom-checkbox custom-control-inline col-md-4 m-1">
@@ -83,21 +70,27 @@ function lab_request_blood()
 function lab_request_hematology()
 {
 
-    echo '<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
+    echo '<form id="lab-hematology-form" data-parsley-validate class="form-horizontal form-label-left" action="./lab-queue.php">
 <div class="item form-group">
     <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Hematology Request</label>
-    <div class="col-md-6 col-sm-6">';
+    <div class="col-md-8 col-sm-8">';
     global $hematologyTestArray;
     foreach ($hematologyTestArray as $key => $value) {
-        echo '
-    <div class="custom-control custom-checkbox custom-control-inline col-md-4 m-1">
-    <input name="lab-hematology" id="lab-hematology-' . $key . '" type="checkbox" aria-describedby="lab-hematologyHelpBlock" class="custom-control-input" value="0" required="required">
-    <label for="lab-hematology-' . $key . '" class="custom-control-label" title="hematology">' . $value['name'] . '</label>
-</div>
-    ';
+    echo '
+        <div class="col-md-4">
+        <input name="lab-hematology_" id="lab-hematology-' . $key . '" type="button" style="font-weight:bold" value="+ ' . $value['name'] . '"
+         onclick="isClicked(\'lab-hematology-' . $key . '\',\'' . $value['name'] . '\',\'lab-hematology-form\')">
+    </div>
+        ';
     }
 
-    echo '</div></div>
+    echo '</div>
+    </div><div class="item form-group">
+    <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Request Summary</label>
+    <div class="col-md-8 col-sm-8 lab-hematology-form">
+    <input type="text" class="test-lab-hematology-form" style="display:none">
+    </div>
+    </div>
 <div class="ln_solid"></div>
 <div class="item form-group">
     <div class="col-md-6 col-sm-6">
@@ -110,22 +103,27 @@ function lab_request_hematology()
 
 function lab_request_chemistry()
 {
-    include_once "./lab-chemistry-test-list.php";
-    echo '<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
+    include_once "./lab-all-test-defines.php";
+    echo '<form id="lab-chemistry-form" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
     <div class="item form-group">
         <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Chemistry Request</label>
         <div class="col-md-6 col-sm-6">';
     global $chemistryLabTestArray;
     foreach ($chemistryLabTestArray as $key => $value) {
         echo '
-        <div class="custom-control custom-checkbox custom-control-inline col-md-4 m-1">
-        <input name="lab-chemistry" id="lab-chemistry-' . $key . '" type="checkbox" aria-describedby="lab-chemistryHelpBlock" class="custom-control-input" value="0" required="required">
-        <label for="lab-chemistry-' . $key . '" class="custom-control-label" title="chemistry">' . $value['name'] . '</label>
+        <div class="col-md-4">
+        <input name="lab-chemistry-" id="lab-chemistry-' . $key . '" type="button" style="font-weight:bold" value="+ ' . $value['name'] . '"
+         onclick="isClicked(\'lab-chemistry-' . $key . '\',\'' . $value['name'] . '\',\'lab-chemistry-form\')">
     </div>
         ';
     }
 
     echo '</div>
+    </div><div class="item form-group">
+    <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Request Summary</label>
+    <div class="col-md-8 col-sm-8 lab-chemistry-form">
+    <input type="text" class="test-lab-chemistry-form" style="display:none">
+    </div>
     </div>
     <div class="ln_solid"></div>
     <div class="item form-group">
@@ -140,32 +138,29 @@ function lab_request_chemistry()
 }
 function lab_request_urine()
 {
-    include_once "./lab-chemistry-test-list.php";
-    echo '<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
+    include_once "./lab-all-test-defines.php";
+    echo '<form id="lab-urine-analysis-form" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
     <div class="item form-group">
         <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Urine Analysis Request</label>
         <div class="col-md-6 col-sm-6">';
-    global $urineAnalysisTestArray;
-    foreach ($urineAnalysisTestArray as $key => $value) {
-        echo '
-        <div class="custom-control custom-checkbox custom-control-inline col-md-4 m-1">
-        <input name="lab-urine-analysis" id="lab-urine-analysis-' . $key . '" type="checkbox" aria-describedby="lab-urineAnalysisHelpBlock" class="custom-control-input" value="0" required="required">
-        <label for="lab-urine-analysis-' . $key . '" class="custom-control-label" title="urine-analysis">' . $value['name'] . '</label>
-    </div>
-        ';
-    }
-    echo '<div class="col-md-12 m-2"><strong>MICROSCOPIC</strong></div>';
-    global $urineAnalysisTestMicroscopyArray;
-    foreach ($urineAnalysisTestMicroscopyArray as $key => $value) {
-        echo '
-        <div class="custom-control custom-checkbox custom-control-inline col-md-4 m-1">
-        <input name="lab-urine-analysis" id="lab-urine-analysis-' . $key . '" type="checkbox" aria-describedby="lab-urineAnalysisHelpBlock" class="custom-control-input" value="0" required="required">
-        <label for="lab-urine-analysis-' . $key . '" class="custom-control-label" title="urine-analysis">' . $value . '</label>
-    </div>
-        ';
-    }
+    global $urineAnalysisWithMicroscopyTestArray;
+    foreach ($urineAnalysisWithMicroscopyTestArray as $key => $value) {
 
-    echo '</div></div>
+        echo '
+        <div class="col-md-4">
+        <input name="lab-urine-analysis_" id="lab-urine-analysis-' . $key . '" type="button" style="font-weight:bold" value="+ '. $value['name'] .'"
+         onclick="isClicked(\'lab-urine-analysis-' . $key . '\',\'' . $value['name'] . '\',\'lab-urine-analysis-form\')">
+        <label for="lab-urine-analysis-' . $key . '" class="" title="lab"></label>
+    </div>
+        ';
+    }
+    echo '</div>
+    </div><div class="item form-group">
+    <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Request Summary</label>
+    <div class="col-md-8 col-sm-8 lab-urine-analysis-form">
+    <input type="text" class="test-lab-urine-analysis-form" style="display:none">
+    </div>
+    </div>
     <div class="ln_solid"></div>
     <div class="item form-group">
         <div class="col-md-6 col-sm-6">

@@ -1,7 +1,6 @@
 <!-- BEGIN PhpHeader --><?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/init.config.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/classes/medicPatientTable.php';
 
 /**
  * Class {ClassName}
