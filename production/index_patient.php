@@ -84,10 +84,14 @@ include_once "./all_lab_request.php";
 
                                                     <?php
                                                     show_patient();
-                                                    if (isset($_GET['lab-request']) && $_GET['lab-request'] == 'complete') {
-                                                        echo '<p class="h4 text-success">Lab request completed, check queue here
+                                                    if (isset($_GET['lab-request'])) {
+                                                        if ($_GET['lab-request'] == 'complete') {
+                                                            echo '<p class="h4 text-success">Lab request completed, check queue here
                                                         <a href="./patient-list-laboratory.php">Lab Queue</a>
                                                         </p>';
+                                                        } else if ($_GET['lab-request'] == 'reject') {
+                                                            echo '<p class="h4 text-warning">Lab request is inComplete, No Item selected for request</p>';
+                                                        }
                                                     }
                                                     ?>
                                                 </div>

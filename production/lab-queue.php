@@ -4,7 +4,11 @@ include_once "../classes/MeLabQueue.php";
 include_once "../classes/MeEmployeeTable.php";
 include_once "./lab-all-test-defines.php";
 
-if (isset($_GET['ids']) && isset($_GET['requester']) && isset($_SESSION['patient_card_number'])) {
+if (isset($_SESSION['patient_card_number']) && isset($_GET['ids']) && ($_GET['ids'] != '') && isset($_GET['requester'])) {
+    // var_dump($_GET['ids']);
+    // var_dump($_GET['requester']);
+    // var_dump($_SESSION['patient_card_number']);
+
 
     //remove empty elements, and save in array
     $id = array_filter(explode(',', $_GET['ids']));
@@ -34,5 +38,5 @@ if (isset($_GET['ids']) && isset($_GET['requester']) && isset($_SESSION['patient
     header('Location: ./index_patient.php?lab-request=complete');
 } else {
     // not sucessful
-    header('Location: ./index_patient.php');
+    header('Location: ./index_patient.php?lab-request=reject');
 }
