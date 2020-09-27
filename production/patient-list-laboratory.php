@@ -1,6 +1,9 @@
 <?php
-include_once "./lab-all-test-defines.php";
-include_once "./config.php";
+$documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+include_once $documentRootPath . "/includes/crypter.php";
+include_once $documentRootPath . "/production/lab-all-test-defines.php";
+include_once $documentRootPath . "/production/config.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,26 +63,31 @@ include_once "./config.php";
                           $result = $labQueue->getResultSet();
                           $result->data_seek(0);
                           while ($row = $result->fetch_object()) {
-                            // var_dump(array_column($GLOBALS['labTableToId'], 'id'));
-                            $id = '';
+                            // //var_dump(array_column($GLOBALS['labTableToId'], 'id'));
+                            //var_dump($row->lab_request_data);
+                            $tableName = '';
                             $table = '';
                             $requestStr = '';
                             $requestes = json_decode($row->lab_request_data);
+
+                            $url = '';
+                            $alias = '';
                             foreach ($GLOBALS['labTableToId'] as $key => $value) {
                               if ($value['id'] == $row->lab_table_id) {
-                                $id = $key;
+                                $tableName = $key;
                                 $table = $value['data'];
-                                $i=0;
+                                $url = $value['url'];
+                                $alias = $value['alias'];
+                                $i = 0;
                                 foreach ($requestes as $k2 => $v2) {
                                   foreach ($value['data'] as $k3 => $v3) {
                                     if ($k3 == $v2) {
-                                      if($i%5 ==  0 && $i != 0){
+                                      if ($i % 5 ==  0 && $i != 0) {
                                         $break = '<br>';
-                                      }
-                                      else {
+                                      } else {
                                         $break = '';
                                       }
-                                      $requestStr .= '<span style="border:1px solid black; color:#fff; background:#333; border-radius:5px;margin:1px;padding:3px;display:inline;">' . str_replace("\\", "", $v3['name']) . '</span>'.$break;
+                                      $requestStr .= '<span style="border:1px solid black; color:#fff; background:#333; border-radius:5px;margin:1px;padding:3px;display:inline;">' . str_replace("\\", "", $v3['name']) . '</span>' . $break;
                                       $i++;
                                     }
                                   }
@@ -93,6 +101,7 @@ include_once "./config.php";
                             $patient = new MePatientTable('*');
                             $result2 = $patient->getResultSet();
                             $result2->data_seek(0);
+
                             while ($row2 = $result2->fetch_object()) {
                               if ($row->patient_card_number == $row2->patient_card_number) {
                                 echo '<td>';
@@ -100,11 +109,16 @@ include_once "./config.php";
                                 <strong>Card No.:</strong> .<u> <strong  style="color:green">' . $row2->patient_card_number . '</strong><br>
                                 <strong>Name:</strong> ' . $row2->patient_first_name . ', <strong>Age:</strong>:' . $row2->patient_age . ', Dept: OPD,<br>
                                 <strong>PhoneNr.:</strong> ' . $row2->patient_phone;
+
+                                $finalUrl = '&id=' . $row2->patient_id . '&url='.  $url. '&patient_card_number='. $row2->patient_card_number . '&table='.$tableName .'&data='. $row->lab_request_data;
+
+                                echo '<p><strong><a href="./session.php?selective=' . urlencode($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Record ' . $alias . ' Test Result</a></strong></p>';
+                                // echo '<p><strong><a href="./session.php?selective=' . Crypter::urlencode_base64_encode_encrypt($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Perform ' . $alias . ' Test</a></strong></p>';
                                 echo '</td>';
                               }
                             }
 
-                            echo '<td>' . $id . '</td>';
+                            echo '<td>' . $tableName . '</td>';
                             echo '<td><p class="h5">' . $row->requested_on . '</p><p>' . $requestStr . '</p></td>';
                             echo '<td>' . (($index) + 10) . '  <button class="btn-danger"> <i class="fa fa-bell"></i> waiting ' . ($index * 10) . 'min</button></td>';
                             echo '<td><button class="' . $payment[$index2][1] . '">' . $payment[$index2][0] . '</button></td>';

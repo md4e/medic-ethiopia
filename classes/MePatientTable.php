@@ -43,8 +43,8 @@ class MePatientTable extends MySqlRecord
      *  - Data type: varchar(45)
      *  - Null : NO
      *  - DB Index: UNI
-     *  - Default: 
-     *  - Extra:  
+     *  - Default:
+     *  - Extra:
      * @var string $patientCardNumber
      */
     private $patientCardNumber;
@@ -56,9 +56,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientFirstName
      */
     private $patientFirstName;
@@ -70,9 +70,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientLastName
      */
     private $patientLastName;
@@ -84,9 +84,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : YES
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientEmail
      */
     private $patientEmail;
@@ -98,9 +98,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientPhone
      */
     private $patientPhone;
@@ -112,9 +112,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : YES
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientJobTitile
      */
     private $patientJobTitile;
@@ -126,9 +126,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : YES
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientSignature
      */
     private $patientSignature;
@@ -140,9 +140,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientRegisteredDate
      */
     private $patientRegisteredDate;
@@ -154,9 +154,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: int(11)
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var int $patientAge
      */
     private $patientAge;
@@ -168,9 +168,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientGender
      */
     private $patientGender;
@@ -182,9 +182,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientStatus
      */
     private $patientStatus;
@@ -196,9 +196,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: int(11)
      *  - Null : YES
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var int $patientWereda
      */
     private $patientWereda;
@@ -210,9 +210,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: int(11)
      *  - Null : YES
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var int $patientKebele
      */
     private $patientKebele;
@@ -224,9 +224,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientAddress
      */
     private $patientAddress;
@@ -238,9 +238,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
+     *  - DB Index:
      *  - Default: closed
-     *  - Extra:  
+     *  - Extra:
      * @var string $patientSessionStatus
      */
     private $patientSessionStatus;
@@ -252,9 +252,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: datetime
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientSessionOpenAt
      */
     private $patientSessionOpenAt;
@@ -266,9 +266,9 @@ class MePatientTable extends MySqlRecord
      * Field information:
      *  - Data type: datetime
      *  - Null : NO
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $patientSessionClosedAt
      */
     private $patientSessionClosedAt;
@@ -932,7 +932,7 @@ SQL;
             $sql = <<< SQL
             UPDATE
                 patient_table
-            SET 
+            SET
 				patient_card_number={$this->parseValue($this->patientCardNumber,'notNumber')},
 				patient_first_name={$this->parseValue($this->patientFirstName,'notNumber')},
 				patient_last_name={$this->parseValue($this->patientLastName,'notNumber')},

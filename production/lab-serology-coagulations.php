@@ -1,6 +1,9 @@
 <?php
-include_once "./lab-all-test-defines.php";
-include_once "./config.php";
+$documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+include_once $documentRootPath . "/includes/crypter.php";
+include_once $documentRootPath . "/production/lab-all-test-defines.php";
+include_once $documentRootPath . "/production/config.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,23 +57,9 @@ include_once "./config.php";
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./core.php">
-                                    <div class="item form-group">
-                                        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-                                        <div class="col-md-6 col-sm-6">
-
-                                            <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required">
-                                                <input type="submit" value="Patient Search" class="btn btn-success">
-                                                <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
-                                                    patient is registered in
-                                                    New platform filled below will be filled by data result of the
-                                                    search request</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </form>
+                                <?php
+                                show_patient();
+                                ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="item form-group">
                                         <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Date</label>
@@ -110,9 +99,6 @@ include_once "./config.php";
                                                 <thead>
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col" colspan="5">SEROLOGY</th>
-                                                        </tr>
-                                                        <tr>
                                                             <td scope="col">TYPE OF TEST</th>
                                                             <td scope="col" colspan="4">RESULT (verdict and Reference Range (minimum - maximum) </th>
                                                         </tr>
@@ -120,7 +106,13 @@ include_once "./config.php";
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    foreach ($serologyTestArray as $key => $value) {
+                                                    $useSelectiveTest = useSelectiveTest();
+                                                    if (isset($useSelectiveTest) && sizeof($useSelectiveTest) > 0) {
+                                                        $useList = $useSelectiveTest;
+                                                    } else {
+                                                        $useList = $serologyAndCoagulationTestArray;
+                                                    }
+                                                    foreach ($useList as $key => $value) {
                                                         //echo '<tr><td class="list-td"><a href="#" title="' . $value['fullname'] . '">' . $value['name'] . '</a></td>';
                                                         echo '<tr><td class="list-td">' . $value['name'] . '</td>';
                                                         echo '<td class="list-td"><input id="serology-test-' . $key . '" name="serology-test-' . $key . '" type="number" min="' . $value['range'][1] . '" step="' . $value['range'][0] . '" max=' . $value['range'][2] . ' class="form-control" required="required"></td>';
@@ -146,7 +138,7 @@ include_once "./config.php";
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="item form-group">
+                                    <!-- <div class="item form-group">
                                         <div class="card-box table-responsive">
                                             <p class="text-muted font-13 m-b-30">
 
@@ -165,35 +157,35 @@ include_once "./config.php";
                                                 <tbody>
 
                                                     <?php
-                                                    foreach ($coagulationTestArray as $key => $value) {
-                                                        //echo '<tr><td class="list-td"><a href="#">' . $value['name'] . '</a></td>';
-                                                        echo '<tr><td class="list-td">' . $value['name'] . '</td>';
-                                                        echo '<td class="list-td"><input id="coagulation-test-' . $key . '" name="coagulation-test-' . $key . '" type="number" min="' . $value['range'][1] . '" step="' . $value['range'][0] . '" max=' . $value['range'][2] . ' class="form-control" required="required"></td>';
-                                                        // echo '<td class="list-td"><select id="chem-units" name="chem-units" class="custom-select" required="required">';
-                                                        // foreach ($chemistryLabTestUnitsArray as $key2 => $value2) {
-                                                        //     echo '<option value="chem-unit-' . $key2 . '">' . $value2 . '</option>';
-                                                        // }
-                                                        // echo '</select>';
-                                                        // echo '</td>';
-                                                        echo '<td class="list-td">
-                                                                <select id="chem-verdict" name="chem-verdict" class="custom-select" required="required">';
-                                                        foreach ($verdict as $key3 => $value3) {
-                                                            echo '<option value="verdict-unit-' . $key3 . '" style="' . $value3[1] . '">' . $value3[0] . '</option>';
-                                                        }
-                                                        echo '</select>';
-                                                        echo '</td>';
-                                                        $second = "";
-                                                        if ($value['name'] !== "INR") {
-                                                            $second = " SEC";
-                                                        }
-                                                        echo '<td class="list-td">' . $value['range'][1] . ' - ' . $value['range'][2] . $second . '</td>
-                                                                </tr>';
-                                                    }
+                                                    // foreach ($coagulationTestArray as $key => $value) {
+                                                    //     //echo '<tr><td class="list-td"><a href="#">' . $value['name'] . '</a></td>';
+                                                    //     echo '<tr><td class="list-td">' . $value['name'] . '</td>';
+                                                    //     echo '<td class="list-td"><input id="coagulation-test-' . $key . '" name="coagulation-test-' . $key . '" type="number" min="' . $value['range'][1] . '" step="' . $value['range'][0] . '" max=' . $value['range'][2] . ' class="form-control" required="required"></td>';
+                                                    //     // echo '<td class="list-td"><select id="chem-units" name="chem-units" class="custom-select" required="required">';
+                                                    //     // foreach ($chemistryLabTestUnitsArray as $key2 => $value2) {
+                                                    //     //     echo '<option value="chem-unit-' . $key2 . '">' . $value2 . '</option>';
+                                                    //     // }
+                                                    //     // echo '</select>';
+                                                    //     // echo '</td>';
+                                                    //     echo '<td class="list-td">
+                                                    //             <select id="chem-verdict" name="chem-verdict" class="custom-select" required="required">';
+                                                    //     foreach ($verdict as $key3 => $value3) {
+                                                    //         echo '<option value="verdict-unit-' . $key3 . '" style="' . $value3[1] . '">' . $value3[0] . '</option>';
+                                                    //     }
+                                                    //     echo '</select>';
+                                                    //     echo '</td>';
+                                                    //     $second = "";
+                                                    //     if ($value['name'] !== "INR") {
+                                                    //         $second = " SEC";
+                                                    //     }
+                                                    //     echo '<td class="list-td">' . $value['range'][1] . ' - ' . $value['range'][2] . $second . '</td>
+                                                    //             </tr>';
+                                                    // }
                                                     ?>
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="ln_solid"></div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6">

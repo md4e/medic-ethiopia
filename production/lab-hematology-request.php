@@ -53,23 +53,9 @@ include_once "./config.php";
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./core.php">
-                                    <div class="item form-group">
-                                        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-                                        <div class="col-md-6 col-sm-6">
-
-                                            <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required">
-                                                <input type="submit" value="Patient Search" class="btn btn-success">
-                                                <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
-                                                    patient is registered in
-                                                    New platform filled below will be filled by data result of the
-                                                    search request</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </form>
+                                <?php
+                                show_patient();
+                                ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="form-group row">
                                         <label for="hematology-request-form-date" class="col-form-label col-md-3 col-sm-3 label-align">Date</label>
@@ -118,7 +104,22 @@ include_once "./config.php";
                                                 <tbody>
 
                                                     <?php
-                                                    foreach ($hematologyTestArray as $key => $value) {
+                                                    $useSelectiveTest = useSelectiveTest();
+                                                    if (isset($useSelectiveTest) && sizeof($useSelectiveTest) > 0) {
+                                                        $useList = $useSelectiveTest;
+                                                    } else {
+                                                        $useList = $hematologyTestArray;
+                                                    }
+                                                    $useSpecial1 = $useSpecial2 = false;
+                                                    foreach ($useList as $key => $value) {
+                                                        if ($value['type'] == 'skip') {
+                                                            if ($value['name'] == "Blood Parasite")
+                                                                $useSpecial1 = true;
+
+                                                            if ($value['name'] == "Blood group & Rh Factor")
+                                                                $useSpecial2 = true;
+                                                            continue;
+                                                        }
                                                         echo '<tr><td class="list-td"><a href="#">' . $value['name'] . '</a></td>';
                                                         echo '<td class="list-td"><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="number" min="' . $value['range']['Female'][1] . '" step="' . $value['range']['Female'][0] . '" max=' . $value['range']['Male'][2] . ' class="form-control" required="required"></td>';
                                                         echo '<td class="list-td">';
@@ -128,14 +129,6 @@ include_once "./config.php";
                                                         }
                                                         echo '</select>';
                                                         echo '</td>';
-                                                        // echo '<td class="list-td">
-                                                        //     <select id="chem-verdict" name="chem-verdict" class="custom-select" required="required">';
-                                                        // foreach ($verdict as $key3 => $value3) {
-                                                        //     echo '<option value="verdict-unit-' . $key3 . '" style="' . $value3[1] . '">' . $value3[0] . '</option>';
-                                                        // }
-                                                        // echo '</select>';
-                                                        // echo '</td>';
-
                                                         echo '<td>';
 
                                                         echo  "Female = " . '(' . $value['range']['Female'][1] . ' - ' . $value['range']['Female'][2] . ') ';
@@ -144,27 +137,27 @@ include_once "./config.php";
                                                         echo '</tr>';
                                                     }
 
-
-
-                                                    foreach ($hematologyTestOtherSpecialArray as $sokey => $sovalue) {
-                                                        echo '<tr><td class="list-td"><a href="#">' . $sovalue . '</a></td>';
-                                                        echo '<td class="list-td" colspan="2" ><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
-                                                        echo '<td class="list-td" ><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
-                                                        echo '</tr>';
-                                                    }
-
-                                                    foreach ($hematologyTestSpecialArray as $skey => $svalue) {
-                                                        echo '<tr><td class="list-td"><a href="#">' . $skey . '</a></td>';
-                                                        echo '<td class="list-td" colspan="2"><select id="hematology-request-form-chem-units" name="hematology-request-form-chem-units" class="custom-select" required="required">';
-                                                        foreach ($svalue as $key3 => $value3) {
-                                                            echo '<option value="hematology-request-form-chem-unit-' . $key3 . '">' . $value3 . '</option>';
+                                                    if ($useSpecial1 == true) {
+                                                        foreach ($hematologyTestOtherSpecialArray as $key => $value) {
+                                                            echo '<tr><td class="list-td"><a href="#">' . $value . '</a></td>';
+                                                            echo '<td class="list-td" colspan="2" ><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
+                                                            echo '<td class="list-td" ><input id="hematology-request-form-chem-test-' . $key . '" name="chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
+                                                            echo '</tr>';
                                                         }
-                                                        echo '</select>';
-                                                        echo '</td>';
-                                                        echo '<td class="list-td" ><input id="hematology-request-form-chem-test-' . $key . '" name="hematology-request-form-chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
-                                                        echo '</tr>';
                                                     }
-                                                    ?>
+                                                    if ($useSpecial2 == true) {
+                                                        foreach ($hematologyTestSpecialArray as $skey => $svalue) {
+                                                            echo '<tr><td class="list-td"><a href="#">' . $skey . '</a></td>';
+                                                            echo '<td class="list-td" colspan="2"><select id="hematology-request-form-chem-units" name="hematology-request-form-chem-units" class="custom-select" required="required">';
+                                                            foreach ($svalue as $key3 => $value3) {
+                                                                echo '<option value="hematology-request-form-chem-unit-' . $key3 . '">' . $value3 . '</option>';
+                                                            }
+                                                            echo '</select>';
+                                                            echo '</td>';
+                                                            echo '<td class="list-td" ><input id="hematology-request-form-chem-test-' . $key . '" name="hematology-request-form-chem-test-' . $key . '" type="text"  class="form-control" required="required"></td>';
+                                                            echo '</tr>';
+                                                        }
+                                                    }                                                    ?>
 
                                                 </tbody>
                                             </table>

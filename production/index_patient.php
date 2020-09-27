@@ -247,8 +247,20 @@ include_once "./all_lab_request.php";
             $('#' + $(this).val()).show();
         });
 
-        function isClicked(id, name, requestType) {
+        function isClicked(id, name, requestType, sizetest) {
+
             var inputId = '#' + id;
+            var divName = inputId.replace("99","");
+            if (id.indexOf('99') >= 0 && $(inputId).val() == ('+ ' + name)) {
+                for (var index = 0; index < 24; index++) {
+                    $(divName  + index).css('background-color', 'orange');//attr('disabled','disabled');
+                }
+            }
+            else {
+                for (var index = 0; index < 24; index++) {
+                    $(divName  + index).css('background-color', '');//removeAttr('disabled');
+                }
+            }
             ///remove Id
             var dataId = inputId.replace(/\D/g, '');
             /// get paragraph Id to write summary

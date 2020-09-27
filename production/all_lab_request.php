@@ -113,7 +113,7 @@ function lab_request_chemistry()
         echo '
         <div class="col-md-4">
         <input name="lab-chemistry-" id="lab-chemistry-' . $key . '" type="button" style="font-weight:bold" value="+ ' . $value['name'] . '"
-         onclick="isClicked(\'lab-chemistry-' . $key . '\',\'' . $value['name'] . '\',\'lab-chemistry-form\')">
+         onclick="isClicked(\'lab-chemistry-' . $key . '\',\'' . $value['name'] . '\',\'lab-chemistry-form\',\'' . sizeof($chemistryLabTestArray) . '\')">
     </div>
         ';
     }

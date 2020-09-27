@@ -54,23 +54,9 @@ include_once "./config.php";
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./core.php">
-                                    <div class="item form-group">
-                                        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-                                        <div class="col-md-6 col-sm-6">
-
-                                            <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required">
-                                                <input type="submit" value="Patient Search" class="btn btn-success">
-                                                <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
-                                                    patient is registered in
-                                                    New platform filled below will be filled by data result of the
-                                                    search request</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </form>
+                                <?php
+                                 show_patient();
+                                ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="item form-group">
                                         <label for="patient-id" class="col-form-label col-md-3 col-sm-3 label-align">Patient ID</label>
@@ -157,8 +143,13 @@ include_once "./config.php";
                                                         </td>
                                                     </tr>
                                                     <?php
-
-                                                    foreach ($urineAnalysisTestArray as $key => $value) {
+                                                    $useSelectiveTest = useSelectiveTest();
+                                                    if (isset($useSelectiveTest) && sizeof($useSelectiveTest) > 0) {
+                                                        $useList = $useSelectiveTest;
+                                                    } else {
+                                                        $useList = $urineAnalysisWithMicroscopyTestArray; //urineAnalysisWithMicroscopyTestArray
+                                                    }
+                                                    foreach ($useList as $key => $value) {
                                                         //echo '<tr><td class="list-td"><a href="#" title="' . $value['fullname'] . '">' . $value['name'] . '</a></td>';
                                                         echo '<tr><td class="list-td">' . $value['name'] . '</td>';
                                                         echo '<td class="list-td"><input id="serology-test-' . $key . '" name="serology-test-' . $key . '" type="number" min="' . $value['range'][1] . '" step="' . $value['range'][0] . '" max="' . $value['range'][2] . '"" class="form-control" required="required"></td>';
@@ -189,7 +180,7 @@ include_once "./config.php";
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="item form-group">
+                                    <!-- <div class="item form-group">
                                         <div class="card-box table-responsive">
                                             <p class="text-muted font-13 m-b-30">
                                             </p>
@@ -206,18 +197,18 @@ include_once "./config.php";
                                                 <tbody>
 
                                                     <?php
-                                                    foreach ($urineAnalysisTestMicroscopyArray as $key => $value) {
-                                                        //echo '<tr><td class="list-td"><a href="#">' . $value . '</a></td>';
-                                                        echo '<tr><td class="list-td">' . $value . '</td>';
-                                                        echo '<td class="list-td"><input id="coagulation-test-' . $key . '" name="coagulation-test-' . $key . '" type="number" class="form-control" required="required"></td>';
-                                                        echo '</tr>';
-                                                    }
+                                                    // foreach ($urineAnalysisTestMicroscopyArray as $key => $value) {
+                                                    //     //echo '<tr><td class="list-td"><a href="#">' . $value . '</a></td>';
+                                                    //     echo '<tr><td class="list-td">' . $value . '</td>';
+                                                    //     echo '<td class="list-td"><input id="coagulation-test-' . $key . '" name="coagulation-test-' . $key . '" type="number" class="form-control" required="required"></td>';
+                                                    //     echo '</tr>';
+                                                    // }
                                                     ?>
 
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="ln_solid"></div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6">

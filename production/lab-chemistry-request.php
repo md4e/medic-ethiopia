@@ -1,6 +1,8 @@
 <?php
 include_once "./lab-all-test-defines.php";
 include_once "./config.php";
+include_once "../includes/crypter.php";
+include_once "../classes/MePatientTable.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,51 +29,40 @@ include_once "./config.php";
                         </a>
                         <p class="h3 text-success"><i class="fa fa-flask"></i> LAB:Chemistry Request</p>
                     </div>
-
                     <div class="title_center">
-
                     </div>
-
-                    <!-- <div class="title_right">
-                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="clearfix"></div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel all-form-style-lab-green">
-                            <div class="x_title">
+                            <!-- <div class="x_title">
                                 <h2>Enter Patient information and search with id</h2>
-
                                 <div class="clearfix"></div>
-                            </div>
+                            </div> -->
                             <div class="x_content">
                                 <br />
-                                <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" action="./core.php">
-                                    <div class="item form-group">
-                                        <label for="patient-search" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-                                        <div class="col-md-6 col-sm-6">
-
-                                            <div class="input-group" method="post" action="paitent-search.php">
-                                                <input id="patient-search" name="patient-search" placeholder="Enter query" type="text" class="form-control" required="required">
-                                                <input type="submit" value="Patient Search" class="btn btn-success">
-                                                <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
-                                                    patient is registered in
-                                                    New platform filled below will be filled by data result of the
-                                                    search request</span>
-                                            </div>
-
-                                        </div>
+                                <?php
+                                show_patient();
+                                ?>
+                                <!-- <div class="item form-group">
+                                    <div class="col-md-6 col-sm-6">
+                                        <select name="" id="" class="newlist custom-select">
+                                            <option value="unknown">Choose Test to add to list</option>
+                                            <?php
+                                            // var_dump($chemistryLabTestArray);
+                                            // foreach ($chemistryLabTestArray as $key => $value) {
+                                            //     echo '<option value="' . $value['name'] . '">' . $value['name'] . '</option>';
+                                            // }
+                                            ?>
+                                        </select>
                                     </div>
-                                </form>
+                                    <div class="col-md-6 col-sm-6">
+                                        <button class="btn btn-sm btn-success">Add Test</button>
+                                    </div>
+                                </div> -->
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
+
                                     <div class="item form-group">
                                         <div class="card-box table-responsive">
                                             <p class="text-muted font-13 m-b-30">
@@ -86,7 +77,13 @@ include_once "./config.php";
                                                 <tbody>
 
                                                     <?php
-                                                    foreach ($chemistryLabTestArray as $key => $value) {
+                                                    $useSelectiveTest = useSelectiveTest();
+                                                    if (isset($useSelectiveTest) && sizeof($useSelectiveTest) > 0) {
+                                                        $useList = $useSelectiveTest;
+                                                    } else {
+                                                        $useList = $chemistryLabTestArray;
+                                                    }
+                                                    foreach ($useList as $key => $value) {
                                                         echo '<tr><td class="list-td">' . $value['name'] . '</td>';
                                                         //echo '<tr><td class="list-td"><a href="#">' . $value['name'] . '</a></td>';
                                                         echo '<td class="list-td"><input id="chem-test-' . $key . '" name="chem-test-' . $key . '" type="number" min="' . $value['range'][1] . '" step="' . $value['range'][0] . '" max=' . $value['range'][2] . ' class="form-control" required="required"></td>';

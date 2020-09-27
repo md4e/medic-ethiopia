@@ -96,6 +96,7 @@ function show_patient()
         $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
         include_once($documentRootPath . "/includes/crypter.php");
         $patientSession = (object)$_SESSION['patient_card_number'];
+        // var_dump($patientSession);
         echo '<div class="item form-group x_panel" style="border-radius:5px;">';
         echo '<div class="row" style="width:100%;padding:5px;">';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;padding:0;">';
@@ -127,6 +128,28 @@ function show_patient()
     }
 }
 
+function useSelectiveTest()
+{
+    $useSelectiveTest = [];
+    if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
+        if (isset($_GET['selective']) && isset($_SESSION['patient_card_number'])) {
+
+            parse_str($_GET['selective'], $results);
+            $resultObject = (object)array_filter($results);
+            //var_dump($resultObject);
+
+            $dataArray = array_values(json_decode($resultObject->data, true));
+            $dataArray = array_map('intval', $dataArray);
+            //var_dump($dataArray);
+
+            foreach ($dataArray as $key => $value) {
+                array_push($useSelectiveTest, $GLOBALS['labTableToId'][$resultObject->table]['data'][$value]);
+            }
+        }
+        //var_dump($useSelectiveTest);
+    }
+    return $useSelectiveTest;
+}
 function headerLinks($title = null, $dir = null)
 {
 
