@@ -22,13 +22,17 @@ if (isset($_GET['selective']) && !isset($_SESSION['patient_card_number'])) {
             break;
         }
     }
-    $finalUrl = '&id=' . $finalUrl3['id'].'&patient_card_number='. $finalUrl3['patient_card_number'] . '&table='. $finalUrl3['table'] . '&data=' . $finalUrl3['data'];
+    $finalUrl = '&id=' . $finalUrl3['id'] . '&patient_card_number=' . $finalUrl3['patient_card_number'] . '&table=' . $finalUrl3['table'] . '&data=' . $finalUrl3['data'];
     header('Location: ./' . $finalUrl3['url'] . '?selective=true' . (urlencode($finalUrl)));
 } else {
     if (isset($_REQUEST['card-no-close']) && isset($_SESSION['patient_card_number'])) {
         unset($_SESSION['search_result']);
         unset($_SESSION['patient_card_number']);
-        header('Location: ./index_search.php?search-clean=true');
+        if (isset($_GET['caller'])) {
+            header('Location: ./' . $_GET['caller'].'?search-clean=true');
+        } else {
+            header('Location: ./index_search.php?search-clean=true');
+        }
     } else {
         $sessionSearchResultDecrypted = json_decode(Crypter::decrypt($_SESSION['search_result'][0]));
         foreach ($sessionSearchResultDecrypted->result as $key => $value) {
@@ -38,6 +42,12 @@ if (isset($_GET['selective']) && !isset($_SESSION['patient_card_number'])) {
                 unset($_SESSION['search_result']);
             }
         }
-        header('Location: ./index_patient.php');
+        var_dump($_GET['caller']);
+        //exit();
+        if (isset($_GET['caller'])) {
+            header('Location: ./' . $_GET['caller']);
+        } else {
+            header('Location: ./index_patient.php');
+        }
     }
 }

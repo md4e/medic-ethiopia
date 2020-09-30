@@ -188,6 +188,18 @@ function lab_request_all()
     lab_request_chemistry();
     echo '</div>';
 
+    echo '<div id="lab-stool" class="labratory-requests" style="display:none;">';
+    echo "Stool";
+    echo '</div>';
+
+    echo '<div id="lab-radiology-x-ray" class="labratory-requests" style="display:none;">';
+    echo "Radiology X-ray";
+    echo '</div>';
+
+    echo '<div id="lab-radiology-ct-scan" class="labratory-requests" style="display:none;">';
+    echo "Radiology CT scan";
+    echo '</div>';
+
     echo '<div id="lab-urine" class="labratory-requests" style="display:none;">';
     lab_request_urine();
     echo '</div>';

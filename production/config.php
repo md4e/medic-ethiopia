@@ -21,27 +21,28 @@ function session_handler()
     // }
 }
 session_handler();
-function show_patient_form($action = null)
+function show_patient_form($caller = null)
 {
-    show_patient();
+    show_patient($caller);
     $search_text = isset($_GET['search_text']) ? $_GET['search_text'] : null;
     echo '
-    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" method="post" action="./search.php">
-    <div class="item form-group x_panel">
-        <label for="search_text" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
-        <div class="col-md-6 col-sm-6">
-            <div class="form-group" method="post" action="paitent-search.php">
-                <input id="search_text" name="search_text" placeholder="Enter query" type="text" class="form-control" required="required" value="' . $search_text . '">
-                <input type="submit" value="Patient Search" class="btn btn-success">
-                <span id="lab-allergiesHelpBlock" class="form-text text-muted">
-                    Enter Card No., Phone No., Name, age, or ward for multiple search separated with comma <strong>, or ;</strong> </span>
+    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" method="post" action="./search.php?caller=' . $caller . '">
+    <div class="item form-group x_panel" style="background-color:#333;color:#fff">
+        <label for="search_text" class="col-form-label col-md-3 col-sm-3 label-align">Search here</label>
+        <div class="col-md-8 col-sm-8">
+            <div class="form-group" method="post">
+                <input id="search_text" name="search_text" placeholder="Search Card number, age, name, phone, or etc ..." type="text" class="form-control" required="required" value="' . $search_text . '">
             </div>
+            <div class="form-group" method="post">
+                <button type="submit" class="btn btn btn-warning"><i class="fa fa-search"></i> Search</button>
+            </div>
+
         </div>
     </div>';
 
     if (isset($search_text)) {
         if (isset($_SESSION['search_result']) && sizeof($_SESSION['search_result']) == 1 && $_SESSION['search_result'][0] != '') {
-            show_list_of_matching_patient();
+            show_list_of_matching_patient($caller);
         } else {
             echo '<p class="h4 text-danger">No Patient mathing input <strong>' . $search_text . '</strong></p>';
             unset($_SESSION['search_result']);
@@ -50,7 +51,17 @@ function show_patient_form($action = null)
     echo '</form>';
 }
 
-function show_list_of_matching_patient()
+function show_list_of_matching_patient($caller = null)
+{
+    if ($caller == 'index-reception.php') {
+        searchTableResultReception($caller);
+    } else {
+        searchTableResultDetail();
+    }
+}
+
+
+function searchTableResultDetail()
 {
     echo '<div class="card-box table-responsive" >
     <p class="text-muted font-13 m-b-30">
@@ -64,6 +75,7 @@ function show_list_of_matching_patient()
         </tr>
       </thead>
       <tbody>';
+
     $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
     include_once($documentRootPath . "/includes/crypter.php");
     $sessionSearchResultDecrypted = json_decode(Crypter::decrypt($_SESSION['search_result'][0]));
@@ -87,10 +99,61 @@ function show_list_of_matching_patient()
     echo '
       </tbody>
     </table>
-  </div>
-';
+  </div>';
 }
-function show_patient()
+
+function searchTableResultReception($caller = null)
+{
+    if ($caller != null) {
+        $caller = '&caller=' . $caller;
+    }
+    echo '<div class="card-box table-responsive" >
+    <p class="text-muted font-12">
+    Patients matching results
+    </p>
+    <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+        <tr>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>';
+
+    $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+    include_once($documentRootPath . "/includes/crypter.php");
+    $sessionSearchResultDecrypted = json_decode(Crypter::decrypt($_SESSION['search_result'][0]));
+    foreach ($sessionSearchResultDecrypted->result as $key => $value) {
+        $valueObj = (object) $value;
+        echo '<tr><td>';
+        echo '<p>';
+        echo '<strong>Card No.:</strong> .<u> ' . $valueObj->patient_card_number . '</u><br>';
+        echo '<strong>Name:</strong> ' . $valueObj->patient_first_name . '<br>';
+        echo '<strong>Age:</strong> ' . $valueObj->patient_age . '<br>';
+        echo '<strong>PhoneNr.:</strong> ' . $valueObj->patient_phone . '<br>';
+        echo '<strong>Kebele:</strong> ' . $valueObj->patient_kebele . '<br>';
+        echo '<strong>Wereda:</strong> ' . $valueObj->patient_wereda . '<br>';
+        echo '</p><p>';
+        echo '<a href="./triage-queue.php?card-no=' . Crypter::urlencode_encrypt($valueObj->patient_card_number) . '&department=OPD" class="btn btn-sm btn-primary">';
+        echo '<i class="fa fa-arrow-left"></i> To OPD </a>';
+        echo '<a href="./triage-queue.php?card-no=' . Crypter::urlencode_encrypt($valueObj->patient_card_number) . '&department=Emergency" class="btn btn-sm btn-danger">';
+        echo '<i class="fa fa-arrow-right"></i> To Emergency </a>';
+        echo '</p></td></tr>';
+    }
+    echo '
+      </tbody>
+    </table>
+  </div>';
+}
+function show_patient($caller = null)
+{
+    if ($caller == 'index-reception.php') {
+        show_patient_reception($caller);
+    } else {
+        show_patient_detail($caller);
+    }
+}
+
+function show_patient_detail($caller = null)
 {
     if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
         $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
@@ -118,6 +181,7 @@ function show_patient()
           </p>';
         echo '</p>';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
+
         echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
         echo '</div>';
 
@@ -128,6 +192,65 @@ function show_patient()
     }
 }
 
+function show_patient_reception($caller = null)
+{
+    if ($caller != null) {
+        $caller = '&caller=' . $caller;
+    }
+    if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
+        $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+        include_once($documentRootPath . "/includes/crypter.php");
+        $patientSession = (object)$_SESSION['patient_card_number'];
+        // var_dump($patientSession);
+        echo '<div class="item form-group x_panel" style="border-radius:5px;">';
+        echo '<div class="row" style="width:100%;padding:5px;">';
+        echo '<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;padding:0;">';
+        echo '<p><a href="./session.php?card-no-close=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . $caller . '" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Close </a></p>';
+        echo '</div>';
+
+        echo '<div class="row">';
+        echo '<div class="col-md-12 col-sm-12 col-xs-12">';
+        echo '<p class="h5 text-primary"><i class="fa fa-user"></i> ' . $patientSession->patient_first_name . ', Age:' . $patientSession->patient_age . ', Dept: OPD</p>';
+        echo '<p>';
+        echo '<strong>Card No.:</strong> .<strong>' . $patientSession->patient_card_number . '</strong><br>';
+        echo '<strong>Name:</strong>' . $patientSession->patient_first_name . '<br>';
+        echo '<strong>Age:</strong>' . $patientSession->patient_age . '<br>';
+        echo '<strong>PhoneNr.:</strong> ' . $patientSession->patient_phone . '<br>';
+        echo '<strong>Wereda.:</strong> ' . $patientSession->patient_kebele . '<br>';
+        echo '<strong>Kebele.:</strong> ' . $patientSession->patient_kebele . '<br>';
+        echo  '</p>';
+        echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
+        echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">To OPD</a>';
+        echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">To Emergency</a>';
+
+        echo '</div>';
+
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+
+    if (isset($_GET['request']) && $_GET['request'] == 'complete' && isset($_GET['department']) ) {
+        echo '<p class="h3 text-success">Complete! Patient routed to Centeral Triage.</p>';
+
+    }
+}
+
+function show_patient_triage($card_number = null)
+{
+    $patient = new MePatientTable('*');
+    $result = $patient->getResultSet();
+    $result->data_seek(0);
+
+    while ($row = $result->fetch_object()) {
+        if ($card_number == $row->patient_card_number) {
+            $_SESSION['patient_card_number'] = $row;
+            break;
+        }
+    }
+    show_patient();
+}
 function useSelectiveTest()
 {
     $useSelectiveTest = [];
@@ -215,6 +338,8 @@ function main_container_top_navigation()
                         <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> -->
                         <li><a href="index1.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                         <li ><a href="index_search.php?search-clean=true"><i class="fa fa-search text-info"></i>Patient Search</a></li>
+                        <li ><a href="index-reception.php"><i class="fa fa-bullseye text-primary"></i>Reception</a></li>
+                        <li ><a href="index9.php"><i class="fa fa-exchange text-primary"></i>Central Triage</a></li>
                         <li ><a href="index2.php"><i class="fa fa-plus text-danger"></i>Emergency</a></li>
                         <li ><a href="index3.php"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
                         <li ><a href="index4.php"><i class="fa fa-exclamation-triangle text-warning"></i>Radiology</a></li>
@@ -284,7 +409,7 @@ function patient_search()
         <label for="search_text" class="col-form-label col-md-3 col-sm-3 label-align">Card No.</label>
         <div class="col-md-6 col-sm-6">
 
-            <div class="input-group" method="post" action="paitent-search.php">
+            <div class="input-group" method="post">
                 <input id="search_text" name="search_text" placeholder="Enter query" type="text" class="form-control" required="required">
                 <input type="submit" value="Patient Search" class="btn btn-success">
                 <span id="patient-allergiesHelpBlock" class="form-text text-muted">If
@@ -397,96 +522,96 @@ $medication = [
 $hospital =
     [
         0 => "Choose your hospital",
-        1036 => "Addis Ababa - Zeweditu Hospital",
-        1000 => "Addis Ababa - Addis Ababa Fistula Hospital",
-        1001 => "Addis Ababa - ALERT",
-        1002 => "Addis Ababa - Bethel Teaching General Hospital",
-        1003 => "Addis Ababa - Amin General Hospital",
-        1004 => "Addis Ababa - Addis General Hospital [2]",
-        1005 => "Addis Ababa - Addis Hiwot Plc",
-        1006 => "Addis Ababa - Anania Mothers and Children Specialized Medical Center",
-        1007 => "Addis Ababa - Armed Forces General Hospital",
-        1008 => "Addis Ababa - Bella Defense Referral Hospital",
-        1009 => "Addis Ababa - Besegah Mother and Child Health Hospitals",
-        1010 => "Addis Ababa - Brass Mother and Child Health Hospital",
-        1011 => "Addis Ababa - Dagmawi Minilik Hospital",
-        1012 => "Addis Ababa - DBalch Hospital",
-        1013 => "Addis Ababa - Dinberua Hospital",
-        1014 => "Addis Ababa - Ethio Tebib Hospital",
-        1015 => "Addis Ababa - Federal Police Referral Hospital",
-        1016 => "Addis Ababa - Girum General Hospital",
-        1017 => "Addis Ababa - Hawassa Alatyon Hospital",
-        1018 => "Addis Ababa - Hayat Hospital",
-        1019 => "Addis Ababa - ICMC General Hospital CMC",
-        1020 => "Addis Ababa - Kadisco General Hospital [3]",
-        1021 => "Addis Ababa - Landmark General Hospital",
-        1022 => "Addis Ababa - MyungSung Christian Medical Centre/Korean Hospital/MCM General Hospital",
-        1023 => "Addis Ababa - Nordic Medical Center",
-        1024 => "Addis Ababa - Novocare American Clinic [4]",
-        1025 => "Addis Ababa - Ras Desta Damitew Hospital",
-        1026 => "Addis Ababa - Saint Gabriel General Hospital[5]",
-        1027 => "Addis Ababa - Shedeho Higher Clinic Dr Belaynew Mogess",
-        1028 => "Addis Ababa - St. Paulos Hospital",
-        1029 => "Addis Ababa - St. Yared General Hospital",
-        1030 => "Addis Ababa - Tibebu Hospital",
-        1031 => "Addis Ababa - Tikur Anbesa Specialized Hospital(TASH)",
-        1032 => "Addis Ababa - Tirunesh Beijing General Hospital",
-        1033 => "Addis Ababa - Tzna General Hospital",
-        1034 => "Addis Ababa - Yearrer hospital",
-        1035 => "Addis Ababa - Zenbaba General Hospital",
-        1037 => "Adama - Sr. Aklesia Memorial Hospital",
-        1038 => "Adama - Adama General Hospital & Medical College",
-        1039 => "Adama - Haile Mariam Hospital & Medical College",
-        1040 => "Bahir Dar - Bahir Dar Mini-fistula Hospital",
-        1041 => "Bahir Dar - Felge Hiwot Hospital",
-        1042 => "Bahir Dar - Gamby Teaching Hospital Clinic",
-        1043 => "Bahir Dar - Universal Clinic",
-        1044 => "Bahir Dar - Adinas Clinic",
-        1045 => "Desse - Boru Meda Hospital",
-        1046 => "Desse - Dessie Hospital",
-        1047 => "Desse - selam hospital",
-        1048 => "Desse - ethio hospital",
-        1049 => "Desse - bate hospital",
-        1050 => "Desse - Tossa Hospital",
-        1051 => "Gondar - University of Gondar Hospital",
-        1052 => "Gondar - Ibex Hospital",
-        1053 => "Gondar - Harar",
-        1054 => "Gondar - Harar General Hospital",
-        1055 => "Gondar - Hiwot fana specialized University hospital",
-        1056 => "Hawassa - Adare Hospital",
-        1057 => "Hawassa - Alatiyon Hospital",
-        1058 => "Hawassa - Asher Primary Hospital",
-        1059 => "Hawassa - Awassa Referral Hospital",
-        1060 => "Hawassa - Bete Abrham Primary Hospital",
-        1061 => "Hawassa - Kibru Primary Hospital",
-        1062 => "Hawassa - Yanet Internal Medicine Specialized Center",
-        1063 => "Somali Region - Jig-jiga University Referral Hospital",
-        1064 => "Somali Region - Karamara Hospital",
-        1065 => "Somali Region - Dagahbour General Hospital",
-        1066 => "Somali Region - Gode General Hospital",
-        1067 => "Somali Region - Qabri Dahare General Hospital",
-        1068 => "Somali Region - Warder General Hospital",
-        1069 => "Somali Region - Filtu General Hospital",
-        1070 => "Somali Region - Hargelle General Hospital",
-        1071 => "Somali Region - Sitti General Hospital",
-        1072 => "Tigray - Adigrat Hospital",
-        1073 => "Tigray - Ayder Referral Hospital",
-        1074 => "Tigray - Lemelem Karl Hospital",
-        1075 => "Tigray - Mekelle Hospital",
-        1076 => "Tigray - St. Mary Hospital",
-        1077 => "Tigray - Quiha Hospital",
-        1078 => "Tigray - Sihul Hospital",
-        1079 => "Tigray - Abiadi Hospital",
-        1080 => "Tigray - Wukro Hospital",
-        1081 => "Tigray - korem Hospital",
-        1082 => "Tigray - Mearig Hospital/dansha",
-        1083 => "Tigray - Humera Hospital",
-        1084 => "Tigray - Alamata Hospital",
-        1085 => "Tigray - Adwa Hospital",
-        1086 => "Tigray - Aksum University Referral Hospital",
-        1087 => "Wolayta - Dubbo Catholic Hospital",
-        1088 => "Wolayta - Soddo Christhian Hospital",
-        1089 => "Wolayta - Soddo General Hospital",
-        1090 => "Wolayta - Soddo University Hospital",
+        1036 => "Zeweditu Hospital",
+        1000 => "Addis Ababa Fistula Hospital",
+        1001 => "ALERT",
+        1002 => "Bethel Teaching General Hospital",
+        1003 => "Amin General Hospital",
+        1004 => "Addis General Hospital [2]",
+        1005 => "Addis Hiwot Plc",
+        1006 => "Anania Mothers and Children Specialized Medical Center",
+        1007 => "Armed Forces General Hospital",
+        1008 => "Bella Defense Referral Hospital",
+        1009 => "Besegah Mother and Child Health Hospitals",
+        1010 => "Brass Mother and Child Health Hospital",
+        1011 => "Dagmawi Minilik Hospital",
+        1012 => "DBalch Hospital",
+        1013 => "Dinberua Hospital",
+        1014 => "Ethio Tebib Hospital",
+        1015 => "Federal Police Referral Hospital",
+        1016 => "Girum General Hospital",
+        1017 => "Hawassa Alatyon Hospital",
+        1018 => "Hayat Hospital",
+        1019 => "ICMC General Hospital CMC",
+        1020 => "Kadisco General Hospital [3]",
+        1021 => "Landmark General Hospital",
+        1022 => "MyungSung Christian Medical Centre/Korean Hospital/MCM General Hospital",
+        1023 => "Nordic Medical Center",
+        1024 => "Novocare American Clinic [4]",
+        1025 => "Ras Desta Damitew Hospital",
+        1026 => "Saint Gabriel General Hospital[5]",
+        1027 => "Shedeho Higher Clinic Dr Belaynew Mogess",
+        1028 => "St. Paulos Hospital",
+        1029 => "St. Yared General Hospital",
+        1030 => "Tibebu Hospital",
+        1031 => "Tikur Anbesa Specialized Hospital(TASH)",
+        1032 => "Tirunesh Beijing General Hospital",
+        1033 => "Tzna General Hospital",
+        1034 => "Yearrer hospital",
+        1035 => "Zenbaba General Hospital",
+        1037 => "Sr. Aklesia Memorial Hospital",
+        1038 => "Adama General Hospital & Medical College",
+        1039 => "Haile Mariam Hospital & Medical College",
+        1040 => "Bahir Dar Mini-fistula Hospital",
+        1041 => "Felge Hiwot Hospital",
+        1042 => "Gamby Teaching Hospital Clinic",
+        1043 => "Universal Clinic",
+        1044 => "Adinas Clinic",
+        1045 => "Boru Meda Hospital",
+        1046 => "Dessie Hospital",
+        1047 => "selam hospital",
+        1048 => "ethio hospital",
+        1049 => "bate hospital",
+        1050 => "Tossa Hospital",
+        1051 => "University of Gondar Hospital",
+        1052 => "Ibex Hospital",
+        1053 => "Harar",
+        1054 => "Harar General Hospital",
+        1055 => "Hiwot fana specialized University hospital",
+        1056 => "Adare Hospital",
+        1057 => "Alatiyon Hospital",
+        1058 => "Asher Primary Hospital",
+        1059 => "Awassa Referral Hospital",
+        1060 => "Bete Abrham Primary Hospital",
+        1061 => "Kibru Primary Hospital",
+        1062 => "Yanet Internal Medicine Specialized Center",
+        1063 => "Jig-jiga University Referral Hospital",
+        1064 => "Karamara Hospital",
+        1065 => "Dagahbour General Hospital",
+        1066 => "Gode General Hospital",
+        1067 => "Qabri Dahare General Hospital",
+        1068 => "Warder General Hospital",
+        1069 => "Filtu General Hospital",
+        1070 => "Hargelle General Hospital",
+        1071 => "Sitti General Hospital",
+        1072 => "Adigrat Hospital",
+        1073 => "Ayder Referral Hospital",
+        1074 => "Lemelem Karl Hospital",
+        1075 => "Mekelle Hospital",
+        1076 => "St. Mary Hospital",
+        1077 => "Quiha Hospital",
+        1078 => "Sihul Hospital",
+        1079 => "Abiadi Hospital",
+        1080 => "Wukro Hospital",
+        1081 => "korem Hospital",
+        1082 => "Mearig Hospital/dansha",
+        1083 => "Humera Hospital",
+        1084 => "Alamata Hospital",
+        1085 => "Adwa Hospital",
+        1086 => "Aksum University Referral Hospital",
+        1087 => "Dubbo Catholic Hospital",
+        1088 => "Soddo Christhian Hospital",
+        1089 => "Soddo General Hospital",
+        1090 => "Soddo University Hospital",
         9999 => "Other"
     ];

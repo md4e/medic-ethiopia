@@ -128,7 +128,6 @@ include_once "./all_lab_request.php";
                                                                 <tr>
                                                                     <th>Order time</th>
                                                                     <th>Drug Name</th>
-                                                                    <th>Drug Strength</th>
                                                                     <th>Dosage</th>
                                                                     <th>Adminster & Sign</th>
                                                                 </tr>
@@ -137,7 +136,7 @@ include_once "./all_lab_request.php";
                                                                 <?php
                                                                 $department = [0 => "OPD", 1 => "Emergency", 2 => "Radiology", 3 => "@Chemistry Lab", 4 => "@Stool Examination"];
                                                                 for ($i = 0; $i < 4; $i++) {
-                                                                    echo ' <tr><td>08:00 </td> <td>Alvedon</td> <td>500mg</td> <td>2pcs</td><td><button class="btn-primary btn-sm">Adminster & Sign </button></td></tr>';
+                                                                    echo ' <tr><td>08:00 </td> <td>Alvedon</td> <td>500mg</td><td><button class="btn-primary btn-sm">Adminster & Sign </button></td></tr>';
                                                                 }
                                                                 ?>
                                                             </tbody>
@@ -152,7 +151,7 @@ include_once "./all_lab_request.php";
                                                         <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">New Prescription</label>
                                                         <div class="col-6">
                                                             <select name="medication-request-all" id="medication-request-list" class="custom-select" required="required">
-                                                                <option value="medication-serology">Choose you lab request type</option>
+                                                                <option value="medication-serology">Choose you medication</option>
                                                                 <?php
                                                                 foreach ($medication as $key => $value) {
                                                                     echo '<option value="' . $key . '">' . $value . '</option>';
@@ -170,12 +169,17 @@ include_once "./all_lab_request.php";
                                                         <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">Choose Labratory request</label>
                                                         <div class="col-6">
                                                             <select name="lab-request-all" id="lab-request-list" class="custom-select" required="required">Test
-                                                                <option value="lab-serology">Choose you lab request type</option>
-                                                                <option value="lab-serology">Serology and Coagulation Request</option>
-                                                                <option value="lab-blood">Blood and Blood Crossmatch request</option>
-                                                                <option value="lab-hematolog">Hematology request</option>
-                                                                <option value="lab-chemistry">Chemisitry Lab request</option>
-                                                                <option value="lab-urine">Urine Analysis Examination</option>
+                                                                <option value="lab-serology">Choose you treatment request</option>
+                                                                <option value="lab-serology">Serology and Coagulation Lab Request</option>
+                                                                <option value="lab-blood">Blood and Blood Crossmatch Lab request</option>
+                                                                <option value="lab-hematolog">Hematology Lab Request</option>
+                                                                <option value="lab-chemistry">Chemisitry Lab Request</option>
+                                                                <option value="lab-stool">Stool Examination Lab Request</option>
+                                                                <option value="lab-radiology-x-ray">Radiology X-ray Request</option>
+                                                                <option value="lab-radiology-ct-scan">Radiology CT Scan Request</option>
+                                                                <option value="lab-urine">Urine Analysis Examination Lab Request</option>
+
+
                                                             </select>
                                                         </div>
                                                     </div>

@@ -813,10 +813,12 @@ class MePatientTable extends MySqlRecord
     {
         if($patientId == "*"){
             $sql = "SELECT * FROM patient_table";
-        } else { //id
+        } else if(substr($patientId, 0, 4 ) == "ZMRH"){
+            $sql =  "SELECT * FROM patient_table WHERE patient_card_number={$this->parseValue($patientId,'notNumber')}";
+        }
+        else { //id
             $sql =  "SELECT * FROM patient_table WHERE patient_id={$this->parseValue($patientId,'int')}";
         }
-
         $this->resetLastSqlError();
         $result =  $this->query($sql);
         $this->resultSet=$result;
