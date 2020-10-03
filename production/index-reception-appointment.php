@@ -52,6 +52,7 @@ include_once "./config.php";
                             <th>Queue</th>
                             <th>Gender</th>
                             <th>Appointment Date</th>
+                            <th>Action</th>
                             <th>Department</th>
                           </tr>
                         </thead>
@@ -72,6 +73,7 @@ include_once "./config.php";
                             echo '<td>' . $rows->patient_age . '</td>';
                             echo '<td>' . $rows->patient_gender . '</td>';
                             echo '<td>2011/04/25</td>';
+                            echo '<td><button class="btn-danger">Cancel Appointment</button></td>';
                             echo '<td>' . $department[$index] . '</td>';
                             echo '</tr>';
                           }
