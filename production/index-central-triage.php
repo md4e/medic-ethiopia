@@ -23,22 +23,9 @@ include_once "./config.php";
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
-              <a href="medical-admission-opd.php" class="patient">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-primary"><i class="fa fa-pencil"></i> YYYYYYYYYYYYYYYYYYYYYYYYY </p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
               <a href="patient-list-triage.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-dark"><i class="fa fa-list"></i> Patient List </p>
+                  <p class="h4 text-primary"><i class="fa fa-list"></i> Patient List </p>
                 </div>
               </a>
             </div>

@@ -4,10 +4,9 @@ include_once "./config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <?php
-  headerLinks("OPD Admission");
+  headerLinks("Reception");
   ?>
 </head>
 

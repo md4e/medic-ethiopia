@@ -236,19 +236,11 @@ patient_search()
                                         <label class="col-form-label col-md-3 col-sm-3 label-align">Patient have
                                             Allergies<sup>*</sup></label>
                                         <div class="col-md-6 col-sm-6">
-                                            <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input name="patient-allergies" id="patient-allergies_0" type="checkbox" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="0">
-                                                <label for="patient-allergies_0" class="custom-control-label">No</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input name="patient-allergies" id="patient-allergies_1" type="checkbox" aria-describedby="patient-allergiesHelpBlock" class="custom-control-input" value="0">
-                                                <label for="patient-allergies_1" class="custom-control-label">Yes</label>
-                                            </div>
                                             <select id="patient-allergies-type" name="patient-allergies-type" class="custom-select" required="required">
 
                                                 <option value="unknown">Choose Allergy</option>
                                                 <?php
-                                                foreach ($allegies as $key => $value) {
+                                                foreach ($allergies as $key => $value) {
                                                     echo '<option value = "' . $key . '" title="' . $value . '">' . $key . '</option>';
                                                 }
                                                 ?>
