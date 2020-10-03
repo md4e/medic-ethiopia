@@ -249,7 +249,7 @@ include_once "./config.php";
 
                                                 <option value="unknown">Choose Allergy</option>
                                                 <?php
-                                                foreach ($allegies as $key => $value) {
+                                                foreach ($allergies as $key => $value) {
                                                     echo '<option value = "' . $key . '" title="' . $value . '">' . $key . '</option>';
                                                 }
                                                 ?>

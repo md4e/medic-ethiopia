@@ -4,6 +4,7 @@ include_once "./config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <?php
   headerLinks("Reception");
@@ -48,8 +49,8 @@ include_once "./config.php";
               </div>
             </div>
           </div>
-        <!-- </div> -->
-        <!-- <div class="row"> -->
+          <!-- </div> -->
+          <!-- <div class="row"> -->
           <div class="col-md-8 col-sm-12 ">
             <div class="x_panel">
               <div class="x_title">
@@ -177,12 +178,38 @@ include_once "./config.php";
                     </div>
                   </div>
                   <div class="item form-group">
+                    <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">History of allergy</label>
+                    <div class="col-md-6 col-sm-6">
+                      <select id="allergies-name" name="allergies-name" class="custom-select">
+                        <option value="choose">Choose allergy</option>
+                        <?php
+                        foreach ($allergies as $key => $value) {
+                          echo '<option value = "' . $key . '">' . $key . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="item form-group">
                     <label for="department-name" class="col-form-label col-md-3 col-sm-3 label-align">Department</label>
                     <div class="col-md-6 col-sm-6">
                       <select id="ward" name="department" class="custom-select" required="required">
                         <option value="unknown">Choose department</option>
-                        <option value="emergency-care">Emergency</option>
-                        <option value="emergency-care">OPD </option>
+                        <option value="emergency-care">Emergency care</option>
+                        <option value="anesthesia-and-intensive-care">Anesthesia and intensive
+                          care</option>
+                        <option value="geriatrics">Geriatrics</option>
+                        <option value="heart-and-physiology">Heart and physiology</option>
+                        <option value="internal-medicin-and-infection">Internal medicine and
+                          infection</option>
+                        <option value="surgery-and-urology">Surgery and urology</option>
+                        <option value="gynecology-and-childbirth">Gynecology and childbirth
+                        </option>
+                        <option value="medical-specialist-care">Medical specialist care</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="radiology">Radiology</option>
+                        <option value="rehabilitation-medicine">Rehabilitation medicine</option>
                       </select>
                     </div>
                   </div>
@@ -199,25 +226,23 @@ include_once "./config.php";
               </div>
             </div>
           </div>
-
         </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Copyright © 2020 Powered by <a href="http://medic-ethiopia.com" target="blank">Medic-Ethiopia</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
       </div>
-      <!-- /page content -->
-
-      <!-- footer content -->
-      <footer>
-        <div class="pull-right">
-          Copyright © 2020 Powered by <a href="http://medic-ethiopia.com" target="blank">Medic-Ethiopia</a>
-        </div>
-        <div class="clearfix"></div>
-      </footer>
-      <!-- /footer content -->
     </div>
-  </div>
 
-  <?php
-  //include_js();
-  ?>
+    <?php
+    //include_js();
+    ?>
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -227,23 +252,23 @@ include_once "./config.php";
     <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-  <script>
-    $('.auto-generate-card').on("click", function() {
-      $('#patient-search').val(Math.floor(Math.random() * 10000000) + 1000);
-    });
+    <script>
+      $('.auto-generate-card').on("click", function() {
+        $('#patient-search').val(Math.floor(Math.random() * 10000000) + 1000);
+      });
 
 
-    $("#housing").change(function() {
-      var value = $(this).val();
-      if (value == "yes") {
-        $(".with-housing").hide();
-        $(".without-housing").show();
-      } else {
-        $(".with-housing").show();
-        $(".without-housing").hide();
-      }
-    });
-  </script>
+      $("#housing").change(function() {
+        var value = $(this).val();
+        if (value == "yes") {
+          $(".with-housing").hide();
+          $(".without-housing").show();
+        } else {
+          $(".with-housing").show();
+          $(".without-housing").hide();
+        }
+      });
+    </script>
 
 </body>
 
