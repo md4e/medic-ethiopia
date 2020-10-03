@@ -178,19 +178,6 @@ include_once "./config.php";
                     </div>
                   </div>
                   <div class="item form-group">
-                    <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">History of allergy</label>
-                    <div class="col-md-6 col-sm-6">
-                      <select id="allergies-name" name="allergies-name" class="custom-select">
-                        <option value="choose">Choose allergy</option>
-                        <?php
-                        foreach ($allergies as $key => $value) {
-                          echo '<option value = "' . $key . '">' . $key . '</option>';
-                        }
-                        ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="item form-group">
                     <label for="department-name" class="col-form-label col-md-3 col-sm-3 label-align">Department</label>
                     <div class="col-md-6 col-sm-6">
                       <select id="ward" name="department" class="custom-select" required="required">
