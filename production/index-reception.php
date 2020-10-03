@@ -68,6 +68,20 @@ include_once "./config.php";
                     </div>
                   </div>
                   <div class="item form-group">
+                    <label for="date-of-admission" class="col-form-label col-md-3 col-sm-3 label-align">Date of
+                      Admission</label>
+                    <div class="col-md-6 col-sm-6">
+                      <input id="date-of-admission" name="date-of-admission" type="date" class="form-control" required="required">
+                      <!-- <span id="date-of-admissionHelpBlock" class="form-text text-muted">when was the patient admitted</span> -->
+                    </div>
+                  </div>
+                  <div class="item form-group">
+                    <label for="time-of-admission" class="col-form-label col-md-3 col-sm-3 label-align">Time of Admission</label>
+                    <div class="col-md-6 col-sm-6">
+                      <input id="time-of-admission" name="time-of-admission" type="time" value="00:00" class="form-control" required="required">
+                    </div>
+                  </div>
+                  <div class="item form-group">
                     <label for="gender" class="col-form-label col-md-3 col-sm-3 label-align">Gender
                       (Sex)</label>
                     <div class="col-md-6 col-sm-6">
