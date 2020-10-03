@@ -44,6 +44,7 @@ include_once "./config.php";
                   </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xm-12">
+                     <p class="h1"><a href="./index-reception-appointment.php" class="btn btn-md btn-primary"><i class="fa fa-list"></i> Check Appoitment</a></p>
 
                 </div>
               </div>
