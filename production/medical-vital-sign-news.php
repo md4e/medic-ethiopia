@@ -212,23 +212,19 @@ include_once "./config.php";
             if (value == "yes") {
                 $(".with-allergy").hide();
                 $(".without-allergy").show();
-                $(this).css('background','red');
-                $(this).css('color','white');
-                $("#without-allergy-detail").css('border','1px solid red');
+                $(this).css('background', 'red');
+                $(this).css('color', 'white');
+                $("#without-allergy-detail").css('border', '1px solid red');
             } else {
                 $(".with-allergy").show();
                 $(".without-allergy").hide();
-                $(this).css('background','');
-                $(this).css('color','');
-                $("#without-allergy-detail").css('border','');
+                $(this).css('background', '');
+                $(this).css('color', '');
+                $("#without-allergy-detail").css('border', '');
             }
         });
-
-
-
-                  var time = new Date();
-                  $('#date-of-vital-sign-record-date').val(time.toString('YYYY-MM-dd'));
-
+        var time = new Date();
+        $('#date-of-vital-sign-record-date').val(time.toString('YYYY-MM-dd'));
     </script>
 </body>
 

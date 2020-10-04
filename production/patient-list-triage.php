@@ -152,12 +152,16 @@ include_once "./config.php";
               </div>
               <!-- -->
               <div class="item form-group">
-                <label for="refering-hospital-name" class="col-form-label col-md-3 col-sm-3 label-align">Refered
-                  from</label>
-                <div class="col-md-4 col-sm-4">
+                <label for="refering-hospital-name" class="col-form-label col-md-3 col-sm-3 label-align">Origin of Referal
+                  </label>
+                <div class="col-md-6 col-sm-6">
                   <select id="refering-hospital-name" name="refering-hospital-name" class="custom-select">
                     <option value="unknown">Choose Refered from</option>
-                    <option value="emergency">Emeregency</option>
+                    <option value="emergency">Emergency</option>
+                    <option value="polic"> Police</option>
+                    <option value="self"> Self</option>
+                    <option value="relative"> Relative</option>
+                    <option value="non-relative"> Non-Relative</option>
                     <?php
                     foreach ($hospital as $key => $value) {
                       echo '<option value = "' . $key . '">' . $value . '</option>';
@@ -165,15 +169,12 @@ include_once "./config.php";
                     ?>
                   </select>
                 </div>
-                <div class="col-md-2 col-sm-2">
+                <!-- <div class="col-md-2 col-sm-2">
                   <select id="refering-source" name="refering-source" class="custom-select">
-                    <option value="unknown">Refered form</option>
-                    <option value="1"> Private Hospital</option>
-                    <option value="2"> Health Center</option>
-                    <option value="3"> Police</option>
-                    <option value="4"> Self</option>
+                    <option value="unknown">Refere</option>
+
                   </select>
-                </div>
+                </div> -->
                 <!-- <div class="custom-control custom-radio custom-control-inline">
                       <input name="search-filter-hospital" id="search-filter-hospital_0" type="radio" class="custom-control-input" value="all" aria-describedby="search-filterHelpBlock">
                       <label for="search-filter-hospital_0" class="custom-control-label">Private Hospital</label>
@@ -191,6 +192,12 @@ include_once "./config.php";
                       <label for="search-filter-hospital_3" class="custom-control-label"></label>
                     </div>
                   </div> -->
+
+              </div>
+              <div class="item form-group">
+                <div class="offset-3 col-md-6 col-sm-6">
+                  <input id="refering-hospital-name-other" name="refering-hospital-name-other" placeholder="Write referring hospital if not in list" type="text" class="form-control">
+                </div>
               </div>
               <!-- -->
               <div class="item form-group">
@@ -469,6 +476,12 @@ include_once "./config.php";
                   </select>
                 </div>
               </div>
+              <div class="item form-group red-orange" style="display: none;">
+                <label for="red-orange-detail" class="col-form-label col-md-3 col-sm-3 label-align">Addition help give to Patient</label>
+                <div class="col-md-6 col-sm-6">
+                  <textarea id="red-orange-detail" placeholder="Write here if Additional help is given to Patient" name="chief-compliant" cols="40" rows="4" class="form-control"></textarea>
+                </div>
+              </div>
               <div class="item form-group">
                 <label for="transfer-name" class="col-form-label col-md-3 col-sm-3 label-align">Transfer to</label>
                 <div class="col-md-6 col-sm-6">
@@ -493,12 +506,22 @@ include_once "./config.php";
                     <option value="orthopedics">Orthopedics</option>
                     <option value="radiology">Radiology</option>
                     <option value="rehabilitation-medicine">Rehabilitation medicine</option>
+                    <option value="medical-emergency">Medical Emergency(RO)</option>
+                    <option value="medical-emergency">Medical Emergency(YG)</option>
+                    <option value="surgical-emergency">Surgical Emergency </option>
+                    <option value="gynecolgic-emergency">Gynecologic Emergency </option>
+                    <option value="obstetric-emergency">Obstetric Emergency </option>
+                    <option value="pediatrics-emergency">Pediatrics Emergency</option>
                   </select>
                   <span>
-                    <p><strong>N.B.</strong>
-                      <li>Red and Orange admit to Rescuscitation</li>
-                      <li>Yellow and Green to waiting area and frequent Re-Triage</li>
-                    </p>
+                    <div class="h5" style="margin:5px;color: white;background:#000000;border:1px solid #333;padding:2px;border-radius:4px;"><strong><u>Attention</u></strong><i class="fa fa-exclamation"></i>
+                      <p class="h5" style="color: white;background:#000000;padding:2px;border-radius:4px;"><i class="fa fa-asterisk"></i> <strong><span style="color: #D6001C;"> Red </span></strong>
+                        and <strong><span style="color: orange;">Orange </span></strong>
+                        - pass through patient's file to the respective <u>Emergency</u> department and <u> START RESUSCITATION</u> simultaneously!</p>
+                      <p class="h5" style="color: white;background:#000000;padding:2px;border-radius:4px;"> <i class="fa fa-asterisk"></i> <strong><span style="color: yellow;">Yellow </span></strong>
+                        and <strong><span style="color: #b9ee51;">Green </span></strong>
+                        - pass on the patient's file to the respective <u>Emergency</u> department immediately!</p>
+                    </div>
                   </span>
                 </div>
               </div>
@@ -554,6 +577,13 @@ include_once "./config.php";
       var color = $(this).children(":selected").css("color");
       $('#assessment').css('background', bkgcolor);
       $('#assessment').css('color', color);
+      var value = $('#assessment').val();
+
+      if (value == 0  || value == 1) {
+        $(".red-orange").show();
+      } else{// if(value == 2 || value == 3) {
+        $(".red-orange").hide();
+      }
     });
   </script>
 </body>
