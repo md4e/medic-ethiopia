@@ -137,7 +137,7 @@ include_once "./config.php";
                                     </div> -->
                                     <div class="item form-group">
                                         <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">Patient have <strong>Allergy</strong>?</label>
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-md-2 col-sm-2">
                                             <select id="allergy" name="allergy" class="custom-select" required="required">
                                                 <option value="unknown">Patient have allergy?</option>
                                                 <option value="yes">YES</option>
@@ -214,13 +214,13 @@ include_once "./config.php";
                 $(".without-allergy").show();
                 $(this).css('background','red');
                 $(this).css('color','white');
-                $(".without-allergy").css('border','1px solid red');
+                $("#without-allergy-detail").css('border','1px solid red');
             } else {
                 $(".with-allergy").show();
                 $(".without-allergy").hide();
                 $(this).css('background','');
                 $(this).css('color','');
-                $(".without-allergy").css('border','');
+                $("#without-allergy-detail").css('border','');
             }
         });
     </script>
