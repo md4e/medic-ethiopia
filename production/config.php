@@ -7,15 +7,19 @@ spl_autoload_register(function ($class_name) {
 function session_handler()
 {
     if (isset($_POST['submit'])) {
-        $value = $_POST['submit'];
-        if ($value == 'ceo') {
+        $employeeID = $_POST['employeeID'];
+        $employeePassword = $_POST['employeePassword'];
+
+        if ($employeeID == 'ceo123' && $employeePassword == 'pass123') {
             $_SESSION['pID'] = 1;
-        } else if ($value == 'doctor') {
+        } else if ($employeeID == 'doc123' && $employeePassword == 'pass123') {
             $_SESSION['pID'] = 2;
-        } else if ($value == 'laboratory') {
+        } else if ($employeeID == 'lab123' && $employeePassword == 'pass123') {
             $_SESSION['pID'] = 3;
-        } else if ($value == 'reception') {
+        } else if ($employeeID == 'recp123' && $employeePassword == 'pass123') {
             $_SESSION['pID'] = 4;
+        } else {
+            header('Location: ../login.php');
         }
     }
     // if (isset($_GET['search_text']) && isset($_GET['card-no'])) {
@@ -222,8 +226,8 @@ function show_patient_reception($caller = null)
     $finalCaller = '';
     if ($caller != null) {
         if ($caller == 'index-reception.php') {
-            $finalCaller = '&caller='.$caller;
-        }else{
+            $finalCaller = '&caller=' . $caller;
+        } else {
             $finalCaller = '&caller=index5.php';
         }
     }
@@ -483,7 +487,36 @@ function patient_search()
 }
 //////////////////////////// DEFINES ///////////////////////////
 
-
+$opd_clincs   = [
+    1=>"Dermatology",
+    2=>"Dental",
+    3=>"Rmopd",
+    4=>"Rsopd",
+    5=>"Cough Clinic",
+    6=>"NRC",
+    7=>"NSRC",
+    8=>"Pallitive Care Clinic",
+    9=>"Opthalmology Clinic",
+    10=> "Physiotherapy Clinic",
+    11=> "RGOPD",
+    12=> "PNC/GRC",
+    13=> "EPI",
+    14=> "RGOPD",
+    15=> "PMTCT",
+    16=> "ART",
+    17=> "TB Clinic",
+    18=> "MINOR OR",
+    19=> "DM Clinic",
+    20=> "HPN Clinic",
+    21=> "Micsalenous Clinic",
+    22=> "Psychatric Clinic",
+    23=> "Substance Abuse Clinic",
+    24=> "Cervical Cancer Clinic",
+    25=> "plastic Surgery Clinic",
+    26=> "SRC",
+    27=> "Pedatrics Clinic",
+    28=> "NICU\HRC"
+];
 
 $medication = [
 
@@ -581,7 +614,6 @@ $medication = [
 
 $hospital =
     [
-        0 => "Choose your hospital",
         1036 => "Zeweditu Hospital",
         1000 => "Addis Ababa Fistula Hospital",
         1001 => "ALERT",

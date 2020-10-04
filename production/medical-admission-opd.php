@@ -55,9 +55,9 @@ include_once "./config.php";
                             </div>
                             <div class="x_content">
                                 <br />
-<?php
-patient_search()
-?>
+                                <?php
+                                show_patient_form('medical-admission-opd.php');
+                                ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="item form-group">
                                         <label for="fullname" class="col-form-label col-md-3 col-sm-3 label-align">Name
@@ -167,37 +167,16 @@ patient_search()
                                         <div class="col-md-6 col-sm-6">
                                             <select id="ward" name="department" class="custom-select" required="required">
                                                 <option value="unknown">Choose department</option>
-                                                <option value="emergency-care">Emergency care</option>
-                                                <option value="anesthesia-and-intensive-care">Anesthesia and intensive
-                                                    care</option>
-                                                <option value="geriatrics">Geriatrics</option>
-                                                <option value="heart-and-physiology">Heart and physiology</option>
-                                                <option value="internal-medicin-and-infection">Internal medicine and
-                                                    infection</option>
-                                                <option value="surgery-and-urology">Surgery and urology</option>
-                                                <option value="gynecology-and-childbirth">Gynecology and childbirth
-                                                </option>
-                                                <option value="medical-specialist-care">Medical specialist care</option>
-                                                <option value="neurology">Neurology</option>
-                                                <option value="orthopedics">Orthopedics</option>
-                                                <option value="radiology">Radiology</option>
-                                                <option value="rehabilitation-medicine">Rehabilitation medicine</option>
+                                                <?php
+                                                foreach ($opd_clincs as $key => $value) {
+                                                    echo '<option value="' . $key . '">' . $value . '</option>';
+                                                }
+
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="item form-group">
-                                        <label for="bed-number" class="col-form-label col-md-3 col-sm-3 label-align">Bed
-                                            No.</label>
-                                        <div class="col-md-3 col-sm-3">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">BD-</div>
-                                                </div>
-                                                <input id="bed-number" name="bed-number" placeholder="Write bed number" type="text" class="form-control" required="required">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="item form-group">
                                         <label for="examination-room-number" class="col-form-label col-md-3 col-sm-3 label-align">Examination
                                             Room No.</label>
@@ -217,6 +196,8 @@ patient_search()
                                             from</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select id="refering-hospital-name" name="refering-hospital-name" class="custom-select" required="required">
+                                            <option value="unknown">Choose Refered from</option>
+                                            <option value="emergency">Emeregency</option>
                                                 <?php
                                                 foreach ($hospital as $key => $value) {
                                                     echo '<option value = "' . $key . '">' . $value . '</option>';
@@ -234,19 +215,8 @@ patient_search()
 
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align">Patient have
-                                            Allergies<sup>*</sup></label>
+                                            Allergies</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select id="patient-allergies-type" name="patient-allergies-type" class="custom-select" required="required">
-
-                                                <option value="unknown">Choose Allergy</option>
-                                                <?php
-                                                foreach ($allergies as $key => $value) {
-                                                    echo '<option value = "' . $key . '" title="' . $value . '">' . $key . '</option>';
-                                                }
-                                                ?>
-                                            </select>
-                                            <span id="patient-allergiesHelpBlock" class="form-text text-muted">Check if
-                                                patient have allergies if yes write in field below</span>
                                             <textarea id="patient-allergies-if-yes" placeholder="Write here if Patient have allergies" name="patient-allergies-if-yes" cols="40" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea>
                                         </div>
                                     </div>

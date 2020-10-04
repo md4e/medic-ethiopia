@@ -196,21 +196,13 @@ include_once "./config.php";
                     <div class="col-md-6 col-sm-6">
                       <select id="ward" name="department" class="custom-select" required="required">
                         <option value="unknown">Choose department</option>
-                        <option value="emergency-care">Emergency care</option>
-                        <option value="anesthesia-and-intensive-care">Anesthesia and intensive
-                          care</option>
-                        <option value="geriatrics">Geriatrics</option>
-                        <option value="heart-and-physiology">Heart and physiology</option>
-                        <option value="internal-medicin-and-infection">Internal medicine and
-                          infection</option>
-                        <option value="surgery-and-urology">Surgery and urology</option>
-                        <option value="gynecology-and-childbirth">Gynecology and childbirth
-                        </option>
-                        <option value="medical-specialist-care">Medical specialist care</option>
-                        <option value="neurology">Neurology</option>
-                        <option value="orthopedics">Orthopedics</option>
-                        <option value="radiology">Radiology</option>
-                        <option value="rehabilitation-medicine">Rehabilitation medicine</option>
+
+                        <?php
+                        foreach ($opd_clincs as $key => $value) {
+                         echo '<option value="'.$key.'">'.$value.'</option>';
+                        }
+
+                        ?>
                       </select>
                     </div>
                   </div>

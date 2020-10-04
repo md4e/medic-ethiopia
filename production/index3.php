@@ -25,7 +25,7 @@ include_once "./config.php";
             <div class="x_title">
               <a href="medical-admission-opd.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-primary"><i class="fa fa-pencil"></i> OPD - Patient Admission Form</p>
+                  <p class="h4 text-primary"><i class="fa fa-pencil"></i> OPD - Patient Registeration Form</p>
                 </div>
               </a>
             </div>

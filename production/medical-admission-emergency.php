@@ -218,6 +218,8 @@ include_once "./config.php";
                                             from</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select id="refering-hospital-name" name="refering-hospital-name" class="custom-select" required="required">
+                                                <option value="unknown">Choose Refered from</option>
+                                                <option value="emergency">Emeregency</option>
                                                 <?php
                                                 foreach ($hospital as $key => $value) {
                                                     echo '<option value = "' . $key . '">' . $value . '</option>';

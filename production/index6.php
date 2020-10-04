@@ -21,7 +21,7 @@ include_once "./config.php";
       <!-- top tiles -->
       <?php
       $list = [
-        0 => ["name" => "Vital Sign (NEWS)", "link" => "medical-vital-sign-news.php"],
+        0 => ["name" => "Vital Sign (MEWS)", "link" => "medical-vital-sign-news.php"],
         1 => ["name" => "Order Sheet", "link" => "medical-order-sheet.php"],
         2 => ["name" => "Patient's Progress Notes and Investigation Summary", "link" => "medical-patient-notes-and-investigation-summary.php"],
         3 => ["name" => "Discharge Summary", "link" => "medical-discharge-summary.php"],

@@ -77,8 +77,7 @@ include_once "./config.php";
                         $result = $triage_list->getResultSet();
                         $result->data_seek(0);
                         while ($row2 = $result->fetch_object()) {
-                          if($row2->department == 'OPD')
-                          {
+                          if ($row2->department == 'OPD') {
                             continue;
                           }
                           echo '<tr>';
@@ -157,6 +156,8 @@ include_once "./config.php";
                   from</label>
                 <div class="col-md-4 col-sm-4">
                   <select id="refering-hospital-name" name="refering-hospital-name" class="custom-select">
+                    <option value="unknown">Choose Refered from</option>
+                    <option value="emergency">Emeregency</option>
                     <?php
                     foreach ($hospital as $key => $value) {
                       echo '<option value = "' . $key . '">' . $value . '</option>';

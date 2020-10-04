@@ -26,7 +26,7 @@ include_once "./config.php";
                         <a href="index6.php" class="title_link btn btn-primary" type="button">
                             <p class="h6">⏎ Return to Medical Forms</p>
                         </a>
-                        <p class="h4 text-primary"><i class="fa fa-book"></i> Vital Sign (NEWS)</p>
+                        <p class="h4 text-primary"><i class="fa fa-book"></i> Vital Sign (MEWS)</p>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -40,7 +40,7 @@ include_once "./config.php";
                             <div class="x_content">
                                 <br />
                                 <?php
-                                patient_search()
+                                show_patient_form('medical-vital-sign-news.php');
                                 ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
 
@@ -116,6 +116,13 @@ include_once "./config.php";
                                         </div>
                                     </div>
                                     <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">Patient have
+                                            Allergies</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea id="patient-allergies-if-yes" placeholder="Write here if Patient have allergies" name="patient-allergies-if-yes" cols="40" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
                                         <label for="date-of-vital-sign-record-remark" class="col-form-label col-md-3 col-sm-3 label-align">Remark</label>
                                         <div class="col-md-6 col-sm-6" style="border:1px dotted;">
                                             <p text="mute"> Here an algorithm will assist to give remarks based on the data input above. Additional Remarks are available here.</p>
@@ -130,6 +137,7 @@ include_once "./config.php";
                                             <textarea id="remark" name="remark" cols="40" rows="5" class="form-control"></textarea>
                                         </div>
                                     </div>
+
                                     <div class="ln_solid"></div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6">
