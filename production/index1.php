@@ -5,16 +5,17 @@ include_once "./config.php";
 <html lang="en">
 
 <head>
-    <?php
-    headerLinks("Dashboard");
-    ?>
+  <?php
+  session_handler();
+  headerLinks("Dashboard");
+  ?>
 </head>
 
 <body class="nav-md">
   <div class="container body">
-        <?php
-        main_container_top_navigation();
-        ?>
+    <?php
+    main_container_top_navigation();
+    ?>
 
     <!-- page content -->
     <div class="right_col" role="main">

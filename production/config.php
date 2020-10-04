@@ -6,8 +6,18 @@ spl_autoload_register(function ($class_name) {
 
 function session_handler()
 {
-    $_SESSION['pID'] = 100;
-
+    if (isset($_POST['submit'])) {
+        $value = $_POST['submit'];
+        if ($value == 'ceo') {
+            $_SESSION['pID'] = 1;
+        } else if ($value == 'doctor') {
+            $_SESSION['pID'] = 2;
+        } else if ($value == 'laboratory') {
+            $_SESSION['pID'] = 3;
+        } else if ($value == 'reception') {
+            $_SESSION['pID'] = 4;
+        }
+    }
     // if (isset($_GET['search_text']) && isset($_GET['card-no'])) {
     //     if (!isset($_SESSION['pID'])) {
     //         $_SESSION['pID'] = $_GET['card-no'];
@@ -20,7 +30,6 @@ function session_handler()
     //     }
     // }
 }
-session_handler();
 function show_patient_form($caller = null)
 {
     show_patient($caller);
@@ -146,7 +155,17 @@ function searchTableResultReception($caller = null)
 }
 function show_patient($caller = null, $card_no = null)
 {
-    if ($caller == 'index-reception.php') {
+    $patientViewSmall = [
+        'index-reception.php',
+        'lab-serology-coagulations.php',
+        'lab-blood-request.php',
+        'lab-blood-crossmatch.php',
+        'lab-hematology-request.php',
+        'lab-chemistry-request.php',
+        'lab-urine-analysis-examination.php',
+        'lab-stool-examination.php'
+    ];
+    if (in_array($caller, $patientViewSmall)) {
         show_patient_reception($caller);
     } else {
         if ($caller == 'patient-list-triage.php') {
@@ -187,8 +206,8 @@ function show_patient_detail($caller = null)
           </p>';
         echo '</p>';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
-
-        echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
+        if ($_SESSION['pID'] <= 2)
+            echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
         echo '</div>';
 
         echo '</div>';
@@ -200,8 +219,13 @@ function show_patient_detail($caller = null)
 
 function show_patient_reception($caller = null)
 {
+    $finalCaller = '';
     if ($caller != null) {
-        $caller = '&caller=' . $caller;
+        if ($caller == 'index-reception.php') {
+            $finalCaller = '&caller='.$caller;
+        }else{
+            $finalCaller = '&caller=index5.php';
+        }
     }
     if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
         $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
@@ -211,7 +235,8 @@ function show_patient_reception($caller = null)
         echo '<div class="item form-group x_panel" style="border-radius:5px;">';
         echo '<div class="row" style="width:100%;padding:5px;">';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;padding:0;">';
-        echo '<p><a href="./session.php?card-no-close=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . $caller . '" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Close </a></p>';
+
+        echo '<p><a href="./session.php?card-no-close=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . $finalCaller . '" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Close </a></p>';
         echo '</div>';
 
         echo '<div class="row">';
@@ -226,8 +251,10 @@ function show_patient_reception($caller = null)
         echo '<strong>Kebele.:</strong> ' . $patientSession->patient_kebele . '<br>';
         echo  '</p>';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
-        echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">To OPD</a>';
-        echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">To Emergency</a>';
+        if ($finalCaller == 'index-reception.php') {
+            echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">To OPD</a>';
+            echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">To Emergency</a>';
+        }
 
         echo '</div>';
 
@@ -341,17 +368,13 @@ function main_container_top_navigation()
                     <ul class="nav side-menu">
                         <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> -->
                         <li><a href="index1.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                        <li ><a href="index_search.php?search-clean=true"><i class="fa fa-search text-info"></i>Patient Search</a></li>
-                        <li ><a href="index-reception.php"><i class="fa fa-bullseye text-primary"></i>Reception</a></li>
-                        <li ><a href="index-central-triage.php"><i class="fa fa-exchange text-primary"></i>Central Triage</a></li>
-                        <li ><a href="index2.php"><i class="fa fa-plus text-danger"></i>Emergency</a></li>
-                        <li ><a href="index3.php"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>
-                        <li ><a href="index4.php"><i class="fa fa-exclamation-triangle text-warning"></i>Radiology</a></li>
-                        <li ><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory</a></li>
-                        <li ><a href="index6.php"><i class="fa fa-book text-primary"></i>All Forms</a></li>
-                        <li ><a href="index7.php"><i class="fa fa-users text-info"></i>All Patients</a></li>
 
-                    </ul>
+                        ';
+
+
+    main_navigation();
+
+    echo '</ul>
                 </div>
             </div>
 
@@ -384,6 +407,38 @@ function main_container_top_navigation()
 </div>
 <!-- /top navigation -->
     ';
+}
+function main_navigation()
+{
+    $nav = [
+        0 => '<li ><a href="index_search.php?search-clean=true"><i class="fa fa-search text-info"></i>Patient Search</a></li>',
+        1 => '<li ><a href="index-reception.php"><i class="fa fa-bullseye text-primary"></i>Reception</a></li>',
+        2 => '<li ><a href="index-central-triage.php"><i class="fa fa-exchange text-primary"></i>Central Triage</a></li>',
+        3 => '<li ><a href="index2.php"><i class="fa fa-plus text-danger"></i>Emergency</a></li>',
+        4 => '<li ><a href="index3.php"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>',
+        5 => '<li ><a href="index4.php"><i class="fa fa-exclamation-triangle text-warning"></i>Radiology</a></li>',
+        6 => '<li ><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory</a></li>',
+        7 => '<li ><a href="index6.php"><i class="fa fa-book text-primary"></i>All Forms</a></li>',
+        8 => '<li ><a href="index7.php"><i class="fa fa-users text-info"></i>All Patients</a></li>'
+    ];
+
+    $useNavIndex = [];
+    if (isset($_SESSION['pID'])) {
+        if ($_SESSION['pID'] == 1) {
+            $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+        } else if ($_SESSION['pID'] == 2) {
+            $useNavIndex =   [0, 1, 2, 3, 4, 5, 6, 7, 8];
+        } else if ($_SESSION['pID'] == 3) {
+            $useNavIndex = [6];
+        } else if ($_SESSION['pID'] == 4) {
+            $useNavIndex = [1];
+        }
+    } else {
+        $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7];
+    }
+    foreach ($useNavIndex as $key => $value) {
+        echo $nav[$value];
+    }
 }
 function include_js()
 {

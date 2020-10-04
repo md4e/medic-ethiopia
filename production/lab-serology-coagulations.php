@@ -58,7 +58,7 @@ include_once $documentRootPath . "/production/config.php";
                             <div class="x_content">
                                 <br />
                                 <?php
-                                show_patient();
+                                show_patient('lab-serology-coagulations.php');
                                 ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="item form-group">

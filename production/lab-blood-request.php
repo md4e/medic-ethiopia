@@ -43,7 +43,7 @@ include_once "./config.php";
                             <div class="x_content">
                                 <br />
                                 <?php
-                                show_patient_form('./lab-blood-request.php');
+                                show_patient('lab-blood-request.php');
                                 ?>
 
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="lab-blood-request-form.php">

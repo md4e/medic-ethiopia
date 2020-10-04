@@ -54,7 +54,7 @@ include_once "./config.php";
                             <div class="x_content">
                                 <br />
                                 <?php
-                                show_patient();
+                                show_patient('lab-hematology-request.php');
                                 ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="form-group row">

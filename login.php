@@ -44,13 +44,22 @@ include_once "./production/config.php";
               <input type="password" class="form-control" name="employeePassword" placeholder="Password" required="" />
             </div>
             <div>
-              <button name="submit" type="submit" value="submit" class="btn btn-primary">
-                Login
+              <button name="submit" type="submit" value="ceo" class="btn btn-sm btn-primary">
+                Login as CEO
+              </button>
+              <button name="submit" type="submit" value="doctor" class="btn btn-sm btn-primary">
+                Login as Physician
+              </button>
+              <button name="submit" type="submit" value="laboratory" class="btn btn-sm btn-primary">
+                Login as Laboratory
+              </button>
+              <button name="submit" type="submit" value="reception" class="btn btn-sm btn-primary">
+                Login as Reception
               </button>
             </div>
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Show test data
+               Test credentials
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">Hospital:Zeweditu</a>

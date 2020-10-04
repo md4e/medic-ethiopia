@@ -77,6 +77,10 @@ include_once "./config.php";
                         $result = $triage_list->getResultSet();
                         $result->data_seek(0);
                         while ($row2 = $result->fetch_object()) {
+                          if($row2->department == 'OPD')
+                          {
+                            continue;
+                          }
                           echo '<tr>';
                           echo '<td>';
                           $patient = new MePatientTable($row2->patient_card_number);

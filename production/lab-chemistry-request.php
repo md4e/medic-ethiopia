@@ -43,7 +43,7 @@ include_once "../classes/MePatientTable.php";
                             <div class="x_content">
                                 <br />
                                 <?php
-                                show_patient();
+                                show_patient('lab-chemistry-request.php');
                                 ?>
                                 <!-- <div class="item form-group">
                                     <div class="col-md-6 col-sm-6">
