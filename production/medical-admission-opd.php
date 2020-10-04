@@ -26,7 +26,7 @@ include_once "./config.php";
                         <a href="index3.php" class="title_link btn btn-primary" type="button">
                             <p class="h6">⏎ Return to OPD</p>
                         </a>
-                        <p class="h3">OPD:Patient Admission</p>
+                        <p class="h3">OPD:Patient Registeration</p>
                     </div>
 
                     <div class="title_center">
