@@ -136,10 +136,10 @@ include_once "./config.php";
                                         </div>
                                     </div> -->
                                     <div class="item form-group">
-                                        <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">Patient have <strong>Allergy</strong>?</label>
+                                        <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">Patient have known <strong>Allergy</strong>?</label>
                                         <div class="col-md-2 col-sm-2">
                                             <select id="allergy" name="allergy" class="custom-select" required="required">
-                                                <option value="unknown">Patient have known allergy?</option>
+                                                <option value="unknown">Choose patient have known allergy?</option>
                                                 <option value="yes">YES</option>
                                                 <option value="no">NO</option>
                                             </select>
