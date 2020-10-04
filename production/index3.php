@@ -36,9 +36,22 @@ include_once "./config.php";
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
+              <a href="patient-list-opd-appointment.php" class="patient">
+                <div class="row" style="display: inline-block;">
+                  <p class="h4 text-info"><i class="fa fa-list"></i> OPD - Patients Appointment</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="x_panel">
+            <div class="x_title">
               <a href="patient-list-opd.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-dark"><i class="fa fa-list"></i> OPD - Patients Appointment</p>
+                  <p class="h4 text-dark"><i class="fa fa-list"></i> OPD - Patients List</p>
                 </div>
               </a>
             </div>

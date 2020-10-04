@@ -26,7 +26,7 @@ include_once "./config.php";
             <a href="index3.php" class="title_link btn btn-primary" type="button">
               <p class="h6">⏎ Return to OPD</p>
             </a>
-            <p class="h3">OPD:Patients Appointment</p>
+            <p class="h3">OPD:Patients List</p>
           </div>
         </div>
 
@@ -37,45 +37,52 @@ include_once "./config.php";
             <div class="x_panel">
               <div class="x_content">
                 <div class="row">
-                  <div class="col-sm-12">
-                    <div class="card-box table-responsive">
-                      <p class="text-muted font-13 m-b-30">
-                      </p>
-                      <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Phone No.</th>
-                            <th>Appointment date</th>
-                            <th>New Appointment date</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><a href="" class="btn btn-info">Name FatherName</a></td>
-                            <td>61</td>
-                            <td>0911123456</td>
-                            <td>2011/04/25</td>
-                            <td>
-                              <div>
-                                <div class="custom-control custom-checkbox custom-control-inline m-2">
-                                  <input name="change-appointment_0" id="change-appointment_0" type="checkbox" aria-describedby="change-appointmentHelpBlock" class="custom-control-input" value="new-date">
-                                  <label for="change-appointment_0" class="custom-control-label">Change new data</label>
-                                </div>
-                                <div class="change-appointment" style="display:none">
-                                  <input id="new-date-opd" name="new-date-opd" type="date" class="form-control" required="required">
-                                  <textarea id="new-date-remark" name="new-date-remark" placeholder="Write Reason for new change to send to patient" cols="4" rows="3" class="form-control"></textarea>
-                                  <button class="btn-sm btn-success">Save date and nottify</button>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                <div class="col-sm-12">
+                  <div class="card-box table-responsive">
+                    <p class="text-muted font-13 m-b-30">
+
+                    </p>
+                    <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Directed to</th>
+                          <th>Registered On</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <?php
+                        $triage_list = new MeTriageQueue('*');
+                        $result = $triage_list->getResultSet();
+                        $result->data_seek(0);
+                        while ($row2 = $result->fetch_object()) {
+                          if ($row2->department == 'Emergency') {
+                            continue;
+                          }
+                          echo '<tr>';
+                          echo '<td>';
+                          $patient = new MePatientTable($row2->patient_card_number);
+                          echo '<p class="h6 text-primary"><i class="fa fa-user"></i> ' . $patient->getPatientFirstName() . ', Age:' . $patient->getPatientAge() . '</p>';
+                          echo '<strong>Card No.:</strong> ' . $row2->patient_card_number . ' ';
+                          echo '<p>';
+                          echo '<strong>PhoneNr.:</strong> ' . $patient->getPatientPhone() . ' ';
+                          echo '<strong>Wereda.:</strong> ' . $patient->getPatientWereda() . ' ';
+                          echo '<strong>Kebele.:</strong> ' . $patient->getPatientKebele();
+
+                          // echo '<p><strong><a href="./session.php?patient_card_number=' . $row2->patient_card_number .
+                          //   '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Admit</a></strong></p>';
+                          echo '</td>';
+                          echo '<td>' . $row2->department . '</td>';
+                          echo '<td>' . $row2->requested_on . '</td>';
+                          echo '</tr>';
+                        }
+                        ?>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
