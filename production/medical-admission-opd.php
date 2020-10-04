@@ -212,14 +212,6 @@ include_once "./config.php";
                                         </div>
                                     </div>
 
-
-                                    <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3 label-align">Patient have
-                                            Allergies</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <textarea id="patient-allergies-if-yes" placeholder="Write here if Patient have allergies" name="patient-allergies-if-yes" cols="40" rows="3" class="form-control" aria-describedby="patient-allergies-if-yesBlock" required="required"></textarea>
-                                        </div>
-                                    </div>
                                     <div class="ln_solid"></div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6 offset-md-3">
