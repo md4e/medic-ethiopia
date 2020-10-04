@@ -116,6 +116,19 @@ include_once "./config.php";
                                         </div>
                                     </div>
                                     <div class="item form-group">
+                                        <label for="date-of-vital-sign-bmi" class="col-form-label col-md-3 col-sm-3 label-align">BMI</label>
+                                        <div class="col-md-2 col-sm-2">
+                                            <input id="bmi-kg" name="weight" placeholder="Weight in Kg" type="number" min="0" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <input id="bmi-height" name="height" placeholder="Height in Cm" type="number" min="0" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <input id="bmi-final" name="height" placeholder="BMI" type="number" min="0" class="form-control bmi" disabled>
+                                        </div>
+
+                                    </div>
+                                    <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align">Patient have
                                             Allergies</label>
                                         <div class="col-md-6 col-sm-6">
@@ -168,6 +181,15 @@ include_once "./config.php";
     <?php
     include_js();
     ?>
+    <script>
+        $("#bmi-kg, #bmi-height").keyup(function() {
+            var $weight = $("#bmi-kg").val();
+            var $height = $("#bmi-height").val();
+            var $bmi = $weight / ($height / 100 * $height / 100);
+
+            $("#bmi-final").val(parseInt($bmi));
+        });
+    </script>
 </body>
 
 </html>
