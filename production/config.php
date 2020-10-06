@@ -488,34 +488,34 @@ function patient_search()
 //////////////////////////// DEFINES ///////////////////////////
 
 $opd_clincs   = [
-    1=>"Dermatology",
-    2=>"Dental",
-    3=>"Rmopd",
-    4=>"Rsopd",
-    5=>"Cough Clinic",
-    6=>"NRC",
-    7=>"NSRC",
-    8=>"Pallitive Care Clinic",
-    9=>"Opthalmology Clinic",
-    10=> "Physiotherapy Clinic",
-    11=> "RGOPD",
-    12=> "PNC/GRC",
-    13=> "EPI",
-    14=> "RGOPD",
-    15=> "PMTCT",
-    16=> "ART",
-    17=> "TB Clinic",
-    18=> "MINOR OR",
-    19=> "DM Clinic",
-    20=> "HPN Clinic",
-    21=> "Micsalenous Clinic",
-    22=> "Psychatric Clinic",
-    23=> "Substance Abuse Clinic",
-    24=> "Cervical Cancer Clinic",
-    25=> "plastic Surgery Clinic",
-    26=> "SRC",
-    27=> "Pedatrics Clinic",
-    28=> "NICU\HRC"
+    1 => "Dermatology",
+    2 => "Dental",
+    3 => "Rmopd",
+    4 => "Rsopd",
+    5 => "Cough Clinic",
+    6 => "NRC",
+    7 => "NSRC",
+    8 => "Pallitive Care Clinic",
+    9 => "Opthalmology Clinic",
+    10 => "Physiotherapy Clinic",
+    11 => "RGOPD",
+    12 => "PNC/GRC",
+    13 => "EPI",
+    14 => "RGOPD",
+    15 => "PMTCT",
+    16 => "ART",
+    17 => "TB Clinic",
+    18 => "MINOR OR",
+    19 => "DM Clinic",
+    20 => "HPN Clinic",
+    21 => "Micsalenous Clinic",
+    22 => "Psychatric Clinic",
+    23 => "Substance Abuse Clinic",
+    24 => "Cervical Cancer Clinic",
+    25 => "plastic Surgery Clinic",
+    26 => "SRC",
+    27 => "Pedatrics Clinic",
+    28 => "NICU\HRC"
 ];
 
 $medication = [
@@ -874,3 +874,30 @@ $modifiedEarlyWarningScore = [
 ];
 
 $GLOBALS['MEWS'] = $modifiedEarlyWarningScore;
+
+
+$labSupply = [
+    "reception" => [
+        ["name" => "Applicator stick wooden 15cm long size with cotton (1x1000)", "unit" => "Pk", "amc" => 10, "max-stock" => 10.5, "min-stock" => 9.5, "q4-consumption-b" => 31.5, "annual-consumption-c" => 126],
+        ["name" => "Blood lancet safety, depth 2mm,tip width1.5mm", "unit" => "Pk", "amc" => 2, "max-stock" => 2.5, "min-stock" => 1.5, "q4-consumption-b" => 7.5, "annual-consumption-c" => 30],
+        ["name" => "Examination glove", "unit" => "box", "amc" => 120, "max-stock" => 150, "min-stock" => 90, "q4-consumption-b" => 450, "annual-consumption-c" => 1800],
+        ["name" => "Guaze surgical 90cm*100cm", "unit" => "roll", "amc" => 4, "max-stock" => 5, "min-stock" => 3, "q4-consumption-b" => 15, "annual-consumption-c" => 60],
+        ["name" => "Blood glucose of 1*50 of test strips", "unit" => "Pk", "amc" => 20, "max-stock" => 25, "min-stock" => 15, "q4-consumption-b" => 75, "annual-consumption-c" => 300],
+        ["name" => "Syringe 10ml of 100", "unit" => "Box", "amc" => 10, "max-stock" => 12.5, "min-stock" => 7.5, "q4-consumption-b" => 37.5, "annual-consumption-c" => 150],
+        ["name" => "Cotton 500g", "unit" => "Roll", "amc" => 30, "max-stock" => 33, "min-stock" => 27, "q4-consumption-b" => 132, "annual-consumption-c" => 528],
+        ["name" => "Alcohol Prepad of 200", "unit" => "Pk ", "amc" => 30, "max-stock" => 33, "min-stock" => 27, "q4-consumption-b" => 132, "annual-consumption-c" => 528],
+        ["name" => "Serum separation tube yellow top 5ml of 100", "unit" => "Pk", "amc" => 25, "max-stock" => 26.25, "min-stock" => 23.75, "q4-consumption-b" => 78.75, "annual-consumption-c" => 315],
+        ["name" => "Sodium citrate of 4ml  test  tube of 100", "unit" => "Pk", "amc" => 4, "max-stock" => 5, "min-stock" => 3, "q4-consumption-b" => 15, "annual-consumption-c" => 60],
+        ["name" => "Safety box of (1x25pcs) ", "unit" => "pk", "amc" => 4, "max-stock" => 5, "min-stock" => 3, "q4-consumption-b" => 15, "annual-consumption-c" => 60],
+        ["name" => "Urine cup of 100", "unit" => "Bag", "amc" => 25, "max-stock" => 31.25, "min-stock" => 18.75, "q4-consumption-b" => 93.75, "annual-consumption-c" => 375],
+        ["name" => "Stool cup of 100", "unit" => "Bag", "amc" => 8, "max-stock" => 10, "min-stock" => 6, "q4-consumption-b" => 30, "annual-consumption-c" => 120],
+        ["name" => "Syringe 5ml of 100 ", "unit" => "Box", "amc" => 50, "max-stock" => 62.5, "min-stock" => 37.5, "q4-consumption-b" => 187.5, "annual-consumption-c" => 750],
+        ["name" => "Color coded waste segregation bin", "unit" => "each", "amc" => "-", "max-stock" => "-", "min-stock" => "-", "q4-consumption-b" => "-", "annual-consumption-c" => 20],
+        ["name" => "K2 EDTA test tube of 4ml of 100", "unit" => "Pk", "amc" => 60, "max-stock" => 75, "min-stock" => 45, "q4-consumption-b" => 225, "annual-consumption-c" => 900],
+        ["name" => "Plain tube of 100", "unit" => "pk", "amc" => 4, "max-stock" => 5, "min-stock" => 3, "q4-consumption-b" => 15, "annual-consumption-c" => 60],
+        ["name" => "ESR tube of 100", "unit" => "pk", "amc" => 2, "max-stock" => 2.5, "min-stock" => 1.5, "q4-consumption-b" => 7.5, "annual-consumption-c" => 30],
+        ["name" => "ESR thermal paper", "unit" => "rool", "amc" =>  1, "max-stock" => 1.25, "min-stock" => 0.75, "q4-consumption-b" => 3.75, "annual-consumption-c" => 15],
+        ["name" => "Alcohol  70% of  1000ml", "unit" => "bottle", "amc" => 4, "max-stock" => 5, "min-stock" => 3, "q4-consumption-b" => 15, "annual-consumption-c" => 60]
+
+    ],
+];

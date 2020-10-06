@@ -24,32 +24,7 @@ include_once "./config.php";
     <!-- page content -->
     <div class="right_col" role="main">
       <!-- top tiles -->
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="patient-list-laboratory.php" class="patient">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-primary"><i class="fa fa-list"></i> Laboratory Patient List & Queue</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="x_panel">
-            <div class="x_title">
-              <a href="patient-list-phlebotomy.php" class="patient">
-                <div class="row" style="display: inline-block;">
-                  <p class="h4 text-danger"><i class="fa fa-eyedropper"></i> Phlebotomy Patient List & Queue</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col-md-6">
           <div class="x_panel">
@@ -87,6 +62,45 @@ include_once "./config.php";
                   ?>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="x_panel">
+            <div class="x_title">
+              <a href="patient-list-laboratory.php" class="patient">
+                <div class="row" style="display: inline-block;">
+                  <p class="h4 text-primary"><i class="fa fa-list"></i> Laboratory Patient List & Queue</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="x_panel">
+            <div class="x_title">
+              <a href="patient-list-phlebotomy.php" class="patient">
+                <div class="row" style="display: inline-block;">
+                  <p class="h4 text-danger"><i class="fa fa-eyedropper"></i> Phlebotomy Patient List & Queue</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="x_panel">
+            <div class="x_title">
+              <a href="lab-supply-list.php" class="patient">
+                <div class="row" style="display: inline-block;">
+                  <p class="h4 text-danger"><i class="fa fa-shopping-cart"></i> Lab Supply List</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
