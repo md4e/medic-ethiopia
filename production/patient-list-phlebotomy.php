@@ -28,7 +28,7 @@ include_once $documentRootPath . "/production/config.php";
             <a href="index5.php" class="title_link btn btn-primary" type="button">
               <p class="h6">⏎ Return to Laboratory Page</p>
             </a>
-            <p class="h3 text-primary"><i class="fa fa-list"></i> Laboratory Patient List & Queue</p>
+            <p class="h3 text-primary"><i class="fa fa-list"></i> Phlebotomy List & Queue</p>
           </div>
         </div>
 
@@ -48,16 +48,16 @@ include_once $documentRootPath . "/production/config.php";
                         <thead>
                           <tr>
                             <th>Patient info</th>
-                            <th>Laboratory</th>
-                            <th>Requested On & Types</th>
+                            <th>Send to Laboratory</th>
+                            <th>Patient Location</th>
                             <th>Queue Number</th>
-                            <th>Phlebotomy Status</th>
-                            <th>Payment Status</th>
+                            <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php
-                          $payment = [0 => ["Complete", "btn-success"], 1 => ["Processing", "btn-warning"], 2 => ["Free Pass", "btn-info"]];
+
+                          $phlebotomy = [0 => ["Complete", "btn-success"], 1 => ["Processing", "btn-warning"]];
                           $labQueue = new MeLabQueue('*');
                           $result = $labQueue->getResultSet();
                           $result->data_seek(0);
@@ -78,24 +78,12 @@ include_once $documentRootPath . "/production/config.php";
                                 $url = $value['url'];
                                 $alias = $value['alias'];
                                 $i = 0;
-                                foreach ($requestes as $k2 => $v2) {
-                                  foreach ($value['data'] as $k3 => $v3) {
-                                    if ($k3 == $v2) {
-                                      if ($i % 5 ==  0 && $i != 0) {
-                                        $break = '<br>';
-                                      } else {
-                                        $break = '';
-                                      }
-                                      $requestStr .= '<span style="border:1px solid black; color:#fff; background:#333; border-radius:5px;margin:1px;padding:3px;display:inline;">' . str_replace("\\", "", $v3['name']) . '</span>' . $break;
-                                      $i++;
-                                    }
-                                  }
-                                }
                                 break;
                               }
                             }
                             $index = rand(0, 4);
                             $index2 = rand(0, 2);
+                            $index3 = rand(0, 21);
                             echo '<tr>';
                             $patient = new MePatientTable('*');
                             $result2 = $patient->getResultSet();
@@ -111,22 +99,22 @@ include_once $documentRootPath . "/production/config.php";
 
                                 $finalUrl = '&id=' . $row2->patient_id . '&url='.  $url. '&patient_card_number='. $row2->patient_card_number . '&table='.$tableName .'&data='. $row->lab_request_data;
 
-                                echo '<p><strong><a href="./session.php?selective=' . urlencode($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Record ' . $alias . ' Test Result</a></strong></p>';
+                                echo '<p><strong><a href="./session.php?selective=' . urlencode($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Mark Completed</a></strong></p>';
                                 // echo '<p><strong><a href="./session.php?selective=' . Crypter::urlencode_base64_encode_encrypt($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Perform ' . $alias . ' Test</a></strong></p>';
                                 echo '</td>';
                               }
                             }
 
-                            echo '<td>' . $tableName . '</td>';
-                            echo '<td><p class="h5">' . $row->requested_on . '</p><p>' . $requestStr . '</p></td>';
-                            echo '<td><button class="btn-danger">' . (($index) + 10) . '  <i class="fa fa-bell"></i> waiting ' . ($index * 10) . 'min</button></td>';
-                            echo '<td><button class="' . $payment[$index2%2][1] . '">' . $payment[$index2%2][0] . '</button></td>';
-                            echo '<td><button class="' . $payment[$index2][1] . '">' . $payment[$index2][0] . '</button></td>';
+                            echo '<td>' . str_replace('-form','',$tableName) . '</td>';
+                            echo '<td>'.$clinicList[$index3].'</td>';
+                            echo '<td>' . ($index * 10) . '</td>';
+                            echo '<td><button class="btn-dark">Not complete</button></td>';
                             echo '</tr>';
                           }
 
                           ?>
                         </tbody>
+
                       </table>
                     </div>
                   </div>

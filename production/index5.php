@@ -9,8 +9,8 @@ include_once "./config.php";
   headerLinks("Laboratory Forms");
   ?>
   <style>
-    a:hover{
-      color:red;
+    a:hover {
+      color: red;
     }
   </style>
 </head>
@@ -30,34 +30,33 @@ include_once "./config.php";
             <div class="x_title">
               <a href="patient-list-laboratory.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-primary"><i class="fa fa-pencil"></i> Patient List and Queue</p>
+                  <p class="h4 text-primary"><i class="fa fa-list"></i> Laboratory Patient List & Queue</p>
                 </div>
               </a>
             </div>
           </div>
         </div>
       </div>
-      <!-- <div class="row">
+      <div class="row">
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
-              <a href="lab-request.php" class="patient">
+              <a href="patient-list-phlebotomy.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-danger"><i class="fa fa-share"></i> Laboratory Request</p>
+                  <p class="h4 text-danger"><i class="fa fa-eyedropper"></i> Phlebotomy Patient List & Queue</p>
                 </div>
               </a>
             </div>
           </div>
         </div>
-      </div> -->
-
+      </div>
       <div class="row">
         <div class="col-md-6">
           <div class="x_panel">
             <div class="x_title">
               <div class="dropdown">
-                <button class="btn btn-lg btn-danger dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-flask"></i>  All Laboratory forms
+                <button class="btn btn-lg btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-flask"></i> General Laboratory forms
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 

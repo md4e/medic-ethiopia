@@ -487,31 +487,12 @@ include_once "./config.php";
                 <div class="col-md-6 col-sm-6">
                   <select id="transfer" name="transfer" class="custom-select" required="required">
                     <option value="unknown">Choose transfer</option>
-                    <option value="rescuscitation-room">Rescuscitation Room</option>
-                    <option value="procedure-room">Procedure Room</option>
-                    <option value="wiating-room">Waiting Room</option>
-                    <option value="opd">Regular OPD</option>
-                    <option value="emergency-care">Emergency care</option>
-                    <option value="anesthesia-and-intensive-care">Anesthesia and intensive
-                      care</option>
-                    <option value="geriatrics">Geriatrics</option>
-                    <option value="heart-and-physiology">Heart and physiology</option>
-                    <option value="internal-medicin-and-infection">Internal medicine and
-                      infection</option>
-                    <option value="surgery-and-urology">Surgery and urology</option>
-                    <option value="gynecology-and-childbirth">Gynecology and childbirth
-                    </option>
-                    <option value="medical-specialist-care">Medical specialist care</option>
-                    <option value="neurology">Neurology</option>
-                    <option value="orthopedics">Orthopedics</option>
-                    <option value="radiology">Radiology</option>
-                    <option value="rehabilitation-medicine">Rehabilitation medicine</option>
-                    <option value="medical-emergency">Medical Emergency(RO)</option>
-                    <option value="medical-emergency">Medical Emergency(YG)</option>
-                    <option value="surgical-emergency">Surgical Emergency </option>
-                    <option value="gynecolgic-emergency">Gynecologic Emergency </option>
-                    <option value="obstetric-emergency">Obstetric Emergency </option>
-                    <option value="pediatrics-emergency">Pediatrics Emergency</option>
+                    <?php
+                    foreach ($clinicList as $key => $value) {
+                      $optVal = str_replace(')','',str_replace('(','-',str_replace(' ','-',strtolower($value))));
+                      echo '<option value="'.$optVal.'">'.$value.'</option>';
+                    }
+                    ?>
                   </select>
                   <span>
                     <div class="h5" style="margin:5px;color: white;background:#000000;border:1px solid #333;padding:2px;border-radius:4px;"><strong><u>Attention</u></strong><i class="fa fa-exclamation"></i>

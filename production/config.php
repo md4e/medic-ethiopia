@@ -765,7 +765,30 @@ $allergies =
         "Other Allegies" => "No listed here"
     ];
 
-
+$clinicList = [
+    "Rescuscitation Room",
+    "Procedure Room",
+    "Waiting Room",
+    "Regular OPD",
+    "Emergency care",
+    "Anesthesia and intensive care",
+    "Geriatrics",
+    "Heart and physiology",
+    "Internal medicine and infection",
+    "Surgery and urology",
+    "Gynecology and childbirth",
+    "Medical specialist care",
+    "Neurology",
+    "Orthopedics",
+    "Radiology",
+    "Rehabilitation medicine",
+    "Medical Emergency(RO)",
+    "Medical Emergency(YG)",
+    "Surgical Emergency ",
+    "Gynecologic Emergency ",
+    "Obstetric Emergency ",
+    "Pediatrics Emergency"
+];
 $modifiedEarlyWarningScore = [
     "Mobility" => [
         "L3" => "",
