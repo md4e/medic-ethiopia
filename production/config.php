@@ -896,7 +896,7 @@ $labSupply = [
         ["name" => "K2 EDTA test tube of 4ml of 100", "unit" => "Pk", "amc" => 60, "max-stock" => 75, "min-stock" => 45, "q4-consumption-b" => 225, "annual-consumption-c" => 900],
         ["name" => "Plain tube of 100", "unit" => "pk", "amc" => 4, "max-stock" => 5, "min-stock" => 3, "q4-consumption-b" => 15, "annual-consumption-c" => 60],
         ["name" => "ESR tube of 100", "unit" => "pk", "amc" => 2, "max-stock" => 2.5, "min-stock" => 1.5, "q4-consumption-b" => 7.5, "annual-consumption-c" => 30],
-        ["name" => "ESR thermal paper", "unit" => "rool", "amc" =>  1, "max-stock" => 1.25, "min-stock" => 0.75, "q4-consumption-b" => 3.75, "annual-consumption-c" => 15],
+        ["name" => "ESR thermal paper", "unit" => "rool", "amc" => 1, "max-stock" => 1.25, "min-stock" => 0.75, "q4-consumption-b" => 3.75, "annual-consumption-c" => 15],
         ["name" => "Alcohol  70% of  1000ml", "unit" => "bottle", "amc" => 4, "max-stock" => 5, "min-stock" => 3, "q4-consumption-b" => 15, "annual-consumption-c" => 60]
 
     ],
