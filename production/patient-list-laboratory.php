@@ -57,13 +57,17 @@ include_once $documentRootPath . "/production/config.php";
                         </thead>
                         <tbody>
                           <?php
-                          $payment = [0 => ["Complete", "btn-success"], 1 => ["Processing", "btn-warning"], 2 => ["Free Pass", "btn-info"]];
+                          $payment = [0 => ["Complete", "btn-success"], 1 => ["not started", "btn-warning"], 2 => ["Free Pass", "btn-info"]];
+                          $phlebotomyStatus =  ["completed" => "text-success", "not started" => "text-dark", "request back" => "text-warning"];
                           $labQueue = new MeLabQueue('*');
                           $result = $labQueue->getResultSet();
                           $result->data_seek(0);
                           while ($row = $result->fetch_object()) {
                             // //var_dump(array_column($GLOBALS['labTableToId'], 'id'));
                             //var_dump($row->lab_request_data);
+                            if ($row->phlebotomy_status == "not started") {
+                              continue;
+                            }
                             $tableName = '';
                             $table = '';
                             $requestStr = '';
@@ -109,18 +113,36 @@ include_once $documentRootPath . "/production/config.php";
                                 <strong>Name:</strong> ' . $row2->patient_first_name . ', <strong>Age:</strong>:' . $row2->patient_age . ', Dept: OPD,<br>
                                 <strong>PhoneNr.:</strong> ' . $row2->patient_phone;
 
-                                $finalUrl = '&id=' . $row2->patient_id . '&url='.  $url. '&patient_card_number='. $row2->patient_card_number . '&table='.$tableName .'&data='. $row->lab_request_data;
 
-                                echo '<p><strong><a href="./session.php?selective=' . urlencode($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Record ' . $alias . ' Test Result</a></strong></p>';
+                                $btnStyle = '';
+                                if ($row->phlebotomy_status == "not started") {
+                                  $btnStyle = 'btn-dark disabled';
+                                } else {
+                                  $btnStyle = 'btn-primary ';
+                                }
+                                $finalUrl = '&id=' . $row2->patient_id . '&url=' .  $url . '&patient_card_number=' . $row2->patient_card_number . '&table=' . $tableName . '&data=' . $row->lab_request_data;
+                                echo '<p><strong><a href="./session.php?selective=' . urlencode($finalUrl) . '" type="button" class="btn btn-sm ' . $btnStyle . '" ><i class="fa fa-arrow-right"></i> Record ' . $alias . ' Test Result</a></strong></p>';
                                 // echo '<p><strong><a href="./session.php?selective=' . Crypter::urlencode_base64_encode_encrypt($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Perform ' . $alias . ' Test</a></strong></p>';
                                 echo '</td>';
                               }
                             }
-
+                            if (isset($_GET['status'])) {
+                              $newStatus = Crypter::DECODE($_GET['status']);
+                              if (strpos($newStatus, 'cancel') !== false) {
+                                if (strpos($newStatus, strval($row->id)) !== false) {
+                                  $row->phlebotomy_status = "not started";
+                                  $test = new MeLabQueue($row->id);
+                                  $test->setPhlebotomyStatus($row->phlebotomy_status);
+                                  $test->updateCurrent();
+                                }
+                              }
+                            }
                             echo '<td>' . $tableName . '</td>';
                             echo '<td><p class="h5">' . $row->requested_on . '</p><p>' . $requestStr . '</p></td>';
-                            echo '<td><button class="btn-danger">' . (($index) + 10) . '  <i class="fa fa-bell"></i> waiting ' . ($index * 10) . 'min</button></td>';
-                            echo '<td><button class="' . $payment[$index2%2][1] . '">' . $payment[$index2%2][0] . '</button></td>';
+                            echo '<td> <i class="fa fa-bell text-danger"></i> waiting ' . ($index * 10) . 'min</td>';
+                            echo '<td><p class="' . $phlebotomyStatus[$row->phlebotomy_status] . '">' . $row->phlebotomy_status . '</p>';
+                            $notStarted = "not started";
+                            echo '<a href="./patient-list-laboratory.php?status=' . Crypter::ENCODE('cancel_' . $row->id) . '" type="button" class="btn btn-sm btn-danger">Redo</a></td>';
                             echo '<td><button class="' . $payment[$index2][1] . '">' . $payment[$index2][0] . '</button></td>';
                             echo '</tr>';
                           }

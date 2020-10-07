@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 03, 2020 at 04:22 PM
+-- Generation Time: Oct 07, 2020 at 08:52 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -120,29 +120,30 @@ CREATE TABLE IF NOT EXISTS `lab_queue` (
   `employee_id` varchar(45) NOT NULL,
   `lab_table_id` int(11) DEFAULT NULL,
   `lab_request_data` longtext,
+  `phlebotomy_status` varchar(45) NOT NULL DEFAULT 'not started',
   `requested_on` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_lab_queue_employee_table1_idx` (`employee_id`),
   KEY `fk_lab_queue_patient_table1_idx` (`patient_card_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `lab_queue`
 --
 
-INSERT INTO `lab_queue` (`id`, `patient_card_number`, `employee_id`, `lab_table_id`, `lab_request_data`, `requested_on`) VALUES
-(41, 'ZMRH000000001', '000001', 1, '{\"1\":\"6\",\"2\":\"9\",\"3\":\"12\",\"4\":\"15\",\"5\":\"26\",\"6\":\"13\",\"7\":\"10\",\"8\":\"7\",\"9\":\"4\",\"10\":\"1\",\"12\":\"3\",\"13\":\"2\",\"14\":\"5\",\"15\":\"8\",\"16\":\"11\",\"17\":\"14\"}', '2020-09-26 22:06:53'),
-(42, 'ZMRH000000001', '000001', 3, '{\"2\":\"3\",\"3\":\"6\",\"4\":\"9\",\"5\":\"12\",\"6\":\"15\",\"7\":\"16\",\"8\":\"13\",\"9\":\"10\",\"10\":\"7\",\"11\":\"4\",\"12\":\"1\",\"13\":\"2\",\"14\":\"5\",\"15\":\"8\",\"16\":\"11\",\"17\":\"14\"}', '2020-09-26 22:07:49'),
-(43, 'ZMRH000000001', '000001', 4, '{\"2\":\"3\",\"3\":\"6\",\"4\":\"9\",\"5\":\"12\",\"6\":\"15\",\"7\":\"18\",\"8\":\"21\",\"9\":\"22\",\"10\":\"19\",\"11\":\"16\",\"12\":\"13\",\"13\":\"10\",\"14\":\"7\",\"15\":\"4\",\"16\":\"1\",\"17\":\"2\",\"18\":\"5\",\"19\":\"8\",\"20\":\"11\",\"21\":\"14\",\"22\":\"17\",\"23\":\"20\",\"24\":\"23\"}', '2020-09-26 22:22:14'),
-(44, 'ZMRH000000001', '000001', 5, '{\"1\":\"14\",\"2\":\"17\"}', '2020-09-26 22:22:41'),
-(45, 'ZMRH000000001', '000001', 1, '[]', '2020-09-27 08:14:59'),
-(46, 'ZMRH0000000011', '000001', 1, '{\"1\":\"9\"}', '2020-09-27 20:54:00'),
-(47, 'ZMRH0000000013', '000001', 4, '{\"1\":\"6\",\"2\":\"4\",\"3\":\"5\"}', '2020-09-28 12:55:15'),
-(48, 'ZMRH0000000017', '000001', 4, '{\"1\":\"16\"}', '2020-09-28 16:16:45'),
-(49, 'ZMRH0000000021', '000001', 3, '{\"1\":\"12\"}', '2020-09-28 18:07:33'),
-(50, 'ZMRH0000000011', '000001', 1, '{\"1\":\"16\",\"2\":\"14\",\"3\":\"15\"}', '2020-09-28 18:54:16'),
-(51, 'ZMRH000000001', '000001', 3, '{\"1\":\"18\"}', '2020-09-29 19:34:30');
+INSERT INTO `lab_queue` (`id`, `patient_card_number`, `employee_id`, `lab_table_id`, `lab_request_data`, `phlebotomy_status`, `requested_on`) VALUES
+(41, 'ZMRH000000001', '000001', 1, '{\"1\":\"6\",\"2\":\"9\",\"3\":\"12\",\"4\":\"15\",\"5\":\"26\",\"6\":\"13\",\"7\":\"10\",\"8\":\"7\",\"9\":\"4\",\"10\":\"1\",\"12\":\"3\",\"13\":\"2\",\"14\":\"5\",\"15\":\"8\",\"16\":\"11\",\"17\":\"14\"}', 'completed', '2020-09-26 22:06:53'),
+(42, 'ZMRH000000001', '000001', 3, '{\"2\":\"3\",\"3\":\"6\",\"4\":\"9\",\"5\":\"12\",\"6\":\"15\",\"7\":\"16\",\"8\":\"13\",\"9\":\"10\",\"10\":\"7\",\"11\":\"4\",\"12\":\"1\",\"13\":\"2\",\"14\":\"5\",\"15\":\"8\",\"16\":\"11\",\"17\":\"14\"}', 'not started', '2020-09-26 22:07:49'),
+(43, 'ZMRH000000001', '000001', 4, '{\"2\":\"3\",\"3\":\"6\",\"4\":\"9\",\"5\":\"12\",\"6\":\"15\",\"7\":\"18\",\"8\":\"21\",\"9\":\"22\",\"10\":\"19\",\"11\":\"16\",\"12\":\"13\",\"13\":\"10\",\"14\":\"7\",\"15\":\"4\",\"16\":\"1\",\"17\":\"2\",\"18\":\"5\",\"19\":\"8\",\"20\":\"11\",\"21\":\"14\",\"22\":\"17\",\"23\":\"20\",\"24\":\"23\"}', 'not started', '2020-09-26 22:22:14'),
+(44, 'ZMRH000000001', '000001', 5, '{\"1\":\"14\",\"2\":\"17\"}', 'not started', '2020-09-26 22:22:41'),
+(46, 'ZMRH0000000011', '000001', 1, '{\"1\":\"9\"}', 'completed', '2020-09-27 20:54:00'),
+(47, 'ZMRH0000000013', '000001', 4, '{\"1\":\"6\",\"2\":\"4\",\"3\":\"5\"}', 'not started', '2020-09-28 12:55:15'),
+(48, 'ZMRH0000000017', '000001', 4, '{\"1\":\"16\"}', 'not started', '2020-09-28 16:16:45'),
+(49, 'ZMRH0000000021', '000001', 3, '{\"1\":\"12\"}', 'not started', '2020-09-28 18:07:33'),
+(50, 'ZMRH0000000011', '000001', 1, '{\"1\":\"16\",\"2\":\"14\",\"3\":\"15\"}', 'not started', '2020-09-28 18:54:16'),
+(51, 'ZMRH000000001', '000001', 3, '{\"1\":\"18\"}', 'completed', '2020-09-29 19:34:30'),
+(52, 'ZMRH0000000053', '000001', 4, '{\"1\":\"4\"}', 'not started', '2020-10-04 07:03:01');
 
 -- --------------------------------------------------------
 
@@ -165,6 +166,251 @@ CREATE TABLE IF NOT EXISTS `lab_serology_coagulation_table` (
   KEY `fk_lab_serology_coagulation_table_employee_table1_idx` (`employee_id`),
   KEY `fk_lab_serology_coagulation_table_patient_table1_idx` (`patient_card_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lab_supply_cat`
+--
+
+DROP TABLE IF EXISTS `lab_supply_cat`;
+CREATE TABLE IF NOT EXISTS `lab_supply_cat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `lab_supply_cat`
+--
+
+INSERT INTO `lab_supply_cat` (`id`, `name`, `created_on`) VALUES
+(1, 'reception', '2020-10-07 11:52:48'),
+(2, 'Coagulation reagent', '2020-10-07 11:52:48'),
+(3, 'GB Electrolyte reagent', '2020-10-07 11:52:48'),
+(4, 'Beck man coulter', '2020-10-07 11:52:48'),
+(5, '5150 mindray hematology machine reagents', '2020-10-07 11:52:48'),
+(6, 'Molecular and TB laboratory', '2020-10-07 11:52:48'),
+(7, 'Serology reagent', '2020-10-07 11:52:48'),
+(8, 'CD4 and viral load', '2020-10-07 11:52:48'),
+(9, 'Hormonalysis vidas reagent', '2020-10-07 11:52:48'),
+(10, 'Microbiology reagent and media', '2020-10-07 11:52:48'),
+(11, 'Microbiology antibiotics discs', '2020-10-07 11:52:48'),
+(12, 'Equipment', '2020-10-07 11:52:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lab_supply_list`
+--
+
+DROP TABLE IF EXISTS `lab_supply_list`;
+CREATE TABLE IF NOT EXISTS `lab_supply_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `employee_id` varchar(45) NOT NULL,
+  `catergory_id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `unit` varchar(45) DEFAULT NULL,
+  `current_amount` float DEFAULT NULL,
+  `max_stock` float DEFAULT NULL,
+  `min_stock` float DEFAULT NULL,
+  `q4_consumption_b` float DEFAULT NULL,
+  `annual_consumption_c` float DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `fk_lab_supply_list_employee_table1_idx` (`employee_id`),
+  KEY `fk_lab_supply_list_lab_supply_catergory1_idx` (`catergory_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `lab_supply_list`
+--
+
+INSERT INTO `lab_supply_list` (`id`, `employee_id`, `catergory_id`, `name`, `unit`, `current_amount`, `max_stock`, `min_stock`, `q4_consumption_b`, `annual_consumption_c`, `created_on`) VALUES
+(20, '000001', 1, 'Blood lancet safety, depth 2mm,tip width1.5mm', 'Pk', 2, 2.5, 1.5, 7.5, 30, '2020-10-07 12:29:04'),
+(21, '000001', 1, 'Examination glove', 'box', 120, 150, 90, 450, 1800, '2020-10-07 12:29:04'),
+(22, '000001', 1, 'Guaze surgical 90cm*100cm', 'roll', 4, 5, 3, 15, 60, '2020-10-07 12:29:04'),
+(23, '000001', 1, 'Blood glucose of 1*50 of test strips', 'Pk', 20, 25, 15, 75, 300, '2020-10-07 12:29:04'),
+(24, '000001', 1, 'Syringe 10ml of 100', 'Box', 10, 12.5, 7.5, 37.5, 150, '2020-10-07 12:29:04'),
+(25, '000001', 1, 'Cotton 500g', 'Roll', 30, 33, 27, 132, 528, '2020-10-07 12:29:04'),
+(26, '000001', 1, 'Alcohol Prepad of 200', 'Pk ', 30, 33, 27, 132, 528, '2020-10-07 12:29:04'),
+(27, '000001', 1, 'Serum separation tube yellow top 5ml of 100', 'Pk', 25, 26.25, 23.75, 78.75, 315, '2020-10-07 12:29:04'),
+(28, '000001', 1, 'Sodium citrate of 4ml  test  tube of 100', 'Pk', 4, 5, 3, 15, 60, '2020-10-07 12:29:04'),
+(29, '000001', 1, 'Safety box of (1x25pcs) ', 'pk', 4, 5, 3, 15, 60, '2020-10-07 12:29:04'),
+(30, '000001', 1, 'Urine cup of 100', 'Bag', 25, 31.25, 18.75, 93.75, 375, '2020-10-07 12:29:04'),
+(31, '000001', 1, 'Stool cup of 100', 'Bag', 8, 10, 6, 30, 120, '2020-10-07 12:29:04'),
+(32, '000001', 1, 'Syringe 5ml of 100 ', 'Box', 50, 62.5, 37.5, 187.5, 750, '2020-10-07 12:29:05'),
+(33, '000001', 1, 'Color coded waste segregation bin', 'each', NULL, NULL, NULL, NULL, 20, '2020-10-07 12:29:05'),
+(34, '000001', 1, 'K2 EDTA test tube of 4ml of 100', 'Pk', 60, 75, 45, 225, 900, '2020-10-07 12:29:05'),
+(35, '000001', 1, 'Plain tube of 100', 'pk', 4, 5, 3, 15, 60, '2020-10-07 12:29:05'),
+(36, '000001', 1, 'ESR tube of 100', 'pk', 2, 2.5, 1.5, 7.5, 30, '2020-10-07 12:29:05'),
+(37, '000001', 1, 'ESR thermal paper', 'rool', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:05'),
+(38, '000001', 1, 'Alcohol  70% of  1000ml', 'bottle', 4, 5, 3, 15, 60, '2020-10-07 12:29:05'),
+(39, '000001', 2, 'Thrombin time reagent(10*2ml)', 'box', 1, 1, 0.95, 3.15, 12, '2020-10-07 12:29:05'),
+(40, '000001', 2, 'APTT reagent 1(10*2ml)', 'Box', 1, 1, 0.95, 3.15, 12, '2020-10-07 12:29:05'),
+(41, '000001', 2, 'APTT reagent 2(1*30ml)', 'Box', 1, 1, 0.95, 3.15, 12, '2020-10-07 12:29:05'),
+(42, '000001', 2, 'Fibrinogen reagent 1(5*2ml)', 'Box', 1, 1, 0.75, 3.75, 15, '2020-10-07 12:29:05'),
+(43, '000001', 2, 'Fibrinogen reagent  2(1*100ml)', 'Box', 1, 1, 0.75, 3.75, 15, '2020-10-07 12:29:05'),
+(44, '000001', 2, 'Fibrinogen reagent  3(1*1ml)', 'Box', 1, 1, 0.75, 3.75, 15, '2020-10-07 12:29:05'),
+(45, '000001', 2, 'Prothrombin time reagent(10*2ml)', 'Box', 1, 1, 0.75, 3.75, 15, '2020-10-07 12:29:05'),
+(46, '000001', 2, 'D-Dimer reagent 1(6*3ml)', 'Box', 0.5, 0.5, 0.475, 1.575, 6, '2020-10-07 12:29:05'),
+(47, '000001', 2, 'D-dimer reagent 2(2*3ml)', 'Box', 0.5, 0.5, 0.475, 1.575, 6, '2020-10-07 12:29:05'),
+(48, '000001', 2, 'D-dimer control 1(1*1ml)', 'Box', 0.5, 0.5, 0.475, 1.575, 6, '2020-10-07 12:29:05'),
+(49, '000001', 2, 'D-dimer control 2(1*1ml)', 'Box', 0.5, 0.5, 0.475, 1.575, 6, '2020-10-07 12:29:05'),
+(50, '000001', 2, 'D- dimer calibrator(1*1ml)', 'Box', 0.5, 0.5, 0.475, 1.575, 6, '2020-10-07 12:29:05'),
+(51, '000001', 2, 'Clot Cleaner of 30 ml', 'Each', 1, 1, 0.75, 3.75, 15, '2020-10-07 12:29:05'),
+(52, '000001', 2, 'Sample cup of 100', 'pk', 1, 1, 0.75, 3.75, 15, '2020-10-07 12:29:05'),
+(53, '000001', 2, 'Test cuvet of 100', 'pk', 1, 1, 0.75, 3.75, 15, '2020-10-07 12:29:05'),
+(54, '000001', 3, 'Electrode washing solution of 5ml', 'bottle', NULL, NULL, NULL, NULL, 5, '2020-10-07 12:29:05'),
+(55, '000001', 3, 'Reference electrode filing solution', 'bottle', NULL, NULL, NULL, NULL, 3, '2020-10-07 12:29:05'),
+(56, '000001', 3, 'Electrode ion filing solution of 110ml', 'bottle', NULL, NULL, NULL, NULL, 3, '2020-10-07 12:29:05'),
+(57, '000001', 3, 'QC solution of 110ml', 'bottle', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:05'),
+(58, '000001', 3, 'Test cuvet of 100', 'Â pk', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:06'),
+(59, '000001', 3, 'Electrode (Na,K,Ca,Cl)', 'each', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:06'),
+(60, '000001', 3, 'Maintenance kit', 'box', NULL, NULL, NULL, NULL, 6, '2020-10-07 12:29:06'),
+(61, '000001', 3, 'Calibration A of 430 ml', 'bottle', NULL, NULL, NULL, NULL, 3, '2020-10-07 12:29:06'),
+(62, '000001', 3, 'Calibration B of 110 ml', 'bottle', NULL, NULL, NULL, NULL, 3, '2020-10-07 12:29:06'),
+(63, '000001', 4, 'Diluents of 10 L', 'Bag', 32, 40, 24, 120, 480, '2020-10-07 12:29:06'),
+(64, '000001', 4, 'Diff pack ', 'pk', 4, 5, 3, 15, 60, '2020-10-07 12:29:06'),
+(65, '000001', 4, 'Cleaner  ', 'pk', 4, 5, 3, 15, 60, '2020-10-07 12:29:06'),
+(66, '000001', 4, 'Retick pack  ', 'pk', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:06'),
+(67, '000001', 4, 'Lyse', 'pk', 2, 2.5, 1.5, 7.5, 30, '2020-10-07 12:29:06'),
+(68, '000001', 4, 'Coulter latron', 'each', 2, 2.5, 1.5, 7.5, 30, '2020-10-07 12:29:06'),
+(69, '000001', 4, 'Coulter body fluid(level 1, 2, 3)', 'PK', 2, 2.5, 1.5, 7.5, 30, '2020-10-07 12:29:06'),
+(70, '000001', 4, 'Coulter retic-x cell( level 1, 2, 3)', 'pk', 2, 2.5, 1.5, 7.5, 30, '2020-10-07 12:29:06'),
+(71, '000001', 4, 'Coulter 6C cell( level 1, 2, 3)', 'pk', 2, 2.5, 1.5, 7.5, 30, '2020-10-07 12:29:06'),
+(72, '000001', 4, 'Giemsa stain soln of 500 ml', 'Bottle ', 0.5, 0.525, 0.475, 1.575, 6.3, '2020-10-07 12:29:06'),
+(73, '000001', 4, 'Write stain of 500 ml', 'Bottle ', 0.5, 0.525, 0.475, 1.575, 6.3, '2020-10-07 12:29:06'),
+(74, '000001', 4, 'Blood group  each of 10 ml Anti-A', 'Vial', 12, 12.6, 11.4, 37.8, 151, '2020-10-07 12:29:06'),
+(75, '000001', 4, 'Blood group  each of 10 ml Anti-B', 'Vial', 12, 12.6, 11.4, 37.8, 151, '2020-10-07 12:29:06'),
+(76, '000001', 4, 'Blood group  each of 10 ml Anti-D', 'Vial', 12, 12.6, 11.4, 37.8, 151, '2020-10-07 12:29:06'),
+(77, '000001', 5, 'H. pylori Ag test of  25 strip  ', 'Pk', 10, 12, 8, 36, 144, '2020-10-07 12:29:06'),
+(78, '000001', 5, 'Frosted slides, 27x75mm,thickness 1.2mm', 'Pk', 10, 12, 8, 36, 144, '2020-10-07 12:29:06'),
+(79, '000001', 5, 'Non frosted slide, 27x75mm,thickness 1.2mm', 'pk', 20, 21, 19, 63, 252, '2020-10-07 12:29:06'),
+(80, '000001', 5, 'Normal saline of 1000ml ', 'Bag', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:06'),
+(81, '000001', 5, 'Occult blood test strip of 25', 'pk', 4, 5, 3, 15, 60, '2020-10-07 12:29:06'),
+(82, '000001', 5, 'Pregnancy test of  50 strips ', 'Pk', 3, 3.75, 2.25, 11.25, 45, '2020-10-07 12:29:06'),
+(83, '000001', 6, 'Sputum cup of (1x100}', 'Box', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:06'),
+(84, '000001', 6, 'Carbolfuchsin of 1L', 'Bottle ', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:06'),
+(85, '000001', 6, 'Acid alcohol 3% of 1L', 'Bottle ', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:06'),
+(86, '000001', 6, 'Methylene blue 1% of 1L', 'Box', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:06'),
+(87, '000001', 6, 'G0xpert cartidlege', 'box', 6, 6.3, 5.7, 18.9, 75, '2020-10-07 12:29:06'),
+(88, '000001', 6, 'DBS cartiradje', 'box', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:07'),
+(89, '000001', 7, 'RF(Rheumatoid factor)of 5 ml', 'vial', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:07'),
+(90, '000001', 7, 'C-reactive protein', 'vial', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:07'),
+(91, '000001', 7, 'Hepatitis B (HBSAg) tests  of  25strips', 'Box', 20, 24, 16, 72, 288, '2020-10-07 12:29:07'),
+(92, '000001', 7, 'Hepatitis C (HC antibody) tests of 25 strips', 'Box', 20, 24, 16, 72, 288, '2020-10-07 12:29:07'),
+(93, '000001', 7, 'RPR syphilis  rapid test kit of 25', 'Pk', 10, 12, 8, 36, 144, '2020-10-07 12:29:07'),
+(94, '000001', 7, 'Anti streptolysin O (ASO)', 'vial', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:07'),
+(95, '000001', 7, 'H.pylori Ab test  of 25', 'box', 1, 1.25, 0.75, 3.75, 15, '2020-10-07 12:29:07'),
+(96, '000001', 8, 'Fulcon  tube of 25', 'Pk', 4, 4.2, 3.8, 12.6, 50, '2020-10-07 12:29:07'),
+(97, '000001', 8, 'Micropipette tips yellow of (1*1000)', 'Bag       ', 4, 4.2, 3.8, 12.6, 50, '2020-10-07 12:29:07'),
+(98, '000001', 8, 'Micropipette tips blue of (1*1000)', 'Bag', 1, 1.05, 0.9, 3.15, 12, '2020-10-07 12:29:07'),
+(99, '000001', 8, 'Facs presto cartilage', 'box', 5, 5.25, 4.75, 15.75, 63, '2020-10-07 12:29:07'),
+(100, '000001', 9, 'AFP, 60 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:07'),
+(101, '000001', 9, 'CA 125, 30 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 4, '2020-10-07 12:29:07'),
+(102, '000001', 9, 'CA01503,30 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 4, '2020-10-07 12:29:07'),
+(103, '000001', 9, 'CA 1909,30 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 4, '2020-10-07 12:29:07'),
+(104, '000001', 9, 'CEA,30 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 4, '2020-10-07 12:29:07'),
+(105, '000001', 9, 'Etradiol, 60 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:07'),
+(106, '000001', 9, 'FSH, 60 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:07'),
+(107, '000001', 9, 'LH, 60  tests per kit', 'Kit', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:07'),
+(108, '000001', 9, 'Testosterone II 30 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:07'),
+(109, '000001', 9, 'FPSA , 30 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 4, '2020-10-07 12:29:07'),
+(110, '000001', 9, 'Progesterone, 60 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:07'),
+(111, '000001', 9, 'Prolactin ,60 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:07'),
+(112, '000001', 9, 'TPSA , 60 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:07'),
+(113, '000001', 9, 'Total 250 OH vitamin D, 60 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 6, '2020-10-07 12:29:07'),
+(114, '000001', 9, 'HS troponin I , 60 tests per kit', 'Kit', NULL, NULL, NULL, NULL, 8, '2020-10-07 12:29:07'),
+(115, '000001', 9, 'FT3, 60 tests per kit', 'Kit', 3, 3.75, 2.25, 11.25, 45, '2020-10-07 12:29:07'),
+(116, '000001', 9, 'FT4 , 60 tests per kit', 'Kit', 3, 3.75, 2.25, 11.25, 45, '2020-10-07 12:29:07'),
+(117, '000001', 9, 'TSH, 60 tests per kit', 'Kit', 3, 3.75, 2.25, 11.25, 45, '2020-10-07 12:29:07'),
+(118, '000001', 10, 'Crystal Violet soln  2% of 1L', 'bottle', 0.5, 0.525, 0.475, 1.575, 6, '2020-10-07 12:29:08'),
+(119, '000001', 10, 'Grams iodine 1% of 1L', 'bottle', 0.5, 0.525, 0.475, 1.575, 6, '2020-10-07 12:29:08'),
+(120, '000001', 10, 'Acetone Alc.50 % of 1L', 'bottle', 0.5, 0.525, 0.475, 1.575, 6, '2020-10-07 12:29:08'),
+(121, '000001', 10, 'Safranin 0.25% of 1L', 'bottle', 0.5, 0.525, 0.475, 1.575, 6, '2020-10-07 12:29:08'),
+(122, '000001', 10, 'WBC diluting fluid of 100 ml', 'bott', 0.5, 0.525, 0.475, 1.575, 6, '2020-10-07 12:29:08'),
+(123, '000001', 10, 'Heavy Duty Aluminium Foil 37.5 meter ', 'Roll ', 1, 1.05, 0.9, 3.15, 12, '2020-10-07 12:29:08'),
+(124, '000001', 10, 'Disposable Sterile plastic loops (1Âµl)', 'Box ', 2, 2.1, 1.9, 6.3, 25, '2020-10-07 12:29:08'),
+(125, '000001', 10, 'Disposable Sterile plastic loops (2Âµl)', 'Box ', 2, 2.1, 1.9, 6.3, 25, '2020-10-07 12:29:08'),
+(126, '000001', 10, 'Disposable Sterile plastic loops,(10Âµl)', 'Box ', 2, 2.1, 1.9, 6.3, 25, '2020-10-07 12:29:08'),
+(127, '000001', 10, 'Pasteur Pipette of 500', 'pk', 1, 1.05, 0.9, 3.15, 12, '2020-10-07 12:29:08'),
+(128, '000001', 10, 'KOH 10%of 1000ml', 'Bottel', NULL, NULL, NULL, NULL, NULL, '2020-10-07 12:29:08'),
+(129, '000001', 10, 'Surgical blood ', 'pk', 1, 1.05, 0.9, 3.15, 12, '2020-10-07 12:29:08'),
+(130, '000001', 10, 'Amies Transport Media of 500 gm', 'Tin ', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(131, '000001', 10, 'Xylose Lysine Deoxycholate Agar of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 4, '2020-10-07 12:29:08'),
+(132, '000001', 10, 'Stuart transport medium of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(133, '000001', 10, 'Thayer martin medium of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(134, '000001', 10, 'Simmons Citrate Agar, Dehydrated of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(135, '000001', 10, 'Transport media(carry blair) of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(136, '000001', 10, 'Triple Sugar Iron Agar of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(137, '000001', 10, 'PYR reagent disc of 50', 'pk', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:08'),
+(138, '000001', 10, 'Catalase reagent (3% H2O2)', '2x5ml', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:08'),
+(139, '000001', 10, 'GC Agar Base of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(140, '000001', 10, 'Isovitalex/Vitox Enrichment', 'Box ', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:08'),
+(141, '000001', 10, 'Kligler Iron Agar of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(142, '000001', 10, 'Bile esculin agar of 500 gm', 'tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(143, '000001', 10, 'Kovachâ€™s Reagent of 100ml', 'bottle', 1, 1.05, 0.9, 3.15, 12, '2020-10-07 12:29:08'),
+(144, '000001', 10, 'Mannitol Salt Agar of 500 gm', 'Tin', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:08'),
+(145, '000001', 10, 'Motility (S.I.M) Medium of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(146, '000001', 10, 'Mueller â€“ Hinton Agar of 500 gm', 'Tin', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:08'),
+(147, '000001', 10, 'Nutrient Agar of 500 gm', 'Tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(148, '000001', 10, 'Oxidase reagents 0.75ml with droppers', '50x.75ml', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:08'),
+(149, '000001', 10, 'Rabbit Plasma, 1x3.5ml in pack', 'pack', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:08'),
+(150, '000001', 10, 'Sheep Blood Agar Base of 500 gm', 'tin', 1, 1.05, 0.9, 3.15, 12, '2020-10-07 12:29:08'),
+(151, '000001', 10, 'Tryptone Soya Agar of 500 gm', 'tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:08'),
+(152, '000001', 10, 'Urea 40% Solution(5x10ml)', 'pk', 1, 1.05, 0.9, 3.15, 12, '2020-10-07 12:29:09'),
+(153, '000001', 10, 'Urea Agar Base of 500 gm', 'tin', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:09'),
+(154, '000001', 10, 'X  and V factors', 'each', 2, 2.1, 1.9, 6.3, 25, '2020-10-07 12:29:09'),
+(155, '000001', 11, 'Amikacin of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(156, '000001', 11, 'Amoxicillin of 2Âµg ', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(157, '000001', 11, 'Meropenem of 30 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(158, '000001', 11, 'Amoxicillin/clavulanic acid of 30Âµg disk ', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:09'),
+(159, '000001', 11, 'Bacitracin of 100unit', 'cartridge', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:09'),
+(160, '000001', 11, 'Cefazolin 30 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(161, '000001', 11, 'Cefepime of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(162, '000001', 11, 'Cefixime of 50Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(163, '000001', 11, 'Cefotaxime of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(164, '000001', 11, 'Cefotetan of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(165, '000001', 11, 'Cefoxitin of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(166, '000001', 11, 'Ceftazidime of 30Âµg', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:09'),
+(167, '000001', 11, 'Ceftriaxone of 5Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(168, '000001', 11, 'Cefuroxine sodium of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(169, '000001', 11, 'Cephalothin of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(170, '000001', 11, 'Chloramphenicol of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(171, '000001', 11, 'Ciprofloxacin of 5Âµg', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:09'),
+(172, '000001', 11, 'Clarithromycin of 15Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(173, '000001', 11, 'Clindamycin of 5Âµg', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:09'),
+(174, '000001', 11, 'Sulphamthoxazole/trimethoprip 19:1', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:09'),
+(175, '000001', 11, 'Doxycycline of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(176, '000001', 11, 'Erythromycin of 15Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(177, '000001', 11, 'Gentamicin of 10Âµg', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:09'),
+(178, '000001', 11, 'Furazolidone of 100 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(179, '000001', 11, 'Imipenem of 10Âµg', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:09'),
+(180, '000001', 11, 'Methicillin (5 Âµg) disk', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(181, '000001', 11, 'Nalidixic acid of 30Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(182, '000001', 11, 'Nitrofurantoin of 300Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(183, '000001', 11, 'Norfloxacin of 10Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(184, '000001', 11, 'Novobiocin of 5 Âµg ', 'cartridge', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:09'),
+(185, '000001', 11, 'Optochin discs (DD0001)', 'cartridge', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:09'),
+(186, '000001', 11, 'Oxacillin of 1Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:09'),
+(187, '000001', 11, 'Penicillin G of 10units', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:09'),
+(188, '000001', 11, 'Piperacillin of 100Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(189, '000001', 11, 'Piperacillin0 tazobactam of 100/10 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(190, '000001', 11, 'Spectinomycin of 100 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(191, '000001', 11, 'Streptomycin of 10 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(192, '000001', 11, 'Tetracycline of 30 Âµg', 'cartridge', NULL, NULL, NULL, 1, 4, '2020-10-07 12:29:10'),
+(193, '000001', 11, 'Ticarcillin of 75 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(194, '000001', 11, 'Tobramycin of 10 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(195, '000001', 11, 'Vancomycin of 30 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(196, '000001', 11, 'Streptomycin of 10 Âµg', 'cartridge', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(197, '000001', 12, 'WBC manual counting chamber', 'each', NULL, NULL, NULL, NULL, 2, '2020-10-07 12:29:10'),
+(198, '000001', 12, 'Digital Thermometer', 'each', NULL, NULL, NULL, NULL, 10, '2020-10-07 12:29:10'),
+(199, '000001', 12, 'Dray Oven ', 'Each', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:10'),
+(200, '000001', 12, 'Microbiology Incubator large size (50 L)', 'each', NULL, NULL, NULL, NULL, 1, '2020-10-07 12:29:10');
 
 -- --------------------------------------------------------
 
@@ -387,6 +633,13 @@ ALTER TABLE `lab_queue`
 ALTER TABLE `lab_serology_coagulation_table`
   ADD CONSTRAINT `fk_lab_serology_coagulation_table_employee_table1` FOREIGN KEY (`employee_id`) REFERENCES `employee_table` (`employee_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_lab_serology_coagulation_table_patient_table1` FOREIGN KEY (`patient_card_number`) REFERENCES `patient_table` (`patient_card_number`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `lab_supply_list`
+--
+ALTER TABLE `lab_supply_list`
+  ADD CONSTRAINT `fk_lab_supply_list_employee_table1` FOREIGN KEY (`employee_id`) REFERENCES `employee_table` (`employee_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_lab_supply_list_lab_supply_catergory1` FOREIGN KEY (`catergory_id`) REFERENCES `lab_supply_cat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `patient_journal`

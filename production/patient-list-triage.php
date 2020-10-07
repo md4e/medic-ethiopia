@@ -527,7 +527,6 @@ include_once "./config.php";
       </div>
     </div>
   </div>
-  </div>
   <!-- /page content -->
 
   <!-- footer content -->

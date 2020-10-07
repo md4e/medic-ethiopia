@@ -84,4 +84,14 @@ class Crypter
         self::initialize();
         return urldecode(self::decrypt($input));
     }
+
+    public static function ENCODE($input)
+    {
+        return self::urlencode_base64_encode_encrypt($input);
+    }
+
+    public static function DECODE($input)
+    {
+        return self::urldecode_base64_decode_decrypt($input);
+    }
 }

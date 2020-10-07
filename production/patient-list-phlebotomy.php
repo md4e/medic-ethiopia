@@ -57,13 +57,18 @@ include_once $documentRootPath . "/production/config.php";
                         <tbody>
                           <?php
 
-                          $phlebotomy = [0 => ["Complete", "btn-success"], 1 => ["Processing", "btn-warning"]];
+
+                          $phlebotomyStatus =  ["completed" => "btn-success", "not started" => "btn-dark", "request back" => "btn-warning"];
                           $labQueue = new MeLabQueue('*');
                           $result = $labQueue->getResultSet();
                           $result->data_seek(0);
                           while ($row = $result->fetch_object()) {
                             // //var_dump(array_column($GLOBALS['labTableToId'], 'id'));
                             //var_dump($row->lab_request_data);
+                            if ($row->phlebotomy_status == "completed")
+                            {
+                              continue;
+                            }
                             $tableName = '';
                             $table = '';
                             $requestStr = '';
@@ -97,18 +102,34 @@ include_once $documentRootPath . "/production/config.php";
                                 <strong>Name:</strong> ' . $row2->patient_first_name . ', <strong>Age:</strong>:' . $row2->patient_age . ', Dept: OPD,<br>
                                 <strong>PhoneNr.:</strong> ' . $row2->patient_phone;
 
-                                $finalUrl = '&id=' . $row2->patient_id . '&url='.  $url. '&patient_card_number='. $row2->patient_card_number . '&table='.$tableName .'&data='. $row->lab_request_data;
+                                echo '<p><strong><a href="./patient-list-phlebotomy.php?status=' . Crypter::ENCODE('cancel_' . $row->id) . '" type="button" class="btn btn-sm btn-danger"><i class="fa fa-cross"></i> Cancle </a></strong>';
+                                echo '<strong><a href="./patient-list-phlebotomy.php?status=' . Crypter::ENCODE('completed_' . $row->id) . '" type="button" class="btn btn-sm btn-primary"><i class="fa fa-check"></i> Done </a></strong></p>';
 
-                                echo '<p><strong><a href="./session.php?selective=' . urlencode($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Mark Completed</a></strong></p>';
-                                // echo '<p><strong><a href="./session.php?selective=' . Crypter::urlencode_base64_encode_encrypt($finalUrl) . '" type="button" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Perform ' . $alias . ' Test</a></strong></p>';
                                 echo '</td>';
                               }
                             }
-
-                            echo '<td>' . str_replace('-form','',$tableName) . '</td>';
-                            echo '<td>'.$clinicList[$index3].'</td>';
-                            echo '<td>' . ($index * 10) . '</td>';
-                            echo '<td><button class="btn-dark">Not complete</button></td>';
+                            if (isset($_GET['status'])) {
+                              $newStatus = Crypter::DECODE($_GET['status']);
+                              if (strpos($newStatus, 'completed') !== false) {
+                                if (strpos($newStatus, strval($row->id)) !== false) {
+                                  $row->phlebotomy_status = "completed";
+                                  $test = new MeLabQueue($row->id);
+                                  $test->setPhlebotomyStatus($row->phlebotomy_status);
+                                  $test->updateCurrent();
+                                }
+                              }else if (strpos($newStatus, 'cancel') !== false) {
+                                if (strpos($newStatus, strval($row->id)) !== false) {
+                                  $row->phlebotomy_status = "not started";
+                                  $test = new MeLabQueue($row->id);
+                                  $test->setPhlebotomyStatus($row->phlebotomy_status);
+                                  $test->updateCurrent();
+                                }
+                              }
+                            }
+                            echo '<td>' . str_replace('-form', '', $tableName) . '</td>';
+                            echo '<td>OPD</td>';
+                            echo '<td>10</td>';
+                            echo '<td><button class="' . $phlebotomyStatus[$row->phlebotomy_status] . '">' . $row->phlebotomy_status . '</button></td>';
                             echo '</tr>';
                           }
 

@@ -92,6 +92,20 @@ class MeLabQueue extends MySqlRecord
     private $labRequestData;
 
     /**
+     * Class attribute for mapping table field phlebotomy_status
+     *
+     * Comment for field phlebotomy_status: Not specified.<br>
+     * Field information:
+     *  - Data type: varchar(45)
+     *  - Null : NO
+     *  - DB Index: 
+     *  - Default: not started
+     *  - Extra:  
+     * @var string $phlebotomyStatus
+     */
+    private $phlebotomyStatus;
+
+    /**
      * Class attribute for mapping table field requested_on
      *
      * Comment for field requested_on: Not specified.<br>
@@ -109,7 +123,7 @@ class MeLabQueue extends MySqlRecord
      * Class attribute for storing the SQL DDL of table lab_queue
      * @var string base64 encoded string for DDL
      */
-    private $ddl = "Q1JFQVRFIFRBQkxFIGBsYWJfcXVldWVgICgKICBgaWRgIGludCgxMSkgTk9UIE5VTEwgQVVUT19JTkNSRU1FTlQsCiAgYHBhdGllbnRfY2FyZF9udW1iZXJgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBlbXBsb3llZV9pZGAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYGxhYl90YWJsZV9pZGAgaW50KDExKSBERUZBVUxUIE5VTEwsCiAgYGxhYl9yZXF1ZXN0X2RhdGFgIGxvbmd0ZXh0LAogIGByZXF1ZXN0ZWRfb25gIGRhdGV0aW1lIERFRkFVTFQgTlVMTCwKICBQUklNQVJZIEtFWSAoYGlkYCksCiAgVU5JUVVFIEtFWSBgaWRfVU5JUVVFYCAoYGlkYCksCiAgS0VZIGBma19sYWJfcXVldWVfZW1wbG95ZWVfdGFibGUxX2lkeGAgKGBlbXBsb3llZV9pZGApLAogIEtFWSBgZmtfbGFiX3F1ZXVlX3BhdGllbnRfdGFibGUxX2lkeGAgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCksCiAgQ09OU1RSQUlOVCBgZmtfbGFiX3F1ZXVlX2VtcGxveWVlX3RhYmxlMWAgRk9SRUlHTiBLRVkgKGBlbXBsb3llZV9pZGApIFJFRkVSRU5DRVMgYGVtcGxveWVlX3RhYmxlYCAoYGVtcGxveWVlX2lkYCkgT04gREVMRVRFIE5PIEFDVElPTiBPTiBVUERBVEUgTk8gQUNUSU9OLAogIENPTlNUUkFJTlQgYGZrX2xhYl9xdWV1ZV9wYXRpZW50X3RhYmxlMWAgRk9SRUlHTiBLRVkgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCkgUkVGRVJFTkNFUyBgcGF0aWVudF90YWJsZWAgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCkgT04gREVMRVRFIE5PIEFDVElPTiBPTiBVUERBVEUgTk8gQUNUSU9OCikgRU5HSU5FPUlubm9EQiBERUZBVUxUIENIQVJTRVQ9dXRmOA==";
+    private $ddl = "Q1JFQVRFIFRBQkxFIGBsYWJfcXVldWVgICgKICBgaWRgIGludCgxMSkgTk9UIE5VTEwgQVVUT19JTkNSRU1FTlQsCiAgYHBhdGllbnRfY2FyZF9udW1iZXJgIHZhcmNoYXIoNDUpIE5PVCBOVUxMLAogIGBlbXBsb3llZV9pZGAgdmFyY2hhcig0NSkgTk9UIE5VTEwsCiAgYGxhYl90YWJsZV9pZGAgaW50KDExKSBERUZBVUxUIE5VTEwsCiAgYGxhYl9yZXF1ZXN0X2RhdGFgIGxvbmd0ZXh0LAogIGBwaGxlYm90b215X3N0YXR1c2AgdmFyY2hhcig0NSkgTk9UIE5VTEwgREVGQVVMVCAnbm90IHN0YXJ0ZWQnLAogIGByZXF1ZXN0ZWRfb25gIGRhdGV0aW1lIERFRkFVTFQgTlVMTCwKICBQUklNQVJZIEtFWSAoYGlkYCksCiAgVU5JUVVFIEtFWSBgaWRfVU5JUVVFYCAoYGlkYCksCiAgS0VZIGBma19sYWJfcXVldWVfZW1wbG95ZWVfdGFibGUxX2lkeGAgKGBlbXBsb3llZV9pZGApLAogIEtFWSBgZmtfbGFiX3F1ZXVlX3BhdGllbnRfdGFibGUxX2lkeGAgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCksCiAgQ09OU1RSQUlOVCBgZmtfbGFiX3F1ZXVlX2VtcGxveWVlX3RhYmxlMWAgRk9SRUlHTiBLRVkgKGBlbXBsb3llZV9pZGApIFJFRkVSRU5DRVMgYGVtcGxveWVlX3RhYmxlYCAoYGVtcGxveWVlX2lkYCkgT04gREVMRVRFIE5PIEFDVElPTiBPTiBVUERBVEUgTk8gQUNUSU9OLAogIENPTlNUUkFJTlQgYGZrX2xhYl9xdWV1ZV9wYXRpZW50X3RhYmxlMWAgRk9SRUlHTiBLRVkgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCkgUkVGRVJFTkNFUyBgcGF0aWVudF90YWJsZWAgKGBwYXRpZW50X2NhcmRfbnVtYmVyYCkgT04gREVMRVRFIE5PIEFDVElPTiBPTiBVUERBVEUgTk8gQUNUSU9OCikgRU5HSU5FPUlubm9EQiBBVVRPX0lOQ1JFTUVOVD01MyBERUZBVUxUIENIQVJTRVQ9dXRmOA==";
 
     /**
      * setId Sets the class attribute id with a given value
@@ -174,6 +188,19 @@ class MeLabQueue extends MySqlRecord
     public function setLabRequestData($labRequestData)
     {
         $this->labRequestData = (string)$labRequestData;
+    }
+
+    /**
+     * setPhlebotomyStatus Sets the class attribute phlebotomyStatus with a given value
+     *
+     * The attribute phlebotomyStatus maps the field phlebotomy_status defined as varchar(45).<br>
+     * Comment for field phlebotomy_status: Not specified.<br>
+     * @param string $phlebotomyStatus
+     * @category Modifier
+     */
+    public function setPhlebotomyStatus($phlebotomyStatus)
+    {
+        $this->phlebotomyStatus = (string)$phlebotomyStatus;
     }
 
     /**
@@ -252,6 +279,19 @@ class MeLabQueue extends MySqlRecord
     public function getLabRequestData()
     {
         return $this->labRequestData;
+    }
+
+    /**
+     * getPhlebotomyStatus gets the class attribute phlebotomyStatus value
+     *
+     * The attribute phlebotomyStatus maps the field phlebotomy_status defined as varchar(45).<br>
+     * Comment for field phlebotomy_status: Not specified.
+     * @return string $phlebotomyStatus
+     * @category Accessor of $phlebotomyStatus
+     */
+    public function getPhlebotomyStatus()
+    {
+        return $this->phlebotomyStatus;
     }
 
     /**
@@ -348,6 +388,7 @@ class MeLabQueue extends MySqlRecord
             @$this->employeeId = $this->replaceAposBackSlash($rowObject->employee_id);
             @$this->labTableId = (integer)$rowObject->lab_table_id;
             @$this->labRequestData = $this->replaceAposBackSlash($rowObject->lab_request_data);
+            @$this->phlebotomyStatus = $this->replaceAposBackSlash($rowObject->phlebotomy_status);
             @$this->requestedOn = empty($rowObject->requested_on) ? null : date(FETCHED_DATETIME_FORMAT,strtotime($rowObject->requested_on));
             $this->allowUpdate = true;
         } else {
@@ -390,12 +431,13 @@ class MeLabQueue extends MySqlRecord
         // $constants = get_defined_constants();
         $sql = <<< SQL
             INSERT INTO lab_queue
-            (patient_card_number,employee_id,lab_table_id,lab_request_data,requested_on)
+            (patient_card_number,employee_id,lab_table_id,lab_request_data,phlebotomy_status,requested_on)
             VALUES(
 			{$this->parseValue($this->patientCardNumber,'notNumber')},
 			{$this->parseValue($this->employeeId,'notNumber')},
 			{$this->parseValue($this->labTableId)},
 			{$this->parseValue($this->labRequestData,'notNumber')},
+			{$this->parseValue($this->phlebotomyStatus,'notNumber')},
 			{$this->parseValue($this->requestedOn,'datetime')})
 SQL;
         $this->resetLastSqlError();
@@ -433,6 +475,7 @@ SQL;
 				employee_id={$this->parseValue($this->employeeId,'notNumber')},
 				lab_table_id={$this->parseValue($this->labTableId)},
 				lab_request_data={$this->parseValue($this->labRequestData,'notNumber')},
+				phlebotomy_status={$this->parseValue($this->phlebotomyStatus,'notNumber')},
 				requested_on={$this->parseValue($this->requestedOn,'datetime')}
             WHERE
                 id={$this->parseValue($id,'int')}
