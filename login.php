@@ -49,45 +49,49 @@ include_once "./production/config.php";
                 Login
               </button>
             </div>
-            <div class="dropdown">
-              <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Test credentials CEO
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Hospital:Zeweditu</a>
-                <a class="dropdown-item" href="#">EmployeeID:ceo123</a>
-                <a class="dropdown-item" href="#">Password:pass123</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Test credentials Doctor
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Hospital:Zeweditu</a>
-                <a class="dropdown-item" href="#">EmployeeID:doc123</a>
-                <a class="dropdown-item" href="#">Password:doc123</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Test credentials Laboratory
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Hospital:Zeweditu</a>
-                <a class="dropdown-item" href="#">EmployeeID:lab123</a>
-                <a class="dropdown-item" href="#">Password:lab123</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Test credentials Reception
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Hospital:Zeweditu</a>
-                <a class="dropdown-item" href="#">EmployeeID:recp123</a>
-                <a class="dropdown-item" href="#">Password:recp123</a>
-              </div>
+            <div>
+              <table class="table table-striped table-bordered">
+                <thead>
+
+                </thead>
+                <tbody>
+                  <tr><th colspan="5">Test Credentials</th></tr>
+                  <th>Hospital</th>
+                  <th>Job</th>
+                  <th>EmployeeID</th>
+                  <th>Password</th>
+                  <tr>
+                    <td>Zeweditu</td>
+                    <td>CEOS,Admins</td>
+                    <td>ceo123</td>
+                    <td>pass123</td>
+                  </tr>
+                  <tr>
+                    <td>Zeweditu</td>
+                    <td>Physcians, Doctors</td>
+                    <td>doc123</td>
+                    <td>pass123</td>
+                  </tr>
+                  <tr>
+                    <td>Zeweditu</td>
+                    <td>Labratory, Phlebotomy</td>
+                    <td>lab123</td>
+                    <td>pass123</td>
+                  </tr>
+                  <tr>
+                    <td>Zeweditu</td>
+                    <td>Reception</td>
+                    <td>recp123</td>
+                    <td>pass123</td>
+                  </tr>
+                  <tr>
+                    <td>Zeweditu</td>
+                    <td>Pharmacy, Drug store</td>
+                    <td>phar123</td>
+                    <td>pass123</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="clearfix"></div>
 

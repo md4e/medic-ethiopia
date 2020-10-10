@@ -9,7 +9,10 @@ function session_handler()
     if (isset($_POST['submit'])) {
         $employeeID = $_POST['employeeID'];
         $employeePassword = $_POST['employeePassword'];
-
+        $hospitalName = $_POST['hospitalName'];
+        if ($hospitalName != "1036") {
+            header('Location: ../login.php');
+        }
         if ($employeeID == 'ceo123' && $employeePassword == 'pass123') {
             $_SESSION['pID'] = 1;
         } else if ($employeeID == 'doc123' && $employeePassword == 'pass123') {
@@ -18,21 +21,12 @@ function session_handler()
             $_SESSION['pID'] = 3;
         } else if ($employeeID == 'recp123' && $employeePassword == 'pass123') {
             $_SESSION['pID'] = 4;
+        } else if ($employeeID == 'phar123' && $employeePassword == 'pass123') {
+            $_SESSION['pID'] = 5;
         } else {
             header('Location: ../login.php');
         }
     }
-    // if (isset($_GET['search_text']) && isset($_GET['card-no'])) {
-    //     if (!isset($_SESSION['pID'])) {
-    //         $_SESSION['pID'] = $_GET['card-no'];
-    //     }
-    // }
-    // if (isset($_GET['action']) && ($_GET['action'] == 'end-session')) {
-    //     // Removing session data
-    //     if (isset($_SESSION["pID"])) {
-    //         unset($_SESSION["pID"]);
-    //     }
-    // }
 }
 function show_patient_form($caller = null)
 {
@@ -358,7 +352,7 @@ function main_container_top_navigation()
                 </div>
                 <div class="profile_info">
                     <span>Welcome,</span>
-                    <h2>Dr. Name Lastname</h2>
+                    <h2> Name Lastname</h2>
                 </div>
             </div>
             <!-- /menu profile quick info -->
@@ -396,7 +390,7 @@ function main_container_top_navigation()
             <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-user-md"></i>Dr. Name Lastname
+                        <i class="fa fa-user-md"></i> Name Lastname
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="javascript:;"> Profile</a>
@@ -424,7 +418,7 @@ function main_navigation()
         6 => '<li ><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory</a></li>',
         7 => '<li ><a href="index6.php"><i class="fa fa-book text-primary"></i>All Forms</a></li>',
         8 => '<li ><a href="index7.php"><i class="fa fa-users text-info"></i>All Patients</a></li>',
-        9 => '<li ><a href="index8.php"><i class="fa fa-cubes text-danger"></i>Drug Adminstration</a></li>'
+        9 => '<li ><a href="index8.php"><i class="fa fa-cubes text-danger"></i>Pharmacy</a></li>'
     ];
 
     $useNavIndex = [];
@@ -437,6 +431,8 @@ function main_navigation()
             $useNavIndex = [6];
         } else if ($_SESSION['pID'] == 4) {
             $useNavIndex = [1];
+        } else if ($_SESSION['pID'] == 5) {
+            $useNavIndex = [9];
         }
     } else {
         $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7];
