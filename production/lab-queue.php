@@ -32,11 +32,11 @@ if (isset($_SESSION['patient_card_number']) && isset($_GET['ids']) && ($_GET['id
     $labQueue->setEmployeeId($employeeId);
     $labQueue->setLabTableId($lab_table_id);
     $labQueue->setLabRequestData($final);
+    $labQueue->setPhlebotomyStatus('not started');
     $labQueue->setRequestedOn(date("d/m/Y H:i:s"));
     $labQueue->insert();
-
-    header('Location: ./index_patient.php?lab-request=complete');
+    header('Location: ./patient-journal-lab-request.php?lab-request=complete');
 } else {
     // not sucessful
-    header('Location: ./index_patient.php?lab-request=reject');
+    header('Location: ./patient-journal-lab-request.php?lab-request=reject');
 }

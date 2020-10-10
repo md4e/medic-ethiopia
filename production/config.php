@@ -28,13 +28,31 @@ function session_handler()
         }
     }
 }
+
+function normalAbNormal($type)
+{
+    echo '
+        <div class="col-md-3 col-sm-3">
+        <div class="custom-control custom-radio custom-control-inline">
+        <input name="' . $type . '" id="' . $type . '_0" type="radio" aria-describedby="ospe-pertinetHelpBlock" class="custom-control-input" value="normal">
+        <label for="' . $type . '_0" class="custom-control-label">NO ABNORMAL</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+        <input name="' . $type . '" id="' . $type . '_1" type="radio" aria-describedby="ospe-no-pertinetHelpBlock" class="custom-control-input" value="abnormal">
+        <label for="' . $type . '_1" class="custom-control-label">ABNORMAL</label>
+        </div>
+        </div>';
+}
 function show_patient_form($caller = null)
 {
-    show_patient($caller);
+    if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
+        show_patient($caller);
+        return;
+    }
     $search_text = isset($_GET['search_text']) ? $_GET['search_text'] : null;
     echo '
     <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" method="post" action="./search.php?caller=' . $caller . '">
-    <div class="item form-group x_panel" style="background-color:#333;color:#fff">
+    <div class="item form-group x_panel bg-info">
         <label for="search_text" class="col-form-label col-md-3 col-sm-3 label-align">Search here</label>
         <div class="col-md-8 col-sm-8">
             <div class="form-group" method="post">
@@ -46,7 +64,7 @@ function show_patient_form($caller = null)
 
         </div>
     </div>';
-
+    echo '</form>';
     if (isset($search_text)) {
         if (isset($_SESSION['search_result']) && sizeof($_SESSION['search_result']) == 1 && $_SESSION['search_result'][0] != '') {
             show_list_of_matching_patient($caller);
@@ -55,7 +73,7 @@ function show_patient_form($caller = null)
             unset($_SESSION['search_result']);
         }
     }
-    echo '</form>';
+    show_patient($caller);
 }
 
 function show_list_of_matching_patient($caller = null)
@@ -63,13 +81,21 @@ function show_list_of_matching_patient($caller = null)
     if ($caller == 'index-reception.php') {
         searchTableResultReception($caller);
     } else {
-        searchTableResultDetail();
+        searchTableResultDetail($caller);
     }
 }
 
 
-function searchTableResultDetail()
+function searchTableResultDetail($caller = null)
 {
+    $hideDetailIf = ['index-search.php'];
+    if ($caller != null) {
+        if (!in_array($caller, $hideDetailIf)) {
+            $caller = '&caller=patient-journal.php';
+        } else {
+            $caller = '&caller=' . $caller;
+        }
+    }
     echo '<div class="card-box table-responsive" >
     <p class="text-muted font-13 m-b-30">
     Patients matching results
@@ -100,7 +126,7 @@ function searchTableResultDetail()
            <br><strong>Short Summary:</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. !<br>
              </p>
            </td>
-          <td><a href="./session.php?card-no=' . Crypter::urlencode_encrypt($valueObj->patient_card_number) . '" class="btn btn-primary">';
+          <td><a href="./session.php?card-no=' . Crypter::urlencode_encrypt($valueObj->patient_card_number) . $caller . '" class="btn btn-primary">';
         echo '<i class="fa fa-lock"></i> Open Journal ' . $valueObj->patient_card_number . '</a></td></tr>';
     }
     echo '
@@ -183,10 +209,11 @@ function show_patient_detail($caller = null)
         echo '<div class="item form-group x_panel" style="border-radius:5px;">';
         echo '<div class="row" style="width:100%;padding:5px;">';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;padding:0;">';
+        $finalCaller = '';
         if ($caller != null) {
-            $caller = '&caller=' . $caller;
+            $finalCaller = '&caller=' . $caller;
         }
-        echo '<p><a href="./session.php?card-no-close=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . $caller . '" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Close </a></p>';
+        echo '<p><a href="./session.php?card-no-close=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . $finalCaller . '" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Close </a></p>';
         echo '</div>';
 
 
@@ -204,8 +231,14 @@ function show_patient_detail($caller = null)
           </p>';
         echo '</p>';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
-        if ($_SESSION['pID'] <= 2)
-            echo '<a href="./index_patient.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
+
+        $hideDetailIf = ['patient-journal.php'];
+        if (!in_array($caller, $hideDetailIf)) {
+            if ($_SESSION['pID'] <= 2) {
+                echo '<a href="./patient-journal.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
+            }
+        }
+
         echo '</div>';
 
         echo '</div>';
@@ -385,6 +418,13 @@ function main_container_top_navigation()
     <div class="nav_menu">
         <div class="nav toggle">
             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="col-md-8">
+            ';
+    if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
+        echo '<p class="h3 text-success" id="countdown">You have Active Patient Session!</p>';
+    }
+    echo '
         </div>
         <nav class="nav navbar-nav">
             <ul class=" navbar-right">

@@ -43,8 +43,8 @@ class MeLabQueue extends MySqlRecord
      *  - Data type: varchar(45)
      *  - Null : NO
      *  - DB Index: MUL
-     *  - Default: 
-     *  - Extra:  
+     *  - Default:
+     *  - Extra:
      * @var string $patientCardNumber
      */
     private $patientCardNumber;
@@ -57,8 +57,8 @@ class MeLabQueue extends MySqlRecord
      *  - Data type: varchar(45)
      *  - Null : NO
      *  - DB Index: MUL
-     *  - Default: 
-     *  - Extra:  
+     *  - Default:
+     *  - Extra:
      * @var string $employeeId
      */
     private $employeeId;
@@ -70,9 +70,9 @@ class MeLabQueue extends MySqlRecord
      * Field information:
      *  - Data type: int(11)
      *  - Null : YES
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var int $labTableId
      */
     private $labTableId;
@@ -84,9 +84,9 @@ class MeLabQueue extends MySqlRecord
      * Field information:
      *  - Data type: longtext
      *  - Null : YES
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $labRequestData
      */
     private $labRequestData;
@@ -98,9 +98,9 @@ class MeLabQueue extends MySqlRecord
      * Field information:
      *  - Data type: varchar(45)
      *  - Null : NO
-     *  - DB Index: 
+     *  - DB Index:
      *  - Default: not started
-     *  - Extra:  
+     *  - Extra:
      * @var string $phlebotomyStatus
      */
     private $phlebotomyStatus;
@@ -112,9 +112,9 @@ class MeLabQueue extends MySqlRecord
      * Field information:
      *  - Data type: datetime
      *  - Null : YES
-     *  - DB Index: 
-     *  - Default: 
-     *  - Extra:  
+     *  - DB Index:
+     *  - Default:
+     *  - Extra:
      * @var string $requestedOn
      */
     private $requestedOn;
@@ -470,7 +470,7 @@ SQL;
             $sql = <<< SQL
             UPDATE
                 lab_queue
-            SET 
+            SET
 				patient_card_number={$this->parseValue($this->patientCardNumber,'notNumber')},
 				employee_id={$this->parseValue($this->employeeId,'notNumber')},
 				lab_table_id={$this->parseValue($this->labTableId)},

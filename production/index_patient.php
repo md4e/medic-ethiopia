@@ -3,9 +3,7 @@ ob_start();
 include_once "./lab-all-test-defines.php";
 include_once "./config.php";
 include_once "./all_lab_request.php";
-// var_dump($_SESSION['search_result']);
-// var_dump($_SESSION['patient_card_number']);
-// var_dump($_GET);
+
 ?>
 
 <!DOCTYPE html>
@@ -182,25 +180,12 @@ include_once "./all_lab_request.php";
                                                                 <option value="lab-radiology-x-ray">Radiology X-ray Request</option>
                                                                 <option value="lab-radiology-ct-scan">Radiology CT Scan Request</option>
                                                                 <option value="lab-urine">Urine Analysis Examination Lab Request</option>
-
-
                                                             </select>
                                                         </div>
                                                     </div>
-
                                                     <?php
                                                     lab_request_all();
                                                     ?>
-                                                    <!-- <input type="button" id="submit1" value="+submit1" onClick="isClicked('submit1')" class="btn btn-sm btn-success">
-                                                    <input type="button" id="submit2" value="+submit2" onClick="isClicked('submit2')" class="btn btn-sm btn-success">
-                                                    <input type="button" id="submit3" value="+submit3" onClick="isClicked('submit3')" class="btn btn-sm btn-success">
-                                                    <input type="button" id="submit4" value="+submit4" onClick="isClicked('submit4')" class="btn btn-sm btn-success">
-                                                    <input type="button" id="submit5" value="+submit5" onClick="isClicked('submit5')" class="btn btn-sm btn-success">
-                                                    <input type="button" id="submit6" value="+submit6" onClick="isClicked('submit6')" class="btn btn-sm btn-success">
-                                                    <input type="button" id="submit7" value="+submit7" onClick="isClicked('submit7')" class="btn btn-sm btn-success"> -->
-
-
-
                                                 </div>
                                             </div>
                                         </div>

@@ -48,35 +48,19 @@ include_once "./config.php";
                                         <div id="txt" style="text-align:right;padding:0em"></div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-vital-sign-record-date" class="col-form-label col-md-3 col-sm-3 label-align">Date and time</label>
+                                        <label for="record-date" class="col-form-label col-md-3 col-sm-3 label-align">Date and time</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="date-of-vital-sign-record-date" name="date-of-vital-sign-record-date" type="text" class="form-control" disabled>
+                                            <input id="record-date" name="date-of-vital-sign-record-date" type="text" class="form-control" disabled>
                                         </div>
                                     </div>
-                                    <!-- <div class="item form-group">
-                                        <label for="date-of-vital-sign-record-time" class="col-form-label col-md-3 col-sm-3 label-align">Time</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <input id="date-of-vital-sign-record-time" name="date-of-vital-sign-record-time" type="time" value="00:00" class="form-control" required="required">
-                                        </div>
-                                    </div> -->
 
                                     <div class="item form-group">
                                         <label for="date-of-vital-sign-record-bp" class="col-form-label col-md-3 col-sm-3 label-align">Blood Pressure (B/P)</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="col-md-6 col-sm-6">
-                                                <input id="bp-systolic" name="bp-systolic" placeholder="Systolic" type="number" min="0" class="form-control" required="required">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input id="bp-diastolic" name="bp-diastolic" placeholder="Diastolic" type="number" min="0" class="form-control" required="required">
-                                            </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <input id="bp-systolic" name="bp-systolic" placeholder="Systolic" type="number" min="0" class="form-control" required="required">
                                         </div>
-                                        <div class="col-md-2 col-sm-2">
-                                            <div class="col-6 bp-alert-message-systolic">
-                                                <p></p>
-                                            </div>
-                                            <div class="col-6 bp-alert-message-diastolic">
-                                                <p></p>
-                                            </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <input id="bp-diastolic" name="bp-diastolic" placeholder="Diastolic" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -203,7 +187,6 @@ include_once "./config.php";
             var $weight = $("#bmi-kg").val();
             var $height = $("#bmi-height").val();
             var $bmi = $weight / ($height / 100 * $height / 100);
-
             $("#bmi-final").val(parseInt($bmi));
         });
 
@@ -224,7 +207,7 @@ include_once "./config.php";
             }
         });
         var time = new Date();
-        $('#date-of-vital-sign-record-date').val(time.toString('YYYY-MM-dd'));
+        $('#record-date').val(time.toString('YYYY-MM-dd'));
     </script>
 </body>
 

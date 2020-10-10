@@ -51,22 +51,14 @@ include_once "./config.php";
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <?php
-                                patient_search()
+                            <?php
+                                show_patient_form('medical-history-sheet.php');
                                 ?>
-                                <br />
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
-                                    <div class="item form-group">
-                                        <label for="date-of-order-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Date</label>
+                                <div class="item form-group">
+                                        <label for="record-date" class="col-form-label col-md-3 col-sm-3 label-align">Date and time</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="date-of-order-sheet-date" name="date-of-order-sheet-date" type="date" class="form-control" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label for="date-of-order-sheet-time" class="col-form-label col-md-3 col-sm-3 label-align">Time</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <input id="date-of-order-sheet-time" name="date-of-order-sheet-time" type="time" value="00:00" class="form-control" required="required">
+                                            <input id="record-date" name="date-of-vital-sign-record-date" type="text" class="form-control" disabled>
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -76,7 +68,6 @@ include_once "./config.php";
                                         </div>
                                     </div>
 
-
                                     <div class="item form-group">
                                         <label for="date-of-order-sheet-chief-compliant" class="col-form-label col-md-3 col-sm-3 label-align">General Appearance</label>
                                         <div class="col-md-6 col-sm-6">
@@ -84,55 +75,48 @@ include_once "./config.php";
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-vital-sign-record-bp" class="col-form-label col-md-3 col-sm-3 label-align">Blood Pressure (B/P)</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="col-md-6 col-sm-6">
-                                                <input id="bp-systolic" name="bp-systolic" placeholder="Systolic" type="number" min="0" class="form-control" required="required">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input id="bp-diastolic" name="bp-diastolic" placeholder="Diastolic" type="number" min="0" class="form-control" required="required">
-                                            </div>
+                                        <label for="date-of-history-sheet-record-bp" class="col-form-label col-md-3 col-sm-3 label-align">Blood Pressure (B/P)</label>
+                                        <div class="col-md-2 col-sm-2">
+                                            <input id="bp-systolic" name="bp-systolic" placeholder="Systolic" type="number" min="0" class="form-control" required="required">
                                         </div>
                                         <div class="col-md-2 col-sm-2">
-                                            <div class="col-6 bp-alert-message-systolic">
-                                                <p></p>
-                                            </div>
-                                            <div class="col-6 bp-alert-message-diastolic">
-                                                <p></p>
-                                            </div>
+                                            <input id="bp-diastolic" name="bp-diastolic" placeholder="Diastolic" type="number" min="0" class="form-control" required="required">
+                                        </div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <input id="bp-diastolic" name="bp-diastolic" placeholder="Diastolic" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-vital-sign-record-pulse-rate" class="col-form-label col-md-3 col-sm-3 label-align">Pluse Rate (beats/minutes)</label>
+                                        <label for="date-of-history-sheet-record-pulse-rate" class="col-form-label col-md-3 col-sm-3 label-align">Pluse Rate (beats/minutes)</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="pulse-rate" name="pulse-rate" placeholder="pulse rate" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-vital-sign-record-respiration" class="col-form-label col-md-3 col-sm-3 label-align">Respiration (breaths/minute)</label>
+                                        <label for="date-of-history-sheet-record-respiration" class="col-form-label col-md-3 col-sm-3 label-align">Respiration (breaths/minute)</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="resipiration-rate" name="resipiration-rate" placeholder="resipiration" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-vital-sign-record-temprature" class="col-form-label col-md-3 col-sm-3 label-align">Temprature (&#8451;)</label>
+                                        <label for="date-of-history-sheet-record-temprature" class="col-form-label col-md-3 col-sm-3 label-align">Temprature (&#8451;)</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="temprature" name="temprature" placeholder="temprature" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-vital-sign-record-spo2" class="col-form-label col-md-3 col-sm-3 label-align">Oxygen saturation (SPO<sub>2</sub>)</label>
+                                        <label for="date-of-history-sheet-record-spo2" class="col-form-label col-md-3 col-sm-3 label-align">Oxygen saturation (SPO<sub>2</sub>)</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="spo2" name="spo2" placeholder="SPO2" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-vital-sign-rbs" class="col-form-label col-md-3 col-sm-3 label-align">Blood Glucose Level (BGL)</label>
+                                        <label for="date-of-history-sheet-rbs" class="col-form-label col-md-3 col-sm-3 label-align">Blood Glucose Level (BGL)</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="rbs" name="rbs" placeholder="Random Blood Sugar" type="number" min="0" class="form-control" required="required">
                                         </div>
                                     </div>
-                                    <div class="item form-group">
+                                    <!-- <div class="item form-group">
                                         <label for="order-sheet-physical-examination" class="col-form-label col-md-3 col-sm-3 label-align">Pertient Finding</label>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="col-md-12 col-sm-12">
@@ -146,62 +130,71 @@ include_once "./config.php";
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="item form-group physical-examination" style="display:none; border:1px dotted red;">
+                                    </div> -->
+                                    <div class="item form-group physical-examination">
                                         <div class="offest-12 col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-heent" class="col-form-label col-md-3 col-sm-3 label-align">Head,Ear,Eyes,Neck,&Throat (HEENT) </label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-heent" class="col-form-label col-md-3 col-sm-3 label-align">Head,Ear,Eyes,Neck,&Throat (HEENT) </label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="heent" name="heent" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('heent'); ?>
                                             </div>
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-lg" class="col-form-label col-md-3 col-sm-3 label-align">Lymphoglandular System (LS)</label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-lg" class="col-form-label col-md-3 col-sm-3 label-align">Lymphoglandular System (LS)</label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="lg" name="lg" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('lg'); ?>
                                             </div>
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-chest" class="col-form-label col-md-3 col-sm-3 label-align">Chest</label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-chest" class="col-form-label col-md-3 col-sm-3 label-align">Chest</label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="chest" name="chest" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('chest'); ?>
                                             </div>
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-cvs" class="col-form-label col-md-3 col-sm-3 label-align">Cardio Vascular System (CVS)</label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-cvs" class="col-form-label col-md-3 col-sm-3 label-align">Cardio Vascular System (CVS)</label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="cvs" name="cvs" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('cvs'); ?>
                                             </div>
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-abdomen" class="col-form-label col-md-3 col-sm-3 label-align">Abdomen</label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-abdomen" class="col-form-label col-md-3 col-sm-3 label-align">Abdomen</label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="abdomen" name="abdomen" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('abdomen'); ?>
                                             </div>
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-gus" class="col-form-label col-md-3 col-sm-3 label-align">GenitoUrinary System</label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-gus" class="col-form-label col-md-3 col-sm-3 label-align">GenitoUrinary System</label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="gus" name="gus" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('gus'); ?>
                                             </div>
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-mss" class="col-form-label col-md-3 col-sm-3 label-align">Musculoskeletal System</label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-mss" class="col-form-label col-md-3 col-sm-3 label-align">Musculoskeletal System</label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="mss" name="mss" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('mss'); ?>
                                             </div>
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-igs" class="col-form-label col-md-3 col-sm-3 label-align">Integumentary system</label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-igs" class="col-form-label col-md-3 col-sm-3 label-align">Integumentary system</label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="igs" name="igs" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('igs'); ?>
                                             </div>
                                             <div class="item form-group">
-                                                <label for="date-of-vital-sign-cns" class="col-form-label col-md-3 col-sm-3 label-align">Central Nervous system (CNS)</label>
-                                                <div class="col-md-6 col-sm-6">
+                                                <label for="date-of-history-sheet-cns" class="col-form-label col-md-3 col-sm-3 label-align">Central Nervous system (CNS)</label>
+                                                <div class="col-md-3 col-sm-3">
                                                     <input id="cns" name="cns" placeholder="" type="text" class="form-control">
                                                 </div>
+                                                <?php normalAbNormal('cns'); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -261,18 +254,20 @@ include_once "./config.php";
     include_js();
     ?>
     <script>
-        $(document).ready(function() {
-            $("input[name=ospe-pertinet]").on("change", function() {
-
-                var test = $(this).val();
-                if (test == "abnormal") {
-                    $(".physical-examination").show();
-                } else {
-                    $(".physical-examination").hide();
+        $(function() {
+            $('input:radio').change(function() {
+                var temp = this.id;
+                var inputDisable = temp.split('_')[0];
+                var choose = temp.split('_')[1];
+                if (choose == '0') {
+                    $("#" + inputDisable).prop("disabled", true);
+                } else if (choose == '1') {
+                    $("#" + inputDisable).prop("disabled", false);
                 }
-                //$("#" + test).show();
             });
         });
+        var time = new Date();
+        $('#record-date').val(time.toString('YYYY-MM-dd'));
     </script>
 </body>
 

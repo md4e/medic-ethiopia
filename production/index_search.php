@@ -34,7 +34,7 @@ include_once "./config.php";
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <?php
-                                        show_patient_form('./index_search.php');
+                                        show_patient_form('index_search.php');
                                         ?>
                                     </div>
                                 </div>

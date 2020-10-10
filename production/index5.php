@@ -30,7 +30,7 @@ include_once "./config.php";
           <div class="x_panel">
             <div class="x_title">
               <div class="dropdown">
-                <button class="btn btn-lg btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-lg btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-flask"></i> General Laboratory forms
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -85,7 +85,7 @@ include_once "./config.php";
             <div class="x_title">
               <a href="patient-list-phlebotomy.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-danger"><i class="fa fa-eyedropper"></i> Phlebotomy Patient List & Queue</p>
+                  <p class="h4 text-primary"><i class="fa fa-eyedropper"></i> Phlebotomy Patient List & Queue</p>
                 </div>
               </a>
             </div>
@@ -98,7 +98,7 @@ include_once "./config.php";
             <div class="x_title">
               <a href="lab-supply-list.php" class="patient">
                 <div class="row" style="display: inline-block;">
-                  <p class="h4 text-danger"><i class="fa fa-shopping-cart"></i> Lab Supply List</p>
+                  <p class="h4 text-primary"><i class="fa fa-shopping-cart"></i> Lab Supply List</p>
                 </div>
               </a>
             </div>
