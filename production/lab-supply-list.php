@@ -33,7 +33,7 @@ include_once "./config.php";
 
             <div class="clearfix"></div>
             <!-- top tiles -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-6">
                     <div class="x_panel">
                         <div class="x_title">
@@ -58,63 +58,58 @@ include_once "./config.php";
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="x_panel" style="border:3px solid green">
-                <div class="x_title">
-                    <h1>Lab Supply Form</h1>
-
-                </div>
+            <div class="x_panel">
                 <div class="x_content">
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
-                        <!-- -->
-                        <div class="item form-group">
-                            <!-- <div class="col-md-12 col-sm-12 col-sm-12">
-                                <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">Mode of Arrival to Hospital/ED</label>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input name="search-filter" id="search-filter_4" type="checkbox" class="custom-control-input" value="address" aria-describedby="search-filterHelpBlock">
-                                    <label for="search-filter_4" class="custom-control-label">Taxi</label>
-                                </div>
-                            </div> -->
-                            <?php
-                            // var_dump(array_keys($labSupply));
-                            // // foreach ($labSupply as $key => $value) {
-                            // //     $labObj = new MeLabSupplyCat();
-                            // //     $labObj->setName($key);
-                            // //     $labObj->setCreatedOn(date("d/m/Y H:i:s"));
-                            // //     $labObj->insert();
-                            // // //break;
-                            // // }
-                            // foreach ($labSupply as $key => $value) {
-                            //     $labObj = new MeLabSupplyCat('*');
-                            //     $result = $labObj->getResultSet();
-                            //     $result->data_seek(0);
-                            //     while ($row = $result->fetch_object()) {
-                            //         if ($row->name == $key) {
-                            //             foreach ($value as $k => $v) {
-                            //                 var_dump($row->id);
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-box table-responsive">
+                                <p class="text-muted font-18 m-b-30">
 
-                            //                 $list = new MeLabSupplyList();
-                            //                 //["name" => "Electrode washing solution of 5ml", "unit" => "bottle", "amc" => 0, "max-stock" => 0, "min-stock" => 0, "q4-consumption-b" => 0, "annual-consumption-c" => 5],
-                            //                 $list->setEmployeeId('000001');
-                            //                 $list->setCatergoryId((int)$row->id);
-                            //                 $list->setName($v['name']);
-                            //                 $list->setUnit($v['unit']);
-                            //                 $list->setCurrentAmount($v['amc']);
-                            //                 $list->setMinStock($v['min-stock']);
-                            //                 $list->setMaxStock($v['max-stock']);
-                            //                 $list->setQ4ConsumptionB($v['q4-consumption-b']);
-                            //                 $list->setAnnualConsumptionC($v['annual-consumption-c']);
-                            //                 $list->setCreatedOn(date("d/m/Y H:i:s"));
-                            //                 $list->insert();
+                                </p>
 
-                            //             }
-                            //         }
-                            //     }
-                            // }
-                            ?>
+                                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Name</th>
+                                            <th>Category</th>
+                                            <th>UNIT</th>
+                                            <th>AMC</th>
+                                            <th>MAX Stock</th>
+                                            <th>MIN Stock</th>
+                                            <th>Quarter consumption (B)</th>
+                                            <th>Annual Consumption (C)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $supply = new MeLabSupplyList('*');
+                                        $result =  $supply->getResultSet();
+                                        $result->data_seek(0);
+                                        while ($rows = $result->fetch_object()) {
+                                            $category = new MeLabSupplyCat($rows->catergory_id);
+                                            echo '<tr>';
+                                            echo '<td>' . $rows->name;
+                                            echo '<p class="h4 ">';
+                                            echo '<a href="./lab-supply-list-form.php?id='.$rows->id.'" type="button" class="btn btn-sm btn-warning text-dark">update</a>';
+                                            echo '</p>';
+                                            echo '</td>';
+                                            echo '<td>' . $category->getName(). '</td>';
+                                            echo '<td>' . $rows->unit . '</td>';
+                                            echo '<td>' . $rows->current_amount . '</td>';
+                                            echo '<td>' . $rows->max_stock . '</td>';
+                                            echo '<td>' . $rows->min_stock . '</td>';
+                                            echo '<td>' . $rows->q4_consumption_b . '</td>';
+                                            echo '<td>' . $rows->annual_consumption_c . '</td>';
+                                            echo '</tr>';
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,6 +130,9 @@ include_once "./config.php";
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 </body>

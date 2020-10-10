@@ -153,10 +153,14 @@ include_once "./all_lab_request.php";
                                                             <select name="medication-request-all" id="medication-request-list" class="custom-select" required="required">
                                                                 <option value="medication-serology">Choose you medication</option>
                                                                 <?php
-                                                                foreach ($medication as $key => $value) {
-                                                                    echo '<option value="' . $key . '">' . $value . '</option>';
+                                                                $drugs = new MeDrugListInhouse('*');
+                                                                $result =  $drugs->getResultSet();
+                                                                $result->data_seek(0);
+                                                                while ($rows = $result->fetch_object()) {
+                                                                  echo '<option value="' . $rows->id . '">' . $rows->name . '</option>';
                                                                 }
                                                                 ?>
+
                                                             </select>
                                                         </div>
                                                     </div>
