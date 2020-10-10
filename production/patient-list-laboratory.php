@@ -143,7 +143,7 @@ include_once $documentRootPath . "/production/config.php";
                             echo '<td><p class="' . $phlebotomyStatus[$row->phlebotomy_status] . '">' . $row->phlebotomy_status . '</p>';
                             $notStarted = "not started";
                             echo '<a href="./patient-list-laboratory.php?status=' . Crypter::ENCODE('cancel_' . $row->id) . '" type="button" class="btn btn-sm btn-danger">Redo</a></td>';
-                            echo '<td><button class="' . $payment[$index2][1] . '">' . $payment[$index2][0] . '</button></td>';
+                            echo '<td><p class="' . $payment[$index2][1] . '">' . $payment[$index2][0] . '</p></td>';
                             echo '</tr>';
                           }
 
