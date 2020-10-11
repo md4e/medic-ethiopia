@@ -36,7 +36,7 @@ include_once "./config.php";
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="x_panel">
                         <div class="x_title">
                             <a href="patient-journal-bio.php" class="patient">
@@ -47,9 +47,8 @@ include_once "./config.php";
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+
+                <div class="col-md-4">
                     <div class="x_panel">
                         <div class="x_title">
                             <a href="patient-journal-full.php" class="patient">
@@ -60,9 +59,8 @@ include_once "./config.php";
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+
+                <div class="col-md-4">
                     <div class="x_panel">
                         <div class="x_title">
                             <a href="patient-journal-medication.php" class="patient">
@@ -73,9 +71,8 @@ include_once "./config.php";
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+
+                <div class="col-md-4">
                     <div class="x_panel">
                         <div class="x_title">
                             <a href="patient-journal-nursing-care.php" class="patient">
@@ -86,9 +83,8 @@ include_once "./config.php";
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+
+                <div class="col-md-4">
                     <div class="x_panel">
                         <div class="x_title">
                             <a href="patient-journal-lab-request.php" class="patient">

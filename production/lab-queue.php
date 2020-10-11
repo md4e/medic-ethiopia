@@ -6,7 +6,8 @@ include_once "./lab-all-test-defines.php";
 
 if (isset($_SESSION['patient_card_number']) && isset($_GET['ids']) && ($_GET['ids'] != '') && isset($_GET['requester'])) {
     // var_dump($_GET['ids']);
-    // var_dump($_GET['requester']);
+    var_dump($_GET['requester']);
+    //exit;
     // var_dump($_SESSION['patient_card_number']);
 
 
@@ -35,6 +36,7 @@ if (isset($_SESSION['patient_card_number']) && isset($_GET['ids']) && ($_GET['id
     $labQueue->setPhlebotomyStatus('not started');
     $labQueue->setRequestedOn(date("d/m/Y H:i:s"));
     $labQueue->insert();
+    exit;
     header('Location: ./patient-journal-lab-request.php?lab-request=complete');
 } else {
     // not sucessful

@@ -66,31 +66,34 @@ include_once "./all_lab_request.php";
                                 </div>
                             </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="x_panel">
-                        <div class="item form-group">
-                            <label for="region" class="col-form-label col-md-3 col-sm-3 label-align">Choose Labratory request</label>
-                            <div class="col-6">
-                                <select name="lab-request-all" id="lab-request-list" class="custom-select" required="required">Test
-                                    <option value="lab-serology">Choose you treatment request</option>
-                                    <option value="lab-serology">Serology and Coagulation Lab Request</option>
-                                    <option value="lab-blood">Blood and Blood Crossmatch Lab request</option>
-                                    <option value="lab-hematolog">Hematology Lab Request</option>
-                                    <option value="lab-chemistry">Chemisitry Lab Request</option>
-                                    <option value="lab-stool">Stool Examination Lab Request</option>
-                                    <option value="lab-radiology-x-ray">Radiology X-ray Request</option>
-                                    <option value="lab-radiology-ct-scan">Radiology CT Scan Request</option>
-                                    <option value="lab-urine">Urine Analysis Examination Lab Request</option>
-                                </select>
+                        <form id="lab-requeste-all" data-parsley-validate class="form-horizontal form-label-left" method="post" action="lab-queue.php">
+                            <div class="item form-group">
+                                <label for="lab-request-types" class="col-form-label col-md-3 col-sm-3 label-align">Choose Labratory request</label>
+                                <div class="col-6">
+                                    <select name="lab-request-all" id="lab-request-list" class="custom-select" required="required">Test
+                                        <option value="lab-serology">Choose you treatment request</option>
+                                        <option value="lab-serology">Serology and Coagulation Lab Request</option>
+                                        <option value="lab-blood">Blood and Blood Crossmatch Lab request</option>
+                                        <option value="lab-hematolog">Hematology Lab Request</option>
+                                        <option value="lab-chemistry">Chemisitry Lab Request</option>
+                                        <option value="lab-stool">Stool Examination Lab Request</option>
+                                        <option value="lab-radiology-x-ray">Radiology X-ray Request</option>
+                                        <option value="lab-radiology-ct-scan">Radiology CT Scan Request</option>
+                                        <option value="lab-urine">Urine Analysis Examination Lab Request</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <?php
-                        lab_request_all();
-                        ?>
+                            <?php
+                            lab_request_all();
+                            ?>
+                            <div class="ln_solid"></div>
+                            <div class="item form-group">
+                                <div class="col-md-6 col-sm-6">
+                                    <a href="./patient-journal.php" type="button" class="btn btn-danger">Cancel Request</a>
+                                    <button type="submit" class="btn  btn-primary">Send Request</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -172,21 +175,22 @@ include_once "./all_lab_request.php";
                 $('.' + requestType).append('<div class="' + requestType + id + '" style="font-weight:bold;color:green">' + name + '</div>');
             }
         }
-
-        $(function() {
-            $('form').bind('submit', function(event) {
+        $(document).ready(function(){
+            alert("aasdasdsad");
+            $("form").bind("submit", function(event) {
                 // using this page stop being refreshing
                 event.preventDefault();
-                var requester = $(this).attr('id'); // == 'lab-serology-form') ? 'lab-serology-form' : 'other';
-                $.ajax({
-                    type: 'POST',
-                    url: 'lab-queue.php',
-                    data: $('form').serialize(),
-                    success: function() {
-                        var result = $('.test-' + requester).text();
-                        window.location = './lab-queue.php?requester=' + requester + '&ids=' + result
-                    }
-                });
+                // var requester = $(this).attr('id'); // == 'lab-serology-form') ? 'lab-serology-form' : 'other';
+                alert("aasdasdsad");
+                // $.ajax({
+                //     type: 'POST',
+                //     url: 'lab-queue.php',
+                //     data: $('form').serialize(),
+                //     success: function() {
+                //         var result = $('.test-' + requester).text();
+                //         window.location = './lab-queue.php?requester=' + requester + '&ids=' + result
+                //     }
+                // });
             });
         });
     </script>

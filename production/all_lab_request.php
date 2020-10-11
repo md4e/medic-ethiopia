@@ -2,8 +2,8 @@
 
 function lab_request_serology()
 {
+    include_once "./lab-all-test-defines.php";
     echo '
-    <form id="lab-serology-form" data-parsley-validate class="form-horizontal form-label-left" action="./lab-queue.php">
     <div class="item form-group">
         <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Serology & Coagulation </label>
         <div class="col-md-8 col-sm-8">';
@@ -23,17 +23,9 @@ function lab_request_serology()
     <label for="serology-coagulation-sheet-date" class="col-form-label col-md-2 col-sm-2 label-align">Request Summary</label>
     <div class="col-md-8 col-sm-8 lab-serology-form">
     <input type="text" class="test-lab-serology-form" style="display:none">
+    <input type="hidden" class="test-lab-serology-form" value="lab-serology-form">
     </div>
     </div>
-    <div class="ln_solid"></div>
-    <div class="item form-group">
-        <div class="col-md-6 col-sm-6">
-            <a href="./index_patient.php" type="button" class="btn btn-danger">Cancel Request</a>
-            <button type="submit" class="btn  btn-primary">Send Request</button>
-
-        </div>
-    </div>
-</form>
     ';
 }
 
@@ -41,7 +33,7 @@ function lab_request_blood()
 {
     include_once "./lab-all-test-defines.php";
 
-    echo '<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
+    echo '
     <div class="item form-group">
         <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Blood request</label>
         <div class="col-md-6 col-sm-6">';
@@ -57,20 +49,12 @@ function lab_request_blood()
     }
 
     echo '</div>
-    </div>
-    <div class="ln_solid"></div>
-    <div class="item form-group">
-        <div class="col-md-6 col-sm-6">
-            <a href="./index_patient.php" type="button" class="btn btn-danger">Cancel Request</a>
-            <button type="submit" class="btn  btn-primary">Send Request</button>
-        </div>
-    </div>
-</form>';
+    </div>';
 }
 function lab_request_hematology()
 {
 
-    echo '<form id="lab-hematology-form" data-parsley-validate class="form-horizontal form-label-left" action="./lab-queue.php">
+    echo '
 <div class="item form-group">
     <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Hematology Request</label>
     <div class="col-md-8 col-sm-8">';
@@ -90,21 +74,13 @@ function lab_request_hematology()
     <div class="col-md-8 col-sm-8 lab-hematology-form">
     <input type="text" class="test-lab-hematology-form" style="display:none">
     </div>
-    </div>
-<div class="ln_solid"></div>
-<div class="item form-group">
-    <div class="col-md-6 col-sm-6">
-        <a href="./index_patient.php" type="button" class="btn btn-danger">Cancel Request</a>
-        <button type="submit" class="btn  btn-primary">Send Request</button>
-    </div>
-</div>
-</form>';
+    </div>';
 }
 
 function lab_request_chemistry()
 {
     include_once "./lab-all-test-defines.php";
-    echo '<form id="lab-chemistry-form" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
+    echo '
     <div class="item form-group">
         <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Chemistry Request</label>
         <div class="col-md-6 col-sm-6">';
@@ -125,21 +101,12 @@ function lab_request_chemistry()
     <input type="text" class="test-lab-chemistry-form" style="display:none">
     </div>
     </div>
-    <div class="ln_solid"></div>
-    <div class="item form-group">
-        <div class="col-md-6 col-sm-6">
-            <a href="./index_patient.php" type="button" class="btn btn-danger">Cancel Request</a>
-            <button type="submit" class="btn  btn-primary">Send Request</button>
-
-        </div>
-    </div>
-</form>
 ';
 }
 function lab_request_urine()
 {
     include_once "./lab-all-test-defines.php";
-    echo '<form id="lab-urine-analysis-form" data-parsley-validate class="form-horizontal form-label-left" action="lab-queue.php">
+    echo '
     <div class="item form-group">
         <label for="serology-coagulation-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Urine Analysis Request</label>
         <div class="col-md-6 col-sm-6">';
@@ -160,15 +127,7 @@ function lab_request_urine()
     <div class="col-md-8 col-sm-8 lab-urine-analysis-form">
     <input type="text" class="test-lab-urine-analysis-form" style="display:none">
     </div>
-    </div>
-    <div class="ln_solid"></div>
-    <div class="item form-group">
-        <div class="col-md-6 col-sm-6">
-            <a href="./index_patient.php" type="button" class="btn btn-danger">Cancel Request</a>
-            <button type="submit" class="btn  btn-primary">Send Request</button>
-        </div>
-    </div>
-</form>';
+    </div>';
 }
 function lab_request_all()
 {

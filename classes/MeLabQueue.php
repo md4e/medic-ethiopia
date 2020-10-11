@@ -440,6 +440,8 @@ class MeLabQueue extends MySqlRecord
 			{$this->parseValue($this->phlebotomyStatus,'notNumber')},
 			{$this->parseValue($this->requestedOn,'datetime')})
 SQL;
+echo $sql;
+exit;
         $this->resetLastSqlError();
         $result = $this->query($sql);
         $this->lastSql = $sql;

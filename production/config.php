@@ -207,7 +207,7 @@ function show_patient_detail($caller = null)
         $patientSession = (object)$_SESSION['patient_card_number'];
         // var_dump($patientSession);
         echo '<div class="item form-group x_panel" style="border-radius:5px;">';
-        echo '<div class="row" style="width:100%;padding:5px;">';
+        echo '<div class="row" style="width:100%;padding:2px;">';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;padding:0;">';
         $finalCaller = '';
         if ($caller != null) {
@@ -451,22 +451,23 @@ function main_navigation()
     $nav = [
         0 => '<li ><a href="index_search.php?search-clean=true"><i class="fa fa-search text-info"></i>Patient Search</a></li>',
         1 => '<li ><a href="index-reception.php"><i class="fa fa-bullseye text-primary"></i>Reception</a></li>',
-        2 => '<li ><a href="index-central-triage.php"><i class="fa fa-exchange text-primary"></i>Central Triage</a></li>',
+        2 => '<li ><a href="index-central-triage.php"><i class="fa fa-compass text-primary"></i>Central Triage</a></li>',
         3 => '<li ><a href="index2.php"><i class="fa fa-plus text-danger"></i>Emergency</a></li>',
         4 => '<li ><a href="index3.php"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>',
         5 => '<li ><a href="index4.php"><i class="fa fa-exclamation-triangle text-warning"></i>Radiology</a></li>',
         6 => '<li ><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory</a></li>',
         7 => '<li ><a href="index6.php"><i class="fa fa-book text-primary"></i>All Forms</a></li>',
         8 => '<li ><a href="index7.php"><i class="fa fa-users text-info"></i>All Patients</a></li>',
-        9 => '<li ><a href="index8.php"><i class="fa fa-cubes text-danger"></i>Pharmacy</a></li>'
+        9 => '<li ><a href="index8.php"><i class="fa fa-cubes text-danger"></i>Pharmacy</a></li>',
+        10 => '<li ><a href="patient-journal.php"><i class="fa fa-user text-primary"></i>Patient Journal</a></li>',
     ];
 
     $useNavIndex = [];
     if (isset($_SESSION['pID'])) {
         if ($_SESSION['pID'] == 1) {
-            $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10];
         } else if ($_SESSION['pID'] == 2) {
-            $useNavIndex =   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            $useNavIndex =   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10];
         } else if ($_SESSION['pID'] == 3) {
             $useNavIndex = [6];
         } else if ($_SESSION['pID'] == 4) {
