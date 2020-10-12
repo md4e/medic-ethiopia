@@ -65,9 +65,9 @@ include_once $documentRootPath . "/production/config.php";
                           while ($row = $result->fetch_object()) {
                             // //var_dump(array_column($GLOBALS['labTableToId'], 'id'));
                             //var_dump($row->lab_request_data);
-                            if ($row->phlebotomy_status == "not started") {
-                              continue;
-                            }
+                            // if ($row->phlebotomy_status == "not started") {
+                            //   continue;
+                            // }
                             $tableName = '';
                             $table = '';
                             $requestStr = '';
@@ -142,7 +142,7 @@ include_once $documentRootPath . "/production/config.php";
                             echo '<td> <i class="fa fa-bell text-danger"></i> waiting ' . ($index * 10) . 'min</td>';
                             echo '<td><p class="' . $phlebotomyStatus[$row->phlebotomy_status] . '">' . $row->phlebotomy_status . '</p>';
                             $notStarted = "not started";
-                            echo '<a href="./patient-list-laboratory.php?status=' . Crypter::ENCODE('cancel_' . $row->id) . '" type="button" class="btn btn-sm btn-danger">Redo</a></td>';
+                            echo '<a href="./patient-list-laboratory.php?status=' . Crypter::ENCODE('cancel_' . $row->id) . '" type="button" class="btn btn-sm btn-danger ' . $btnStyle . '">Redo</a></td>';
                             echo '<td><p class="' . $payment[$index2][1] . '">' . $payment[$index2][0] . '</p></td>';
                             echo '</tr>';
                           }

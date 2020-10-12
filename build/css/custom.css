@@ -6164,3 +6164,14 @@ ul.notifications {
 .calendar-exibit .calendar-table {
   padding: 0 0 4px 0;
 }
+
+/****/
+
+.tabs ol {
+  float: left;
+  text-decoration: none;
+
+}
+.tabs .x_panel:hover {
+  background-color: skyblue;
+}

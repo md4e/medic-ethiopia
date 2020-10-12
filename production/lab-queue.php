@@ -36,7 +36,7 @@ if (isset($_SESSION['patient_card_number']) && isset($_GET['ids']) && ($_GET['id
     $labQueue->setPhlebotomyStatus('not started');
     $labQueue->setRequestedOn(date("d/m/Y H:i:s"));
     $labQueue->insert();
-    exit;
+    //exit;
     header('Location: ./patient-journal-lab-request.php?lab-request=complete');
 } else {
     // not sucessful

@@ -232,7 +232,7 @@ function show_patient_detail($caller = null)
         echo '</p>';
         echo '<div class="col-md-12 col-sm-12 col-xs-12" >';
 
-        $hideDetailIf = ['patient-journal.php'];
+        $hideDetailIf = ['patient-journal.php', 'patient-journal-full.php'];
         if (!in_array($caller, $hideDetailIf)) {
             if ($_SESSION['pID'] <= 2) {
                 echo '<a href="./patient-journal.php?card-no=' . Crypter::urlencode_encrypt($patientSession->patient_card_number)  . '" class="btn btn-sm btn-primary">Show detail</a>';
@@ -465,9 +465,9 @@ function main_navigation()
     $useNavIndex = [];
     if (isset($_SESSION['pID'])) {
         if ($_SESSION['pID'] == 1) {
-            $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10];
+            $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         } else if ($_SESSION['pID'] == 2) {
-            $useNavIndex =   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10];
+            $useNavIndex =   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         } else if ($_SESSION['pID'] == 3) {
             $useNavIndex = [6];
         } else if ($_SESSION['pID'] == 4) {
@@ -482,6 +482,46 @@ function main_navigation()
         echo $nav[$value];
     }
 }
+
+function patient_journal_navigation()
+{
+    if (!(isset($_SESSION['pID']) && isset($_SESSION['patient_card_number']))) {
+        return;
+    }
+    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . ("://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "");
+    $fileName = basename($actual_link);
+    $tabs = [
+        0 => ['name'=>'Patient Bio','url' => 'patient-journal.php', 'class' => '', 'fa'=>'fa fa-user'],
+        1 => ['name'=>'Patient Journal','url' => 'patient-journal-full.php', 'class' => '', 'fa'=>'fa fa-pencil'],
+        2 => ['name'=>'Patient Medication','url' => 'patient-journal-medication.php', 'class' => '', 'fa'=>'fa fa-cubes'],
+        3 => ['name'=>'Patient Nursing Care','url' => 'patient-journal-nursing-care.php', 'class' => '', 'fa'=>'fa fa-scissors'],
+        4 => ['name'=>'Patient Lab Request','url' => 'patient-journal-lab-request.php', 'class' => '', 'fa'=>'fa fa-flask'],
+    ];
+    $tempArray = array_column($tabs, 'url');
+    if (in_array($fileName, $tempArray)) {
+        $key = array_search($fileName, $tempArray);
+        $tabs[$key]['class'] = 'style="background-color:#2A3F54;color:white;"';
+    }
+
+    echo '<div class="row">
+    <ul class="tabs" role="tablist">';
+    foreach ($tabs as $key => $value) {
+        echo '
+        <ol>
+        <a href="' . $value['url'] . '" class="patient">
+        <div class="x_panel" ' . $value['class'] . '>
+            <div class="x_title">
+                <div class="row" style="display: inline-block;">
+                    <p class="h4 text-primary"><i class="' . $value['fa'] . '"></i> ' . $value['name'] . '</p>
+                </div>
+            </div>
+        </div>
+        </a>
+        </ol>';
+    }
+    echo '</ul></div>';
+}
+
 function include_js()
 {
     if ($_SERVER['DOCUMENT_ROOT'] == "medic-ethiopia.com") {
