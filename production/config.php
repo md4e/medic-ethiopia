@@ -358,6 +358,7 @@ function headerLinks($title = null, $dir = null)
     }
     echo '<!-- Font Awesome -->
     <link href="' . $dir . '/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="' . $dir . '/vendors/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style
     <link href="' . $dir . '/build/css/custom.min.css" rel="stylesheet"> -->
     <link href="' . $dir . '/build/css/custom.css" rel="stylesheet">';
@@ -460,14 +461,16 @@ function main_navigation()
         8 => '<li ><a href="index7.php"><i class="fa fa-users text-info"></i>All Patients</a></li>',
         9 => '<li ><a href="index8.php"><i class="fa fa-cubes text-danger"></i>Pharmacy</a></li>',
         10 => '<li ><a href="patient-journal.php"><i class="fa fa-user text-primary"></i>Patient Journal</a></li>',
+        11 => '<li ><a href="index_laison.php"><i class="fa fa-bed text-primary"></i>Laison</a></li>',
+        12 => '<li ><a href="index-or.php"><i class="fa fa-scissors text-primary"></i>OR (Minor-Major) </a></li>',
     ];
 
     $useNavIndex = [];
     if (isset($_SESSION['pID'])) {
         if ($_SESSION['pID'] == 1) {
-            $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12];
         } else if ($_SESSION['pID'] == 2) {
-            $useNavIndex =   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            $useNavIndex =   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12];
         } else if ($_SESSION['pID'] == 3) {
             $useNavIndex = [6];
         } else if ($_SESSION['pID'] == 4) {

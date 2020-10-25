@@ -50,25 +50,6 @@ include_once "./config.php";
                           </tr>
                         </thead>
                         <tbody>
-                          <!-- <tr>
-                            <td><a href="" class="btn btn-info">Name FatherName</a></td>
-                            <td>61</td>
-                            <td>0911123456</td>
-                            <td>2011/04/25</td>
-                            <td>
-                              <div>
-                                <div class="custom-control custom-checkbox custom-control-inline m-2">
-                                  <input name="change-appointment_0" id="change-appointment_0" type="checkbox" aria-describedby="change-appointmentHelpBlock" class="custom-control-input" value="new-date">
-                                  <label for="change-appointment_0" class="custom-control-label">Change new data</label>
-                                </div>
-                                <div class="change-appointment" style="display:none">
-                                  <input id="new-date-opd" name="new-date-opd" type="date" class="form-control" required="required">
-                                  <textarea id="new-date-remark" name="new-date-remark" placeholder="Write Reason for new change to send to patient" cols="4" rows="3" class="form-control"></textarea>
-                                  <button class="btn-sm btn-success">Save date and nottify</button>
-                                </div>
-                              </div>
-                            </td>
-                          </tr> -->
                           <?php
                           $triage_list = new MePatientTable('*');
                           $result = $triage_list->getResultSet();

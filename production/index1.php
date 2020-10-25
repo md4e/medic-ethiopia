@@ -3,6 +3,11 @@ include_once "./config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<style>
+  .body {
+    background-image: url('../images/stuff-pictures-1.jpg');
+  }
+</style>
 
 <head>
   <?php
@@ -52,17 +57,13 @@ include_once "./config.php";
             <div class="count">325</div>
             <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
           </div>
+
+          <p class="h3">Our Stuff reaching out to those in need</p>
+          <p><iframe width="560" height="315" src="https://www.youtube.com/embed/JKJb0DI812U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+          <p class="h3"><a href="https://www.facebook.com/zmHospital"><i class="fa fa-facebook-square"></i>Our facebook page Zeweditu Hosptial</p></a>
         </div>
       </div>
       <!-- /top tiles -->
-
-
-      <br />
-
-
-
-
-
     </div>
     <!-- /page content -->
 

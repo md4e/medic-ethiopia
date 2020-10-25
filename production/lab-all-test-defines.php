@@ -229,8 +229,6 @@ $oxygenDeviceAirArray = [
     "OTH" => "Other device"
 ];
 
-
-
 $labTableToId = [
     'lab-serology-form' =>
     [

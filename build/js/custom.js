@@ -2461,7 +2461,7 @@ function init_calendar() {
             end: new Date(y, m, d, 14, 0),
             allDay: false
         }, {
-            title: 'Birthday Party',
+            title: 'Dr. First LastName',
             start: new Date(y, m, d + 1, 19, 0),
             end: new Date(y, m, d + 1, 22, 30),
             allDay: false

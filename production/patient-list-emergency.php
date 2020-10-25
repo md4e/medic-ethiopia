@@ -7,16 +7,16 @@ include_once "./config.php";
 <html lang="en">
 
 <head>
-   <?php
-    headerLinks("Patient detail");
-    ?>
+  <?php
+  headerLinks("Patient detail");
+  ?>
 </head>
 
 <body class="nav-md">
   <div class="container body">
-        <?php
-        main_container_top_navigation();
-        ?>
+    <?php
+    main_container_top_navigation();
+    ?>
 
     <!-- page content -->
     <div class="right_col" role="main">
@@ -26,67 +26,126 @@ include_once "./config.php";
             <a href="index2.php" class="title_link btn btn-primary" type="button">
               <p class="h6">⏎ Return to Emergency Department</p>
             </a>
-            <p class="h3">Emergency:Patient List</p>
+
           </div>
         </div>
 
         <div class="clearfix"></div>
-
         <div class="row">
-          <div class="col-md-12 col-sm-12 ">
+          <!-- <div class="col-md-6 col-sm-12 ">
             <div class="x_panel">
-              <!-- <div class="x_title">
-                                    <h2>Button Example <small>Users</small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Settings 1</a>
-                                                <a class="dropdown-item" href="#">Settings 2</a>
-                                            </div>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div> -->
               <div class="x_content">
+                <p class="h3 text-primary"><i class="fa fa-bed"></i> Laison</p>
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="card-box table-responsive">
                       <p class="text-muted font-13 m-b-30">
 
                       </p>
-                      <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                      <table id="datatable-button" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                           <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>NEWS Rank</th>
-                            <th>Dicharge date</th>
-                            <th>Dicharge date</th>
-                            <th>Payment Compelete</th>
+                            <th>Department</th>
+                            <th>Available Bed </th>
                             <th>Status</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td><a href="" class="btn btn-info">Name Lastname</a></td>
-                            <td>Accountant</td>
-                            <td>Addis Ababa</td>
-                            <td>61</td>
-                            <td>4</td>
-                            <td>2011/04/25</td>
-                            <td>2011/04/25</td>
-                            <td>Yes</td>
-                            <td><button class="btn-warning">waiting 30min</button></td>
-                          </tr>
+
+                          <?php
+                          //Pediatrics, surgery , internal medicine, gynecology obstetrics
+                          $bed = [
+                            0 => ["name" => "Pediatrics", "current" => 5, "capacity" => 10],
+                            1 => ["name" => "Surgery", "current" => 2, "capacity" => 10],
+                            2 => ["name" => "Minor OR", "current" => 7, "capacity" => 10],
+                            3 => ["name" => "Internal Medicine", "current" => 10, "capacity" => 10],
+                            4 => ["name" => "Gynecology Obstetrics", "current" => 6, "capacity" => 10],
+                          ];
+                          foreach ($bed as $key => $value) {
+                            echo '
+                              <tr>
+                              <td>' . $value['name'] . '</td>
+                              <td>' . $value['current'] . '/' . $value['capacity'] . '</td>';
+                            $style = '';
+                            if ($value['current'] < $value['capacity']) {
+                              echo '<td>' . ($value['capacity'] - $value['current']) . ' Available</td>';
+                              $style = 'class="btn btn-sm btn-success"';
+                            } else {
+                              echo '<td>Full</td>';
+                              $style = 'class="btn btn-sm btn-muted" disabled=disabled';
+                            }
+                            echo '
+                              <td><button ' . $style . '>Book</button></td>
+                              </tr>
+                              ';
+                          }
+                          ?>
+
                         </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+              <div class="x_content">
+                <p class="h3 text-danger"><i class="fa fa-list"></i> Emergency Patient List</p>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                      <p class="text-muted font-13 m-b-30">
+                      </p>
+                      <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Action <br><span>asdsadsda</span></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+                          include_once $documentRootPath . "/classes/MePatientTable.php";
+                          $patients = new MePatientTable('*');
+                          $result =  $patients->getResultSet();
+                          $result->data_seek(0);
+                          $department = [0 => "OPD", 1 => "Emergency", 2 => "Radiology", 3 => "@Chemistry Lab", 4 => "@Stool Examination"];
+                          while ($rows = $result->fetch_object()) {
+                            $index = rand(0, 4);
+                            echo '<tr>';
+                            echo '<td>';
+                            $patient = new MePatientTable($rows->patient_card_number);
+                            $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
+                            include_once($documentRootPath . "/includes/crypter.php");
+                            echo '<p class="h6 text-primary"><i class="fa fa-user"></i> ' . $patient->getPatientFirstName() . ', Age:' . $patient->getPatientAge() . '</p>';
+
+
+                            echo '<strong>PhoneNr.:</strong> ' . $patient->getPatientPhone() . ' ';
+                            echo '<strong>Wereda.:</strong> ' . $patient->getPatientWereda() . ' ';
+                            echo '<strong>Kebele.:</strong> ' . $patient->getPatientKebele();
+                            echo '<br><a href="./session.php?card-no=' . Crypter::urlencode_encrypt($rows->patient_card_number) . '" class="btn btn-sm btn-info">' . $rows->patient_card_number . '</a>';
+                            echo '</td>';
+                            echo '<td>';
+                            echo '<a href="index_laison.php?card-no=' . $rows->patient_card_number . '" type="button" class="btn btn-success"><i class="fa fa-bed"></i> Ward (Laison)</a>';
+                            echo '<a href="index-or.php?card-no=' . $rows->patient_card_number . '" type="button" class="btn btn-danger"><i class="fa fa-scissors"></i> To Major OR</a>';
+                            echo '<a href="index-or.php?card-no=' . $rows->patient_card_number . '" type="button" class="btn btn-warning"><i class="fa fa-scissors"></i> To Minor OR</a>';
+                            echo '<a href="index-calendar.php?card-no=' . $rows->patient_card_number . '" type="button" class="btn btn-info"><i class="fa fa-calendar"></i> Schedule appointment</a>';
+
+
+                            echo  '</td>';
+
+                            echo '</tr>';
+                          }
+                          ?>
+                        </tbody>
+                        <select name="laison" id="">
+                          <option value=""></option>
+                        </select>
                       </table>
                     </div>
                   </div>
@@ -121,6 +180,17 @@ include_once "./config.php";
   <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
+  <script>
+    function changeAppointment(param1, param2) {
+      if (param1 == 'open') {
+        $(".change-appointment-" + param2).show();
+      } else if (param1 == 'close') {
+        $("#new-date-opd-" + param2).val("");
+        $("#new-date-remark-" + param2).val("");
+        $(".change-appointment-" + param2).hide();
+      }
+    }
+  </script>
 
 </body>
 
