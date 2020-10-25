@@ -55,13 +55,13 @@ include_once "./config.php";
                             <div class="x_content">
                                 <br />
                                 <?php
-                                patient_search()
+                                show_patient_form('medical-order-sheet.php');
                                 ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="patient-queue.php">
                                     <div class="item form-group">
-                                        <label for="date-of-order-sheet-date" class="col-form-label col-md-3 col-sm-3 label-align">Date</label>
+                                        <label for="record-date" class="col-form-label col-md-3 col-sm-3 label-align">Date and time</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="date-of-order-sheet-date" name="date-of-order-sheet-date" type="date" class="form-control" required="required">
+                                            <input id="record-date" name="date-of-vital-sign-record-date" type="text" class="form-control" disabled>
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -218,6 +218,9 @@ include_once "./config.php";
     ?>
 
     <script>
+         var time = new Date();
+        $('#record-date').val(time.toString('YYYY-MM-dd'));
+
         var i = 1;
         $("#add-problem").click(function() {
             var currentdate = new Date();
@@ -252,6 +255,9 @@ include_once "./config.php";
         $("input").live("click", function() {
             $("span").text("Clicked ID: " + this.id);
         });
+
+
     </script>
 </body>
+
 </html>

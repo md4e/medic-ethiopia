@@ -51,11 +51,11 @@ include_once "./config.php";
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                            <?php
+                                <?php
                                 show_patient_form('medical-history-sheet.php');
                                 ?>
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                                <div class="item form-group">
+                                    <div class="item form-group">
                                         <label for="record-date" class="col-form-label col-md-3 col-sm-3 label-align">Date and time</label>
                                         <div class="col-md-6 col-sm-6">
                                             <input id="record-date" name="date-of-vital-sign-record-date" type="text" class="form-control" disabled>

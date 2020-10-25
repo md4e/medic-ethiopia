@@ -495,7 +495,7 @@ function patient_journal_navigation()
     $fileName = basename($actual_link);
     $tabs = [
         0 => ['name'=>'Patient Bio','url' => 'patient-journal.php', 'class' => '', 'fa'=>'fa fa-user'],
-        1 => ['name'=>'Patient Journal','url' => 'patient-journal-full.php', 'class' => '', 'fa'=>'fa fa-pencil'],
+        1 => ['name'=>'Patient History','url' => 'patient-journal-full.php', 'class' => '', 'fa'=>'fa fa-pencil'],
         2 => ['name'=>'Patient Medication','url' => 'patient-journal-medication.php', 'class' => '', 'fa'=>'fa fa-cubes'],
         3 => ['name'=>'Patient Nursing Care','url' => 'patient-journal-nursing-care.php', 'class' => '', 'fa'=>'fa fa-scissors'],
         4 => ['name'=>'Patient Lab Request','url' => 'patient-journal-lab-request.php', 'class' => '', 'fa'=>'fa fa-flask'],

@@ -31,6 +31,34 @@ include_once "./config.php";
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <a href="medical-history-sheet.php" class="patient">
+                                <div class="row" style="display: inline-block;">
+                                    <p class="h4 text-info"><i class="fa fa-pencil"></i> History Sheet</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <a href="medical-order-sheet.php" class="patient">
+                                <div class="row" style="display: inline-block;">
+                                    <p class="h4 text-info"><i class="fa fa-pencil"></i> Order Sheet</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- http://medic-ethiopia/production/medical-history-sheet.php -->
         </div>
     </div>
     </div>
