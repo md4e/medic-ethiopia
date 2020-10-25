@@ -29,7 +29,6 @@ include_once "./config.php";
             <a href="patient-list-opd.php" class="title_link btn btn-primary" type="button">
               <p class="h6">⏎ Return to OPD Patient List</p>
             </a>
-            <p class="h3 text-primary"><i class="fa fa-bed"></i> Laison</p>
 
           </div>
 
@@ -39,7 +38,7 @@ include_once "./config.php";
 
         <div class="row">
           <div class="col-md-6 col-sm-12 ">
-            <div class="x_panel">
+            <div class="x_panel" style="border: 2px solid blue;border-radius:5px">
               <div class="x_content">
                 <div class="row">
                   <div class="col-sm-12">
@@ -50,34 +49,106 @@ include_once "./config.php";
                       <table id="datatable-button" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                           <tr>
-                            <th>Department</th>
-                            <th>Available Bed </th>
-                            <th>Status</th>
-                            <th>Action</th>
+                          <tr>
+                            <th colspan="4" class="h4 text-primary" style="text-align: center;"><i class="fa fa-bed"></i> Ward Bed Status</th>
+                          </tr>
+                          <th>Ward</th>
+                          <th>Total number of Beds </th>
+                          <th>Available Beds </th>
+                          <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-
                           <?php
                           //Pediatrics, surgery , internal medicine, gynecology obstetrics
                           $bed = [
                             0 => ["name" => "Pediatrics", "current" => 5, "capacity" => 10],
                             1 => ["name" => "Surgery", "current" => 2, "capacity" => 10],
-                            2 => ["name" => "Minor OR", "current" => 7, "capacity" => 10],
                             3 => ["name" => "Internal Medicine", "current" => 10, "capacity" => 10],
-                            4 => ["name" => "Gynecology Obstetrics", "current" => 6, "capacity" => 10],
+                            4 => ["name" => "Gynecology", "current" => 6, "capacity" => 10],
+                            5 => ["name" => "Obstetrics", "current" => 2, "capacity" => 10],
+                            6 => ["name" => "Labor", "current" => 3, "capacity" => 10],
+                            7 => ["name" => "Pediatrics Neuro Surgery", "current" => 4, "capacity" => 10],
+                            8 => ["name" => "Adult Neuro Surgery", "current" => 9, "capacity" => 10],
                           ];
                           foreach ($bed as $key => $value) {
+                            $available =($value['capacity'] - $value['current']);
+                            $available =  ($available == 0) ? '<i class="fa fa-bed text-danger"></i> '.$available:'<i class="fa fa-bed text-success"></i> '.$available;
                             echo '
                               <tr>
                               <td>' . $value['name'] . '</td>
-                              <td>' . $value['current'] . '/' . $value['capacity'] . '</td>';
+                              <td>'  . $value['capacity'] . '</td>
+                              <td>' . ($available) . '</td>';
                             $style = '';
                             if ($value['current'] < $value['capacity']) {
-                              echo '<td>' . ($value['capacity'] - $value['current']) . ' Available</td>';
+
                               $style = 'class="btn btn-sm btn-success"';
                             } else {
-                              echo '<td>Full</td>';
+
+                              $style = 'class="btn btn-sm btn-muted" disabled=disabled';
+                            }
+                            echo '
+                              <td><button ' . $style . '>Book</button></td>
+                              </tr>
+                              ';
+                          }
+                          ?>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 ">
+            <div class="x_panel"  style="border: 2px solid red;border-radius:5px">
+              <div class="x_content " >
+                <div class="row">
+                  <div class="col-sm-12 " >
+                    <div class="card-box table-responsive">
+                      <p class="text-muted font-13 m-b-30">
+
+                      </p>
+                      <table id="datatable-button" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                          <tr>
+                          <tr>
+                            <th colspan="4" class="h4 text-danger" style="text-align: center; "><i class="fa fa-lightbulb-o"></i> Operation Room Status</th>
+                          </tr>
+                          <th>Department</th>
+                          <th>Available Number of OR </th>
+                          <th>Status </th>
+                          <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          //Pediatrics, surgery , internal medicine, gynecology obstetrics
+                          $bed = [
+                            0 => ["name" => "Minor OR", "current" => 1, "capacity" => 1],
+                            1 => ["name" => "General Surgery OR1", "current" => 1, "capacity" => 1],
+                            2 => ["name" => "General Surgery OR2", "current" => 1, "capacity" => 1],
+                            3 => ["name" => "Pediatrics Neuro Surgery", "current" => 1, "capacity" => 1],
+                            4 => ["name" => "Gynecology", "current" => 0, "capacity" => 1],
+                            5 => ["name" => "Obstetrics", "current" => 0, "capacity" => 1],
+                          ];
+                          foreach ($bed as $key => $value) {
+                            $available =($value['capacity'] - $value['current']);
+                            $OR =  ($available == 0) ? '<i class="fa fa-lightbulb-o text-danger"></i> OR':'<i class="fa fa-lightbulb-o text-success"></i> Available';
+
+                            echo '
+                              <tr>
+                              <td>' . $value['name'] . '</td>
+                              <td>'  . $value['capacity'] . '</td>
+                              <td>' . $OR . '</td>';
+                            $style = '';
+                            if ($available != 0) {
+
+                              $style = 'class="btn btn-sm btn-success"';
+                            } else {
+
                               $style = 'class="btn btn-sm btn-muted" disabled=disabled';
                             }
                             echo '
