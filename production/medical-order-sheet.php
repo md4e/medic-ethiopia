@@ -68,12 +68,6 @@ include_once "./config.php";
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="date-of-order-sheet-time" class="col-form-label col-md-3 col-sm-3 label-align">Time</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <input id="date-of-order-sheet-time" name="date-of-order-sheet-time" type="time" value="00:00" class="form-control" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
                                         <label for="date-of-order-sheet-order-remark" class="col-form-label col-md-3 col-sm-3 label-align">Order</label>
                                         <div class="col-md-6 col-sm-6">
                                             <textarea id="order-remark" name="order-remark" cols="40" rows="5" class="form-control"></textarea>
