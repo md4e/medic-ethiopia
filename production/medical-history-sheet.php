@@ -25,6 +25,9 @@ include_once "./config.php";
                         <a href="index6.php" class="title_link btn btn-primary" type="button">
                             <p class="h6">⏎ Return to Medical Forms</p>
                         </a>
+                        <a href="patient-journal-full.php" class="title_link btn btn-primary" type="button">
+                            <p class="h6">⏎ Return Patient Journal</p>
+                        </a>
                         <p class="h3 text-primary"> <i class="fa fa-book"></i> History Sheet</p>
                     </div>
                     <div class="title_center">
