@@ -32,16 +32,16 @@ function session_handler()
 function normalAbNormal($type)
 {
     echo '
-        <div class="col-md-3 col-sm-3">
+        <div class="col-md-9 col-sm-12">
         <div class="custom-control custom-radio custom-control-inline">
         <input name="' . $type . '" id="' . $type . '_0" type="radio" aria-describedby="ospe-pertinetHelpBlock" class="custom-control-input" value="normal">
-        <label for="' . $type . '_0" class="custom-control-label">NO ABNORMAL</label>
-        </div>
-        <div class="custom-control custom-radio custom-control-inline">
-        <input name="' . $type . '" id="' . $type . '_1" type="radio" aria-describedby="ospe-no-pertinetHelpBlock" class="custom-control-input" value="abnormal">
-        <label for="' . $type . '_1" class="custom-control-label">ABNORMAL</label>
+        <label for="' . $type . '_0" class="custom-control-label">NO ABNORMAL FINDING</label>
         </div>
         </div>';
+        // <div class="custom-control custom-radio custom-control-inline">
+        // <input name="' . $type . '" id="' . $type . '_1" type="radio" aria-describedby="ospe-no-pertinetHelpBlock" class="custom-control-input" value="abnormal">
+        // <label for="' . $type . '_1" class="custom-control-label">ABNORMAL</label>
+        // </div>
 }
 function show_patient_form($caller = null)
 {
