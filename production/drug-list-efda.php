@@ -102,7 +102,7 @@ include_once "./config.php";
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                Copyright © 2020 Powered by <a href="http://medic-ethiopia.com" target="blank">Medic-Ethiopia</a>
+                Copyright © 2020 Powered by <a href="http://abgasim.com" target="blank">ABGASIM</a>
             </div>
             <div class="clearfix"></div>
         </footer>

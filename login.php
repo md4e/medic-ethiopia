@@ -100,7 +100,7 @@ include_once "./production/config.php";
               <br />
               <p>Only Authorized person can use this application. If you are not authorized exit immediately.</p>
               <div>
-                <p>Copywrite © 2020<br> Power by: <a href="http://www.medic-ethiopia.com" style="font-size:1.1em;font-weight:normal;color:#007bff">Medic-Ethiopia</a></p>
+                <p>Copywrite © 2020<br> Power by: <a href="http://www.abgasim.com" style="font-size:1.1em;font-weight:normal;color:#007bff">ABGASIM</a></p>
               </div>
             </div>
           </form>
