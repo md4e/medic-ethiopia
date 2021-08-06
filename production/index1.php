@@ -57,10 +57,10 @@ include_once "./config.php";
             <div class="count">325</div>
             <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
           </div>
+<?php
 
-          <p class="h3">Our Stuff reaching out to those in need</p>
-          <p><iframe width="560" height="315" src="https://www.youtube.com/embed/JKJb0DI812U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-          <p class="h3"><a href="https://www.facebook.com/zmHospital"><i class="fa fa-facebook-square"></i>Our facebook page Zeweditu Hosptial</p></a>
+promo();
+?>
         </div>
       </div>
       <!-- /top tiles -->

@@ -10,16 +10,30 @@ include_once "./production/config.php";
   headerLinks("medic-ethiopia", ".");
   ?>
 </head>
+<style>
+  .mybox {
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+    padding: 20px;
+    ;
+
+  }
+</style>
 
 <body class="login">
   <div>
     <div class="login_wrapper">
       <div class="form login_form">
-        <section class="login_content">
+        <a href="index.php">
+          <h3 style="text-align:center;"><i class="fa fa-level-up"></i> www.medic-ethiopia.com</h3>
+        </a>
+        <section class="login_content mybox">
+
           <form class="form-horizontal" action="./production/index1.php" method="post" enctype="multipart/form-data">
-            <h1>Medic Ethiopia</h1>
-            <p class="h6 text-muted">Digital Healthcare System</p>
-            <div class="clearfix"></div>
+            <a href="./athealth_login.php">
+              <h1>Electronic Medical Record (EMR)</h1>
+            </a>
+            <p class="h6 ">Online Digital Healthcare System</p>
+            <p class="h4">Signin</p>
             <div>
               <select class="form-control" name="hospitalName" style="border-radius: 3px;
               -webkit-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
@@ -33,7 +47,7 @@ include_once "./production/config.php";
                 <option value="unknown">Choose Hospital</option>
                 <?php
                 foreach ($hospital as $key => $value) {
-                  echo '<option value = "' . $key . '">' . $value . '</option>';
+                  echo '<option value = "' . $value  . '">' . $value . '</option>';
                 }
                 ?>
               </select>
@@ -55,37 +69,33 @@ include_once "./production/config.php";
 
                 </thead>
                 <tbody>
-                  <tr><th colspan="5">Test Credentials</th></tr>
-                  <th>Hospital</th>
+                  <tr>
+                    <th colspan="5">Test Credentials <br>(Choose Hospital:Zeweditu)</th>
+                  </tr>
                   <th>Job</th>
                   <th>EmployeeID</th>
                   <th>Password</th>
                   <tr>
-                    <td>Zeweditu</td>
                     <td>CEOS,Admins</td>
                     <td>ceo123</td>
                     <td>pass123</td>
                   </tr>
                   <tr>
-                    <td>Zeweditu</td>
                     <td>Physcians, Doctors</td>
                     <td>doc123</td>
                     <td>pass123</td>
                   </tr>
                   <tr>
-                    <td>Zeweditu</td>
                     <td>Labratory, Phlebotomy</td>
                     <td>lab123</td>
                     <td>pass123</td>
                   </tr>
                   <tr>
-                    <td>Zeweditu</td>
                     <td>Reception</td>
                     <td>recp123</td>
                     <td>pass123</td>
                   </tr>
                   <tr>
-                    <td>Zeweditu</td>
                     <td>Pharmacy, Drug store</td>
                     <td>phar123</td>
                     <td>pass123</td>

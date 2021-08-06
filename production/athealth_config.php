@@ -1,57 +1,34 @@
 <?php
-session_start();
 spl_autoload_register(function ($class_name) {
     include '../classes/' . $class_name . '.php';
 });
 
-function session_handler()
+function athealth_session_handler2()
 {
-    if (isset($_GET['type']) && $_GET['type'] == "athealth") {
-        if (isset($_POST['submit'])) {
-            $userID = $_POST['userID'];
-            $password = $_POST['password'];
-            if ($userID == 'ceo123' && $password == 'pass123') {
-                $_SESSION['pID'] = 1;
-            } else if ($userID == 'doc123' && $password == 'pass123') {
-                $_SESSION['pID'] = 2;
-            } else if ($userID == 'lab123' && $password == 'pass123') {
-                $_SESSION['pID'] = 3;
-            } else if ($userID == 'pat123' && $password == 'pass123') {
-                $_SESSION['pID'] = 4;
-            } else if ($userID == 'phar123' && $password == 'pass123') {
-                $_SESSION['pID'] = 5;
-            } else {
-                header('Location: ../login.php');
-            }
-            unset($_SESSION['mainUser']);
-            $_SESSION['mainUser'] = "athealth";
-        }
-    } else {
-        if (isset($_POST['submit'])) {
-            $employeeID = $_POST['employeeID'];
-            $employeePassword = $_POST['employeePassword'];
+    if (isset($_POST['submit'])) {
+        $userID = $_POST['userID'];
+        $password = $_POST['password'];
 
-            if (isset($_POST['hospitalName']) && $_POST['hospitalName'] != "Zeweditu Hospital") {
-                header('Location: ../login.php');
-            }
-            if ($employeeID == 'ceo123' && $employeePassword == 'pass123') {
-                $_SESSION['pID'] = 1;
-            } else if ($employeeID == 'doc123' && $employeePassword == 'pass123') {
-                $_SESSION['pID'] = 2;
-            } else if ($employeeID == 'lab123' && $employeePassword == 'pass123') {
-                $_SESSION['pID'] = 3;
-            } else if ($employeeID == 'recp123' && $employeePassword == 'pass123') {
-                $_SESSION['pID'] = 4;
-            } else if ($employeeID == 'phar123' && $employeePassword == 'pass123') {
-                $_SESSION['pID'] = 5;
-            } else {
-                header('Location: ../login.php');
-            }
+        if (isset($_POST['hospitalName']) && $_POST['hospitalName'] != "Zeweditu Hospital") {
+            header('Location: ../login.php');
+        }
+        if ($userID == 'ceo123' && $password == 'pass123') {
+            $_SESSION['pID'] = 1;
+        } else if ($userID == 'doc123' && $password == 'pass123') {
+            $_SESSION['pID'] = 2;
+        } else if ($userID == 'lab123' && $password == 'pass123') {
+            $_SESSION['pID'] = 3;
+        } else if ($userID == 'pat123' && $password == 'pass123') {
+            $_SESSION['pID'] = 4;
+        } else if ($userID == 'phar123' && $password == 'pass123') {
+            $_SESSION['pID'] = 5;
+        } else {
+            header('Location: ../login.php');
         }
     }
 }
 
-function normalAbNormal($type)
+function athealth_normalAbNormal($type)
 {
     echo '
         <div class="col-md-9 col-sm-12">
@@ -65,15 +42,16 @@ function normalAbNormal($type)
     // <label for="' . $type . '_1" class="custom-control-label">ABNORMAL</label>
     // </div>
 }
-function show_patient_form($caller = null)
+function athealth_show_patient_form($caller = null)
 {
     if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
-        show_patient($caller);
+        athealth_show_patient($caller);
         return;
     }
     $search_text = isset($_GET['search_text']) ? $_GET['search_text'] : null;
+    var_dump($_GET);
     echo '
-    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" method="post" action="./search.php?caller=' . $caller . '">
+    <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left" method="post" action="./athealth_search.php?caller=' . $caller . '">
     <div class="item form-group x_panel bg-info">
         <label for="search_text" class="col-form-label col-md-3 col-sm-3 label-align">Search here</label>
         <div class="col-md-8 col-sm-8">
@@ -89,26 +67,28 @@ function show_patient_form($caller = null)
     echo '</form>';
     if (isset($search_text)) {
         if (isset($_SESSION['search_result']) && sizeof($_SESSION['search_result']) == 1 && $_SESSION['search_result'][0] != '') {
-            show_list_of_matching_patient($caller);
+            athealth_show_list_of_matching_patient($caller);
         } else {
             echo '<p class="h4 text-danger">No Patient mathing input <strong>' . $search_text . '</strong></p>';
-            unset($_SESSION['search_result']);
+            if (isset($_SESSION['search_result'])) {
+                unset($_SESSION['search_result']);
+            }
         }
     }
-    show_patient($caller);
+    athealth_show_patient($caller);
 }
 
-function show_list_of_matching_patient($caller = null)
+function athealth_show_list_of_matching_patient($caller = null)
 {
     if ($caller == 'index-reception.php') {
-        searchTableResultReception($caller);
+        athealth_searchTableResultReception($caller);
     } else {
-        searchTableResultDetail($caller);
+        athealth_searchTableResultDetail($caller);
     }
 }
 
 
-function searchTableResultDetail($caller = null)
+function athealth_searchTableResultDetail($caller = null)
 {
     $hideDetailIf = ['index-search.php'];
     if ($caller != null) {
@@ -157,7 +137,7 @@ function searchTableResultDetail($caller = null)
   </div>';
 }
 
-function searchTableResultReception($caller = null)
+function athealth_searchTableResultReception($caller = null)
 {
     if ($caller != null) {
         $caller = '&caller=' . $caller;
@@ -199,7 +179,7 @@ function searchTableResultReception($caller = null)
     </table>
   </div>';
 }
-function show_patient($caller = null, $card_no = null)
+function athealth_show_patient($caller = null, $card_no = null)
 {
     $patientViewSmall = [
         'index-reception.php',
@@ -212,16 +192,16 @@ function show_patient($caller = null, $card_no = null)
         'lab-stool-examination.php'
     ];
     if (in_array($caller, $patientViewSmall)) {
-        show_patient_reception($caller);
+        athealth_show_patient_reception($caller);
     } else {
         if ($caller == 'patient-list-triage.php') {
-            show_patient_triage($card_no);
+            athealth_show_patient_triage($card_no);
         }
-        show_patient_detail($caller);
+        athealth_show_patient_detail($caller);
     }
 }
 
-function show_patient_detail($caller = null)
+function athealth_show_patient_detail($caller = null)
 {
     if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
         $documentRootPath = $_SERVER['DOCUMENT_ROOT'];
@@ -270,7 +250,7 @@ function show_patient_detail($caller = null)
     }
 }
 
-function show_patient_reception($caller = null)
+function athealth_show_patient_reception($caller = null)
 {
     $finalCaller = '';
     if ($caller != null) {
@@ -322,7 +302,7 @@ function show_patient_reception($caller = null)
     }
 }
 
-function show_patient_triage($card_number = null)
+function athealth_show_patient_triage($card_number = null)
 {
     $patient = new MePatientTable('*');
     $result = $patient->getResultSet();
@@ -335,7 +315,7 @@ function show_patient_triage($card_number = null)
         }
     }
 }
-function useSelectiveTest()
+function athealth_useSelectiveTest()
 {
     $useSelectiveTest = [];
     if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
@@ -357,8 +337,9 @@ function useSelectiveTest()
     }
     return $useSelectiveTest;
 }
-function headerLinks($title = null, $dir = null)
+function athealth_headerLinks($title = null, $dir = null)
 {
+
     if ($dir == null) {
         $dir = "..";
     }
@@ -385,39 +366,15 @@ function headerLinks($title = null, $dir = null)
     <link href="' . $dir . '/build/css/custom.css" rel="stylesheet">';
 }
 
-
-
-
-function main_container_top_navigation()
-{
-    if (isset($_SESSION['mainUser']) && $_SESSION['mainUser'] == "athealth") {
-        require_once './athealth_config.php';
-        athealth_main_container_top_navigation();
-    } else {
-        main_container_top_navigation_emr();
-    }
-}
-
-function promo()
-{
-    if (isset($_SESSION['mainUser'])) {
-        return;
-    }
-        echo '<p class="h3">Our Stuff reaching out to those in need</p>
-    <p><iframe width="560" height="315" src="https://www.youtube.com/embed/JKJb0DI812U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-    <p class="h3"><a href="https://www.facebook.com/zmHospital"><i class="fa fa-facebook-square"></i>Our facebook page Zeweditu Hospital</p></a>';
-
-}
-function main_container_top_navigation_emr()
+function athealth_main_container_top_navigation()
 {
     echo '
     <div class="main_container">
      <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-                <a href="index1.php" class="site_title">
-                    <!-- <i class="fa fa-building-o"></i> --> <span>Zewditu
-                        Hospital</span></a>
+                <a href="index1-athealth.php" class="site_title">
+                    <!-- <i class="fa fa-building-o"></i> --> <span>@Health</span></a>
                 <!-- <i class="fa fa-building-o"></i> -->
             </div>
 
@@ -448,7 +405,7 @@ function main_container_top_navigation_emr()
                         ';
 
 
-    main_navigation();
+    athealth_main_navigation();
 
     echo '</ul>
                 </div>
@@ -491,46 +448,120 @@ function main_container_top_navigation_emr()
 <!-- /top navigation -->
     ';
 }
-function main_navigation()
+
+function athealth_main_container_top_navigation_at_health()
+{
+    echo '
+    <div class="main_container">
+     <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+                <a href="index1.php" class="site_title">
+                    <!-- <i class="fa fa-building-o"></i> --> <span>@Health</span></a>
+                <!-- <i class="fa fa-building-o"></i> -->
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+                <div class="profile_pic">
+                    <!-- <img src="images/img.jpg" alt="..." class="img-circle profile_img"> -->
+                </div>
+                <div class="profile_info">
+                    <span>Welcome,</span>
+                    <h2> Name Lastname</h2>
+                </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <!-- <h3>Departments</h3> -->
+                    <ul class="nav side-menu">
+                        <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a> -->
+                        <li><a href="index1.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+
+                        ';
+
+
+    athealth_main_navigation();
+
+    echo '</ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- top navigation -->
+<div class="top_nav">
+    <div class="nav_menu">
+        <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="col-md-8">
+            ';
+    if (isset($_SESSION['pID']) && isset($_SESSION['patient_card_number'])) {
+        echo '<p class="h3 text-success" id="countdown">You have Active Patient Session!</p>';
+    }
+    echo '
+        </div>
+        <nav class="nav navbar-nav">
+            <ul class=" navbar-right">
+                <li class="nav-item dropdown open" style="padding-left: 15px;">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user-md"></i> Name Lastname
+                    </a>
+                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="javascript:;"> Profile</a>
+                        <a class="dropdown-item" href="javascript:;">Help</a>
+                        <a class="dropdown-item" href="../index.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</div>
+<!-- /top navigation -->
+    ';
+}
+function athealth_main_navigation()
 {
     $nav = [
         0 => '<li ><a href="index_search.php?search-clean=true"><i class="fa fa-search text-info"></i>Patient Search</a></li>',
-        1 => '<li ><a href="index-reception.php"><i class="fa fa-bullseye text-primary"></i>Reception</a></li>',
-        2 => '<li ><a href="index-central-triage.php"><i class="fa fa-compass text-primary"></i>Central Triage</a></li>',
-        3 => '<li ><a href="index2.php"><i class="fa fa-plus text-danger"></i>Emergency</a></li>',
-        4 => '<li ><a href="index3.php"><i class="fa fa-paper-plane text-primary"></i>OPD</a></li>',
-        5 => '<li ><a href="index4.php"><i class="fa fa-exclamation-triangle text-warning"></i>Radiology</a></li>',
-        6 => '<li ><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory</a></li>',
-        7 => '<li ><a href="index6.php"><i class="fa fa-book text-primary"></i>All Forms</a></li>',
-        8 => '<li ><a href="index7.php"><i class="fa fa-users text-info"></i>All Patients</a></li>',
-        9 => '<li ><a href="index8.php"><i class="fa fa-cubes text-danger"></i>Pharmacy</a></li>',
-        10 => '<li ><a href="patient-journal.php"><i class="fa fa-user text-primary"></i>Patient Journal</a></li>',
-        11 => '<li ><a href="index_laison.php"><i class="fa fa-bed text-primary"></i>Laison</a></li>',
-        12 => '<li ><a href="index-or.php"><i class="fa fa-scissors text-primary"></i>OR (Minor-Major) </a></li>',
+        1 => '<li ><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory</a></li>',
+        2 => '<li ><a href="index6.php"><i class="fa fa-book text-primary"></i>All Forms</a></li>',
+        3 => '<li ><a href="index8.php"><i class="fa fa-cubes text-danger"></i>Pharmacy</a></li>',
+        4 => '<li ><a href="patient-journal.php"><i class="fa fa-user text-primary"></i>Patient Journal</a></li>',
+        5 => '<li ><a href="athealth_doctor_list.php"><i class="fa fa-user text-primary"></i>Doctors List</a></li>'
     ];
 
     $useNavIndex = [];
     if (isset($_SESSION['pID'])) {
         if ($_SESSION['pID'] == 1) {
-            $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            $useNavIndex = [0, 1, 2, 3, 4, 5];
         } else if ($_SESSION['pID'] == 2) {
-            $useNavIndex =   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            $useNavIndex =   [0, 1, 2, 3, 4, 5];
         } else if ($_SESSION['pID'] == 3) {
-            $useNavIndex = [6];
-        } else if ($_SESSION['pID'] == 4) {
             $useNavIndex = [1];
-        } else if ($_SESSION['pID'] == 5) {
-            $useNavIndex = [9];
+        } else if ($_SESSION['pID'] == 4) {
+            $useNavIndex = [4];
         }
     } else {
-        $useNavIndex = [0, 1, 2, 3, 4, 5, 6, 7];
+        $useNavIndex = [0, 1, 2, 3, 4];
     }
     foreach ($useNavIndex as $key => $value) {
         echo $nav[$value];
     }
 }
 
-function patient_journal_navigation()
+function athealth_patient_journal_navigation()
 {
     if (!(isset($_SESSION['pID']) && isset($_SESSION['patient_card_number']))) {
         return;
@@ -569,7 +600,7 @@ function patient_journal_navigation()
     echo '</ul></div>';
 }
 
-function include_js()
+function athealth_include_js()
 {
     if ($_SERVER['DOCUMENT_ROOT'] == "medic-ethiopia.com") {
         echo '
@@ -590,7 +621,7 @@ function include_js()
     }
 }
 
-function patient_search()
+function athealth_patient_search()
 {
     echo '
     <form id="xxxx" data-parsley-validate class="form-horizontal form-label-left">
