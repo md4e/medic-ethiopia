@@ -545,13 +545,13 @@ function athealth_main_navigation()
     $useNavIndex = [];
     if (isset($_SESSION['pID'])) {
         if ($_SESSION['pID'] == 1) {
-            $useNavIndex = [0, 1, 2, 3, 5];
+            $useNavIndex = [0, 1, 2, 3, 4, 5];
         } else if ($_SESSION['pID'] == 2) {
-            $useNavIndex =   [0, 1, 2, 3, 5];
+            $useNavIndex =   [0, 1, 2, 3, 4, 5];
         } else if ($_SESSION['pID'] == 3) {
             $useNavIndex = [1];
         } else if ($_SESSION['pID'] == 4) {
-            $useNavIndex = [5];
+            $useNavIndex = [4,5];
         }
     } else {
         $useNavIndex = [0, 1, 2, 3, 4];
