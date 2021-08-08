@@ -42,8 +42,8 @@ include_once "./production/config.php";
               <button name="submit" type="submit" value="submit" class="btn btn btn-primary">
                 Signin
               </button>
-              <a href="./athealth_register.php">
-                <h6>Don't have a account , Signup here!</h6>
+              <a href="./athealth_register.php" type="button" class="btn btn-info">
+                <h6>Don't have a account , Register here! </h6>
               </a>
             </div>
             <div>

@@ -63,6 +63,7 @@ include_once "./config.php";
               $result =  $doctors->getResultSet();
               $result->data_seek(0);
               while ($rows = $result->fetch_object()) {
+                if($rows->id == $_GET['id'])
                 echo '
               <div class="col-md-4 col-sm-4  profile_details">
                 <div class="well profile_view">
@@ -91,20 +92,36 @@ include_once "./config.php";
                         <a href="#"><span class="fa fa-star-o"></span></a>
                       </p>
                     </div>
-                    <div class=" col-sm-6 emphasis">
-                      <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-                        </i> <i class="fa fa-comments-o"></i> </button>
-                      <a type="button" class="btn btn-primary btn-sm" style="color:white" href="./athealth_doctor_profile.php?id=' . $rows->id . '">
-                        <i class="fa fa-user"> </i> View Profile
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
 ';
               }
               ?>
+              <div class="col-md-8 col-sm-8 ">
 
+
+              <form id="demo-form" data-parsley-validate>
+
+												<label for="heard">Rate your doctor*</label>
+												<select id="heard" class="form-control" required>
+													<option value="">Choose rate</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+												</select>
+
+												<label for="message"> Put your comment here 100 max :</label>
+												<textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>
+
+												<br />
+												<span class="btn btn-primary">Submit</span>
+
+									</form>
+
+              </div>
 
             </div>
           </div>

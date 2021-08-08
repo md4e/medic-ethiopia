@@ -47,7 +47,7 @@ unset($_SESSION['patient_card_number']);
             </div
             ></a>
             <a href="./athealth_login.php" class="href"><div class="col-md-4 h1 mybox">@Health Demo<br>
-            <span class="h4">service to find health professionals nearest to patient</span>
+            <span class="h4">Digital Health Caring System</span>
             </div
             ></a>
 

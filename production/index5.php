@@ -79,6 +79,9 @@ include_once "./config.php";
           </div>
         </div>
       </div>
+      <?php
+          if (!isset($_SESSION['mainUser']) && $_SESSION['mainUser'] == "athealth") {
+            echo '
       <div class="row">
         <div class="col-md-6">
           <div class="x_panel">
@@ -92,6 +95,7 @@ include_once "./config.php";
           </div>
         </div>
       </div>
+      ';} ?>
       <div class="row">
         <div class="col-md-6">
           <div class="x_panel">
