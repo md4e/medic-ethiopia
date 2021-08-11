@@ -11,16 +11,21 @@ include_once "./production/athealth_config.php";
   ?>
 </head>
 <style>
+     body {
+            background: url("./images/login-page.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
     .mybox {
         box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
         padding: 20px;;
     }
     </style>
 
-<body class="login">
+<body class="">
   <div>
     <div class="login_wrapper">
-      <div class="form login_form">
+      <div class="form login login_form">
         <section class="login_content mybox">
           <a href="index.php">
             <h1 style="text-align:center;"> www.medic-ethiopia.com</h1>

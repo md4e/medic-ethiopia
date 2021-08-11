@@ -11,6 +11,12 @@ include_once "./production/config.php";
   ?>
 </head>
 <style>
+
+  body {
+            background: url("./images/login-page.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
   .mybox {
     box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
     padding: 20px;
@@ -18,10 +24,10 @@ include_once "./production/config.php";
   }
 </style>
 
-<body class="login">
+<body class="">
   <div>
     <div class="login_wrapper">
-      <div class="form login_form">
+      <div class="form login login_form">
       <a href="index.php">
           <h3 style="text-align:center;"><i class="fa fa-level-up"></i> www.medic-ethiopia.com</h3>
         </a>

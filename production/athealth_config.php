@@ -373,7 +373,7 @@ function athealth_main_container_top_navigation()
      <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-                <a href="index1-athealth.php" class="site_title">
+                <a href="index1.php" class="site_title">
                     <!-- <i class="fa fa-building-o"></i> --> <span>@Health</span></a>
                 <!-- <i class="fa fa-building-o"></i> -->
             </div>
@@ -534,20 +534,21 @@ function athealth_main_container_top_navigation_at_health()
 function athealth_main_navigation()
 {
     $nav = [
-        0 => '<li ><a href="index_search.php?search-clean=true"><i class="fa fa-search text-info"></i>Patient Search</a></li>',
-        1 => '<li ><a href="index5.php"><i class="fa fa-flask text-light"></i>Laboratory</a></li>',
-        2 => '<li ><a href="index6.php"><i class="fa fa-book text-primary"></i>All Forms</a></li>',
-        3 => '<li ><a href="index8.php"><i class="fa fa-cubes text-danger"></i>Pharmacy</a></li>',
-        4 => '<li ><a href="patient-journal.php"><i class="fa fa-user text-primary"></i>Patient Journal</a></li>',
-        5 => '<li ><a href="athealth_doctor_list.php"><i class="fa fa-user text-primary"></i>Doctors List</a></li>'
+        0 => '<li ><a href="index_search.php?search-clean=true"><i class="fa fa-search text-dark"></i>Patient Search</a></li>',
+        1 => '<li ><a href="index5.php"><i class="fa fa-flask text-dark"></i>Laboratory</a></li>',
+        2 => '<li ><a href="index6.php"><i class="fa fa-book text-dark"></i>All Forms</a></li>',
+        3 => '<li ><a href="index8.php"><i class="fa fa-cubes text-dark"></i>Pharmacy</a></li>',
+        4 => '<li ><a href="patient-journal.php"><i class="fa fa-user text-dark"></i>Patient Journal</a></li>',
+        5 => '<li ><a href="athealth_doctor_list.php"><i class="fa fa-user text-dark"></i>Doctors List</a></li>',
+        6 => '<li ><a href="athealth_medical-admission-emergency.php"><i class="fa fa-user text-dark"></i>Patient Admission</a></li>'
     ];
 
     $useNavIndex = [];
     if (isset($_SESSION['pID'])) {
         if ($_SESSION['pID'] == 1) {
-            $useNavIndex = [0, 1, 2, 3, 4, 5];
+            $useNavIndex = [0, 1, 2, 3, 4, 5,6];
         } else if ($_SESSION['pID'] == 2) {
-            $useNavIndex =   [0, 1, 2, 3, 4, 5];
+            $useNavIndex =   [0, 1, 2, 3, 4, 5,6];
         } else if ($_SESSION['pID'] == 3) {
             $useNavIndex = [1];
         } else if ($_SESSION['pID'] == 4) {
