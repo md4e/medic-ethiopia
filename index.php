@@ -12,7 +12,7 @@ unset($_SESSION['patient_card_number']);
 <head>
     <?php
     session_handler();
-    headerLinks("Dashboard");
+    headerLinks("Medic-Ethiopia");
 
     ?>
     <style>

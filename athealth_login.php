@@ -7,7 +7,7 @@ include_once "./production/config.php";
 
 <head>
   <?php
-  headerLinks("medic-ethiopia", ".");
+  headerLinks("@Health", ".");
   ?>
 </head>
 <style>
